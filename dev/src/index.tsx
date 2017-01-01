@@ -1,10 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+import { AutocompleteContainer } from './containers/AutocompleteContainer';
+
 class App extends React.Component<{}, {}> {
   render() {
     return (
-      <div>Hello world</div>
+      <div>
+        <AutocompleteContainer />
+      </div>
     );
   }
 }
