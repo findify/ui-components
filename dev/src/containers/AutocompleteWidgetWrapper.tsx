@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { AutocompleteWidget } from '../../../src';
 
-function AutocompleteContainer() {
+function AutocompleteWidgetWrapper() {
   const props = {
     direction: 'ltr',
     onSearchSuggestionClick: (query: string) => {},
@@ -72,10 +72,14 @@ function AutocompleteContainer() {
   };
 
   return (
-    <AutocompleteWidget {...props} />
+    <div style={{
+      margin: 20,
+    }}>
+      <AutocompleteWidget {...props} />
+    </div>
   );
 }
 
 export {
-  AutocompleteContainer,
+  AutocompleteWidgetWrapper,
 }

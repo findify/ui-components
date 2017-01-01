@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { AutocompleteContainer } from './containers/AutocompleteContainer';
+import { AutocompleteWidgetWrapper } from './containers/AutocompleteWidgetWrapper';
 
 class App extends React.Component<{}, {}> {
   render() {
     return (
       <div>
-        <AutocompleteContainer />
+        <AutocompleteWidgetWrapper />
       </div>
     );
   }
