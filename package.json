@@ -3,5 +3,27 @@
   "version": "0.1",
   "description": "Findify react ui components",
   "author": "1ven",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@types/react": "^0.14.55",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "css-loader": "^0.26.1",
+    "express": "^4.14.0",
+    "import-glob-loader": "^1.1.0",
+    "node-sass": "^4.1.1",
+    "normalize.css": "^5.0.0",
+    "postcss-loader": "^1.2.1",
+    "react": "^15.4.1",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^1.3.3",
+    "tslint": "^4.2.0",
+    "typescript": "^2.1.4",
+    "webpack": "^1.14.0",
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-hot-middleware": "^2.14.0"
+  }
 }
