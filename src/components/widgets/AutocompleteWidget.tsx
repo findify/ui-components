@@ -5,8 +5,7 @@ import { RatingWidget } from './RatingWidget';
 function AutocompleteWidget({
   searchSuggestions,
   productMatches,
-  onSuggestionClick,
-  onProductClick,
+  onSearchSuggestionClick,
   direction,
   suggestionsTitle,
   productMatchesTitle,
@@ -26,7 +25,7 @@ function AutocompleteWidget({
             <span
               key={i}
               className="findify-search-suggestions__suggestion"
-              onClick={() => onSuggestionClick(s.query)}
+              onClick={() => onSearchSuggestionClick(s.query)}
             >
               {s.title}
             </span>
@@ -49,6 +48,7 @@ function AutocompleteWidget({
             <a
               className="findify-product-matches__item"
               href={p.link}
+              key={i}
             >
               <div className="findify-product-matches__image">
                 <img
@@ -108,9 +108,9 @@ function AutocompleteWidget({
 type Props = {
   searchSuggestions: Suggestion[],
   productMatches: ProductMatch[],
-  onSuggestionClick: OnSuggestionClick,
-  onProductClick: OnProductMatchClick,
-  direction: 'ltr' | 'rtl',
+  onSearchSuggestionClick: OnSearchSuggestionClick,
+  // direction: 'ltr' | 'rtl',
+  direction: string,
   suggestionsTitle?: string,
   productMatchesTitle?: string,
   tipTitle?: string,
@@ -126,14 +126,13 @@ type ProductMatch = {
   link: string,
   imageLink: string,
   title: string,
-  price: string,
-  discountPrice?: string,
-  reviewsCount?: string,
-  rating?: 1 | 2 | 3 | 4 | 5,
+  price: number,
+  discountPrice?: number,
+  reviewsCount?: number,
+  rating?: number,
+  // rating?: 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5,
 };
 
-type OnSuggestionClick = (query: string) => void
-
-type OnProductMatchClick = (id: number) => void
+type OnSearchSuggestionClick = (query: string) => void
 
 export { AutocompleteWidget };

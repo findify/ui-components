@@ -7,11 +7,14 @@ function RatingWidget({
 }: Props) {
   return (
     <div className="findify-rating-widget">
-      {times(5, (i: number) => i + 1).map((item: number) => {
+      {times(5, (i: number) => i + 1).map((item: number, i: number) => {
         const diff = item - value;
         const modifier = diff === 0.5 ? 'half' : diff <= 0 ? 'full' : 'empty';
         return (
-          <span className={`findify-rating-widget__star findify-rating-widget__star_${modifier}`} />
+          <span
+            key={i}
+            className={`findify-rating-widget__star findify-rating-widget__star_${modifier}`}
+          />
         );
       })}
       {reviewsCount && (
@@ -22,8 +25,9 @@ function RatingWidget({
 }
 
 type Props = {
-  value: 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5,
-  reviewsCount?: string,
+  value: number,
+  // value: 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5,
+  reviewsCount?: number,
 };
 
 export { RatingWidget };
