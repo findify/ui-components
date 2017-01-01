@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { Autocomplete } from '../../../src/components/widgets/Autocomplete';
+import { AutocompleteWidget } from '../../../src';
 
 function AutocompleteContainer() {
   return (
-    <Autocomplete
+    <AutocompleteWidget
       
     />
   );
