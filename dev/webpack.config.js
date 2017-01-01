@@ -16,7 +16,7 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.tsx?$/,
-      loader: 'babel-loader!ts-loader',
+      loader: 'ts-loader',
     }, {
       test: /\.scss$/,
       loader: 'style-loader!css-loader!postcss-loader!sass-loader!import-glob-loader',
