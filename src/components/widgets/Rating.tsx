@@ -9,7 +9,7 @@ function Rating({
     <div className="findify-rating">
       {times(5, (i: number) => i + 1).map((item: number) => {
         const diff = item - value;
-        const modifier = diff === 0.5 ? 'half' : diff <== 0 'full' : 'empty';
+        const modifier = diff === 0.5 ? 'half' : diff <= 0 ? 'full' : 'empty';
         return (
           <span className={`findify-rating__star findify-rating__star_${modifier}`} />
         );
@@ -26,4 +26,4 @@ type Props = {
   reviewsCount?: string,
 };
 
-export default { Rating };
+export { Rating };
