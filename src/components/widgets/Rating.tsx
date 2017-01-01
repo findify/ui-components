@@ -26,4 +26,4 @@ type Props = {
   reviewsCount?: string,
 };
 
-export default Rating;
+export default { Rating };

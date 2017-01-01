@@ -138,4 +138,4 @@ type OnSuggestionClick = (query: string) => void
 
 type OnProductMatchClick = (id: number) => void
 
-export default Autocomplete;
+export default { Autocomplete };
