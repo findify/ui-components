@@ -65,12 +65,14 @@ function AutocompleteWidget({
               <span className="findify-product-matches__item-title">
                 {p.title}
               </span>
-              <div className="findify-product-matches__item-rating">
-                <RatingWidget
-                  value={p.rating}
-                  reviewsCount={p.reviewsCount}
-                />
-              </div>
+              {p.rating && (
+                <div className="findify-product-matches__item-rating">
+                  <RatingWidget
+                    value={p.rating}
+                    reviewsCount={p.reviewsCount}
+                  />
+                </div>
+              )}
               <div className="findify-product-matches__item-price">
                 {p.discountPrice && (
                   <span className="findify-product-matches__item-price-discount">
