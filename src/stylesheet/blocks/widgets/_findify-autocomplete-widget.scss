@@ -1,13 +1,19 @@
 .findify-autocomplete-widget {
+  display: inline-block;
+  vertical-align: top;
   position: relative;
   box-shadow: 0 0 8px 0 rgba(0,0,0,.5);
-  width: 580px;
+  margin: 15px 10px 10px;
   &__body {
     display: table;
+    width: 100%;
   }
   &__search-suggestions {
-    width: (100% / 3);
+    width: 190px;
     background-color: #f7f7f7;
+  }
+  &__product-matches {
+    width: 400px;
   }
   &__search-suggestions, &__product-matches {
     display: table-cell;
@@ -18,7 +24,7 @@
     user-select: none;
     cursor: pointer;
     text-align: center;
-    padding: 10px 0;
+    padding: 10px;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 700;

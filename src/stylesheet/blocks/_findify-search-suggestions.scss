@@ -10,6 +10,8 @@
     display: block;
     color: #404040;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
     &:hover {
       background-color: #ececec;
     }
