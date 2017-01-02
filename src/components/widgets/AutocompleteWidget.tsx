@@ -16,15 +16,17 @@ function AutocompleteWidget({
     <div className="findify-autocomplete-widget__search-suggestions">
       <div className="findify-search-suggestions">
         {suggestionsTitle && (
-          <span className="findify-search-suggestions__title">
-            {suggestionsTitle}
-          </span>
+          <div className="findify-search-suggestions__title">
+            <span className="findify-autocomplete-title">
+              {suggestionsTitle}
+            </span>
+          </div>
         )}
         <div className="findify-search-suggestions__list">
           {searchSuggestions.map((s: Suggestion, i: number) => (
             <span
               key={i}
-              className="findify-search-suggestions__suggestion"
+              className="findify-search-suggestions__item"
               onClick={() => onSearchSuggestionClick(s.query)}
             >
               {s.title}
@@ -39,38 +41,40 @@ function AutocompleteWidget({
     <div className="findify-autocomplete-widget__product-matches">
       <div className="findify-product-matches">
         {productMatchesTitle && (
-          <span className="findify-product-matches__title">
-            {productMatchesTitle}
-          </span>
+          <div className="findify-product-matches__title">
+            <span className="findify-autocomplete-title">
+              {productMatchesTitle}
+            </span>
+          </div>
         )}
-        <div className="findify-product-matches">
+        <div className="findify-product-matches__items">
           {productMatches.map((p: ProductMatch, i: number) => (
             <a
               className="findify-product-matches__item"
               href={p.link}
               key={i}
             >
-              <div className="findify-product-matches__image">
+              <div className="findify-product-matches__item-image">
                 <img
-                  className="findify-product-matches__image-link"
+                  className="findify-product-matches__item-src"
                   src={p.imageLink}
                 />
               </div>
-              <span className="findify-product-matches__title">
+              <span className="findify-product-matches__item-title">
                 {p.title}
               </span>
-              <div className="findify-product-matches__rating">
+              <div className="findify-product-matches__item-rating">
                 <RatingWidget
                   value={p.rating}
                   reviewsCount={p.reviewsCount}
                 />
               </div>
-              <div className="findify-product-matches__price">
+              <div className="findify-product-matches__item-price">
                 {p.price}
                 {p.discountPrice && (
-                  <div className="findify-product-matches__price-discount">
+                  <span className="findify-product-matches__item-price-discount">
                     {p.discountPrice}
-                  </div>
+                  </span>
                 )}
               </div>
             </a>
@@ -126,8 +130,8 @@ type ProductMatch = {
   link: string,
   imageLink: string,
   title: string,
-  price: number,
-  discountPrice?: number,
+  price: string,
+  discountPrice?: string,
   reviewsCount?: number,
   rating?: number,
   // rating?: 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5,

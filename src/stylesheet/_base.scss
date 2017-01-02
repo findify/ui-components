@@ -1,5 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&subset=latin-ext');
 
 html, body {
   font-family: 'Source Sans Pro', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }

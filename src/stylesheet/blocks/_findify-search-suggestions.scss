@@ -1,0 +1,17 @@
+.findify-search-suggestions {
+  &__title {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  &__item {
+    font-size: 14px;
+    padding: 6px 15px;
+    margin: 0 -15px;
+    display: block;
+    color: #404040;
+    cursor: pointer;
+    &:hover {
+      background-color: #ececec;
+    }
+  }
+}

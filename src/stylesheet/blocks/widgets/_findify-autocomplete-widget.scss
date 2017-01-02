@@ -1,4 +1,16 @@
 .findify-autocomplete-widget {
   box-shadow: 0 0 8px 0 rgba(0,0,0,.5);
   width: 580px;
+  &__body {
+    display: table;
+  }
+  &__search-suggestions {
+    width: (100% / 3);
+    background-color: #f7f7f7;
+  }
+  &__search-suggestions, &__product-matches {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0 15px;
+  }
 }

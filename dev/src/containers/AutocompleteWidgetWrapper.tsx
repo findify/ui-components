@@ -4,69 +4,63 @@ import { AutocompleteWidget } from '../../../src';
 
 function AutocompleteWidgetWrapper() {
   const props = {
+    suggestionsTitle: 'Search suggestions',
+    productMatchesTitle: 'Product matches',
     direction: 'ltr',
     onSearchSuggestionClick: (query: string) => {},
     productMatches: [{
       link: '/test',
       imageLink: 'http://placehold.it/300x300',
       title: 'Test product',
-      price: 300,
-      discountPrice: 250,
+      price: '$300.00',
+      discountPrice: '$250.00',
       reviewsCount: 3,
       rating: 4,
     }, {
       link: '/test',
       imageLink: 'http://placehold.it/300x300',
       title: 'Test product',
-      price: 300,
-      discountPrice: 250,
+      price: '$300.00',
+      discountPrice: '$250.00',
       reviewsCount: 3,
       rating: 4,
     }, {
       link: '/test',
       imageLink: 'http://placehold.it/300x300',
       title: 'Test product',
-      price: 300,
-      discountPrice: 250,
+      price: '$300.00',
+      discountPrice: '$250.00',
       reviewsCount: 3,
       rating: 4,
     }, {
       link: '/test',
       imageLink: 'http://placehold.it/300x300',
       title: 'Test product',
-      price: 300,
-      discountPrice: 250,
-      reviewsCount: 3,
-      rating: 4,
-    }, {
-      link: '/test',
-      imageLink: 'http://placehold.it/300x300',
-      title: 'Test product',
-      price: 300,
-      discountPrice: 250,
+      price: '$300.00',
+      discountPrice: '$250.00',
       reviewsCount: 3,
       rating: 4,
     }],
     searchSuggestions: [{
-      title: 'Test suggestion',
+      title: 'fruit',
       query: 'test-suggestion',
     }, {
-      title: 'Test suggestion 2',
+      title: 'fruit gift',
       query: 'test-suggestion-2',
     }, {
-      title: 'Test suggestion 3',
+      title: 'frog',
       query: 'test-suggestion-3',
     }, {
-      title: 'Test suggestion 4',
+      title: 'fruit gift basket',
       query: 'test-suggestion-4',
     }, {
-      title: 'Test suggestion 5',
+      title: 'fine',
       query: 'test-suggestion-5',
     }, {
-      title: 'Test suggestion-6',
+      title: 'free',
       query: 'test-suggestion-6',
     }, {
-      title: 'Test suggestion-7',
+      title: 'fresh',
       query: 'test-suggestion-7',
     }],
   };
