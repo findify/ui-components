@@ -1,4 +1,5 @@
 .findify-autocomplete-widget {
+  position: relative;
   box-shadow: 0 0 8px 0 rgba(0,0,0,.5);
   width: 580px;
   &__body {
@@ -25,5 +26,27 @@
   }
   &__tip-query {
     color: #404040;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #f7f7f7;
+    box-shadow: 2px -2px 2px 0 rgba(0,0,0,.25);
+    transform: rotate(-45deg);
+    top: -8px;
+  }
+  &_direction {
+    &_ltr {
+      &:before {
+        left: 20px;
+      }
+    }
+    &_rtl {
+      &:before {
+        right: 150px;
+      }
+    }
   }
 }

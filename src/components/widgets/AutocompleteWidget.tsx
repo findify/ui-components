@@ -101,7 +101,7 @@ function AutocompleteWidget({
           {searchSuggestionsNode}
         </div>
       )}
-      {tipTitle && query && (
+      {tipTitle && (
         <div
           className="findify-autocomplete-widget__tip"
           onClick={() => onTipClick()}
@@ -122,6 +122,7 @@ function highlightSuggestion(value: string, higlighted: string) {
 }
 
 type Props = {
+  query: string,
   searchSuggestions: Suggestion[],
   productMatches: ProductMatch[],
   onSearchSuggestionClick: OnSearchSuggestionClick,
@@ -131,7 +132,6 @@ type Props = {
   suggestionsTitle?: string,
   productMatchesTitle?: string,
   tipTitle?: string,
-  query?: string,
 };
 
 type Suggestion = {
