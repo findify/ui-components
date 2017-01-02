@@ -6,6 +6,7 @@ function AutocompleteWidget({
   searchSuggestions,
   productMatches,
   onSearchSuggestionClick,
+  onTipClick,
   direction,
   suggestionsTitle,
   productMatchesTitle,
@@ -28,9 +29,10 @@ function AutocompleteWidget({
               key={i}
               className="findify-search-suggestions__item"
               onClick={() => onSearchSuggestionClick(s.query)}
-            >
-              {s.title}
-            </span>
+              dangerouslySetInnerHTML={{
+                __html: highlightSuggestion(s.title, query),
+              }}
+            />
           ))}
         </div>
       </div>
@@ -70,12 +72,14 @@ function AutocompleteWidget({
                 />
               </div>
               <div className="findify-product-matches__item-price">
-                {p.price}
                 {p.discountPrice && (
                   <span className="findify-product-matches__item-price-discount">
                     {p.discountPrice}
                   </span>
                 )}
+                <span className="findify-product-matches__item-price-regular">
+                  {p.price}
+                </span>
               </div>
             </a>
           ))}
@@ -85,7 +89,7 @@ function AutocompleteWidget({
   );
 
   return (
-    <div className="findify-autocomplete-widget">
+    <div className={`findify-autocomplete-widget findify-autocomplete-widget_direction_${direction}`}>
       {direction === 'ltr' ? (
         <div className="findify-autocomplete-widget__body">
           {searchSuggestionsNode}
@@ -98,10 +102,13 @@ function AutocompleteWidget({
         </div>
       )}
       {tipTitle && query && (
-        <div className="findify-autocomplete-widget__tip">
+        <div
+          className="findify-autocomplete-widget__tip"
+          onClick={() => onTipClick()}
+        >
           {tipTitle}
-          <span className="findify-autocomplete-widget__query">
-            {query}
+          <span className="findify-autocomplete-widget__tip-query">
+            &nbsp;"{query}"
           </span>
         </div>
       )}
@@ -109,10 +116,16 @@ function AutocompleteWidget({
   );
 }
 
+function highlightSuggestion(value: string, higlighted: string) {
+  const regexp = new RegExp(`(${higlighted})`);
+  return value.replace(regexp, '<span class="findify-search-suggestions__highlighted-text">$1</span>');
+}
+
 type Props = {
   searchSuggestions: Suggestion[],
   productMatches: ProductMatch[],
   onSearchSuggestionClick: OnSearchSuggestionClick,
+  onTipClick?: OnTipClick,
   // direction: 'ltr' | 'rtl',
   direction: string,
   suggestionsTitle?: string,
@@ -137,6 +150,8 @@ type ProductMatch = {
   // rating?: 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5,
 };
 
-type OnSearchSuggestionClick = (query: string) => void
+type OnSearchSuggestionClick = (query: string) => void;
+
+type OnTipClick = () => void;
 
 export { AutocompleteWidget };

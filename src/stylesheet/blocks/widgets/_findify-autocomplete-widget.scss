@@ -13,4 +13,17 @@
     vertical-align: top;
     padding: 0 15px;
   }
+  &__tip {
+    user-select: none;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px 0;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    color: #b2b2b2;
+  }
+  &__tip-query {
+    color: #404040;
+  }
 }

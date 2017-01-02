@@ -29,4 +29,13 @@
     color: #404040;
     font-weight: 700;
   }
+  &__item-price-discount {
+    & + .findify-product-matches {
+      &__item-price-regular {
+        font-size: 12px;
+        text-decoration: line-through;
+        margin-left: 3px;
+      }
+    }
+  }
 }

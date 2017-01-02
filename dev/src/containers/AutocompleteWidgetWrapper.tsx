@@ -7,7 +7,10 @@ function AutocompleteWidgetWrapper() {
     suggestionsTitle: 'Search suggestions',
     productMatchesTitle: 'Product matches',
     direction: 'ltr',
+    query: 'fru',
+    tipTitle: 'Press enter to search',
     onSearchSuggestionClick: (query: string) => {},
+    onTipClick: () => {},
     productMatches: [{
       link: '/test',
       imageLink: 'http://placehold.it/300x300',
@@ -67,7 +70,7 @@ function AutocompleteWidgetWrapper() {
 
   return (
     <div style={{
-      margin: 20,
+      margin: 50,
     }}>
       <AutocompleteWidget {...props} />
     </div>
