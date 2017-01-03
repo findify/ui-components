@@ -3,11 +3,11 @@ import * as React from 'react';
 import { RatingWidget } from './RatingWidget';
 
 function AutocompleteWidget({
+  direction = 'ltr',
   searchSuggestions,
   productMatches,
   onSearchSuggestionClick,
   onTipClick,
-  direction,
   suggestionsTitle,
   productMatchesTitle,
   tipTitle,
@@ -24,13 +24,13 @@ function AutocompleteWidget({
           </div>
         )}
         <div className="findify-search-suggestions__list">
-          {searchSuggestions.map((s: Suggestion, i: number) => (
+          {searchSuggestions.map((suggestion: string, i: number) => (
             <span
               key={i}
               className="findify-search-suggestions__item"
-              onClick={() => onSearchSuggestionClick(s.query)}
+              onClick={() => onSearchSuggestionClick(suggestion)}
               dangerouslySetInnerHTML={{
-                __html: highlightSuggestion(s.title, query),
+                __html: highlightSuggestion(suggestion, query),
               }}
             />
           ))}
@@ -39,7 +39,7 @@ function AutocompleteWidget({
     </div>
   );
 
-  const productMatchesNode = (
+  const productMatchesNode = productMatches && productMatches.length && (
     <div className="findify-autocomplete-widget__product-matches">
       <div className="findify-product-matches">
         {productMatchesTitle && (
@@ -92,21 +92,21 @@ function AutocompleteWidget({
 
   return (
     <div className={`findify-autocomplete-widget findify-autocomplete-widget_direction_${direction}`}>
-      {direction === 'ltr' ? (
+      {direction === 'rtl' ? (
         <div className="findify-autocomplete-widget__body">
-          {searchSuggestionsNode}
           {productMatchesNode}
+          {searchSuggestionsNode}
         </div>
       ) : (
         <div className="findify-autocomplete-widget__body">
-          {productMatchesNode}
           {searchSuggestionsNode}
+          {productMatchesNode}
         </div>
       )}
       {tipTitle && (
         <div
           className="findify-autocomplete-widget__tip"
-          onClick={() => onTipClick()}
+          onClick={() => onTipClick && onTipClick()}
         >
           {tipTitle}
           <span className="findify-autocomplete-widget__tip-query">
@@ -125,20 +125,15 @@ function highlightSuggestion(value: string, higlighted: string) {
 
 type Props = {
   query: string,
-  searchSuggestions: Suggestion[],
-  productMatches: ProductMatch[],
-  onSearchSuggestionClick: OnSearchSuggestionClick,
-  onTipClick?: OnTipClick,
+  searchSuggestions: string[],
+  onSearchSuggestionClick: (query: string) => void,
+  productMatches?: ProductMatch[],
+  onTipClick?: () => void,
   // direction: 'ltr' | 'rtl',
-  direction: string,
+  direction?: string,
   suggestionsTitle?: string,
   productMatchesTitle?: string,
   tipTitle?: string,
-};
-
-type Suggestion = {
-  title: string,
-  query: string,
 };
 
 type ProductMatch = {
@@ -151,9 +146,5 @@ type ProductMatch = {
   rating?: number,
   // rating?: 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5,
 };
-
-type OnSearchSuggestionClick = (query: string) => void;
-
-type OnTipClick = () => void;
 
 export { AutocompleteWidget };

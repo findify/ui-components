@@ -1,0 +1,65 @@
+.findify-autocomplete-mobile-widget {
+  height: 100%;
+  &__box {
+    height: 100%;
+    background-color: #f7f7f7;
+  }
+  &__form {
+    padding: 10px;
+    background-color: #ececec;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+  }
+  &__form-left, &__form-right {
+    display: table-cell;
+    vertical-align: top;
+    position: relative;
+  }
+  &__form-left {
+    padding-right: 15px;
+  }
+  &__form-right {
+    width: 40px;
+  }
+  &__highlighted-text {
+    font-weight: 700;
+  }
+  &__input {
+    height: 40px;
+    border-radius: 2px;
+    border: 0;
+    display: block;
+    width: 100%;
+    padding: 0 35px 0 10px;
+    outline: none;
+  }
+  &__submit {
+    cursor: pointer;
+    background-color: #404040;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    border-radius: 2px;
+    color: #fff;
+  }
+  &__suggestions-item {
+    cursor: pointer;
+    display: block;
+    padding: 15px;
+    color: #404040;
+    font-size: 14px;
+    border-bottom: 1px solid #ececec;
+  }
+  &__clear {
+    cursor: pointer;
+    position: absolute;
+    line-height: 40px;
+    top: 0;
+    right: 15px;
+    padding: 0 10px;
+    color: #b2b2b2;
+  }
+}

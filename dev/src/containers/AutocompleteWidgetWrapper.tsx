@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { AutocompleteWidget } from '../../../src';
+import { AutocompleteMobileWidget } from '../../../src';
 
 function AutocompleteWidgetWrapper() {
   const props = {
@@ -36,35 +37,47 @@ function AutocompleteWidgetWrapper() {
       price: '$300.00',
       discountPrice: '$250.00',
     }],
-    searchSuggestions: [{
-      title: 'fruit',
-      query: 'test-suggestion',
-    }, {
-      title: 'fruit gift',
-      query: 'test-suggestion-2',
-    }, {
-      title: 'frog',
-      query: 'test-suggestion-3',
-    }, {
-      title: 'fruit gift basket',
-      query: 'test-suggestion-4',
-    }, {
-      title: 'fine',
-      query: 'test-suggestion-5',
-    }, {
-      title: 'free',
-      query: 'test-suggestion-6',
-    }, {
-      title: 'fresh',
-      query: 'test-suggestion-7',
-    }],
+    searchSuggestions: [
+      'fruit',
+      'fruit gift',
+      'frog',
+      'fruit gift basket',
+      'fine',
+      'free',
+      'fresh',
+    ],
   };
 
   return (
-    <div style={{
-      margin: 50,
-    }}>
-      <AutocompleteWidget {...props} />
+    <div>
+      <div style={{
+        margin: 50,
+        width: 400,
+        height: 700,
+        position: 'relative',
+      }}>
+        <AutocompleteMobileWidget
+          searchSuggestions={props.searchSuggestions}
+          query="fru"
+          onInput={() => {}}
+          onSubmit={() => {}}
+          onClearClick={() => {}}
+        />
+      </div>
+      <div style={{
+        margin: 50,
+      }}>
+        <AutocompleteWidget {...props} />
+      </div>
+      <div style={{
+        margin: 50,
+      }}>
+        <AutocompleteWidget
+          searchSuggestions={props.searchSuggestions}
+          query="fru"
+          onSearchSuggestionClick={(query: string) => {}}
+        />
+      </div>
     </div>
   );
 }
