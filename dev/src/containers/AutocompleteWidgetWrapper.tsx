@@ -10,8 +10,8 @@ function AutocompleteWidgetWrapper() {
     direction: 'ltr',
     query: 'fru',
     tipTitle: 'Press enter to search',
-    onSearchSuggestionClick: (query: string) => {},
-    onTipClick: () => {},
+    onSearchSuggestionClick: (query: string) => { return; },
+    onTipClick: () => { return; },
     productMatches: [{
       link: '/test',
       imageLink: 'http://placehold.it/300x300',
@@ -59,9 +59,9 @@ function AutocompleteWidgetWrapper() {
         <AutocompleteMobileWidget
           searchSuggestions={props.searchSuggestions}
           query="fru"
-          onInput={() => {}}
-          onSubmit={() => {}}
-          onClearClick={() => {}}
+          onInput={() => { return; }}
+          onSubmit={() => { return; }}
+          onClearClick={() => { return; }}
         />
       </div>
       <div style={{
@@ -75,7 +75,7 @@ function AutocompleteWidgetWrapper() {
         <AutocompleteWidget
           searchSuggestions={props.searchSuggestions}
           query="fru"
-          onSearchSuggestionClick={(query: string) => {}}
+          onSearchSuggestionClick={(query: string) => { return; }}
         />
       </div>
     </div>

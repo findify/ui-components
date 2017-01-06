@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 import { AutocompleteWidgetWrapper } from './containers/AutocompleteWidgetWrapper';
 
 class App extends React.Component<{}, {}> {
-  render() {
+  public render() {
     return (
       <div>
         <AutocompleteWidgetWrapper />
