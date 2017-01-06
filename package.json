@@ -2,8 +2,13 @@
   "name": "@findify/findify-ui-components",
   "version": "0.1.2",
   "description": "Findify react ui components",
+  "main": "./lib/index.min.js",
   "author": "1ven",
   "license": "MIT",
+  "files": [
+    "lib",
+    "index.d.ts"
+  ],
   "scripts": {
     "clean": "rimraf ./lib",
     "lint": "tslint --project .",
