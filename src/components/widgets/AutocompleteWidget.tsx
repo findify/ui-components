@@ -50,7 +50,7 @@ function AutocompleteWidget({
           </div>
         )}
         <div className="findify-product-matches__items">
-          {productMatches.map((p: ProductMatch, i: number) => (
+          {productMatches.map((p: Product, i: number) => (
             <a
               className="findify-product-matches__item"
               href={p.link}
@@ -127,7 +127,7 @@ type Props = {
   query: string,
   searchSuggestions: string[],
   onSearchSuggestionClick: (query: string) => void,
-  productMatches?: ProductMatch[],
+  productMatches?: Product[],
   onTipClick?: () => void,
   // direction: 'ltr' | 'rtl',
   direction?: string,
@@ -136,7 +136,7 @@ type Props = {
   tipTitle?: string,
 };
 
-type ProductMatch = {
+type Product = {
   link: string,
   imageLink: string,
   title: string,
