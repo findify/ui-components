@@ -6,13 +6,17 @@
   "author": "1ven",
   "license": "MIT",
   "files": [
+    "dist",
     "lib",
     "index.d.ts"
   ],
   "scripts": {
-    "clean": "rimraf ./lib",
+    "clean": "rimraf ./lib ./dist",
     "lint": "tslint --project .",
-    "build": "webpack -p --config webpack.config.js",
+    "build:commonjs": "tsc --project . && babel ./__lib-es6__ --out-dir ./lib && rimraf ./__lib-es6__",
+    "build:umd": "cross-env NODE_ENV=development webpack src/index.ts dist/findify-ui-components.js",
+    "build:umd:min": "cross-env NODE_ENV=production webpack src/index.ts dist/findify-ui-components.min.js",
+    "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min",
     "start": "node ./dev/server",
     "check": "npm run build && npm run lint && npm run clean",
     "prepublish": "npm run build",
@@ -26,6 +30,7 @@
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
+    "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
     "express": "^4.14.0",
     "import-glob-loader": "^1.1.0",

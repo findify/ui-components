@@ -1,16 +1,10 @@
+'use strict';
+
 var webpack = require('webpack');
-var path = require('path');
 var autoprefixer = require('autoprefixer');
 
-module.exports = {
-  entry: [
-    path.join(__dirname, 'src/index.ts'),
-  ],
-  output: {
-    library: 'FindifyUIComponents',
-    libraryTarget: 'umd',
-    filename: './lib/index.min.js',
-  },
+var env = process.env.NODE_ENV;
+var config = {
   module: {
     loaders: [{
       test: /\.tsx?$/,
@@ -20,6 +14,10 @@ module.exports = {
       loader: 'style-loader!css-loader!postcss-loader!sass-loader!import-glob-loader',
     }],
   },
+  output: {
+    library: 'FindifyUIComponents',
+    libraryTarget: 'umd',
+  },
   postcss: function () {
     return [autoprefixer];
   },
@@ -27,16 +25,19 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
-      },
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false,
+        'NODE_ENV': JSON.stringify(env),
       },
     }),
   ],
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.scss'],
+    extensions: ['', '.ts', '.tsx', '.js', '.scss'],
   },
 };
+
+if (env === 'production') {
+  config.plugins.push(
+    new webpack.optimize.UglifyJsPlugin()
+  );
+}
+
+module.exports = config;
