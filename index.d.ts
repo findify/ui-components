@@ -21,5 +21,5 @@ declare module "@findify/findify-ui-components" {
     reviewsCount?: number,
     rating?: number,
   };
-  type AutocompleteWidget = React.StatelessComponent<AutocompleteWidgetProps>;
+  function AutocompleteWidget(props: AutocompleteWidgetProps);
 }
