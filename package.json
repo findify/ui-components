@@ -1,6 +1,6 @@
 {
   "name": "@findify/findify-ui-components",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Findify react ui components",
   "main": "./lib/index.min.js",
   "author": "1ven",
