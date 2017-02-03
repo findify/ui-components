@@ -33,4 +33,4 @@ export const defaultConfig = {
   }
 }
 
-export const cssHash = '[path]-[name]-[local]';
+export const cssHash = '[path]--[local]';

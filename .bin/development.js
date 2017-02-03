@@ -3,6 +3,13 @@ import path from 'path';
 import DashboardPlugin from 'webpack-dashboard/plugin';
 import AddAssetHtmlPlugin from 'add-asset-html-webpack-plugin';
 import { defaultRules, cssHash, defaultConfig } from './default';
+import loaderUtils from 'loader-utils';
+
+function getLocalIdent(loaderContext, _, localName) {
+	const rootDir = path.join(loaderContext.options.context, 'src');
+	const sourcePath = path.relative(rootDir, loaderContext.resourcePath).split('/').slice(0, -1).join('-');    
+	return ['findify', sourcePath, localName].join('_');
+};
 
 const rules = {
   ...defaultRules,
@@ -16,12 +23,7 @@ const rules = {
           importLoaders: 1,
           camelCase: true,
           localIdentName: cssHash,
-          // getLocalIdent: (context, localIdentName, localName, options) => {
-          //   console.log(localIdentName, localName, options);
-
-          //   return 'whatever_random_class_name'
-          // }
-
+          getLocalIdent
         }
       },
       'postcss-loader',
