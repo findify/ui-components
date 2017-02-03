@@ -15,7 +15,13 @@ const rules = {
           modules: true,
           importLoaders: 1,
           camelCase: true,
-          localIdentName: cssHash
+          localIdentName: cssHash,
+          // getLocalIdent: (context, localIdentName, localName, options) => {
+          //   console.log(localIdentName, localName, options);
+
+          //   return 'whatever_random_class_name'
+          // }
+
         }
       },
       'postcss-loader',

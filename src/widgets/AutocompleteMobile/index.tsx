@@ -1,4 +1,7 @@
 import * as React from 'react';
+import * as cx from 'classnames';
+
+import * as styles from './styles.css';
 
 function AutocompleteMobileWidget({
   query,
@@ -8,53 +11,52 @@ function AutocompleteMobileWidget({
   onInput,
 }: Props) {
   return (
-    <div className="findify-autocomplete-mobile-widget">
-      <div className="findify-autocomplete-mobile-widget__box">
+    <div className={styles.wrap}>
+      <div className={styles.box}>
         <form
-          className="findify-autocomplete-mobile-widget__form"
-          onSubmit={() => onSubmit(query)}
-        >
-          <div className="findify-autocomplete-mobile-widget__form-left">
+          className={styles.form}
+          onSubmit={() => onSubmit(query)}>
+          <div className={styles.formLeft}>
             <input
-              className="findify-autocomplete-mobile-widget__input"
+              className={styles.input}
               type="text"
               onChange={(e: any) => onInput(e.target.value)}
               value={query}
             />
             <a
-              className="findify-autocomplete-mobile-widget__clear fa fa-times-circle"
+              className={cx(styles.clear, 'fa', 'fa-times-circle')}
               onClick={() => onClearClick()}
             />
           </div>
-          <div className="findify-autocomplete-mobile-widget__form-right">
+          <div className={styles.formRight}>
             <button
-              className="findify-autocomplete-mobile-widget__submit fa fa-search"
+              className={cx(styles.submit, 'fa', 'fa-search')}
               type="submit"
             />
           </div>
         </form>
-        <div
-          className="findify-autocomplete-mobile-widget__suggestions"
-        >
-          {searchSuggestions.map((suggestion: string, i: number) => (
-            <span
-              key={i}
-              className="findify-autocomplete-mobile-widget__suggestions-item"
-              onClick={() => onSubmit(suggestion)}
-              dangerouslySetInnerHTML={{
-                __html: highlightSuggestion(suggestion, query),
-              }}
-            />
-          ))}
+        <div className={styles.suggestions}>
+          {
+            searchSuggestions.map((suggestion: string, i: number) =>
+              <span
+                key={i}
+                className={styles.suggestionsItem}
+                onClick={() => onSubmit(suggestion)}
+                dangerouslySetInnerHTML={{
+                  __html: highlightSuggestion(suggestion, query),
+                }}
+              />
+            )
+          }
         </div>
       </div>
     </div>
   );
 }
 
-function highlightSuggestion(value: string, higlighted: string) {
-  const regexp = new RegExp(`(${higlighted})`);
-  return value.replace(regexp, '<span class="findify-autocomplete-mobile-widget__highlighted-text">$1</span>');
+function highlightSuggestion(value: string, highlighted: string) {
+  const regexp = new RegExp(`(${highlighted})`);
+  return value.replace(regexp, `<span class="${styles.highlightedText}">$1</span>`);
 }
 
 type Props = {

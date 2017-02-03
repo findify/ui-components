@@ -41,27 +41,14 @@
   width: 400px;
 }
 
-.search-suggestions {
-  width: 190px;
-  background-color: #f7f7f7;
-}
-
-.search-suggestions, .matches {
-  display: table-cell;
-  vertical-align: top;
-  padding: 0 15px;
-}
-
-
-.direction {
-  &.ltr {
-    &:before {
-      left: 20px;
-    }
+.ltr {
+  &:before {
+    left: 20px;
   }
-  &.rtl {
+}
+
+.rtl {
     &:before {
-      right: 150px;
-    }
+    right: 150px;
   }
 }
