@@ -1,13 +1,9 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import pkg from '../package.json';
 
-const getLocalIdent = (loaderContext, _, localName) => {
-	const rootDir = path.join(loaderContext.options.context, 'src');
-	const sourcePath = path.relative(rootDir, loaderContext.resourcePath).split('/').slice(0, -1).join('-');    
-	return ['findify', sourcePath, localName].join('_');
-};
+import { getLocalIdent } from './helpers/cssIndent.js';
+import pkg from '../package.json';
 
 const environments = ['development', 'production', 'dll'];
 

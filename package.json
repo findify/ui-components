@@ -6,6 +6,7 @@
   "repository": "https://github.com/findify/findify-ui-components.git",
   "dependencies": {
     "classnames": "^2.2.5",
+    "humps": "^2.0.0",
     "normalize.css": "^5.0.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1"
