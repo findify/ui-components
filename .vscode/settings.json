@@ -1,9 +1,0 @@
-{
-  "typescript.tsdk": "./node_modules/typescript/lib",
-  "path-intellisense.extensionOnImport": true,
-  "path-intellisense.mappings": {
-    "components": "${workspaceRoot}/src/components",
-    "layouts": "${workspaceRoot}/src/layouts",
-    "widgets": "${workspaceRoot}/src/widgets"
-  }
-}
