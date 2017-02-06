@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { RatingWidget } from 'widgets/Rating';
 
-import * as styles from './styles.css';
+const styles = require('./styles.css');
 
 export const ProductMatches = ({
   productMatchesTitle,

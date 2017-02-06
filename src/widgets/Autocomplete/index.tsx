@@ -4,7 +4,7 @@ import * as cx from 'classnames';
 import { SearchSuggestions } from 'internals/SearchSuggestions';
 import { ProductMatches } from 'internals/ProductMatches';
 
-import * as styles from './styles.css';
+const styles = require('./styles.css');
 
 function AutocompleteWidget({
   direction = 'ltr',

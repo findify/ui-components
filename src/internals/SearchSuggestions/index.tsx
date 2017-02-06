@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as styles from './styles.css';
+const styles = require('./styles.css');
 
 type Props = {
   query: string,

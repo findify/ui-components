@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as cx from 'classnames';
 
-import * as styles from './styles.css';
+const styles = require('./styles.css');
 
 function AutocompleteMobileWidget({
   query,
