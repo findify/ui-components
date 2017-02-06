@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as cx from 'classnames';
 
-import { SearchSuggestions } from 'components/SearchSuggestions';
-import { ProductMatches } from 'components/ProductMatches';
+import { SearchSuggestions } from 'internals/SearchSuggestions';
+import { ProductMatches } from 'internals/ProductMatches';
 
 import * as styles from './styles.css';
 
