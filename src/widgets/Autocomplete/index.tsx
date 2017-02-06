@@ -37,27 +37,29 @@ function AutocompleteWidget({
     <div className={cx(styles.root, styles[direction])}>
       {
         direction === 'rtl'
-        &&
-        <div className={styles.container}>
-          {productMatchesNode}
-          {searchSuggestionsNode}
-        </div>
-        ||
-        <div className={styles.container}>
-          {searchSuggestionsNode}
-          {productMatchesNode}
-        </div>
+        && (
+          <div className={styles.container}>
+            {productMatchesNode}
+            {searchSuggestionsNode}
+          </div>
+        ) || (
+          <div className={styles.container}>
+            {searchSuggestionsNode}
+            {productMatchesNode}
+          </div>
+        )
       }
       {
-        tipTitle &&
-        <div
-          className={styles.tip}
-          onClick={() => onTipClick && onTipClick()} >
-          {tipTitle}
-          <span className={styles.tipQuery}>
-            &nbsp;"{query}"
-          </span>
-        </div>
+        tipTitle && (
+          <div
+            className={styles.tip}
+            onClick={() => onTipClick && onTipClick()} >
+            {tipTitle}
+            <span className={styles.tipQuery}>
+              &nbsp;"{query}"
+            </span>
+          </div>
+        )
       }
     </div>
   );

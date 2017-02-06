@@ -10,12 +10,13 @@ export const ProductMatches = ({
 }: Props) => (
   <div className={styles.wrap}>
     {
-      productMatchesTitle &&
-      <div className={styles.title}>
-        <span className="findify-autocomplete-title">
-          {productMatchesTitle}
-        </span>
-      </div>
+      productMatchesTitle && (
+        <div className={styles.title}>
+          <span className="findify-autocomplete-title">
+            {productMatchesTitle}
+          </span>
+        </div>
+      )
     }
     <div className={styles.items}>
       {
@@ -31,20 +32,22 @@ export const ProductMatches = ({
               {p.title}
             </span>
             {
-              p.rating &&
-              <div className={styles.itemRating}>
-                <RatingWidget
-                  value={p.rating}
-                  reviewsCount={p.reviewsCount}
-                />
-              </div>
+              p.rating && (
+                <div className={styles.itemRating}>
+                  <RatingWidget
+                    value={p.rating}
+                    reviewsCount={p.reviewsCount}
+                  />
+                </div>
+              )
             }
             <div className={styles.itemPrice}>
               {
-                p.discountPrice &&
-                <span className={styles.itemPriceDiscount}>
-                  {p.discountPrice}
-                </span>
+                p.discountPrice && (
+                  <span className={styles.itemPriceDiscount}>
+                    {p.discountPrice}
+                  </span>
+                )
               }
               <span className={styles.itemPriceRegular}>
                 {p.price}

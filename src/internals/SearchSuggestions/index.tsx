@@ -17,16 +17,17 @@ export const SearchSuggestions = ({
 }: Props) => (
   <div className={styles.wrap}>
     {
-      suggestionsTitle &&
-      <div className={styles.title}>
-        <span className={styles.autocompleteTitle}>
-          { suggestionsTitle }
-        </span>
-      </div>
+      suggestionsTitle && (
+        <div className={styles.title}>
+          <span className={styles.autocompleteTitle}>
+            { suggestionsTitle }
+          </span>
+        </div>
+      )
     }
     <div className={styles.list}>
       {
-        searchSuggestions.map((suggestion: string, i: number) =>
+        searchSuggestions.map((suggestion: string, i: number) => (
           <span
             key={i}
             className={styles.item}
@@ -34,7 +35,7 @@ export const SearchSuggestions = ({
             dangerouslySetInnerHTML={{
               __html: highlightSuggestion(suggestion, query),
             }}/>
-        )
+        ))
       }
     </div>
   </div>
