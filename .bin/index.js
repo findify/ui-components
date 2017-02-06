@@ -3,81 +3,135 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import pkg from '../package.json';
 
+const getLocalIdent = (loaderContext, _, localName) => {
+	const rootDir = path.join(loaderContext.options.context, 'src');
+	const sourcePath = path.relative(rootDir, loaderContext.resourcePath).split('/').slice(0, -1).join('-');    
+	return ['findify', sourcePath, localName].join('_');
+};
+
 const environments = ['development', 'production', 'dll'];
 
 const getEnvironment = env =>
   env && environments.find(e => !!env[e]) || process.env.NODE_ENV || 'development';
 
+const defaultConfig = environment => ({
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.css'],
+    modules: [
+      path.resolve(process.cwd(), 'src'),
+      'node_modules'
+    ]
+  },
+
+  output: {
+    path: path.resolve(process.cwd(), 'dist'),
+    filename: '[name].js',
+    publicPath: '/'
+  },
+
+  module: {
+    noParse: /\.min\.js/,
+    rules: {
+
+      globalCSS: {
+        test: /\.global\.css/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader'
+        ]
+      },
+
+      localCSS: {
+        test: /^((?!global).)*\.css/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              camelCase: true,
+              getLocalIdent
+            }
+          },
+          'postcss-loader'
+        ]
+      },
+
+      ts: {
+        test: /\.tsx?$/,
+        include: [
+          path.resolve(process.cwd(), 'src'),
+          path.resolve(process.cwd(), 'dev')
+        ]
+      },
+
+      font: {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        use: [
+        {
+          loader: 'file-loader',
+          options: {
+            name: '[hash:base64:5].[ext]',
+          }
+        },
+        {
+          loader: 'image-webpack-loader',
+          options: {
+            progressive: true,
+            optimizationLevel: 7,
+            interlaced: false,
+            pngquant: {
+              quality: '65-90',
+              speed: 4
+            }
+          }
+        }
+      ]},
+
+      image: {
+        test: /\.(jpg|png|gif)$/,
+        use: [
+        {
+          loader: 'file-loader',
+          options: {
+            name: '[hash:base64:5].[ext]',
+          }
+        },
+        {
+          loader: 'image-webpack-loader',
+          options: {
+            progressive: true,
+            optimizationLevel: 7,
+            interlaced: false,
+            pngquant: {
+              quality: '65-90',
+              speed: 4
+            }
+          }
+        }
+      ]}
+    }
+  },
+
+  plugins: [
+    new webpack.DefinePlugin({
+      ...environments
+        .reduce((acc, key) => ({ ...acc, [`__${key.toUpperCase()}__`]: environments[key] }), {}),
+      'process.env': {
+        NODE_ENV: JSON.stringify(environment)
+      }
+    }),
+
+    new HtmlWebpackPlugin({
+      title: pkg.description,
+    })
+  ]
+});
+
 export default (env) => {
   const environment = getEnvironment(env);
   const environmentConfig = require(`./${environment}.js`).default; // eslint-disable-line
-  
-  if (typeof environmentConfig === 'function') return environmentConfig(env);
-  const { rules, ...config } = environmentConfig;
-
-  return {
-    ...config,
-    resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.css'],
-      modules: [
-        path.resolve(process.cwd(), 'src'),
-        'node_modules'
-      ]
-    },
-
-    entry: [
-      ...config.entry
-    ],
-
-    output: {
-      ...config.output,
-      path: path.resolve(process.cwd(), 'dist'),
-      filename: '[name].js',
-    },
-
-    module: {
-      noParse: /\.min\.js/,
-      rules: [
-        {
-          ...rules.localCss,
-          test: /^((?!global).)*\.css/
-        },
-        {
-          ...rules.globalCss,
-          test: /\.global\.css/
-        },
-        {
-          ...rules.ts,
-          test: /\.tsx?$/,
-          include: [
-            path.resolve(process.cwd(), 'src'),
-            path.resolve(process.cwd(), 'dev')
-          ]
-        },
-        {
-          ...rules.font,
-          test: /\.(eot|svg|ttf|woff|woff2)$/
-        },
-        {
-          ...rules.image,
-          test: /\.(jpg|png|gif)$/
-        }
-      ]
-    },
-
-    plugins: [
-     ...config.plugins,
-      new webpack.DefinePlugin({
-        ...environments
-          .reduce((acc, key) => ({ ...acc, [`__${key.toUpperCase()}__`]: environments[key] }), {}),
-        'process.env': {
-          NODE_ENV: JSON.stringify(environment)
-        }
-      }),
-
-      new HtmlWebpackPlugin({
-        title: pkg.description,
-      })
-    ]
-  };
+  return environmentConfig(env, defaultConfig(environment));
 };
