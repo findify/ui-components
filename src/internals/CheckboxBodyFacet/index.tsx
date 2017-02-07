@@ -52,7 +52,7 @@ export const CheckboxBodyFacet = compose(
     selectedItems: list.filter(item => item.selected)
   })),
   withPropsOnChange(['list', 'search'], ({ list, search }) => {
-    const regexp = new RegExp(`${search}`, 'ig');
+    const regexp = new RegExp(search, 'ig');
     return {
       notSelectedItems: list.filter(item => !item.selected && item.key.match(regexp))
     }
