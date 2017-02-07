@@ -9,10 +9,15 @@
     "humps": "^2.0.0",
     "normalize.css": "^5.0.0",
     "react": "^15.4.1",
-    "react-dom": "^15.4.1"
+    "react-addons-shallow-compare": "^15.4.2",
+    "react-dom": "^15.4.1",
+    "react-virtualized": "^8.11.4",
+    "recompose": "^0.22.0"
   },
   "devDependencies": {
     "@types/react": "^0.14.55",
+    "@types/react-virtualized": "^8.9.2",
+    "@types/recompose": "^0.20.3",
     "@types/webpack": "^2.1.6",
     "@types/webpack-env": "^1.13.0",
     "add-asset-html-webpack-plugin": "^1.0.2",

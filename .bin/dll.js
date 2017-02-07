@@ -1,12 +1,14 @@
 import path from 'path';
 import webpack from 'webpack';
-import { defaultConfig } from './default';
 
 const vendor = [
   'react',
   'react-dom',
   'classnames',
-  // 'recompose'
+  'recompose',
+  'lodash',
+  'react-virtualized',
+  'react-addons-shallow-compare'
   // ... Write here any libs you want to exclude from main bundle
 ];
 
