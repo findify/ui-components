@@ -1,5 +1,6 @@
 import './styles.global.css';
 
+export { Pagination } from './internals/Pagination';
 export { RangeFacet } from './widgets/RangeFacet';
 export { CategoryFacet } from './widgets/CategoryFacet';
 export { CheckboxFacet } from './widgets/CheckboxFacet';
