@@ -8,7 +8,8 @@ const vendor = [
   'recompose',
   'lodash',
   'react-virtualized',
-  'react-addons-shallow-compare'
+  'react-addons-shallow-compare',
+  'react-number-input'
   // ... Write here any libs you want to exclude from main bundle
 ];
 

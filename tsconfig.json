@@ -14,7 +14,8 @@
     "outDir": "./__lib-es6__/",
     "rootDirs": [
       "src", "dev"
-    ]
+    ],
+    "baseUrl": "./src"
   },
   "exclude": [
     "tmp",

@@ -1,0 +1,47 @@
+.wrap{
+  display: table;
+  font-size: 14px;
+}
+
+.inputWrap{
+  display: table-cell;
+  white-space: nowrap;
+}
+
+.commitWrap{
+  display: table-cell;
+  width: 100%;
+  text-align: right;
+}
+
+.input{
+  margin: 0 1px;
+  width: 44px;
+  padding: 3px 2px;
+  margin-right: 5px;
+  border: 2px solid #ececec;
+  outline: none;
+  transition: border-color .1s ease-in;
+  &:focus{
+    border-color: color(#ececec shade(10%));
+  }
+}
+
+.button{
+  font-size: 14px;
+  color: #404040;
+  background: #f7f7f7;
+  text-transform: uppercase;
+  border: 2px solid #f7f7f7;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .1s ease-in;
+  &:hover{
+    background-color: color(#f7f7f7 shade(5%));
+  }
+}
+
+.separator{
+  display: table-cell;
+  padding: 0 10px;
+}

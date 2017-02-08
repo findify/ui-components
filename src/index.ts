@@ -1,5 +1,6 @@
 import './styles.global.css';
 
+export { RangeFacet } from './widgets/RangeFacet';
 export { CategoryFacet } from './widgets/CategoryFacet';
 export { CheckboxFacet } from './widgets/CheckboxFacet';
 export { ColorFacet } from './widgets/ColorFacet';

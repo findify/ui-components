@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { compose, withPropsOnChange, withHandlers, withState, defaultProps } from 'recompose';
+import { compose, withPropsOnChange, withHandlers, withState, defaultProps, withProps } from 'recompose';
 import * as cx from 'classnames';
 import { List, AutoSizer } from 'react-virtualized';
 
@@ -45,18 +45,36 @@ const Search = withHandlers({
 ))
 
 export const CheckboxBodyFacet = compose(
-  defaultProps({ maxLength: 6 }),
+  defaultProps({
+    maxLength: 6,
+    showExpander: false
+  }),
+
   withState('search', 'setSearch', ''),
   withState('expanded', 'setExpanded', false),
+
   withPropsOnChange(['list'], ({ list }) => ({
     selectedItems: list.filter(item => item.selected)
   })),
+
   withPropsOnChange(['list', 'search'], ({ list, search }) => {
     const regexp = new RegExp(search, 'ig');
     return {
       notSelectedItems: list.filter(item => !item.selected && item.key.match(regexp))
     }
   }),
+
+  withProps((props: any) => ({
+    hasSelected: !!props.selectedItems.length,
+    hasNotSelected: !!props.notSelectedItems.length,
+    showMoreButton: props.showExpander && props.notSelectedItems.length > props.maxLength,
+    showSearch: props.showExpander && props.expanded,
+    showStaticContent: 
+      props.showExpander &&
+      props.notSelectedItems.length <= props.maxLength ||
+      !props.expanded
+  })),
+
   withHandlers({
     toggleExpand: ({ expanded, setExpanded }) => () => setExpanded(!expanded),
     onSearchChange: ({ setSearch }) => query => setSearch(query)
@@ -64,60 +82,65 @@ export const CheckboxBodyFacet = compose(
 )(({
   selectedItems,
   notSelectedItems,
-  onChange,
   search,
   expanded,
-  maxLength,
+
+  onChange,
   toggleExpand,
-  onSearchChange
+  onSearchChange,
+
+  showSearch,
+  hasSelected,
+  hasNotSelected,
+  showStaticContent,
+  showMoreButton
 }: any) => (
   <div className={styles.wrap}>
     {
-      expanded &&
+      showSearch &&
       <Search value={search} onChange={onSearchChange} />
     }
     {
-      !!selectedItems.length &&
+      hasSelected &&
       <ul className={cx(styles.list, styles.selectedItems)}>
         { selectedItems.map(item => <Item {...item} onChange={onChange} title={item.key} />) }
       </ul>
     }
     {
-      !!notSelectedItems.length && (
-        notSelectedItems.length <= maxLength || !expanded
-        ?
-        <ul className={cx(styles.list, styles.notSelected)}>
-          { 
-            notSelectedItems.slice(0, 6).map(item =>
-              <Item {...item} onChange={onChange} title={item.key} />
-            )
-          }
-        </ul>
-        :
-        <AutoSizer disableHeight>
-          {
-            ({ width }) =>
-              <List
-                className={styles.list}
-                width={width}
-                height={120}
-                overscanRowCount={20}
-                rowCount={notSelectedItems.length}
-                rowHeight={20}
-                tabIndex={-1}
-                rowRenderer={
-                  ({ index }) =>
-                    <Item {...{
-                      ...notSelectedItems[index],
-                      onChange,
-                      title: notSelectedItems[index].key }} />
-                } />
-          }
-        </AutoSizer>
-      )
+      hasNotSelected && showStaticContent &&
+      <ul className={cx(styles.list, styles.notSelected)}>
+        { 
+          notSelectedItems.slice(0, 6).map(item =>
+            <Item {...item} onChange={onChange} title={item.key} />
+          )
+        }
+      </ul>
     }
     {
-      notSelectedItems.length > maxLength &&
+      hasNotSelected && !showStaticContent &&
+      <AutoSizer disableHeight>
+        {
+          ({ width }) =>
+            <List
+              className={styles.list}
+              width={width}
+              height={120}
+              overscanRowCount={20}
+              rowCount={notSelectedItems.length}
+              rowHeight={20}
+              tabIndex={-1}
+              rowRenderer={
+                ({ index }) =>
+                  <Item {...{
+                    ...notSelectedItems[index],
+                    onChange,
+                    title: notSelectedItems[index].key }} />
+              } />
+        }
+      </AutoSizer>
+    }
+    {
+      showMoreButton &&
       <ExpandButton expanded={expanded} onClick={toggleExpand} />
     }
   </div>

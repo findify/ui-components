@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { compose, renderComponent, withHandlers } from 'recompose';
+import { compose, renderComponent, withHandlers, branch, renderNothing } from 'recompose';
 import * as cx from 'classnames';
 
-const { branch } = require('recompose');
+// const { branch } = require('recompose');
 const styles = require('./styles.css');
 
 const NestingComponent = ({ isRoot, ...rest }) => React.createElement(isRoot ? 'div' : 'li', rest);
@@ -12,7 +12,7 @@ const withClickHandler = withHandlers({
 });
 
 const Tree = branch(
-  ({ children }) => !!children,
+  ({ children }: any) => !!children,
 
   renderComponent(withClickHandler(
     ({ children, onClick, isRoot, title, count, className, selected,  ...rest }: any) =>
@@ -43,7 +43,7 @@ const Tree = branch(
       <span className={styles.count}>({ count })</span>
     </li>
   ))
-)(null);
+)(renderNothing);
 
 export const CategoryBodyFacet = ({ list, onChange }: any) =>
   <Tree children={list} onChange={onChange} className={styles.wrap} isRoot selected />;

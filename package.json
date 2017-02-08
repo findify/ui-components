@@ -11,6 +11,7 @@
     "react": "^15.4.1",
     "react-addons-shallow-compare": "^15.4.2",
     "react-dom": "^15.4.1",
+    "react-number-input": "^15.0.0-rc2",
     "react-virtualized": "^8.11.4",
     "recompose": "^0.22.0"
   },

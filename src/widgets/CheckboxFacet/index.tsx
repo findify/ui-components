@@ -2,7 +2,7 @@ import * as React from 'react';
 import { compose, withState, withHandlers } from 'recompose';
 
 import { GenericFacet } from 'widgets/GenericFacet';
-import { CheckboxBodyFacet } from 'internals/CheckboxBodyFacet';
+const { CheckboxBodyFacet } = require('internals/CheckboxBodyFacet');
 
 export const CheckboxFacet = compose(
   withState('list', 'updateList', props => props.values),
@@ -14,6 +14,6 @@ export const CheckboxFacet = compose(
   })
 )(props => (
   <GenericFacet {...props}>
-    <CheckboxBodyFacet />
+    <CheckboxBodyFacet showExpander />
   </GenericFacet>
 ));
