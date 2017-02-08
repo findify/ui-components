@@ -5,15 +5,14 @@ import { branch, compose, defaultProps, pure, renderNothing, withHandlers, withP
 const { Button } = require('./Button');
 const styles = require('./styles.css');
 
-const getRange = ({ current, total, visible, step }) => {
-  const min = current - step - 1;
-  const max = current + visible;
+const getRange = ({ current, total, step }) => {
+  const min = current - step;
+  const max = current + step + 1;
   return range(min < 1 ? 1 : min, max > total ? total + 1 : max);
 };
 
 export const Pagination = compose(
   defaultProps({
-    visible: 4,
     step: 2,
     i18n: {
       previous: 'previews',
@@ -21,11 +20,11 @@ export const Pagination = compose(
     }
   }),
   withProps(({ current, total, step, visible }: any) => ({
-    showFirst: current !== 1,
-    showLast: current !== total,
+    showFirst: current > step + 1,
+    showLast: current < total - step,
     showPrev: current > step,
     showNext: total - step > current,
-    visiblePages: getRange({ current, total, visible, step })
+    visiblePages: getRange({ current, total, step })
   })),
 
   withHandlers({
