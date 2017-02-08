@@ -1,0 +1,18 @@
+.list{
+}
+
+.item{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #eee;
+  display: inline-block;
+  margin: 5px 5px 0 0;
+  outline: none;
+  cursor: pointer;
+  transition: border-color .1s ease-in;
+}
+
+.selected{
+  border-color: #333
+}

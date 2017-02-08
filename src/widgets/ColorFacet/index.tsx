@@ -2,9 +2,9 @@ import * as React from 'react';
 import { compose, withState, withHandlers } from 'recompose';
 
 import { GenericFacet } from 'widgets/GenericFacet';
-import { CheckboxBodyFacet } from 'internals/CheckboxBodyFacet';
+import { ColorBodyFacet } from 'internals/ColorBodyFacet';
 
-export const CheckboxFacet = compose(
+export const ColorFacet = compose(
   withState('list', 'updateList', props => props.values),
   withHandlers({
     onChange: ({ list, updateList, onChange }) => (key, selected) => updateList(
@@ -14,6 +14,6 @@ export const CheckboxFacet = compose(
   })
 )(props => (
   <GenericFacet {...props}>
-    <CheckboxBodyFacet />
+    <ColorBodyFacet />
   </GenericFacet>
 ));

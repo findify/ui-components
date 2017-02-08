@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const props = {
   isOpen: true,
-  title: 'Kategori',
+  title: 'Checkbox',
   values: [  
     {  
       "key":"Aktiv",
@@ -58,7 +58,7 @@ const props = {
 };
 
 export default ({ Component }) => (
-  <div style={{ margin: 50, width: 400, height: 700, position: 'relative' }}>
+  <div style={{ margin: 50, width: 400, position: 'relative' }}>
     <Component { ...props } />
   </div>
 );

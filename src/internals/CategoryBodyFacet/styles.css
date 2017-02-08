@@ -1,0 +1,42 @@
+.wrap{
+  margin: 5px 0;
+}
+
+.list{
+  margin: 0;
+  padding: 0;
+}
+
+.item{
+  display: table;
+  list-style: none;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+
+.nested-item{
+  list-style: none;
+  & .list {
+    padding-left: 12px;
+  }
+}
+
+.title{
+  display: table-cell;
+  width: 100%;
+  .selected & {
+    font-weight: 600;
+  }
+}
+
+.count{
+  color: #b2b2b2;
+  display: table-cell;
+}
+
+.next-icon{
+  margin-left: 5px;
+  font-size: .7em;
+  color: #404040;
+}
