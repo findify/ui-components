@@ -14,7 +14,8 @@
     "react-dropdown": "^1.2.0",
     "react-number-input": "^15.0.0-rc2",
     "react-virtualized": "^8.11.4",
-    "recompose": "^0.22.0"
+    "recompose": "^0.22.0",
+    "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
     "@types/react": "^0.14.55",

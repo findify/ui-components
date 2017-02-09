@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { compose, withHandlers, withProps } from 'recompose';
+import { compose, withHandlers, withPropsOnChange } from 'recompose';
 import * as cx from 'classnames';
+import * as color from 'tinycolor2';
 
 const styles = require('./styles.css');
-const gradientUrl = '';
 
 const Item = compose(
-  withProps(({ title }: any) => ({
-    background: title === 'Multicolor' ? `url(${gradientUrl})` : title.toLowerCase()
+  withPropsOnChange(['title'], ({ title }: any) => ({
+    background: title !== 'Multicolor' && title.toLowerCase(),
+    checkMarkStyles: ({ color: color(title).isDark() ? '#fff' : '#333'})
   })),
   withHandlers({
     onClick: ({ onChange, title, selected }: any) => e => onChange(title, !selected),
@@ -16,12 +17,15 @@ const Item = compose(
   title,
   background,
   onClick,
-  selected
+  selected,
+  checkMarkStyles,
 }: any) =>
   <button
-    className={cx(styles.item, selected && styles.selected)}
+    className={cx(styles.item, title === 'Multicolor' && 'multiply-gradient')}
     style={{ background }}
-    onClick={onClick} />
+    onClick={onClick}>
+    { selected && <span style={checkMarkStyles} className={cx(styles.checkMark, 'fa', 'fa-check')}/>}
+  </button>
 );
 
 
