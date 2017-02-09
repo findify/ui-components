@@ -5,8 +5,8 @@ import * as cx from 'classnames';
 
 const styles = require('./styles.css');
 
-const colorFilterStyles = ({ title, gradientUrl }) => ({
-  background: title === 'Multicolor' ? `url(${gradientUrl})` : title.toLowerCase()
+const colorFilterStyles = ({ values, gradientUrl }) => ({
+  background: values[0] === 'Multicolor' ? `url(${gradientUrl})` : values[0].toLowerCase()
 });
 
 const valueToKey = ({ from, to }, currency = 'USD') =>
@@ -15,16 +15,15 @@ const valueToKey = ({ from, to }, currency = 'USD') =>
   !from && to && `less then ${to} ${currency}`;
 
 const filtersMapping = {
-  category: (props) => props.values[0],
+  default: (props) => props.values[0],
   color: (props) => <span className={styles.colorFilter} style={colorFilterStyles(props)} />,
-  terms: (props) => props.values[0],
   range: (props) => valueToKey(props.values[0])
 };
 
 const Filter = compose(
   pure,
-  withProps(({ type, ...rest }: any) => ({
-    children: filtersMapping[type](rest)
+  withProps(({ type, name, ...rest }: any) => ({
+    children: (filtersMapping[name] || filtersMapping[type] || filtersMapping.default)(rest)
   })),
   withHandlers({
     onRemove: ({ index, onChange }: any) => () => onChange(index)

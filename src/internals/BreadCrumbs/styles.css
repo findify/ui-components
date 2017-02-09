@@ -39,3 +39,14 @@
     display: none
   }
 }
+
+.color-filter{
+  vertical-align: -1px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  margin: 0px;
+  display: inline-block;
+  border: 1px solid #6e6e6e;
+}
