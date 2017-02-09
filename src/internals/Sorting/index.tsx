@@ -4,8 +4,6 @@ import { compose, withProps, withPropsOnChange, withState } from 'recompose';
 
 const styles = require('./styles.css');
 
-console.log(styles.dropdown);
-
 export const Sorting = compose(
   withPropsOnChange(['value'], ({ i18n, options, value }: any) => ({
     options: options.map(option => ({ value: option, label: i18n.options[option] || option })),

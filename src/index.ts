@@ -1,5 +1,6 @@
 import './styles.global.css';
 
+export { BreadCrumbs } from './internals/BreadCrumbs';
 export { Sorting } from './internals/Sorting';
 export { Pagination } from './internals/Pagination';
 export { RangeFacet } from './widgets/RangeFacet';
