@@ -42,7 +42,10 @@ export const Pagination = compose(
   ...rest
 }: any) => (
   <div className={styles.wrap}>
-    {showPrev && <Button label={i18n.previous} prepend='fa fa-chevron-left' page={current - 1} {...rest} />}
+    {
+      showPrev &&
+      <Button label={i18n.previous} prependIcon='fa fa-chevron-left' page={current - 1} {...rest} />
+    }
     {showFirst && <Button page={1} label={1} {...rest} />}
     {showFirst && <Button label='...' className={styles.disabled} />}
     {
@@ -52,6 +55,9 @@ export const Pagination = compose(
     }
     {showLast && <Button label='...' className={styles.disabled} />}
     {showLast && <Button page={total} label={total} {...rest} />}
-    {showNext && <Button label={i18n.next} page={current + 1} append='fa fa-chevron-right' {...rest} />}
+    {
+      showNext &&
+      <Button label={i18n.next} page={current + 1} appendIcon='fa fa-chevron-right' {...rest} />
+    }
   </div>
 ));

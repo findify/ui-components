@@ -9,7 +9,8 @@ const vendor = [
   'lodash',
   'react-virtualized',
   'react-addons-shallow-compare',
-  'react-number-input'
+  'react-number-input',
+  'react-dropdown'
   // ... Write here any libs you want to exclude from main bundle
 ];
 

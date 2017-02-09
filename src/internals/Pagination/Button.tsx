@@ -6,6 +6,7 @@ import * as cx from 'classnames';
 const styles = require('./styles.css');
 
 export const Button = compose(
+  pure,
   withHandlers({
     onClick: ({ onChange, page }: any) => () => onChange(page)
   })
@@ -14,12 +15,12 @@ export const Button = compose(
   onClick,
   active,
   className,
-  append,
-  prepend
+  prependIcon,
+  appendIcon
 }: any) =>
   <button onClick={onClick} className={cx(styles.button, active && styles.active, className)}>
-    { prepend && <span className={cx(styles.icon, prepend)} />}
+    { prependIcon && <span className={cx(styles.icon, prependIcon)} />}
     { label }
-    { append && <span className={cx(styles.icon, append)} />}
+    { appendIcon && <span className={cx(styles.icon, appendIcon)} />}
   </button>
 );
