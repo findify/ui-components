@@ -1,49 +1,47 @@
 import * as React from 'react';
-import { compose, renderComponent, withHandlers, branch, renderNothing } from 'recompose';
+import { compose, renderComponent, withHandlers, renderNothing, withProps } from 'recompose';
 import * as cx from 'classnames';
 
-// const { branch } = require('recompose');
+const { branch } = require('recompose');
 const styles = require('./styles.css');
 
-const NestingComponent = ({ isRoot, ...rest }) => React.createElement(isRoot ? 'div' : 'li', rest);
+import { NestedTree } from './NestedTree';
+import { SingleItem } from './SingleItem';
+import { createCursor } from './cursor';
 
-const withClickHandler = withHandlers({
-  onClick: ({ onChange, selected, title }: any) => () => onChange(title, !selected)
-});
+var Tree = compose(
+  branch(
+    ({ cursor }: any) => cursor.length > 2, // Max level is 2
+    renderComponent(({ children, cursor, ...rest }) =>
+      <Tree {...rest} {...children[cursor[0]]} cursor={cursor.filter((_, i) => i !== 1)}/>
+    )
+  ),
 
-const Tree = branch(
-  ({ children }: any) => !!children,
+  branch(
+    ({ cursor, index, hasSiblings }: any) => hasSiblings && !!cursor.length && index !== cursor[0],
+    renderNothing
+  ),
 
-  renderComponent(withClickHandler(
-    ({ children, onClick, isRoot, title, count, className, selected,  ...rest }: any) =>
-    <NestingComponent isRoot={isRoot} className={className || styles.nestedItem}>
-      { 
-        !isRoot &&
-        <div className={cx(styles.item, selected && styles.selected)} onClick={onClick}>
-          <p className={styles.title}>
-            { title }
-            <span className={cx(styles.nextIcon, 'fa', `fa-chevron-${selected ? 'down' : 'right'}`)} />
-          </p>
-          <span className={styles.count}>({ count })</span>
-        </div>
-      }
-      {
-        selected &&
-        <ul className={styles.list}>
-          { children.map(item => <Tree {...rest} {...item} title={item.key} />) }
-        </ul>
-      }
-    </NestingComponent>
-  )),
+  withHandlers({
+    onClick: ({ onChange, selected, title }: any) => () => onChange(title, !selected)
+  }),
 
-  renderComponent(withClickHandler(
-    ({ title, count, onClick, selected }: any) =>
-    <li className={cx(styles.item, selected && styles.selected)} onClick={onClick}>
-      <p className={styles.title}>{ title }</p>
-      <span className={styles.count}>({ count })</span>
-    </li>
-  ))
+  withProps(({ children }) => ({
+    hasSiblings: children && !!children.find(child => child.selected && child.children)
+  })),
+
+  branch(
+    ({ children }: any) => !!children,
+    renderComponent(props => <NestedTree {...props} Nested={Tree} />),
+    renderComponent(SingleItem)
+  )
 )(renderNothing);
 
-export const CategoryBodyFacet = ({ list, onChange }: any) =>
-  <Tree children={list} onChange={onChange} className={styles.wrap} isRoot selected />;
+export const CategoryBodyFacet = ({ list: children, onChange }: any) =>
+  <Tree
+    cursor={createCursor({ children }, [])}
+    className={styles.wrap}
+    children={children}
+    onChange={onChange}
+    isRoot
+    selected />;

@@ -25,7 +25,7 @@ const props = {
               "selected":false,
               "count":9,
               "hasChildren":true,
-              "key":"Fågel",
+              "key":"Fågel1",
               "name":"category1"
             },
             {  
@@ -33,7 +33,7 @@ const props = {
               "selected":false,
               "count":4,
               "hasChildren":true,
-              "key":"Reptil",
+              "key":"Reptil1",
               "name":"category1"
             },
             {  
@@ -41,7 +41,7 @@ const props = {
               "selected":false,
               "count":1,
               "hasChildren":true,
-              "key":"Fisk",
+              "key":"Fisk1",
               "name":"category1"
             }
           ]

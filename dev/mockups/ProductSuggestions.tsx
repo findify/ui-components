@@ -8,10 +8,10 @@ const props = camelizeKeys({
   slidesToShow: 5,
   title: 'CUSTOMERS WHO VIEWED THIS ALSO VIEWED',
   productProps: {
-    title: false,
-    description: false,
-    price: false,
-    reviews: false
+    // title: false,
+    // description: false,
+    // price: false,
+    // reviews: false
   }
 })
 

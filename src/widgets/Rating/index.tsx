@@ -10,7 +10,7 @@ const Start = mapProps(({ diff }: any) => ({
 }))
 (({ iconClass }: any) =>
   <span className={cx(styles.star, iconClass, 'fa')} />
-)
+);
 
 export const RatingWidget = (({
   value,

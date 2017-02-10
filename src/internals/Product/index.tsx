@@ -50,10 +50,7 @@ export const Product = ({
           <RatingWidget reviewsCount={reviews.totalReviews} value={reviews.averageScore} />
         </div>
       }
-      {
-        price &&
-          <Price price={price} compareAt={compareAt}/>
-      }
+      <Price price={price} compareAt={compareAt}/>
     </a>
   )
 }
