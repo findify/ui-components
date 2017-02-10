@@ -35,8 +35,6 @@ export const Product = ({
   compareAt,
   ...rest
 }: any) => {
-  console.log(rest);
-  
   return (
     <a href={productUrl} className={styles.wrap}>
       <div className={styles.imageWrap}>

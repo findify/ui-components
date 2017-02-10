@@ -10,7 +10,9 @@ const vendor = [
   'react-virtualized',
   'react-addons-shallow-compare',
   'react-number-input',
-  'react-dropdown'
+  'react-dropdown',
+  'currency-formatter',
+  'react-slick',
   // ... Write here any libs you want to exclude from main bundle
 ];
 

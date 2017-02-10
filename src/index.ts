@@ -1,5 +1,6 @@
 import './styles.global.css';
 
+export { ProductSuggestions } from './widgets/ProductSuggestions';
 export { Product } from './internals/Product';
 export { BreadCrumbs } from './internals/BreadCrumbs';
 export { Sorting } from './internals/Sorting';

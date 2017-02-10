@@ -4,6 +4,7 @@
   background-color: transparent;
   transition: background-color .35s ease-in-out;
   text-decoration: none;
+  user-select: none;
   &:hover{
     background-color: #f7f7f7;
   }
