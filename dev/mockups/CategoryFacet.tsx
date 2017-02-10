@@ -3,6 +3,7 @@ import * as React from 'react';
 const props = {
   isOpen: true,
   title: 'Kategori',
+  goBackTitle: 'Alla kategorier',
   values: [  
     {  
       "type":"category",

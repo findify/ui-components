@@ -35,8 +35,23 @@
   display: table-cell;
 }
 
-.next-icon{
-  margin-left: 5px;
+.next-icon, prev-icon{
+  margin: 0 0 0 5px;
   font-size: .7em;
   color: #404040;
 }
+
+.prev-icon{
+  margin: 0 5px 0 0;
+  display: none;
+}
+
+.nested-item + .nested-item{
+  .next-icon{
+    display: none;
+  }
+  .prev-icon{
+    display: inline-block;
+  }
+}
+

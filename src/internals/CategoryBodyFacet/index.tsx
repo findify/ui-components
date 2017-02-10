@@ -9,7 +9,7 @@ import { NestedTree } from './NestedTree';
 import { SingleItem } from './SingleItem';
 import { createCursor } from './cursor';
 
-var Tree = compose(
+const Tree = compose(
   branch(
     ({ cursor }: any) => cursor.length > 2, // Max level is 2
     renderComponent(({ children, cursor, ...rest }) =>
@@ -18,7 +18,8 @@ var Tree = compose(
   ),
 
   branch(
-    ({ cursor, index, hasSiblings }: any) => hasSiblings && !!cursor.length && index !== cursor[0],
+    ({ cursor, index, hasSelectedSiblings }: any) =>
+      hasSelectedSiblings && !!cursor.length && index !== cursor[0],
     renderNothing
   ),
 
@@ -26,8 +27,8 @@ var Tree = compose(
     onClick: ({ onChange, selected, title }: any) => () => onChange(title, !selected)
   }),
 
-  withProps(({ children }) => ({
-    hasSiblings: children && !!children.find(child => child.selected && child.children)
+  withProps(({ children, level }) => ({
+    hasSelectedSiblings: children && children.some(child => child.selected && child.children),
   })),
 
   branch(
@@ -37,11 +38,13 @@ var Tree = compose(
   )
 )(renderNothing);
 
-export const CategoryBodyFacet = ({ list: children, onChange }: any) =>
+export const CategoryBodyFacet = ({ list: children, onChange, ...rest }: any) => (
   <Tree
+    {...rest}
     cursor={createCursor({ children }, [])}
     className={styles.wrap}
     children={children}
     onChange={onChange}
     isRoot
-    selected />;
+    selected />
+);
