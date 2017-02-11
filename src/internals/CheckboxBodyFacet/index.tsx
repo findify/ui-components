@@ -12,9 +12,9 @@ import {
 } from 'recompose';
 import * as cx from 'classnames';
 import { List, AutoSizer } from 'react-virtualized';
+import { ExpandButton } from 'internals/ExpandButton';
 
 const styles = require('./styles.css');
-
 
 const Item = withHandlers({
   onClick: (props: any) => () => props.onChange(props.title, !props.selected)
@@ -33,18 +33,6 @@ const Item = withHandlers({
   </div>
 ));
 
-
-const ExpandButton = ({
-  expanded,
-  onClick
-}: any) => (
-  <button className={styles.expand} onClick={onClick}>
-    <span className={cx('fa', expanded ? 'fa-minus' : 'fa-plus')} />
-    { expanded ? 'less' : 'more' }
-  </button>
-);
-
-
 const Search = withHandlers({
   onChange: ({ onChange }: any) => e => onChange(e.target.value)
 })(({
@@ -58,16 +46,16 @@ const Search = withHandlers({
 ));
 
 
-const VirtualizedList = ({ items, rowRenderer }) => (
+const VirtualizedList = ({ items, rowRenderer, rowHeight, maxItemsCount }) => (
   <AutoSizer disableHeight>
     {
     ({ width }) =>
       <List
         className={styles.list}
         width={width}
-        height={120}
+        height={maxItemsCount * rowHeight}
         rowCount={items.length}
-        rowHeight={20}
+        rowHeight={rowHeight}
         rowRenderer={rowRenderer} />
     }
   </AutoSizer>
@@ -76,9 +64,9 @@ const VirtualizedList = ({ items, rowRenderer }) => (
 
 const ListRenderer = branch(
   ({ isStatic }: any) => isStatic,
-  renderComponent(({ items, className, ...rest }) => (
+  renderComponent(({ items, maxItemsCount, className, ...rest }) => (
     <div className={cx(styles.list, className)}>
-      { items.slice(0, 6).map(item => <Item {...item} {...rest} title={item.key} />) }
+      { [...items.slice(0, maxItemsCount)].map(item => <Item {...item} {...rest} title={item.key} />) }
     </div>
   )),
   compose(
@@ -93,7 +81,8 @@ const ListRenderer = branch(
 
 export const CheckboxBodyFacet = compose(
   defaultProps({
-    maxLength: 6,
+    rowHeight: 20,
+    maxItemsCount: 6,
     showExpander: false
   }),
 
@@ -114,11 +103,11 @@ export const CheckboxBodyFacet = compose(
   withProps((props: any) => ({
     hasSelected: !!props.selectedItems.length,
     hasNotSelected: !!props.notSelectedItems.length,
-    showMoreButton: props.showExpander && props.notSelectedItems.length > props.maxLength,
+    showMoreButton: props.showExpander && props.notSelectedItems.length > props.maxItemsCount,
     showSearch: props.showExpander && props.expanded,
     showStaticContent: 
       props.showExpander &&
-      props.notSelectedItems.length <= props.maxLength ||
+      props.notSelectedItems.length < props.maxItemsCount ||
       !props.expanded
   })),
 
@@ -140,7 +129,8 @@ export const CheckboxBodyFacet = compose(
   hasSelected,
   hasNotSelected,
   showStaticContent,
-  showMoreButton
+  showMoreButton,
+  ...rest
 }: any) => (
   <div className={styles.wrap}>
     {
@@ -153,7 +143,7 @@ export const CheckboxBodyFacet = compose(
     }
     {
       hasNotSelected &&
-      <ListRenderer items={notSelectedItems} onChange={onChange} isStatic={showStaticContent} />
+      <ListRenderer {...rest} items={notSelectedItems} onChange={onChange} isStatic={showStaticContent} />
     }
     {
       showMoreButton &&

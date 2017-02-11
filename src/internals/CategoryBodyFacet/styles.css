@@ -1,13 +1,14 @@
-.wrap{
+.wrap {
   margin: 5px 0;
 }
 
-.list{
+.list {
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
-.item{
+.item {
   display: table;
   list-style: none;
   font-size: 14px;
@@ -15,43 +16,48 @@
   margin-bottom: 4px;
 }
 
-.nested-item{
+.nested-item {
   list-style: none;
   & .list {
     padding-left: 12px;
   }
 }
 
-.title{
+.title {
   display: table-cell;
   width: 100%;
   .selected & {
     font-weight: 600;
   }
+  .root-item > .selected & {
+    font-weight: 300;
+  }
 }
 
-.count{
+.count {
   color: #b2b2b2;
   display: table-cell;
 }
 
-.next-icon, prev-icon{
+.next-icon, prev-icon {
   margin: 0 0 0 5px;
   font-size: .7em;
   color: #404040;
 }
 
-.prev-icon{
+.prev-icon {
   margin: 0 5px 0 0;
+  font-size: .7em;
   display: none;
-}
-
-.nested-item + .nested-item{
-  .next-icon{
-    display: none;
-  }
-  .prev-icon{
+  .item.selected & {
     display: inline-block;
   }
 }
+
+.next-icon {
+  .item.selected & {
+    display: none;
+  }
+}
+
 
