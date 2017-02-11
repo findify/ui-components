@@ -1,14 +1,14 @@
-.wrap{
+.wrap {
   display: table;
   font-size: 14px;
 }
 
-.inputWrap{
+.inputWrap {
   display: table-cell;
   white-space: nowrap;
 }
 
-.commitWrap{
+.commitWrap {
   display: table-cell;
   width: 100%;
   text-align: right;
@@ -22,7 +22,7 @@
   border: 2px solid #ececec;
   outline: none;
   transition: border-color .1s ease-in;
-  &:focus{
+  &:focus {
     border-color: color(#ececec shade(10%));
   }
 }
@@ -36,7 +36,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color .1s ease-in;
-  &:hover{
+  &:hover {
     background-color: color(#f7f7f7 shade(5%));
   }
 }

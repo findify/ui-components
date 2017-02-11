@@ -1,83 +1,12 @@
 import * as React from 'react';
-import {
-  branch,
-  compose,
-  defaultProps,
-  renderComponent,
-  renderNothing,
-  withHandlers,
-  withProps,
-  withPropsOnChange,
-  withState
-} from 'recompose';
+import { compose, defaultProps, withHandlers, withProps, withPropsOnChange, withState } from 'recompose';
 import * as cx from 'classnames';
-import { List, AutoSizer } from 'react-virtualized';
+
 import { ExpandButton } from 'internals/ExpandButton';
+import { SearchInput } from 'internals/SearchInput';
+import { ListRenderer } from './ListRenderer';
 
 const styles = require('./styles.css');
-
-const Item = withHandlers({
-  onClick: (props: any) => () => props.onChange(props.title, !props.selected)
-})(({
-  value,
-  title,
-  selected,
-  count,
-  onClick,
-  style
-}: any) => (
-  <div style={style} className={cx(styles.item, selected && styles.selected)} onClick={onClick}>
-    <div className={cx(styles.checkbox, 'fa', selected ? 'fa-check-square' : 'fa-square-o')} />
-    <span className={styles.title}>{ title }</span>
-    <span className={styles.count}>({ count })</span>
-  </div>
-));
-
-const Search = withHandlers({
-  onChange: ({ onChange }: any) => e => onChange(e.target.value)
-})(({
-  onChange,
-  value
-}: any) => (
-  <div className={styles.search}>
-    <span className={cx(styles.searchIcon, 'fa', 'fa-search')} />
-    <input className={styles.searchInput} type='search' onChange={onChange} defaultValue={value} />
-  </div>
-));
-
-
-const VirtualizedList = ({ items, rowRenderer, rowHeight, maxItemsCount }) => (
-  <AutoSizer disableHeight>
-    {
-    ({ width }) =>
-      <List
-        className={styles.list}
-        width={width}
-        height={maxItemsCount * rowHeight}
-        rowCount={items.length}
-        rowHeight={rowHeight}
-        rowRenderer={rowRenderer} />
-    }
-  </AutoSizer>
-);
-
-
-const ListRenderer = branch(
-  ({ isStatic }: any) => isStatic,
-  renderComponent(({ items, maxItemsCount, className, ...rest }) => (
-    <div className={cx(styles.list, className)}>
-      { [...items.slice(0, maxItemsCount)].map(item => <Item {...item} {...rest} title={item.key} />) }
-    </div>
-  )),
-  compose(
-    withProps(({ items, ...rest }) => ({
-      rowRenderer: ({ index, key, style }) =>
-        <Item {...items[index]} {...rest} title={items[index].key} key={key} style={style} />
-    })),
-    renderComponent(VirtualizedList)
-  )
-)(renderNothing);
-
 
 export const CheckboxBodyFacet = compose(
   defaultProps({
@@ -135,7 +64,7 @@ export const CheckboxBodyFacet = compose(
   <div className={styles.wrap}>
     {
       showSearch &&
-      <Search value={search} onChange={onSearchChange} />
+      <SearchInput value={search} onChange={onSearchChange} />
     }
     {
       hasSelected &&

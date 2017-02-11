@@ -1,9 +1,9 @@
-.wrap{
+.wrap {
   display: table;
   font-size: 14px;
 }
 
-.title{
+.title {
   display: table-cell;
   white-space: nowrap;
   padding: 0 10px 0 0;
@@ -73,7 +73,7 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  &-menu &-group > &-title{
+  &-menu &-group > &-title {
     padding: 4px 0 4px 10px;
     color: rgba(51, 51, 51, 1);
     font-weight: bold;

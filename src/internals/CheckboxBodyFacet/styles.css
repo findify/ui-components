@@ -1,20 +1,21 @@
-.wrap{
+.wrap {
   margin: 5px 0;
 }
-.list{
+
+.list {
   margin: 0;
   padding: 0;
   outline: none;
-  &:last-child{
+  &:last-child {
     border-bottom: none;
   }
 }
 
-.selected-items{
+.selected-items {
   border-bottom: 1px solid #b2b2b2; 
 }
 
-.item{
+.item {
   color: #404040;
   font-size: 14px;
   list-style: none;
@@ -26,7 +27,7 @@
   width: 100%;
 }
 
-.title{
+.title {
   width: 100%;
   display: table-cell;
   .selected-items &{
@@ -34,41 +35,13 @@
   }
 }
 
-.count{
+.count {
   color: #b2b2b2;
   display: table-cell;
 }
 
-.checkbox{
+.checkbox {
   display: table-cell;
   padding-right: 5px;
   font-size: .7em;
-}
-
-.search{
-  width: 100%;
-  border: 2px solid #ececec;
-  font-size: 14px;
-  position: relative;
-  box-sizing: content-box;
-  margin: 8px 0;
-  &-input{
-    color: #404040;
-    width: 100%;
-    background: transparent;
-    outline: none;
-    border: none;
-    padding: 5px 32px 5px 10px;
-    position: relative;
-    z-index: 2;
-  }
-  &-icon{
-    position: absolute;
-    right: 10px;
-    top: 0;
-    width: 20px;
-    line-height: 26px;
-    text-align: center;
-    color: #ececec;
-  }
 }

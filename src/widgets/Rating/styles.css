@@ -1,19 +1,19 @@
-.wrap{
+.wrap {
   white-space: nowrap;
 }
 
-.stars{
+.stars {
   white-space: nowrap;
   display: inline-block;
 }
 
-.star{
+.star {
   color: #FFC000;
   margin-right: 3px;
   font-size: 13px;
 }
 
-.count{
+.count {
   font-size: 13px;
   color: #b2b2b2;
   display: inline-block;

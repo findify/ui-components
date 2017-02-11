@@ -1,12 +1,8 @@
-.wrap{
-  
-}
+.wrap {}
 
-.content{
-  
-}
+.content {}
 
-.title{
+.title {
   color: #404040;
   font-size: 14px;
   text-transform: uppercase;
@@ -16,13 +12,13 @@
   padding: 0 20px 0 0;
 }
 
-.toggle{
+.toggle {
   position: relative;
   text-transform: uppercase;
   line-height: 15px;
 }
 
-.icon{
+.icon {
   font-size: 12px;
   position: absolute;
   right: 0;

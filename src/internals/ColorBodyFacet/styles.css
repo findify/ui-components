@@ -1,7 +1,6 @@
-.list{
-}
+.list {}
 
-.item{
+.item {
   width: 20px;
   height: 20px;
   line-height: 20px;
@@ -16,7 +15,7 @@
   position: relative;
 }
 
-.check-mark{
+.check-mark {
   font-size: 12px;
   color: #fff;
   position: absolute;

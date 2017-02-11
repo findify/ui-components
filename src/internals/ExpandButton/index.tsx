@@ -7,8 +7,8 @@ export const ExpandButton = ({
   expanded,
   onClick
 }: any) => (
-  <button className={styles.expand} onClick={onClick}>
-    <span className={cx('fa', expanded ? 'fa-minus' : 'fa-plus')} />
+  <button className={styles.wrap} onClick={onClick}>
+    <span className={cx(styles.icon, 'fa', expanded ? 'fa-minus' : 'fa-plus')} />
     { expanded ? 'less' : 'more' }
   </button>
 );

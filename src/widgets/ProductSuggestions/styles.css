@@ -1,11 +1,11 @@
-.title{
+.title {
   font-size: 18px;
   color: #404040;
   margin: 10px 0; 
   text-align: center; 
 }
 
-.arrow{
+.arrow {
   color: #333;
   &:before{
     color: #333;
