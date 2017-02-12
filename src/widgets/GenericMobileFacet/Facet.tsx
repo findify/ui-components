@@ -15,14 +15,11 @@ const FacetPreview = compose(
     }
   }),
   withHandlers({
+    onReset: ({ onReset, name }) => () => onReset(name),
+
     onSelect: ({ name, setSelectedFacet }) => () => {
       console.log(name);
-      
       setSelectedFacet(name)
-    },
-    onReset: ({ onReset, name }) => e => {
-      e.preventDefault();
-      return onReset(name);
     }
   })
 )(({
@@ -45,13 +42,15 @@ const FacetPreview = compose(
   </button>
 ));
 
+
 const FacetBody = withHandlers({
   onChange: ({ onChange, name }) => (key, data) => onChange(name, key, data)
 })((props: any) => (
   <div className={styles.body}>
-    { mapTypeToFacet(props.type)({ ...props, raw: true, mobile: true }) }
+    { mapTypeToFacet(props.type)({ ...props, raw: true, mobile: true, maxItemsCount: 20 }) }
   </div>
 ));
+
 
 export const Facet = compose(
   branch(

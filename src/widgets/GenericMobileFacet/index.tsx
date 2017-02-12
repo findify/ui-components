@@ -4,13 +4,13 @@ import * as cx from 'classnames';
 
 const styles = require('./styles.css');
 
-import { Header } from './Header';
+import { Header, FacetTitle } from './Header';
 import { Facet } from './Facet';
 
 export const GenericMobileFacet = compose(
   withState('facets', 'updateFacets', props => props.facets),
   withState('changes', 'updateChanges', {}),
-  withState('selectedFacet', 'setSelectedFacet', ''),
+  withState('selectedFacet', 'setSelectedFacet', false),
   withProps(({ changes }) => ({
     hasNotCommittedData: !!Object.keys(changes).length
   })),
@@ -20,11 +20,11 @@ export const GenericMobileFacet = compose(
 
     onCommit: ({ updateChanges, changes, facets, updateFacets, setSelectedFacet }) => () => {
       console.log(changes, facets);
-      setSelectedFacet('');
+      setSelectedFacet(false);
       updateChanges({});
     },
 
-    onBackToFacets: ({ setSelectedFacet }) => () => setSelectedFacet(''),
+    onBackToFacets: ({ setSelectedFacet }) => () => setSelectedFacet(false),
 
     onReset: ({ facets, updateFacets }) => name =>
       updateFacets(facets.map(facet =>
@@ -43,10 +43,11 @@ export const GenericMobileFacet = compose(
   facets,
   ...rest
 }: Response) => (
-  <div className={styles.wrap}>
+  <div className={cx(styles.wrap, !rest.selectedFacet && styles.wrapDark)}>
     <div className={styles.header}>
       <Header {...rest} />
     </div>
+    <FacetTitle {...rest}/>
     <div className={styles.content}>
     {
       facets.map(facet => <Facet key={facet.name} {...rest} {...facet} />)
@@ -61,5 +62,6 @@ type Response = {
   changes: any,
   selectedFacet: string|boolean,
   onChange: any,
-  onCommit: any
+  onCommit: any,
+  onReset: any
 }

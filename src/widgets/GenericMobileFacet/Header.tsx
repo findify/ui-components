@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { branch, renderComponent, renderNothing } from 'recompose';
+import { compose, branch, renderComponent, withHandlers, withProps, renderNothing } from 'recompose';
 import * as cx from 'classnames';
 
 const styles = require('./styles.css');
@@ -37,6 +37,25 @@ const FacetHeader = branch(
       Back to filters
     </Button>
   )),
+)(renderNothing);
+
+
+export const FacetTitle = branch(
+  ({ selectedFacet }: any) => !selectedFacet,
+  renderNothing,
+  renderComponent(compose(
+    withHandlers({
+      onReset: ({ onReset, name }) => () => onReset(name)
+    }),
+    withProps((props: any) => ({
+      showRest: !!props.changes[props.selectedFacet]
+    }))
+    )(({ selectedFacet, onReset, showRest }: any) => (
+    <div className={styles.facetTitle}>
+      <h5 className={styles.facetTitleName}>{ selectedFacet }</h5>
+      { showRest && <span className={styles.resetButton} onClick={onReset}>Reset</span> }
+    </div>
+  ))),
 )(renderNothing);
 
 

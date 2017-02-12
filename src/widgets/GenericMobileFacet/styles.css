@@ -1,9 +1,12 @@
 .wrap {
-  background-color: #f7f7f7;
+  background-color: white;
   height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  &-dark{
+    background-color: #f7f7f7;
+  }
 }
 
 .header {
@@ -38,6 +41,7 @@
     font-size: 16px;
     text-align: left;
     padding: 0;
+    background-color: transparent;
   }
 }
 
@@ -73,21 +77,40 @@
   border-bottom: 1px solid #ececec;
   cursor: pointer;
 
-  &-content{
+  &-content {
     text-align: left;
     flex: 1;
   }
 
-  &-title{
+  &-title {
     margin: 0;
     color: #404040;
     font-size: 16px;
     text-transform: none;
     font-weight: 500;
   }
-  &-reset{
-    color: #939393;
-    text-decoration: underline;
-    font-weight: 500;
+}
+
+.facet-title {
+  background: #f7f7f7;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+  padding: 15px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  &-name{
+    margin: 0;
+    font-weight: bold;
+    flex: 1;
+    font-size: 16px;
   }
+}
+
+.reset-button {
+  color: #939393;
+  text-decoration: underline;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
 }
