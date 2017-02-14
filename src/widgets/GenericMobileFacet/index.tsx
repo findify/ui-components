@@ -10,8 +10,20 @@ import { Facet } from './Facet';
 export const GenericMobileFacet = compose(
   withState('changes', 'updateChanges', {}),
   withState('selectedFacet', 'setSelectedFacet', false),
-  withProps(({ changes }) => ({
-    hasNotCommittedData: !!Object.keys(changes).length
+  withProps(({ changes, facets }) => ({
+    hasNotCommittedData: !!Object.keys(changes).length,
+    facets: facets.map(facet => {
+        if (!Object.keys(changes).includes(facet.name)) return facet;
+        const changedFacet = changes[facet.name];
+        return {
+          ...facet,
+          values: facet.values.map(value =>
+            changedFacet[value.key] !== undefined
+              ? { ...value, selected: changedFacet[value.key]}
+              : value
+          )
+        }
+      })
   })),
   withHandlers({
     onCommit: ({ updateChanges, onChange, changes, updateFacets, setSelectedFacet }) => () => {

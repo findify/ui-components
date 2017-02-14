@@ -16,11 +16,7 @@ const FacetPreview = compose(
   }),
   withHandlers({
     onReset: ({ onReset, name }) => () => onReset(name),
-
-    onSelect: ({ name, setSelectedFacet }) => () => {
-      console.log(name);
-      setSelectedFacet(name)
-    }
+    onSelect: ({ name, setSelectedFacet }) => () => setSelectedFacet(name)
   })
 )(({
   name,

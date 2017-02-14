@@ -30,7 +30,8 @@ const emulateHelpers = compose(
 
     onReset: ({ facets, updateFacets }) => facetKey =>
       updateFacets(facets.map(facet => {
-        if (!facet.name !== facetKey) return facet;
+        if (facet.name !== facetKey) return facet;
+        
         return {
           ...facet,
           values: facet.values.map(value => ({...value, selected: false }))

@@ -32,8 +32,7 @@ export const Product = ({
   title,
   reviews,
   price,
-  compareAt,
-  ...rest
+  compareAt
 }: any) => {
   return (
     <a href={productUrl} className={styles.wrap}>

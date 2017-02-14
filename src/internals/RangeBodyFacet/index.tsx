@@ -14,7 +14,8 @@ export const RangeBodyFacet = compose(
   withState('minValue', 'setMin', props => props.min),
   withState('maxValue', 'setMax', props => props.max),
   withHandlers({
-    onCommit: ({ list, onChange, minValue: from, maxValue: to, setMin, setMax, currency }) => () => {
+    onCommit: ({ list, onChange, minValue: from, maxValue: to, setMin, setMax, currency }) =>
+    () => {
       if (!from && !to) return;
       const key = valueToKey({ from, to }, currency);
       if (list.find(item => item.key === key)) return;
