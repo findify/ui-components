@@ -8,35 +8,35 @@ import { Header, FacetTitle } from './Header';
 import { Facet } from './Facet';
 
 export const GenericMobileFacet = compose(
-  withState('facets', 'updateFacets', props => props.facets),
   withState('changes', 'updateChanges', {}),
   withState('selectedFacet', 'setSelectedFacet', false),
   withProps(({ changes }) => ({
     hasNotCommittedData: !!Object.keys(changes).length
   })),
   withHandlers({
-    onChange: ({ updateChanges, changes }) => (facetKey, key, data) => 
-      updateChanges({ ...changes, [facetKey]: { ...changes[facetKey], [key]: data} }),
-
-    onCommit: ({ updateChanges, changes, facets, updateFacets, setSelectedFacet }) => () => {
-      console.log(changes, facets);
+    onCommit: ({ updateChanges, onChange, changes, updateFacets, setSelectedFacet }) => () => {
+      onChange(changes);
       setSelectedFacet(false);
       updateChanges({});
     },
 
-    onBackToFacets: ({ setSelectedFacet }) => () => setSelectedFacet(false),
+    getSelected: ({ facets }) => facetKey => facets
+        .find(facet => facet.name === facetKey)
+        .values
+        .filter(value => value.selected)
+        .length,
 
-    onReset: ({ facets, updateFacets }) => name =>
-      updateFacets(facets.map(facet =>
-        facet.name !== name
-        ? facet
-        : {
-          ...facet,
-          values: facet.values.map(value => !value.selected ? value : {...value, selected: false } )
-        }
-      )),
-  
-    onClose: () => () => console.log('Close window')
+    onChange: ({ updateChanges, changes }) => (facetKey, key, data) => 
+      updateChanges({ ...changes, [facetKey]: { ...changes[facetKey], [key]: data} }),
+
+    onReset: ({ onReset, updateChanges, changes }) => facetKey => {
+      updateChanges(Object.keys(changes).reduce((acc, key) =>
+        key === facetKey ? acc : { ...acc, [key]: changes[key] }
+      , {}));
+      onReset(facetKey);
+    },
+
+    onBackToFacets: ({ setSelectedFacet }) => () => setSelectedFacet(false)
   })
 )
 (({
@@ -49,9 +49,7 @@ export const GenericMobileFacet = compose(
     </div>
     <FacetTitle {...rest}/>
     <div className={styles.content}>
-    {
-      facets.map(facet => <Facet key={facet.name} {...rest} {...facet} />)
-    }
+    { facets.map(facet => <Facet key={facet.name} {...rest} {...facet} />) }
     </div>
   </div>
 ));

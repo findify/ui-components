@@ -9,7 +9,7 @@ import './slider-theme.global.css';
 const Slider = require('react-slick');
 const styles = require('./styles.css');
 
-const Arrow = ({ dir, className, ...props }: any) => (
+const Arrow = ({ dir, className, currentSlide, slideCount, ...props }: any) => (
   <button {...props} className={cx(styles.arrow, 'fa', `fa-chevron-${dir}`, className)} />
 );
 

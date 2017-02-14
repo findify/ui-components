@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { compose, withState, withHandlers, renderNothing, renderComponent, branch } from 'recompose';
 import * as cx from 'classnames';
+import { genericStateMapper } from 'helpers/genericStateMapper';
 
 const styles = require('./styles.css');
 
@@ -29,15 +30,18 @@ const WrappedContent = ({
   </div>
 );
 
-export const GenericFacet = branch(
-  ({ raw }) => raw,
-  renderComponent(Content),
-  renderComponent(
-    compose(
-      withState('isOpen', 'toggleFacet', props => props.isOpen),
-      withHandlers({
-        toggleOpen: ({ isOpen, toggleFacet }) => () => toggleFacet(!isOpen)
-      })
-    )(WrappedContent)
+export const GenericFacet = compose(
+  genericStateMapper,
+  branch(
+    ({ raw }: any) => raw,
+    renderComponent(Content),
+    renderComponent(
+      compose(
+        withState('isOpen', 'toggleFacet', props => props.isOpen),
+        withHandlers({
+          toggleOpen: ({ isOpen, toggleFacet }: any) => () => toggleFacet(!isOpen)
+        })
+      )(WrappedContent)
+    )
   )
 )(renderNothing);

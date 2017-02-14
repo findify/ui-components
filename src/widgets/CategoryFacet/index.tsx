@@ -1,29 +1,22 @@
 import * as React from 'react';
-import { compose, withState, withHandlers } from 'recompose';
+import { compose, lifecycle, shouldUpdate, withHandlers, withState } from 'recompose';
 
-import { GenericFacet } from 'widgets/GenericFacet';
 import { CategoryBodyFacet } from 'internals/CategoryBodyFacet';
 
-const reduceItems = (list, key, selected) => [
+const { GenericFacet } = require('widgets/GenericFacet');
+
+const mapper = (list, key, selected) => [
   ...list.map(item =>
     item.key === key
     ? {...item, selected }
     : item.children
-      ? {...item, children: reduceItems(item.children, key, selected)}
+      ? {...item, children: mapper(item.children, key, selected)}
       : item
   )
 ]
 
-export const CategoryFacet = compose(
-  withState('list', 'updateList', props => props.values),
-  withHandlers({
-    onChange: ({ list, updateList, onChange }) => (key, selected) => updateList(
-      reduceItems(list, key, selected),
-      () => onChange && onChange(key, selected)
-    )
-  })
-)(props => (
-  <GenericFacet {...props}>
+export const CategoryFacet = props => (
+  <GenericFacet {...props} mapper={mapper} >
     <CategoryBodyFacet />
   </GenericFacet>
-));
+);

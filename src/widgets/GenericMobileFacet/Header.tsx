@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { compose, branch, renderComponent, withHandlers, withProps, renderNothing } from 'recompose';
+import { compose, onlyUpdateForKeys, branch, renderComponent, withHandlers, withProps, renderNothing } from 'recompose';
 import * as cx from 'classnames';
 
 const styles = require('./styles.css');
@@ -44,12 +44,12 @@ export const FacetTitle = branch(
   ({ selectedFacet }: any) => !selectedFacet,
   renderNothing,
   renderComponent(compose(
-    withHandlers({
-      onReset: ({ onReset, name }) => () => onReset(name)
-    }),
     withProps((props: any) => ({
-      showRest: !!props.changes[props.selectedFacet]
-    }))
+      showRest: !!props.changes[props.selectedFacet] || !!props.getSelected(props.selectedFacet)
+    })),
+    withHandlers({
+      onReset: ({ onReset, selectedFacet }) => () => onReset(selectedFacet)
+    })
     )(({ selectedFacet, onReset, showRest }: any) => (
     <div className={styles.facetTitle}>
       <h5 className={styles.facetTitleName}>{ selectedFacet }</h5>
@@ -59,8 +59,11 @@ export const FacetTitle = branch(
 )(renderNothing);
 
 
-export const Header = branch(
-  ({ selectedFacet }: any) => !!selectedFacet,
-  renderComponent(FacetHeader),
-  renderComponent(RootHeader)
+export const Header = compose(
+  onlyUpdateForKeys(['selectedFacet', 'changes', 'hasNotCommittedData']),
+  branch(
+    ({ selectedFacet }: any) => !!selectedFacet,
+    renderComponent(FacetHeader),
+    renderComponent(RootHeader)
+  )
 )(renderNothing);
