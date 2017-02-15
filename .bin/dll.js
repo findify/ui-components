@@ -18,7 +18,7 @@ const vendor = [
 
 export default () => ({
   entry: { vendor },
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
 
   output: {
     path: path.join(process.cwd(), 'node_modules/dll'),
