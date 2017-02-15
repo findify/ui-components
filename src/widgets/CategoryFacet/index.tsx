@@ -3,7 +3,7 @@ import { compose, lifecycle, shouldUpdate, withHandlers, withState } from 'recom
 
 import { CategoryBodyFacet } from 'internals/CategoryBodyFacet';
 
-const { GenericFacet } = require('widgets/GenericFacet');
+const { GenericFacet } = require('internals/GenericFacet');
 
 const mapper = (list, key, selected) => [
   ...list.map(item =>

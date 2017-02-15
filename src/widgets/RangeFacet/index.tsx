@@ -4,8 +4,7 @@ import { compose, withState, withHandlers, defaultProps } from 'recompose';
 import { CheckboxBodyFacet } from 'internals/CheckboxBodyFacet';
 import { RangeBodyFacet } from 'internals/RangeBodyFacet';
 import { valueToKey } from 'helpers/valueToKey';
-const { GenericFacet } = require('widgets/GenericFacet');
-
+const { GenericFacet } = require('internals/GenericFacet');
 
 const mapper = (list, key, value) =>
   list.some(item => item.key === key)
