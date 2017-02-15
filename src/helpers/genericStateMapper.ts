@@ -1,13 +1,10 @@
 import { compose, branch, mapProps, withState, withHandlers, createEagerFactory } from 'recompose';
 
 export const genericStateMapper = (BaseComponent: any) => branch(
-  ({ raw }) => !!raw,
-  mapProps(({ mapper, values, ...rest }: any) => ({
-    ...rest,
-    list: values
-  })),
+  ({ isMobile }) => !!isMobile,
+  props => props,
   compose(
-    withState('list', 'updateList', props => 
+    withState('values', 'updateList', props => 
       props.stateToProps ? props.stateToProps(props) : props.values
     ),
     withHandlers({

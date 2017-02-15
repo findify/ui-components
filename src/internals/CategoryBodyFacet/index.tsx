@@ -14,7 +14,7 @@ export const CategoryBodyFacet = compose(
     rowHeight: 20
   }),
 
-  mapProps(({ list: children, ...rest }) => ({
+  mapProps(({ values: children, ...rest }) => ({
     ...rest,
     ...createCursor({ children }, [], 0),
     children
@@ -26,7 +26,10 @@ export const CategoryBodyFacet = compose(
     toggleExpander: ({ isExpanded, setExpanded }) => () => setExpanded(!isExpanded)
   })
 )
-((props: any) => (
+((props: any) => {
+  console.log(props);
+  
+  return (
   <div>
     <Tree className={styles.wrap} {...props} isRoot selected />
     {
@@ -34,4 +37,4 @@ export const CategoryBodyFacet = compose(
       <ExpandButton expanded={props.isExpanded} onClick={props.toggleExpander} />
     }
   </div>
-));
+)});

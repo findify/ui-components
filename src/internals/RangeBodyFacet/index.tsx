@@ -1,11 +1,16 @@
 import * as React from 'react';
-import { compose, withState, withHandlers, mapProps } from 'recompose';
+import { compose, defaultProps, mapProps, withHandlers, withState } from 'recompose';
 import NumberInput from 'react-number-input';
 import { valueToKey } from 'helpers/valueToKey';
 
 const styles = require('./styles.css');
 
 export const RangeBodyFacet = compose(
+  defaultProps({
+    i18n: {
+      submit: 'go'
+    }
+  }),
   mapProps(({ min, max, ...rest }) => ({
     ...rest,
     min: parseInt(min),
@@ -14,11 +19,11 @@ export const RangeBodyFacet = compose(
   withState('minValue', 'setMin', props => props.min),
   withState('maxValue', 'setMax', props => props.max),
   withHandlers({
-    onCommit: ({ list, onChange, minValue: from, maxValue: to, setMin, setMax, currency }) =>
+    onCommit: ({ values, onChange, minValue: from, maxValue: to, setMin, setMax, currency }) =>
     () => {
       if (!from && !to) return;
       const key = valueToKey({ from, to }, currency);
-      if (list.find(item => item.key === key)) return;
+      if (values.find(item => item.key === key)) return;
       onChange(key, { selected: true, from, to, key });
       setMin(void 0);
       setMax(void 0);

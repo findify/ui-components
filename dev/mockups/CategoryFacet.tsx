@@ -1,9 +1,11 @@
 import * as React from 'react';
+import { noop } from 'lodash';
 
 const props = {
   isOpen: true,
   title: 'Kategori',
   goBackTitle: 'Alla kategorier',
+  onChange: noop,
   values: [  
     {  
       "type":"category",
@@ -12,7 +14,7 @@ const props = {
       "hasChildren":true,
       "key":"Hund",
       "name":"category1", 
-      children: [
+      values: [
         {  
           "type":"category",
           "selected":false,
@@ -20,7 +22,7 @@ const props = {
           "hasChildren":true,
           "key":"Fågel",
           "name":"category1",
-          children: [
+          values: [
             {  
               "type":"category",
               "selected":false,

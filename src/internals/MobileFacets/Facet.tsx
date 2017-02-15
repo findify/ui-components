@@ -2,9 +2,16 @@ import * as React from 'react';
 import { branch, compose, withProps, withHandlers, renderNothing, renderComponent } from 'recompose';
 import * as cx from 'classnames';
 
-import { mapTypeToFacet } from './mapTypeToFacet';
-
 const styles = require('./styles.css');
+
+import { ColorFacet } from 'widgets/ColorFacet';
+import { CheckboxFacet } from 'widgets/CheckboxFacet';
+import { CategoryFacet } from 'widgets/CategoryFacet';
+import { RangeFacet } from 'widgets/RangeFacet';
+
+const components = [
+  ColorFacet, CheckboxFacet, CategoryFacet, RangeFacet
+];
 
 const FacetPreview = compose(
   withProps(({ values }: any) => {
@@ -39,11 +46,21 @@ const FacetPreview = compose(
 ));
 
 
-const FacetBody = withHandlers({
-  onChange: ({ onChange, name }) => (key, data) => onChange(name, key, data)
-})((props: any) => (
+const FacetBody = compose(
+  withHandlers({
+    onChange: ({ onChange, name }) => (key, data) => onChange(name, key, data)
+  }),
+  withProps((props: any) => ({
+    Component: components.find(comp => comp.type === props.type)
+  }))
+)(({
+  getComponent,
+  ...props
+}: any) => (
   <div className={styles.body}>
-    { mapTypeToFacet(props.type)({ ...props, raw: true, mobile: true, maxItemsCount: 20 }) }
+    { 
+      ({ ...props, raw: true, mobile: true, maxItemsCount: 20 })
+    }
   </div>
 ));
 

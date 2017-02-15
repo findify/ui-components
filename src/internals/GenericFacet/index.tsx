@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { compose, withState, withHandlers, renderNothing, renderComponent, branch } from 'recompose';
+import { compose, withState, withHandlers, renderNothing, renderComponent, branch, defaultProps } from 'recompose';
 import * as cx from 'classnames';
 import { genericStateMapper } from 'helpers/genericStateMapper';
 
@@ -7,9 +7,7 @@ const styles = require('./styles.css');
 
 const Content = ({ children, ...rest }) => (
   <div className={styles.content}>
-  {
-    React.Children.map(children, (child: any) => React.cloneElement(child, rest))
-  }
+  { children }
   </div>
 );
 
@@ -18,7 +16,10 @@ const WrappedContent = ({
   title,
   toggleOpen,
   ...rest
-}: any) => (
+}: any) => {
+  console.log(rest);
+  
+  return (
   <div className={styles.wrap}>
     <div className={styles.toggle}>
       <h5 className={styles.title}>{ title }</h5>
@@ -28,20 +29,14 @@ const WrappedContent = ({
     </div>
     { isOpen && <Content {...rest} /> }
   </div>
-);
+)};
 
 export const GenericFacet = compose(
-  genericStateMapper,
-  branch(
-    ({ raw }: any) => raw,
-    renderComponent(Content),
-    renderComponent(
-      compose(
-        withState('isOpen', 'toggleFacet', props => props.isOpen),
-        withHandlers({
-          toggleOpen: ({ isOpen, toggleFacet }: any) => () => toggleFacet(!isOpen)
-        })
-      )(WrappedContent)
-    )
-  )
-)(renderNothing);
+  defaultProps({
+    isOpen: true
+  }),
+  withState('isOpen', 'toggleFacet', props => props.isOpen),
+  withHandlers({
+    toggleOpen: ({ isOpen, toggleFacet }: any) => () => toggleFacet(!isOpen)
+  })
+)(WrappedContent);

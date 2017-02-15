@@ -7,7 +7,7 @@ const styles = require('./styles.css');
 import { Header, FacetTitle } from './Header';
 import { Facet } from './Facet';
 
-export const GenericMobileFacet = compose(
+export const MobileFacets = compose(
   withState('changes', 'updateChanges', {}),
   withState('selectedFacet', 'setSelectedFacet', false),
   withProps(({ changes, facets }) => ({
@@ -69,6 +69,7 @@ export const GenericMobileFacet = compose(
 
 type Response = {
   facets: any[],
+  children: any[],
   changes: any,
   selectedFacet: string|boolean,
   onChange: any,
