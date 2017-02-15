@@ -32,7 +32,11 @@ export function AutocompleteBody({
   );
 
   return (
-    // TODO: Missing block name. It's related to all components
+    // TODO: Missing block name.
+    // TODO: Output className should be: findify-block-autocomplete findify-block-autocomplete_ltr
+    // For elements we need to do: findify-block-autocomplete__element-name
+
+    // Both TODOs are related to all components.
     <div className={cx(styles.root, styles[direction])}>
       {
         direction === 'rtl'
