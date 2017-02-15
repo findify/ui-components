@@ -30,8 +30,9 @@ export function AutocompleteBody({
       title: i18n.productMatchesTitle
     }} />
   );
-  
+
   return (
+    // TODO: Missing block name. It's related to all components
     <div className={cx(styles.root, styles[direction])}>
       {
         direction === 'rtl'
