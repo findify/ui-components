@@ -3,13 +3,11 @@ import { compose, withState } from 'recompose';
 
 const props = {
   options: ['relevant', 'priceAZ', 'priceZA'],
+  title: 'Sortera efter:',
   i18n: {
-    title: 'Sortera efter:',
-    options: {
-      relevant: 'Relevans',
-      priceAZ: 'Pris: Högt till lågt',
-      priceZA: 'Pris: Lågt till högt'
-    }
+    relevant: 'Relevans',
+    priceAZ: 'Pris: Högt till lågt',
+    priceZA: 'Pris: Lågt till högt'
   }
 };
 

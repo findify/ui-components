@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { noop } from 'lodash';
 
-const maximalProps = {
-  suggestionsTitle: 'Search suggestions',
-  productMatchesTitle: 'Product matches',
+const props = {
+  i18n: {
+    suggestionsTitle: 'Search suggestions',
+    productMatchesTitle: 'Product matches',
+    tipTitle: 'Press enter to search',
+  },
   direction: 'ltr',
   query: 'fru',
-  tipTitle: 'Press enter to search',
   onSearchSuggestionClick: noop,
   onTipClick: noop,
-  productMatches: [{
+  products: [{
     link: '/test',
     imageLink: 'http://placehold.it/300x300',
     title: 'Test product',
@@ -34,7 +36,7 @@ const maximalProps = {
     price: '$300.00',
     discountPrice: '$250.00',
   }],
-  searchSuggestions: [
+  suggestions: [
     'fruit',
     'fruit gift',
     'frog',
@@ -45,19 +47,16 @@ const maximalProps = {
   ],
 };
 
-const minimalProps = {
-  searchSuggestions: maximalProps.searchSuggestions,
-  query: "fru",
-  onSearchSuggestionClick: noop
-};
-
 export default ({ Component }) => (
   <div>
     <div style={{ margin: 50 }}>
-      <Component { ...maximalProps } />
+      <Component isMobile { ...props } />
     </div>
     <div style={{ margin: 50 }}>
-      <Component { ...minimalProps } />
+      <Component isMobile isMobileSimple { ...props } />
+    </div>
+    <div style={{ margin: 50 }}>
+      <Component { ...props } />
     </div>
   </div>
 );

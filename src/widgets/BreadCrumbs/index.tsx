@@ -26,7 +26,7 @@ const Filter = compose(
     children: (filtersMapping[name] || filtersMapping[type] || filtersMapping.default)(rest)
   })),
   withHandlers({
-    onRemove: ({ index, onChange }: any) => () => onChange(index)
+    onRemove: ({ onChange, ...rest }: any) => () => onChange(rest)
   }),
 )(({
   children,

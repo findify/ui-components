@@ -4,30 +4,30 @@ const styles = require('./styles.css');
 
 type Props = {
   query: string,
-  searchSuggestions: string[],
+  suggestions: string[],
   onSearchSuggestionClick: (query: string) => void,
-  suggestionsTitle?: string
+  title?: string
 };
 
 export const SearchSuggestions = ({
-  suggestionsTitle,
-  searchSuggestions,
+  title,
+  suggestions,
   onSearchSuggestionClick,
   query
 }: Props) => (
   <div className={styles.wrap}>
     {
-      suggestionsTitle && (
+      title && (
         <div className={styles.title}>
           <span className={styles.autocompleteTitle}>
-            { suggestionsTitle }
+            { title }
           </span>
         </div>
       )
     }
     <div className={styles.list}>
       {
-        searchSuggestions.map((suggestion: string, i: number) => (
+        suggestions.map((suggestion: string, i: number) => (
           <span
             key={i}
             className={styles.item}

@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { camelizeKeys } from 'humps';
-import { Product } from 'internals/Product';
 
 const products = require('../data/products.json');
 
 const props = camelizeKeys({
   products,
   slidesToShow: 5,
-  component: Product,
   title: 'CUSTOMERS WHO VIEWED THIS ALSO VIEWED',
 })
 

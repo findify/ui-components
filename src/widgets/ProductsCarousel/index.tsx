@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { mapProps, defaultProps } from 'recompose';
+import { compose, setDisplayName, mapProps, defaultProps } from 'recompose';
+import { Product } from 'widgets/Product';
 import * as cx from 'classnames';
 
 import './slider.global.css';
@@ -21,15 +22,19 @@ const sliderProps = {
   prevArrow: <Arrow dir='left' />
 };
 
-export const ProductsCarousel = 
-defaultProps({
-  productsToShow: 5
-})
-(({
+export const HOC = compose(
+  setDisplayName('ProductsCarousel'),
+  defaultProps({
+    productsToShow: 5,
+    component: Product
+  })
+);
+
+export const Component = (({
   products,
   title,
   productsToShow: slidesToShow,
-  component: Product
+  component: Component
 }: any) => (
   <div className={styles.wrap}>
     { 
@@ -39,10 +44,12 @@ defaultProps({
       { 
         products.map(product =>
           <div key={product.id}>
-            <Product key={product.id} {...product} />
+            <Component key={product.id} {...product} />
           </div>
         )
       }
     </Slider>
   </div>
 ));
+
+export const ProductsCarousel = HOC(Component);

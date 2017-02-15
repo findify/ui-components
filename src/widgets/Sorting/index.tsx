@@ -6,13 +6,13 @@ const styles = require('./styles.css');
 
 export const Sorting = compose(
   withPropsOnChange(['value'], ({ i18n, options, value }: any) => ({
-    options: options.map(option => ({ value: option, label: i18n.options[option] || option })),
-    value: { value, label: i18n.options[value] }
+    options: options.map(option => ({ value: option, label: i18n[option] || option })),
+    value: { value, label: i18n[value] }
   })),
 )
-(({ i18n, options, onChange, value }: any) =>
+(({ title, i18n, options, onChange, value }: any) =>
   <div className={styles.wrap}>
-    <p className={styles.title}>{i18n.title}</p>
+    { title && <p className={styles.title}>{title}</p> }
     <Dropdown baseClassName={styles.dropdown} onChange={onChange} options={options} value={value} />
   </div>
 );

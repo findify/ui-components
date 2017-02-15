@@ -12,9 +12,9 @@ const Start = mapProps(({ diff }: any) => ({
   <span className={cx(styles.star, iconClass, 'fa')} />
 );
 
-export const RatingWidget = (({
+export const Rating = (({
   value,
-  reviewsCount,
+  count,
 }: Props) =>
   <div className={styles.wrap}>
     <div className={styles.stars}>
@@ -23,8 +23,8 @@ export const RatingWidget = (({
       }
     </div>
     {
-      reviewsCount && (
-        <span className={styles.count}>({reviewsCount})</span>
+      count && (
+        <span className={styles.count}>({ count })</span>
       )
     }
   </div>
@@ -33,5 +33,5 @@ export const RatingWidget = (({
 type Props = {
   value: number,
   // value: 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5,
-  reviewsCount?: number,
+  count?: number,
 };

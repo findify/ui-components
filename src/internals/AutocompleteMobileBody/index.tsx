@@ -3,9 +3,9 @@ import * as cx from 'classnames';
 
 const styles = require('./styles.css');
 
-function AutocompleteMobileWidget({
+export function AutocompleteMobileBody({
   query,
-  searchSuggestions,
+  suggestions,
   onSubmit,
   onClearClick,
   onInput,
@@ -37,7 +37,7 @@ function AutocompleteMobileWidget({
         </form>
         <div className={styles.suggestions}>
           {
-            searchSuggestions.map((suggestion: string, i: number) =>
+            suggestions.map((suggestion: string, i: number) =>
               <span
                 key={i}
                 className={styles.suggestionsItem}
@@ -61,10 +61,8 @@ function highlightSuggestion(value: string, highlighted: string) {
 
 type Props = {
   query: string,
-  searchSuggestions: string[],
+  suggestions: string[],
   onSubmit: (query: string) => void,
   onInput: (query: string) => void,
-  onClearClick: () => void,
+  onClearClick: () => void
 };
-
-export { AutocompleteMobileWidget }

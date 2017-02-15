@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { range } from 'lodash';
-import { branch, compose, defaultProps, pure, renderNothing, withHandlers, withProps } from 'recompose';
+import { 
+  branch, compose, defaultProps, pure, setDisplayName,
+  renderNothing, withHandlers, withProps
+} from 'recompose';
 
 const { Button } = require('./Button');
 const styles = require('./styles.css');
@@ -12,6 +15,7 @@ const getRange = ({ current, total, step }) => {
 };
 
 export const Pagination = compose(
+  setDisplayName('Pagination'),
   defaultProps({
     step: 2,
     i18n: {

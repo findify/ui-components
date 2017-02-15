@@ -1,26 +1,26 @@
 import * as React from 'react';
 
-import { RatingWidget } from 'widgets/Rating';
+import { Rating } from 'widgets/Rating';
 
 const styles = require('./styles.css');
 
 export const ProductMatches = ({
-  productMatchesTitle,
-  productMatches
+  products,
+  title
 }: Props) => (
   <div className={styles.wrap}>
     {
-      productMatchesTitle && (
+      title && (
         <div className={styles.title}>
           <span className="findify-autocomplete-title">
-            {productMatchesTitle}
+            {title}
           </span>
         </div>
       )
     }
     <div className={styles.items}>
       {
-        productMatches && productMatches.map((p: Product, i: number) =>
+        products && products.map((p: Product, i: number) =>
           <a
             className={styles.item}
             href={p.link}
@@ -34,10 +34,7 @@ export const ProductMatches = ({
             {
               p.rating && (
                 <div className={styles.itemRating}>
-                  <RatingWidget
-                    value={p.rating}
-                    reviewsCount={p.reviewsCount}
-                  />
+                  <Rating value={p.rating} count={p.reviewsCount} />
                 </div>
               )
             }
@@ -60,8 +57,8 @@ export const ProductMatches = ({
 );
 
 type Props = {
-  productMatches?: Product[],
-  productMatchesTitle?: string,
+  products?: Product[],
+  title?: string,
 };
 
 type Product = {
