@@ -1,0 +1,15 @@
+.wrap{
+  clear: fix;
+}
+
+.column{
+  float: left;
+  box-sizing: border-box;
+  min-height: 1px;
+}
+
+@for $i from 1 to 12 {
+  .column-$i {
+    width: calc(100 / 12 * $i)%;
+  }
+}

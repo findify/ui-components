@@ -56,7 +56,7 @@ const emulateHelpers = compose(
   })
 );
 
-export default withState('isOpen', 'toggleOpen', true)
+export default withState('isOpen', 'toggleOpen', false)
 (({ Component, toggleOpen, isOpen }: any) => {
   const Container = emulateHelpers(Component);
   return (

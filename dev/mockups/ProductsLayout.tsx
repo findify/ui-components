@@ -1,18 +1,12 @@
 import * as React from 'react';
 import { camelizeKeys } from 'humps';
+import { Product } from 'internals/Product';
 
 const products = require('../data/products.json');
 
 const props = camelizeKeys({
   products,
-  slidesToShow: 5,
-  title: 'CUSTOMERS WHO VIEWED THIS ALSO VIEWED',
-  productProps: {
-    // title: false,
-    // description: false,
-    // price: false,
-    // reviews: false
-  }
+  component: Product
 })
 
 export default ({ Component }) => (

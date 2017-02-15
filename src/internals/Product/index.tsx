@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { setDisplayName } from 'recompose';
 import { format as currencyFormat } from 'currency-formatter';
 
 import { RatingWidget } from 'widgets/Rating';
@@ -25,7 +26,8 @@ const Price = ({ price, compareAt, currency = 'USD' }) => price &&
     }
   </div>
 
-export const Product = ({
+export const Product = setDisplayName('Product')
+(({
   productUrl,
   imageUrl,
   description,
@@ -33,23 +35,21 @@ export const Product = ({
   reviews,
   price,
   compareAt
-}: any) => {
-  return (
-    <a href={productUrl} className={styles.wrap}>
-      <div className={styles.imageWrap}>
-        <img className={styles.image} src={imageUrl} alt={title} />
+}: any) =>
+  <a href={productUrl} className={styles.wrap}>
+    <div className={styles.imageWrap}>
+      <img className={styles.image} src={imageUrl} alt={title} />
+    </div>
+    <div className={styles.description}>
+      <Title text={title} />
+      <Description text={description} />
+    </div>
+    {
+      reviews &&
+      <div className={styles.rating}>
+        <RatingWidget reviewsCount={reviews.totalReviews} value={reviews.averageScore} />
       </div>
-      <div className={styles.description}>
-        <Title text={title} />
-        <Description text={description} />
-      </div>
-      {
-        reviews &&
-        <div className={styles.rating}>
-          <RatingWidget reviewsCount={reviews.totalReviews} value={reviews.averageScore} />
-        </div>
-      }
-      <Price price={price} compareAt={compareAt}/>
-    </a>
-  )
-}
+    }
+    <Price price={price} compareAt={compareAt}/>
+  </a>
+);

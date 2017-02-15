@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { mapProps } from 'recompose';
-import { Product } from 'internals/Product';
+import { mapProps, defaultProps } from 'recompose';
 import * as cx from 'classnames';
 
 import './slider.global.css';
@@ -22,11 +21,15 @@ const sliderProps = {
   prevArrow: <Arrow dir='left' />
 };
 
-export const ProductSuggestions = ({
+export const ProductsCarousel = 
+defaultProps({
+  productsToShow: 5
+})
+(({
   products,
   title,
-  slidesToShow,
-  productProps
+  productsToShow: slidesToShow,
+  component: Product
 }: any) => (
   <div className={styles.wrap}>
     { 
@@ -36,10 +39,10 @@ export const ProductSuggestions = ({
       { 
         products.map(product =>
           <div key={product.id}>
-            <Product key={product.id} {...product} {...productProps} />
+            <Product key={product.id} {...product} />
           </div>
         )
       }
     </Slider>
   </div>
-);
+));

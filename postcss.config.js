@@ -4,6 +4,8 @@ module.exports = ctx => ({
   plugins: compact([
     require('postcss-smart-import'),
     require('postcss-focus'),
+    require('postcss-for'),
+    require('postcss-calc'),
     require('postcss-clearfix'),
     require('postcss-nested'),
     require('postcss-color-function'),
