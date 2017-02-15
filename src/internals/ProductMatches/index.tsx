@@ -12,7 +12,7 @@ export const ProductMatches = ({
     {
       title && (
         <div className={styles.title}>
-          <span className="findify-autocomplete-title">
+          <span className={styles.searchSuggestionsTitle}>
             {title}
           </span>
         </div>
