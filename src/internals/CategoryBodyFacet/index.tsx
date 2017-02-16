@@ -17,7 +17,7 @@ export const CategoryBodyFacet = compose(
     rowHeight: 20
   }),
 
-  mapProps(({ list: children, ...rest }) => ({
+  mapProps(({ values: children, ...rest }) => ({
     ...rest,
     ...createCursor({ children }, [], 0),
     children

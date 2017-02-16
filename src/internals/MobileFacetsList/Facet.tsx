@@ -2,7 +2,7 @@ import * as React from 'react';
 import { branch, compose, withProps, withHandlers, renderNothing, renderComponent } from 'recompose';
 import * as cx from 'classnames';
 
-import { mapTypeToFacet } from './mapTypeToFacet';
+import { mapTypeToFacet } from 'helpers/mapTypeToFacet';
 
 const styles = require('./styles.css');
 
@@ -41,9 +41,12 @@ const FacetPreview = compose(
 
 const FacetBody = withHandlers({
   onChange: ({ onChange, name }) => (key, data) => onChange(name, key, data)
-})((props: any) => (
+})(({
+  children,
+  ...props
+}: any) => (
   <div className={styles.body}>
-    { mapTypeToFacet(props.type)({ ...props, raw: true, mobile: true, maxItemsCount: 20 }) }
+    { React.cloneElement(children, { ...props, isMobile: true, maxItemsCount: 20 }) }
   </div>
 ));
 

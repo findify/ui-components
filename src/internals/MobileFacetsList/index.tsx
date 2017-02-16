@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { compose, withHandlers, withProps, withState } from 'recompose';
+import { compose, setDisplayName, withHandlers, withProps, withState } from 'recompose';
 import * as cx from 'classnames';
 
 const styles = require('./styles.css');
@@ -7,9 +7,12 @@ const styles = require('./styles.css');
 import { Header, FacetTitle } from './Header';
 import { Facet } from './Facet';
 
-export const GenericMobileFacet = compose(
+export const MobileFacetsList = compose(
+  setDisplayName('MobileFacetsList'),
+
   withState('changes', 'updateChanges', {}),
   withState('selectedFacet', 'setSelectedFacet', false),
+
   withProps(({ changes, facets }) => ({
     hasNotCommittedData: !!Object.keys(changes).length,
     facets: facets.map(facet => {
@@ -52,6 +55,7 @@ export const GenericMobileFacet = compose(
   })
 )
 (({
+  children,
   facets,
   ...rest
 }: Response) => (
@@ -61,13 +65,18 @@ export const GenericMobileFacet = compose(
     </div>
     <FacetTitle {...rest}/>
     <div className={styles.content}>
-    { facets.map(facet => <Facet key={facet.name} {...rest} {...facet} />) }
+    { 
+      children.map((child, index) =>
+        <Facet key={facets[index].name} children={child} {...facets[index]} {...rest} />
+      )
+    }
     </div>
   </div>
 ));
 
 
 type Response = {
+  children: any[],
   facets: any[],
   changes: any,
   selectedFacet: string|boolean,

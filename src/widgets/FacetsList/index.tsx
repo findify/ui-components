@@ -2,15 +2,24 @@ import * as React from 'react';
 import { compose, branch, defaultProps, setDisplayName, renderComponent, renderNothing } from 'recompose';
 const styles = require('./styles.css');
 
+import { MobileFacetsList } from 'internals/MobileFacetsList';
+import { DesktopFacetsList } from 'internals/DesktopFacetsList';
 
 export const FacetsList = compose(
   setDisplayName('FacetsList'),
   defaultProps({
-    mobile: false
+    isMobile: false
   }),
   branch(
-    ({ mobile }) => mobile,
-    renderComponent(renderNothing),
-    renderComponent(renderNothing)
+    ({ isMobile }) => isMobile,
+    renderComponent(MobileFacetsList),
+    renderComponent(DesktopFacetsList)
   )
 )(renderNothing)
+
+// type FacetsListType = {
+//   facets: any[],
+//   children: any[],
+//   isMobile: boolean,
+//   onChange: void
+// }

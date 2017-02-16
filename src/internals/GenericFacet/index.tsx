@@ -1,11 +1,10 @@
 import * as React from 'react'
-import { compose, withState, withHandlers, renderNothing, renderComponent, branch } from 'recompose';
+import { branch, compose, defaultProps, mapProps, renderComponent, renderNothing, withHandlers, withState } from 'recompose';
 import * as cx from 'classnames';
-import { genericStateMapper } from 'helpers/genericStateMapper';
 
 const styles = require('./styles.css');
 
-const Content = ({ children, ...rest }) => (
+export const Raw = ({ children, ...rest }) => (
   <div className={styles.content}>
   {
     React.Children.map(children, (child: any) => React.cloneElement(child, rest))
@@ -13,35 +12,48 @@ const Content = ({ children, ...rest }) => (
   </div>
 );
 
-const WrappedContent = ({
+export const Wrapper = (Content) => compose(
+  defaultProps({
+    isOpen: true
+  }),
+  withState('isOpen', 'toggleFacet', props => props.isOpen),
+  withHandlers({
+    toggleOpen: ({ isOpen, toggleFacet }: any) => () => toggleFacet(!isOpen)
+  })
+)(({
   isOpen,
-  title,
   toggleOpen,
   ...rest
-}: any) => (
+}: any) => {
+  console.log(rest);
+  
+  return (
   <div className={styles.wrap}>
     <div className={styles.toggle}>
-      <h5 className={styles.title}>{ title }</h5>
-      <button
-        className={cx(styles.icon, 'fa', isOpen ? 'fa-minus' : 'fa-plus')}
-        onClick={toggleOpen} />
+      <h5 className={styles.title}>{ rest.name }</h5>
+      <button className={cx(styles.icon, 'fa', isOpen ? 'fa-minus' : 'fa-plus')} onClick={toggleOpen} />
     </div>
     { isOpen && <Content {...rest} /> }
   </div>
-);
+)
+});
 
-export const GenericFacet = compose(
-  genericStateMapper,
+export const HOC = (Content, WrappedContent) => compose(
+  mapProps((props: any) => ({
+    ...props,
+    values: props.stateToProps ? props.stateToProps(props) : props.values
+  })),
+  withHandlers({
+    onChange: ({ name, type, values, onChange }: any) => changes => {
+      onChange({ type, name, changes });
+    }
+  }),
   branch(
-    ({ raw }: any) => raw,
+    // Return raw content for Mobile wrapper
+    ({ isMobile }: any) => isMobile,
     renderComponent(Content),
-    renderComponent(
-      compose(
-        withState('isOpen', 'toggleFacet', props => props.isOpen),
-        withHandlers({
-          toggleOpen: ({ isOpen, toggleFacet }: any) => () => toggleFacet(!isOpen)
-        })
-      )(WrappedContent)
-    )
+    renderComponent(WrappedContent(Content))
   )
 )(renderNothing);
+
+export const GenericFacet = HOC(Raw, Wrapper);

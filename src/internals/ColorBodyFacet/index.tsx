@@ -31,12 +31,12 @@ const Item = compose(
 
 
 export const ColorBodyFacet = ({
-  list,
+  values,
   ...rest
 }: any) => (
   <div className={styles.list}>
     {
-      list.map(item => <Item {...rest} {...item} {...{title: item.key}} />)
+      values.map(item => <Item {...rest} {...item} {...{title: item.key}} />)
     }
   </div>
 );
