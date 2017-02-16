@@ -14,6 +14,7 @@ const props = {
   total: 20,
   query: 'something',
   i18n: {
+    // TODO: If we are not passed `i18n.title` prop - we shouldn't render this string
     title: 'Showing ${ total } results for ${ query }:',
   }
 };
