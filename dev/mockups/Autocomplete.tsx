@@ -38,6 +38,7 @@ const props = {
     price: '$300.00',
     discountPrice: '$250.00',
   }],
+  // TODO: Should match SA response data
   suggestions: [
     'fruit',
     'fruit gift',
