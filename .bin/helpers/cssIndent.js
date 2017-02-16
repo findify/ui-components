@@ -15,5 +15,6 @@ export const getLocalIdent = (loaderContext, _, localName) => {
     .map(element => mapper[element] || element)
     .join('-');
 
-	return `findify-${decamelize(sourcePath, { separator: '-' })}__${localName}`
+  const className = localName === 'root' ? '' : '__' + localName;
+	return `findify-${decamelize(sourcePath, { separator: '-' })}${className}`;
 };

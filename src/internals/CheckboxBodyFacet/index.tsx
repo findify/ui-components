@@ -18,14 +18,14 @@ export const CheckboxBodyFacet = compose(
   withState('search', 'setSearch', ''),
   withState('expanded', 'setExpanded', false),
 
-  withPropsOnChange(['list'], ({ list }) => ({
-    selectedItems: list.filter(item => item.selected)
+  withPropsOnChange(['values'], ({ values }) => ({
+    selectedItems: values.filter(item => item.selected)
   })),
 
-  withPropsOnChange(['list', 'search'], ({ list, search }) => {
+  withPropsOnChange(['values', 'search'], ({ values, search }) => {
     const regexp = new RegExp(search, 'ig');
     return {
-      notSelectedItems: list.filter(item => !item.selected && item.key.match(regexp))
+      notSelectedItems: values.filter(item => !item.selected && item.key.match(regexp))
     }
   }),
 
