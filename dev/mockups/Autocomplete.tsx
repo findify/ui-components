@@ -13,6 +13,7 @@ const props = {
   onSearchSuggestionClick: noop,
   onTipClick: noop,
   // TODO: Need to change product interface, to match search API data interface.
+  // TODO: Need to rename `products` prop to `items`.
   products: [{
     link: '/test',
     imageLink: 'http://placehold.it/300x300',
