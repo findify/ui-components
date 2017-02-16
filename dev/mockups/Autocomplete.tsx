@@ -8,9 +8,11 @@ const props = {
     tipTitle: 'Press enter to search',
   },
   direction: 'ltr',
+  // TODO: Replace `query` prop by `meta` prop from search API.
   query: 'fru',
   onSearchSuggestionClick: noop,
   onTipClick: noop,
+  // TODO: Need to change product interface, to match search API data interface.
   products: [{
     link: '/test',
     imageLink: 'http://placehold.it/300x300',
