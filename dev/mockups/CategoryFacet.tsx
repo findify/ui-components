@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const props = {
   isOpen: true,
-  // `title` and `goBackTitle` should be in `i18n` prop.
+  // `goBackTitle` should be in `i18n` prop.
   title: 'Kategori',
   goBackTitle: 'Alla kategorier',
   values: [  
