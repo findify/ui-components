@@ -11,6 +11,8 @@ const props = {
   query: 'fru',
   onSearchSuggestionClick: noop,
   onTipClick: noop,
+  // TODO: Need to change product interface, to match search API data interface.
+  // TODO: Need to rename `products` prop to `items`.
   products: [{
     link: '/test',
     imageLink: 'http://placehold.it/300x300',
@@ -36,6 +38,7 @@ const props = {
     price: '$300.00',
     discountPrice: '$250.00',
   }],
+  // TODO: Should match SA response data
   suggestions: [
     'fruit',
     'fruit gift',

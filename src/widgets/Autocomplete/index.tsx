@@ -5,6 +5,8 @@ import { pick } from 'lodash';
 import { AutocompleteBody } from 'internals/AutocompleteBody';
 import { AutocompleteMobileBody } from 'internals/AutocompleteMobileBody';
 
+// TODO: should have className `findify-widgets-autocomplete`
+// TODO: children of `findify-widgets-autocomplete` should be:
 export const Autocomplete = compose(
   setDisplayName('Autocomplete'),
   branch(
