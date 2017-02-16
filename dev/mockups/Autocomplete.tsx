@@ -8,7 +8,6 @@ const props = {
     tipTitle: 'Press enter to search',
   },
   direction: 'ltr',
-  // TODO: Replace `query` prop by `meta` prop from search API.
   query: 'fru',
   onSearchSuggestionClick: noop,
   onTipClick: noop,
