@@ -41,6 +41,17 @@
 `value`  | number   | *true*     | -        | Value 1-5 with step 0.5
 `count`  | number   | *true*     | -        | Number of reviews
 
+
+### `BreadCrumbs`
+
+	Property	|	Type    |	Required  | Default   |	Description
+:-----------|:--------|:----------|:----------|:-----------
+`facets`  | array   | *true*     | -        | Selected facets array
+`query`  | string   | false     | -        | Search query string if present
+`onChange`  | function   | *true*     | -        | Callback function on remove facet from breadcrumbs
+`i18n`  | object   | false     | [i18n](#i18n)       | Title template
+
+
 ### `Pagination`
 
 	Property	|	Type    |	Required  | Default   |	Description

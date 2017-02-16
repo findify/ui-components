@@ -2,8 +2,7 @@ import * as React from 'react';
 import { compose, withState } from 'recompose';
 
 const props = {
-  // TODO: Use `facets` instead of `meta.filters` in SA response
-  filters: [
+  facets: [
     {type: "category", name: "category1", values: ["Sleeve"]},
     {type: "terms", name: "color", values: ["Blue"]},
     {type: "terms", name: "color", values: ["White"]},

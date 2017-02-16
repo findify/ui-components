@@ -47,13 +47,13 @@ export const BreadCrumbs = compose(
   }))
 )(({
   title,
-  filters,
+  facets,
   onChange
 }: any) =>
   <div className={styles.wrap}>
     <p className={styles.title}>{title}</p>
     {
-      filters.map((filter, index) =>
+      facets.map((filter, index) =>
         <Filter {...filter} key={filter.values[0]} {...{ index, onChange }} />)
     }
   </div>
