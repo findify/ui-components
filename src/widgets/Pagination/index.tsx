@@ -14,7 +14,7 @@ const getRange = ({ current, total, step }) => {
   return range(min < 1 ? 1 : min, max > total ? total + 1 : max);
 };
 
-// TODO: Should be stateless component
+// RESOLVED: TODO: Should be stateless component
 export const Pagination = compose(
   setDisplayName('Pagination'),
   defaultProps({

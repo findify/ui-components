@@ -31,7 +31,7 @@ export const HOC = compose(
 );
 
 export const Component = (({
-  products,
+  items,
   title,
   productsToShow: slidesToShow,
   component: Component
@@ -42,7 +42,7 @@ export const Component = (({
     }
     <Slider {...{ ...sliderProps, slidesToShow }}>
       { 
-        products.map(product =>
+        items.map(product =>
           <div key={product.id}>
             <Component key={product.id} {...product} />
           </div>

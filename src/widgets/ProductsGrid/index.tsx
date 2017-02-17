@@ -13,7 +13,7 @@ const HOC = compose(
 );
 
 export const Component = ({
-  products,
+  items,
   className,
   itemClassName,
   columns,
@@ -21,7 +21,7 @@ export const Component = ({
 }: any) => (
   <Grid columns={String(12 / columns)} className={className}>
     { 
-      products.map(product =>
+      items.map(product =>
         <Component key={product.id} {...product} columnClass={itemClassName}/>
       )
     }

@@ -1,5 +1,8 @@
 import * as React from 'react'
-import { branch, compose, defaultProps, mapProps, renderComponent, renderNothing, withHandlers, withState } from 'recompose';
+import {
+  branch, compose, defaultProps, mapProps,
+  renderComponent, renderNothing, withHandlers, withState
+} from 'recompose';
 import * as cx from 'classnames';
 
 const styles = require('./styles.css');
@@ -35,9 +38,9 @@ export const Wrapper = (Content) => compose(
 ));
 
 export const HOC = (Content, WrappedContent) => compose(
-  mapProps((props: any) => ({
+  mapProps(({ stateToProps, ...props }: any) => ({
     ...props,
-    values: props.stateToProps ? props.stateToProps(props) : props.values
+    values: stateToProps ? stateToProps(props) : props.values
   })),
   withHandlers({
     onChange: ({ name, type, values, onChange }: any) => changes => {
