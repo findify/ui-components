@@ -75,11 +75,14 @@ type Props = {
   products?: Product[],
   onTipClick?: () => void,
   // direction: 'ltr' | 'rtl',
-  direction?: string,
-  i18n: {
-    suggestionsTitle?: string,
-    productMatchesTitle?: string,
-    tipTitle?: string,
+  // TODO:
+  config: {
+    direction?: string,
+    i18n: {
+      suggestionsTitle?: string,
+      productMatchesTitle?: string,
+      tipTitle?: string,
+    }
   }
 };
 

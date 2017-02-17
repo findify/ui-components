@@ -4,13 +4,15 @@ import { compose, withState } from 'recompose';
 const props = {
   options: ['relevant', 'priceAZ', 'priceZA'],
   // RESOLVED: TODO: `title` should be in `i18n`
-  i18n: {
-    // RESOLVED: TODO: All these 3 keys should be in `options` object.
-    title: 'Sort by:',
-    options: {
-      relevant: 'Relevans',
-      priceAZ: 'Pris: Högt till lågt',
-      priceZA: 'Pris: Lågt till högt'
+  config: {
+    i18n: {
+      // RESOLVED: TODO: All these 3 keys should be in `options` object.
+      title: 'Sort by:',
+      options: {
+        relevant: 'Relevans',
+        priceAZ: 'Pris: Högt till lågt',
+        priceZA: 'Pris: Lågt till högt'
+      }
     }
   }
 };

@@ -5,7 +5,7 @@ const { Product } = require('widgets/Product');
 const { Grid } = require('widgets/Grid');
 
 const HOC = compose(
-  setDisplayName('ProductsGrid'),
+  setDisplayName('ProductsList'),
   defaultProps({
     columns: 3,
     component: Product
@@ -17,15 +17,16 @@ export const Component = ({
   className,
   itemClassName,
   columns,
-  component: Component
+  component: Component,
+  onProductClick
 }: any) => (
   <Grid columns={String(12 / columns)} className={className}>
     { 
       items.map(product =>
-        <Component key={product.id} {...product} columnClass={itemClassName}/>
+        <Component key={product.id} {...product} onClick={onProductClick} columnClass={itemClassName}/>
       )
     }
   </Grid>
 );
 
-export const ProductsGrid = HOC(Component);
+export const ProductsList = HOC(Component);
