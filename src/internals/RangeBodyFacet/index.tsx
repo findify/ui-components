@@ -19,7 +19,7 @@ export const RangeBodyFacet = compose(
       if (!from && !to) return;
       const key = valueToKey({ from, to }, currency);
       if (values.find(item => item.key === key)) return;
-      onChange(key, { selected: true, from, to, key });
+      onChange({ selected: true, from, to, key });
       setMin(void 0);
       setMax(void 0);
     },

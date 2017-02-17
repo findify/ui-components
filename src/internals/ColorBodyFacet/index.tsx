@@ -12,20 +12,21 @@ const Item = compose(
     checkMarkStyles: ({ color: color(title).isDark() ? '#fff' : '#333'})
   })),
   withHandlers({
-    onClick: ({ onChange, title, selected }: any) => e => onChange(title, !selected),
+    onClick: ({ onChange, selected, item }: any) => e => 
+      onChange({ ...item, selected: !item.selected }),
   })
 )(({
   title,
   background,
+  item,
   onClick,
-  selected,
   checkMarkStyles,
 }: any) =>
   <button
     className={cx(styles.item, title === 'Multicolor' && 'multiply-gradient')}
     style={{ background }}
     onClick={onClick}>
-    { selected && <span style={checkMarkStyles} className={cx(styles.checkMark, 'fa', 'fa-check')}/>}
+    { item.selected && <span style={checkMarkStyles} className={cx(styles.checkMark, 'fa', 'fa-check')}/>}
   </button>
 );
 
@@ -36,7 +37,7 @@ export const ColorBodyFacet = ({
 }: any) => (
   <div className={styles.list}>
     {
-      values.map(item => <Item {...rest} {...item} {...{title: item.key}} />)
+      values.map(item => <Item key={item.key} {...rest} {...{title: item.key, item}} />)
     }
   </div>
 );

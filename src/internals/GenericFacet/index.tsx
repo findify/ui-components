@@ -24,10 +24,7 @@ export const Wrapper = (Content) => compose(
   isOpen,
   toggleOpen,
   ...rest
-}: any) => {
-  console.log(rest);
-  
-  return (
+}: any) => (
   <div className={styles.wrap}>
     <div className={styles.toggle}>
       <h5 className={styles.title}>{ rest.name }</h5>
@@ -35,8 +32,7 @@ export const Wrapper = (Content) => compose(
     </div>
     { isOpen && <Content {...rest} /> }
   </div>
-)
-});
+));
 
 export const HOC = (Content, WrappedContent) => compose(
   mapProps((props: any) => ({
