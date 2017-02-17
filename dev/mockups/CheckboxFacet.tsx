@@ -3,6 +3,7 @@ import * as React from 'react';
 const props = {
   isOpen: true,
   title: 'Checkbox',
+  // TODO: Should be in `i18n` object
   values: [  
     {  
       "key":"Aktiv",

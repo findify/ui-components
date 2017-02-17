@@ -7,6 +7,8 @@ import { Rating } from 'widgets/Rating';
 const styles = require('./styles.css');
 
 
+// TODO: Change props interface according SA response
+
 const Title = ({ text }) => text &&
   <h5 className={styles.title}>{text}</h5>
 

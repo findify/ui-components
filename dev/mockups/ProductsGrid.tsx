@@ -4,6 +4,7 @@ import { camelizeKeys } from 'humps';
 const products = require('../data/products.json');
 
 const props = camelizeKeys({
+  // TODO: need to rename `products` prop to items to correspond SA api.
   products,
 })
 
