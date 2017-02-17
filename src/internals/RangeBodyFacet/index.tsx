@@ -2,6 +2,7 @@ import * as React from 'react';
 import { compose, withState, withHandlers, mapProps } from 'recompose';
 import NumberInput from 'react-number-input';
 import { valueToKey } from 'helpers/valueToKey';
+import { getRangeFacetKey } from 'helpers/getRangeFacetKey';
 
 const styles = require('./styles.css');
 
@@ -17,9 +18,10 @@ export const RangeBodyFacet = compose(
     onCommit: ({ values, onChange, minValue: from, maxValue: to, setMin, setMax, currency }) =>
     () => {
       if (!from && !to) return;
-      const key = valueToKey({ from, to }, currency);
+      const label = valueToKey({ from, to }, currency);
+      const key = getRangeFacetKey({ from, to });
       if (values.find(item => item.key === key)) return;
-      onChange({ selected: true, from, to, key });
+      onChange({ selected: true, from, to, key, label});
       setMin(void 0);
       setMax(void 0);
     },

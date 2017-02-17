@@ -16,10 +16,3 @@ export const FacetsList = compose(
     renderComponent(DesktopFacetsList)
   )
 )(renderNothing)
-
-// type FacetsListType = {
-//   facets: any[],
-//   children: any[],
-//   isMobile: boolean,
-//   onChange: void
-// }

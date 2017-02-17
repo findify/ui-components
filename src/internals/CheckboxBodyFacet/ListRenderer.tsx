@@ -42,7 +42,7 @@ export const ListRenderer = branch(
     <div className={cx(styles.list, className)}>
       { 
         [...items.slice(0, maxItemsCount)].map(item =>
-          <Item item={item} key={item.key} {...rest} title={item.key} />
+          <Item item={item} key={item.key} {...rest} title={item.label || item.key} />
         )
       }
     </div>

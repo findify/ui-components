@@ -1,6 +1,3 @@
-import './styles.global.css';
-
-
 export { FacetsLayout } from './layouts/Facets';
 // export { FacetsList } from './widgets/FacetsList';
 // export { Autocomplete } from './widgets/Autocomplete';

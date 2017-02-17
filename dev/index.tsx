@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
 import { withMockup } from './helpers/withMockup';
+import '../src/styles.global.css';
 
 const root = document.createElement('div');
 document.body.appendChild(root);

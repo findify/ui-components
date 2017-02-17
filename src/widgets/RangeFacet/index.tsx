@@ -12,7 +12,11 @@ const mapper = (list, key, value) =>
   : [...list, value];
 
 const stateToProps = props =>
-  props.values.map(value => ({...value, key: valueToKey(value, props.currency) }));
+  props.values.map(value => ({
+    ...value,
+    key: [value.from, value.to].join('_'),
+    label: valueToKey(value, 'USD')
+  }));
 
 export const RangeFacet = compose(
   defaultProps({

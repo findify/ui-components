@@ -21,11 +21,8 @@ export const Tree = compose(
   ),
 
   withHandlers({
-    onClick: ({ onChange, selected, title, name, ...rest }: any) => () => {
-      console.log(rest);
-      
+    onClick: ({ onChange, selected, title, name, ...rest }: any) => () =>
       onChange({ key: title, selected: !selected })
-    }
   }),
 
   withProps(({ children, level }) => ({

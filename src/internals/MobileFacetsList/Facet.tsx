@@ -39,16 +39,14 @@ const FacetPreview = compose(
 ));
 
 
-const FacetBody = withHandlers({
-  onChange: ({ onChange, name }) => (key, data) => onChange(name, key, data)
-})(({
+const FacetBody = ({
   children,
   ...props
 }: any) => (
   <div className={styles.body}>
     { React.cloneElement(children, { ...props, isMobile: true, maxItemsCount: 20 }) }
   </div>
-));
+);
 
 
 export const Facet = compose(

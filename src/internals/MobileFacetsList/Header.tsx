@@ -27,7 +27,7 @@ const RootHeader = branch(
 const FacetHeader = branch(
   ({ changes, selectedFacet }: any) => !!changes[selectedFacet],
   renderComponent(({ onCommit }) => (
-    <Button onClick={onCommit}>
+    <Button onClick={() => onCommit()}>
       OK
     </Button>
   )),
@@ -48,7 +48,10 @@ export const FacetTitle = branch(
       showRest: !!props.changes[props.selectedFacet] || !!props.getSelected(props.selectedFacet)
     })),
     withHandlers({
-      onReset: ({ onReset, selectedFacet }) => () => onReset(selectedFacet)
+      onReset: ({ onReset, selectedFacet, facets }) => () => {
+        const facetType = facets.find(facet => facet.name === selectedFacet).type;
+        onReset(facetType, selectedFacet)
+      }
     })
     )(({ selectedFacet, onReset, showRest }: any) => (
     <div className={styles.facetTitle}>

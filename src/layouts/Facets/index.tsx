@@ -6,14 +6,11 @@ const { FacetsList } = require('widgets/FacetsList');
 
 export const FacetsLayout = compose(
   withHandlers({
-    onChangeMobile: ({ onChange }) => (facets: any[]) => {
-      console.log(facets);
-      
-      // facets.forEach(facet => onChange(facet)
-    }
+    onChangeMobile: ({ onChange }) => (facets: any[]) =>
+      facets.forEach(facet => onChange(facet))
   })
 )(({
-  isMobile,
+  isMobile = true,
   facets,
   onChange,
   onChangeMobile
