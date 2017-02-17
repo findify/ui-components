@@ -98,3 +98,16 @@ class Provider extends React.Component {
 
 Dom.render(<Provider config={config}/>, '#div')
 */
+
+/*const Layout = () => (
+  <div>
+    <DesktopFacets onClick={...} facets={facet}>
+      { facets.map(facet => facetsMapper(facet.type)({...facet }))}
+    </DesktopFacets>
+    <MobileFacets onClick={...} facets={facet}>
+      <CheckboxFacet {...facet[1]} />
+      <RangeFacet />
+      <CheckboxFacet />
+    </DesctopFacets>
+  </div>
+)*/
