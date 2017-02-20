@@ -10,7 +10,7 @@ const Column = createEagerFactory(({ className, children, columnClass }: any) =>
   </div>
 ))
 
-export const Grid = compose(
+export const Grid: any = compose(
   setDisplayName('Grid'),
   withPropsOnChange(['columns', 'children'], ({ columns, children }: GridType) => {
     const classNames = columns.split('|').map(value => styles[`column-${value}`]);
@@ -29,7 +29,6 @@ export const Grid = compose(
     { children }
   </div>
 ));
-
 
 type GridType = {
   children: any,

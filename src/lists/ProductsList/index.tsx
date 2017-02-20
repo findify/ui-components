@@ -30,3 +30,9 @@ export const Component = ({
 );
 
 export const ProductsList = HOC(Component);
+
+type ProductsListType = {
+  columns: string | number,
+  onProductClick: void,
+  items: any[]
+};
