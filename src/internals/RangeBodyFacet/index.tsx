@@ -15,10 +15,10 @@ export const RangeBodyFacet = compose(
   withState('minValue', 'setMin', props => props.min),
   withState('maxValue', 'setMax', props => props.max),
   withHandlers({
-    onCommit: ({ values, onChange, minValue: from, maxValue: to, setMin, setMax, currency }) =>
+    onCommit: ({ values, onChange, minValue: from, maxValue: to, setMin, setMax, config }) =>
     () => {
       if (!from && !to) return;
-      const label = valueToKey({ from, to }, currency);
+      const label = valueToKey({ from, to }, config.currency);
       const key = getRangeFacetKey({ from, to });
       if (values.find(item => item.key === key)) return;
       onChange({ selected: true, from, to, key, label});
@@ -34,7 +34,7 @@ export const RangeBodyFacet = compose(
   updateMin,
   updateMax,
   onCommit,
-  currency,
+  config,
   max,
   min,
   i18n
@@ -42,15 +42,15 @@ export const RangeBodyFacet = compose(
   <div className={styles.wrap}>
     <div className={styles.inputWrap}>
       <NumberInput className={styles.input} value={minValue} min={min} max={maxValue} onChange={updateMin}/>
-      <span className={styles.currency}>{currency}</span>
+      <span className={styles.currency}>{config.currency}</span>
     </div>
     <div className={styles.separator}>-</div>
     <div className={styles.inputWrap}>
       <NumberInput className={styles.input} value={maxValue} min={minValue} max={max} onChange={updateMax}/>
-      <span className={styles.currency}>{currency}</span>
+      <span className={styles.currency}>{config.currency}</span>
     </div>
     <div className={styles.commitWrap}>
-      <button className={styles.button} onClick={onCommit}>{i18n.submit}</button>
+      <button className={styles.button} onClick={onCommit}>{config.i18n.submit}</button>
     </div>
   </div>
 );

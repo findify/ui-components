@@ -1,5 +1,4 @@
 import { compose, defaultProps, flattenProp, mapProps } from 'recompose';
-import { camelizeKeys } from 'humps';
 import { withFacets } from './withFacets';
 import { withMeta } from './withMeta';
 
@@ -8,7 +7,7 @@ const config = require('../data/config.ts').default;
 
 export const withMJS = compose(
   defaultProps({
-    response: camelizeKeys(response),
+    response,
     config
   }),
 

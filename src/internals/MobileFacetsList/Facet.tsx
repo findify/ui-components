@@ -19,14 +19,14 @@ const FacetPreview = compose(
     onSelect: ({ name, setSelectedFacet }) => () => setSelectedFacet(name)
   })
 )(({
-  name,
+  label,
   onSelect,
   onReset,
   hasSelectedItems
 }: any) => (
   <button className={styles.preview} onClick={onSelect}>
     <div className={styles.previewContent}>
-      <h5 className={styles.previewTitle}>{ name }</h5>
+      <h5 className={styles.previewTitle}>{ label }</h5>
     </div>
     <div className={styles.previewActions}>
       {
@@ -44,12 +44,18 @@ const FacetBody = ({
   ...props
 }: any) => (
   <div className={styles.body}>
-    { React.cloneElement(children, { ...props, isMobile: true, maxItemsCount: 20 }) }
+    { 
+      React.cloneElement(children, {
+        ...props,
+        isMobile: true,
+        maxItemsCount: 20 
+      })
+    }
   </div>
 );
 
 
-export const Facet = compose(
+export const Facet: any = compose(
   branch(
     ({ selectedFacet }) => !selectedFacet,
     renderComponent(FacetPreview),

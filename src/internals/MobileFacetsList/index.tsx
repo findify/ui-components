@@ -98,17 +98,24 @@ export const MobileFacetsList = compose(
 (({
   children,
   facets,
+  config,
   ...rest
 }: Response) => (
   <div className={cx(styles.wrap, !rest.selectedFacet && styles.wrapDark)}>
     <div className={styles.header}>
-      <Header {...rest} />
+      <Header {...rest} config={config} />
     </div>
-    <FacetTitle {...rest} {...{ facets }}/>
+    <FacetTitle {...rest} facets={facets} config={config} />
     <div className={styles.content}>
     { 
       children.map((child, index) =>
-        <Facet key={facets[index].name} children={child} {...facets[index]} {...rest} />
+        <Facet
+          key={facets[index].name}
+          label={config.labels[facets[index].name]}
+          config={config[facets[index].type]}
+          children={child}
+          {...rest}
+          {...facets[index]} />
       )
     }
     </div>
@@ -123,5 +130,6 @@ type Response = {
   selectedFacet: string|boolean,
   onChange: any,
   onCommit: any,
-  onReset: any
+  onReset: any,
+  config: any
 }

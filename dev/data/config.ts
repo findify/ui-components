@@ -16,7 +16,7 @@ export default {
       lines: 3,
     },
     description: {
-      lines: 5
+      lines: 3
     }
 
   },
@@ -49,15 +49,25 @@ export default {
     range: {
       currency: 'USD',
       i18n: {
-        go: 'Apply'
+        submit: 'Apply'
       }
     },
 
     labels: {
-      key: 'label',
-      key2: 'label',
-      key3: 'label',
-      key4: 'label',
+      'category': 'Hund',
+      'custom_fields.manufacturer': 'Manufacturer',
+      'price': 'Price',
+      'custom_fields.hundkategori': 'Hundkategori',
+      'custom_fields.livsstadium': 'Livsstadium',
+      'custom_fields.rasstorlekarflerval': 'Rasstorlekarflerval',
+      'custom_fields.standardnetto': 'Standardnetto',
+      'custom_fields.tuggbenmaterial': 'Tuggbenmaterial',
+      'custom_fields.leksaksort': 'Leksaksort',
+      'custom_fields.konsistens': 'Konsistens',
+      'custom_fields.leksakstorlek': 'Leksakstorlek',
+      'custom_fields.matplats_storlek': 'Matplats Storlek',
+      'custom_fields.koppelmaterial': 'Koppelmaterial',
+      'custom_fields.tuggtyp': 'Tuggtyp',
     },
   
     i18n: {

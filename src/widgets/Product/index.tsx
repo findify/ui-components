@@ -14,6 +14,7 @@ import { stringify } from 'querystring';
 import { Rating } from 'widgets/Rating';
 import * as Truncate from 'react-truncate';
 import { merge } from 'lodash';
+import { camelizeKeys } from 'humps';
 
 const styles = require('./styles.css');
 
@@ -69,17 +70,7 @@ export const HOC = compose(
   setDisplayName('Product'),
   pure,
 
-  mapProps(({
-    productUrl,
-    imageUrl,
-    compareAt,
-    ...rest
-  }: any) => ({
-    url: productUrl,
-    image: imageUrl,
-    oldPrice: compareAt,
-    ...rest
-  })),
+  mapProps(props => camelizeKeys(props)),
 
   withPropsOnChange(['image'], ({ image, imageQuery }: any) => ({
     image: imageQuery ? `${image}?${stringify(imageQuery)}` : image
@@ -101,21 +92,21 @@ export const HOC = compose(
 );
 
 export const Component = (({
-  url,
-  image,
+  productUrl,
+  imageUrl,
   imageQuery,
   description,
   title,
   reviews,
   price,
-  oldPrice,
+  compareAt,
   currency,
   onClick,
   config,
 }: any) => (
-  <a onClick={onClick} href={url} className={styles.wrap}>
+  <a onClick={onClick} href={productUrl} className={styles.wrap}>
     <div className={styles.imageWrap}>
-      <img className={styles.image} src={image} alt={title} />
+      <img className={styles.image} src={imageUrl} alt={title} />
     </div>
     <div className={styles.description}>
       <Title text={title} config={config.title} />
@@ -127,7 +118,7 @@ export const Component = (({
         <Rating count={reviews.totalReviews} value={reviews.averageScore} />
       </div>
     }
-    <Price price={price} oldPrice={oldPrice} currency={config.currency} />
+    <Price price={price} oldPrice={compareAt} currency={config.currency} />
   </a>
 ));
 

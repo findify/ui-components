@@ -1,7 +1,14 @@
 import * as React from 'react'
 import {
-  branch, compose, defaultProps, mapProps,
-  renderComponent, renderNothing, withHandlers, withState
+  branch,
+  compose,
+  defaultProps,
+  mapProps,
+  renderComponent,
+  renderNothing,
+  setDisplayName,
+  withHandlers,
+  withState
 } from 'recompose';
 import * as cx from 'classnames';
 
@@ -26,11 +33,12 @@ export const Wrapper = (Content) => compose(
 )(({
   isOpen,
   toggleOpen,
+  label,
   ...rest
 }: any) => (
   <div className={styles.wrap}>
     <div className={styles.toggle}>
-      <h5 className={styles.title}>{ rest.name }</h5>
+      <h5 className={styles.title}>{ label }</h5>
       <button className={cx(styles.icon, 'fa', isOpen ? 'fa-minus' : 'fa-plus')} onClick={toggleOpen} />
     </div>
     { isOpen && <Content {...rest} /> }
@@ -38,6 +46,7 @@ export const Wrapper = (Content) => compose(
 ));
 
 export const HOC = (Content, WrappedContent) => compose(
+  setDisplayName('GenericFacet'),
   mapProps(({ stateToProps, ...props }: any) => ({
     ...props,
     values: stateToProps ? stateToProps(props) : props.values

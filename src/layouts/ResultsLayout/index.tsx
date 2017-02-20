@@ -21,54 +21,57 @@ export const ResultsLayout = ({
   onPageChange,
   onSortChange,
   onBreadCrumbRemove,
-}) => (
-  <div>
-    <BreadCrumbs
-      {...response.meta}
-      className={styles.breadcrumbs}
-      onChange={onBreadCrumbRemove}
-      config={{ ...config.breadcrumbs, facets: config.facets }} />
+}) => {
+  console.log(response);
+  
+  return (
+    <div>
+      <BreadCrumbs
+        {...response.meta}
+        className={styles.breadcrumbs}
+        onChange={onBreadCrumbRemove}
+        config={{ ...config.breadcrumbs, facets: config.facets }} />
 
-    <Grid columns='6'>
-      <div />
       <Sorting
         className={styles.sort}
-        style={{ marginLeft: 'auto' }}
         value={response.meta.sort || 'relevant'}
         onChange={onSortChange}
         options={['relevant', 'priceAZ', 'priceZA']}
         config={config.sorting} />
-    </Grid>
 
-    <Grid columns='4|8'>
-      <div className={styles.filters}>
-        <FacetsList isMobile={isMobile} facets={response.facets} onChange={onFacetsChange}>
-          {
-            response.facets.map(facet =>
-              mapTypeToFacet(facet.type)({
-                ...facet,
-                isMobile,
-                key: facet.name
-              })
-            )
-          }
-        </FacetsList>
-      </div>
-      <div className={styles.products}>
-        <ProductsList
-          config={{ ...config.productsGrid, product: config.product }}
-          columnClass={styles.product}
-          items={response.products}
-          onProductClick={onProductClick} />
-        <Pagination
-          onChange={onPageChange}
-          style={{ textAlign: 'center' }}
-          config={config.pagination}
-          total={Math.ceil(response.meta.total / response.meta.limit)}
-          current={response.meta.offset / response.meta.limit}
-          />
-      </div>
-    </Grid>
+      <Grid columns='4|8'>
+        <div className={styles.filters}>
+          <FacetsList
+            isMobile={isMobile}
+            config={config.facets}
+            facets={response.facets}
+            onChange={onFacetsChange}>
+            {
+              response.facets.map(facet =>
+                mapTypeToFacet(facet.type)({ ...facet, isMobile, key: facet.name })
+              )
+            }
+          </FacetsList>
+        </div>
+    
+        <div className={styles.products}>
+    
+          <ProductsList
+            config={{ ...config.productsGrid, product: config.product }}
+            columnClass={styles.product}
+            items={response.products}
+            onProductClick={onProductClick} />
+    
+          <Pagination
+            onChange={onPageChange}
+            style={{ textAlign: 'center' }}
+            config={config.pagination}
+            total={Math.ceil(response.meta.total / response.meta.limit)}
+            current={response.meta.offset / response.meta.limit} />
+    
+        </div>
+      </Grid>
 
-  </div>
-);
+    </div>
+  )
+}

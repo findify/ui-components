@@ -15,10 +15,10 @@ const RootHeader = branch(
   renderComponent(() => (
     <div />
   )),
-  renderComponent(({ onClose }) => (
+  renderComponent(({ onClose, config }) => (
     <Button onClick={onClose} flat>
       <span className={cx(styles.icon, styles.pre, 'fa', 'fa-chevron-left')} />
-      Close filters
+      { config.i18n.hideFilters }
     </Button>
   )),
 )(renderNothing);
@@ -26,15 +26,15 @@ const RootHeader = branch(
 
 const FacetHeader = branch(
   ({ changes, selectedFacet }: any) => !!changes[selectedFacet],
-  renderComponent(({ onCommit }) => (
+  renderComponent(({ onCommit, config }) => (
     <Button onClick={() => onCommit()}>
-      OK
+      { config.i18n.ok }
     </Button>
   )),
-  renderComponent(({ onBackToFacets }) => (
+  renderComponent(({ onBackToFacets, config }) => (
     <Button onClick={onBackToFacets} flat>
       <span className={cx(styles.icon, styles.pre, 'fa', 'fa-chevron-left')} />
-      Back to filters
+      { config.i18n.backToFilters }
     </Button>
   )),
 )(renderNothing);
@@ -53,16 +53,16 @@ export const FacetTitle = branch(
         onReset(facetType, selectedFacet)
       }
     })
-    )(({ selectedFacet, onReset, showRest }: any) => (
+    )(({ selectedFacet, onReset, showRest, config }: any) => (
     <div className={styles.facetTitle}>
-      <h5 className={styles.facetTitleName}>{ selectedFacet }</h5>
+      <h5 className={styles.facetTitleName}>{ config.labels[selectedFacet] }</h5>
       { showRest && <span className={styles.resetButton} onClick={onReset}>Reset</span> }
     </div>
   ))),
 )(renderNothing);
 
 
-export const Header = compose(
+export const Header: any = compose(
   onlyUpdateForKeys(['selectedFacet', 'changes', 'hasNotCommittedData']),
   branch(
     ({ selectedFacet }: any) => !!selectedFacet,
