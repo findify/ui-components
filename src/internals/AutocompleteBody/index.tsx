@@ -7,13 +7,15 @@ import { ProductMatches } from 'internals/ProductMatches';
 const styles = require('./styles.css');
 
 export function AutocompleteBody({
-  direction = 'ltr',
   suggestions,
   products,
   onSearchSuggestionClick,
   onTipClick,
   query,
-  i18n
+  config: {
+    direction = 'ltr',
+    i18n
+  }
 }: Props) {
   const searchSuggestionsNode = (
     <SearchSuggestions {...{

@@ -22,12 +22,14 @@ const filtersMapping = {
 
 const Filter = compose(
   pure,
+
   withProps(({ type, name, ...rest }: any) => ({
     children: (filtersMapping[name] || filtersMapping[type] || filtersMapping.default)(rest)
   })),
+
   withHandlers({
     onRemove: ({ onChange, ...rest }: any) => () => onChange(rest)
-  }),
+  })
 )(({
   children,
   onRemove
@@ -38,18 +40,21 @@ const Filter = compose(
   </div>
 );
 
-export const BreadCrumbs = compose(
+export const HOC = compose(
   withPropsOnChange(['i18n'], ({ i18n }) => ({
     titleTemplate: template(i18n.title)
   })),
+
   withProps(({ query, total, titleTemplate }) => ({
     title: titleTemplate({ query, total })
   }))
-)(({
+);
+
+export const Component = ({
   title,
   facets,
   onChange
-}: any) =>
+}: any) => (
   <div className={styles.wrap}>
     <p className={styles.title}>{title}</p>
     {
@@ -57,4 +62,6 @@ export const BreadCrumbs = compose(
         <Filter {...filter} key={filter.values[0]} {...{ index, onChange }} />)
     }
   </div>
-)
+);
+
+export const BreadCrumbs: any = HOC(Component);

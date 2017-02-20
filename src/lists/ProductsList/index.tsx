@@ -23,13 +23,17 @@ export const Component = ({
   <Grid columns={String(12 / columns)} className={className}>
     { 
       items.map(product =>
-        <Component key={product.id} {...product} onClick={onProductClick} columnClass={itemClassName}/>
+        <Component
+          key={product.id}
+          {...product}
+          onClick={onProductClick}
+          columnClass={itemClassName} />
       )
     }
   </Grid>
 );
 
-export const ProductsList = HOC(Component);
+export const ProductsList: any = HOC(Component);
 
 type ProductsListType = {
   columns: string | number,

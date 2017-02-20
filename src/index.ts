@@ -1,3 +1,4 @@
+export { ResultsLayout } from './layouts/ResultsLayout';
 // export { FacetsList } from './lists/FacetsList';
 // export { ProductsList } from './lists/ProductsList';
 

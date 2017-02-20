@@ -5,7 +5,7 @@ const styles = require('./styles.css');
 import { MobileFacetsList } from 'internals/MobileFacetsList';
 import { DesktopFacetsList } from 'internals/DesktopFacetsList';
 
-export const FacetsList = compose(
+export const FacetsList: any = compose(
   setDisplayName('FacetsList'),
   defaultProps({
     isMobile: false
@@ -15,4 +15,4 @@ export const FacetsList = compose(
     renderComponent(MobileFacetsList),
     renderComponent(DesktopFacetsList)
   )
-)(renderNothing)
+)(renderNothing);
