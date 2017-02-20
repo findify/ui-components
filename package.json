@@ -80,7 +80,7 @@
     "build:commonjs": "webpack --env.production --output-library-target='commonjs'  --output-path='./lib' --output-filename='index.js'",
     "build:umd": "webpack --env.production --output-path='./dist' --output-filename='findify-ui-components.js'",
     "build:umd:min": "webpack --env.production --optimize-minimize --output-path='./dist' --output-filename='findify-ui-components.min.js'",
-    "check": "npm run build && npm run lint && npm run clean",
+    "check": "npm run build && npm run clean",
     "clean": "rimraf ./lib ./dist",
     "lint": "tslint --project .",
     "postinstall": "./node_modules/.bin/webpack --env.dll",

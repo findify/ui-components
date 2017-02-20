@@ -77,6 +77,7 @@ export default {
       reset: 'Reset filter',
       showResults: 'Show results',
       hideFilters: 'Hide filters',
+      backToFilters: 'Back to filters',
       ok: 'Apply',
     }
   },
