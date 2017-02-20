@@ -73,7 +73,7 @@
     "index.d.ts"
   ],
   "license": "MIT",
-  "main": "./lib/index.min.js",
+  "main": "./lib/index.js",
   "scripts": {
     "start": "webpack-dashboard -- ./node_modules/.bin/webpack-dev-server",
     "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min",
@@ -83,6 +83,7 @@
     "check": "npm run build && npm run clean",
     "clean": "rimraf ./lib ./dist",
     "lint": "tslint --project .",
+    "prepublish": "npm run build",
     "postpublish": "npm run clean",
     "postversion": "git push && git push --tags && git checkout develop && git merge master && git push && npm publish",
     "preversion": "npm run check && git checkout master && git merge develop"
