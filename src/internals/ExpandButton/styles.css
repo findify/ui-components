@@ -1,0 +1,18 @@
+.wrap {
+  margin-top: 10px;
+  font-size: 13px;
+  background-color: #f7f7f7;
+  text-transform: uppercase;
+  border: 1px solid #ececec;
+  outline: none!important;
+  cursor: pointer;
+  transition: background-color .1s ease-in;
+  padding: 5px 10px;
+  &:hover {
+    background-color: #ececec;
+  }
+}
+
+.icon {
+  padding-right: 8px;
+}

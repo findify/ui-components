@@ -1,0 +1,20 @@
+.wrap{
+  clear: fix;
+  font-size: 0;
+  line-height: 0;
+}
+
+.column{
+  display: inline-block;
+  box-sizing: border-box;
+  min-height: 1px;
+  font-size: 14px;
+  line-height: 1.2;
+  vertical-align: top;
+}
+
+@for $i from 1 to 12 {
+  .column-$i {
+    width: calc(100 / 12 * $i)%;
+  }
+}

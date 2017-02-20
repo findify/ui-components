@@ -1,0 +1,4197 @@
+{
+  "facets": [
+    {
+      "name": "category",
+      "type": "category",
+      "values": [
+        {
+          "type": "category",
+          "selected": true,
+          "count": 416,
+          "hasChildren": true,
+          "key": "Hund",
+          "name": "category1",
+          "values": [
+            {
+              "type": "category",
+              "selected": false,
+              "count": 303,
+              "hasChildren": true,
+              "key": "Hundfoder",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 85,
+              "hasChildren": true,
+              "key": "Tuggben & Godis",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 71,
+              "hasChildren": true,
+              "key": "Kampanjer",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 17,
+              "hasChildren": false,
+              "key": "Outlet",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 12,
+              "hasChildren": false,
+              "key": "Allt Till Valpen!",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 8,
+              "hasChildren": true,
+              "key": "Hundleksaker",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 6,
+              "hasChildren": false,
+              "key": "Julklappar",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 5,
+              "hasChildren": true,
+              "key": "Diverse",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 5,
+              "hasChildren": true,
+              "key": "Kosttillskott",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 3,
+              "hasChildren": false,
+              "key": "Nyheter",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 3,
+              "hasChildren": true,
+              "key": "Vård & Hälsa",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 2,
+              "hasChildren": false,
+              "key": "Halloween Hund",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 2,
+              "hasChildren": true,
+              "key": "Hud- & Pälsvård",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 2,
+              "hasChildren": true,
+              "key": "Hundkläder",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 2,
+              "hasChildren": true,
+              "key": "Hälsa & Pälsvård",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 2,
+              "hasChildren": true,
+              "key": "Koppel & Halsband",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 2,
+              "hasChildren": false,
+              "key": "Nyårsprepp",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 2,
+              "hasChildren": false,
+              "key": "Uppfödning",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 1,
+              "hasChildren": true,
+              "key": "Burar & Transport",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 1,
+              "hasChildren": false,
+              "key": "Hundpåsar",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 1,
+              "hasChildren": false,
+              "key": "Höst",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 1,
+              "hasChildren": true,
+              "key": "Matplats",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 1,
+              "hasChildren": false,
+              "key": "Rea",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 1,
+              "hasChildren": false,
+              "key": "Reflexer & Lampor",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 1,
+              "hasChildren": false,
+              "key": "Sommar",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 1,
+              "hasChildren": true,
+              "key": "Träning",
+              "name": "category2"
+            },
+            {
+              "type": "category",
+              "selected": false,
+              "count": 1,
+              "hasChildren": false,
+              "key": "Vintersäsong Hund",
+              "name": "category2"
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "selected": false,
+          "count": 413,
+          "hasChildren": true,
+          "key": "Veterinärfoder",
+          "name": "category1"
+        },
+        {
+          "type": "category",
+          "selected": false,
+          "count": 293,
+          "hasChildren": true,
+          "key": "Katt",
+          "name": "category1"
+        },
+        {
+          "type": "category",
+          "selected": false,
+          "count": 47,
+          "hasChildren": true,
+          "key": "Smådjur",
+          "name": "category1"
+        },
+        {
+          "type": "category",
+          "selected": false,
+          "count": 22,
+          "hasChildren": true,
+          "key": "Fågel",
+          "name": "category1"
+        },
+        {
+          "type": "category",
+          "selected": false,
+          "count": 6,
+          "hasChildren": true,
+          "key": "Fisk",
+          "name": "category1"
+        },
+        {
+          "type": "category",
+          "selected": false,
+          "count": 2,
+          "hasChildren": true,
+          "key": "Reptil",
+          "name": "category1"
+        }
+      ]
+    },
+    {
+      "name": "custom_fields.manufacturer",
+      "values": [
+        {
+          "key": "#1 All Systems",
+          "count": 18,
+          "selected": false
+        },
+        {
+          "key": "1st Choice",
+          "count": 12,
+          "selected": false
+        },
+        {
+          "key": "2pets",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "8in1",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "AFP",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "AKTIV",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "ANF",
+          "count": 7,
+          "selected": false
+        },
+        {
+          "key": "Acana",
+          "count": 46,
+          "selected": false
+        },
+        {
+          "key": "Acme",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Adaptil",
+          "count": 5,
+          "selected": false
+        },
+        {
+          "key": "Agility Snack",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "Akita",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "Alac",
+          "count": 6,
+          "selected": false
+        },
+        {
+          "key": "Albedo100",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "AlgGutten",
+          "count": 6,
+          "selected": false
+        },
+        {
+          "key": "Allergenius",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Alpha Spirit",
+          "count": 16,
+          "selected": false
+        },
+        {
+          "key": "Antec",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Appetitt",
+          "count": 16,
+          "selected": false
+        },
+        {
+          "key": "Applaws",
+          "count": 16,
+          "selected": false
+        },
+        {
+          "key": "Aptus",
+          "count": 21,
+          "selected": false
+        },
+        {
+          "key": "Arion",
+          "count": 27,
+          "selected": false
+        },
+        {
+          "key": "Avivir",
+          "count": 7,
+          "selected": false
+        },
+        {
+          "key": "Axess",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Back on Track",
+          "count": 15,
+          "selected": false
+        },
+        {
+          "key": "Baltic",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Beeztees",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Best Friend Group",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Bio-Groom",
+          "count": 19,
+          "selected": false
+        },
+        {
+          "key": "BioSalma",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Biodistra",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Bionic",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Biopet",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Bistos",
+          "count": 20,
+          "selected": false
+        },
+        {
+          "key": "Bomica",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Bozita",
+          "count": 28,
+          "selected": false
+        },
+        {
+          "key": "Bravo",
+          "count": 33,
+          "selected": false
+        },
+        {
+          "key": "Brit",
+          "count": 37,
+          "selected": false
+        },
+        {
+          "key": "Brit Boutiques Gourmandes",
+          "count": 10,
+          "selected": false
+        },
+        {
+          "key": "Brit Care",
+          "count": 17,
+          "selected": false
+        },
+        {
+          "key": "Brit Premium",
+          "count": 21,
+          "selected": false
+        },
+        {
+          "key": "Bseen",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Buster",
+          "count": 17,
+          "selected": false
+        },
+        {
+          "key": "Canami",
+          "count": 7,
+          "selected": false
+        },
+        {
+          "key": "Canikur",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Cardinal",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Carnia",
+          "count": 5,
+          "selected": false
+        },
+        {
+          "key": "Carnilove",
+          "count": 7,
+          "selected": false
+        },
+        {
+          "key": "Carrier",
+          "count": 15,
+          "selected": false
+        },
+        {
+          "key": "Cat It",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Coachies",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Coat King",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "Danish Design",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Dechra",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Deli Snacks",
+          "count": 7,
+          "selected": false
+        },
+        {
+          "key": "Denta Fun",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Diafarm",
+          "count": 5,
+          "selected": false
+        },
+        {
+          "key": "Die Futtersosse",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Dog It",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "DogActivity",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Doggy",
+          "count": 9,
+          "selected": false
+        },
+        {
+          "key": "Doggyman",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Dogman",
+          "count": 60,
+          "selected": true
+        },
+        {
+          "key": "Dogman Professional",
+          "count": 17,
+          "selected": false
+        },
+        {
+          "key": "Drinkwell",
+          "count": 5,
+          "selected": false
+        },
+        {
+          "key": "Drymate",
+          "count": 8,
+          "selected": false
+        },
+        {
+          "key": "Earth Rated",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Earthborn Holistic",
+          "count": 14,
+          "selected": false
+        },
+        {
+          "key": "Easy Care",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Ekholms PROB",
+          "count": 18,
+          "selected": false
+        },
+        {
+          "key": "Eldorado",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Espree",
+          "count": 79,
+          "selected": false
+        },
+        {
+          "key": "Eukanuba",
+          "count": 48,
+          "selected": false
+        },
+        {
+          "key": "Exoterra",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Eye Care",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Farm Food",
+          "count": 13,
+          "selected": false
+        },
+        {
+          "key": "Ferplast",
+          "count": 5,
+          "selected": false
+        },
+        {
+          "key": "Fish4Dogs",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Fixodida",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Flexi",
+          "count": 13,
+          "selected": false
+        },
+        {
+          "key": "Fooey",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Foolee",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Four Friends",
+          "count": 46,
+          "selected": true
+        },
+        {
+          "key": "Four Paws",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Frank´s Pro Gold",
+          "count": 10,
+          "selected": false
+        },
+        {
+          "key": "Fresh & Tidy",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Frolic",
+          "count": 9,
+          "selected": false
+        },
+        {
+          "key": "Frolicat",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Furminator",
+          "count": 20,
+          "selected": false
+        },
+        {
+          "key": "Fyra Ess",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Gappay",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Get Off",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Gibbon",
+          "count": 10,
+          "selected": false
+        },
+        {
+          "key": "Good Boy",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Grizzly",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Halla Foder",
+          "count": 8,
+          "selected": false
+        },
+        {
+          "key": "Halti",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Happy Dog",
+          "count": 28,
+          "selected": false
+        },
+        {
+          "key": "Healthy Paws",
+          "count": 13,
+          "selected": false
+        },
+        {
+          "key": "High-Energy",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Hill´s",
+          "count": 80,
+          "selected": true
+        },
+        {
+          "key": "Hunter",
+          "count": 76,
+          "selected": false
+        },
+        {
+          "key": "Hurtta",
+          "count": 73,
+          "selected": false
+        },
+        {
+          "key": "Hurtta Lifeguard",
+          "count": 31,
+          "selected": false
+        },
+        {
+          "key": "Hurtta Outdoor",
+          "count": 20,
+          "selected": false
+        },
+        {
+          "key": "IPTS",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Iams",
+          "count": 12,
+          "selected": false
+        },
+        {
+          "key": "Ion Silver",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "JW",
+          "count": 8,
+          "selected": false
+        },
+        {
+          "key": "James Wellbeloved",
+          "count": 7,
+          "selected": false
+        },
+        {
+          "key": "Jokke",
+          "count": 29,
+          "selected": false
+        },
+        {
+          "key": "Jolly och Company",
+          "count": 6,
+          "selected": false
+        },
+        {
+          "key": "Julius K9",
+          "count": 23,
+          "selected": false
+        },
+        {
+          "key": "K9 Competition",
+          "count": 16,
+          "selected": false
+        },
+        {
+          "key": "Karlie",
+          "count": 20,
+          "selected": false
+        },
+        {
+          "key": "Kennel",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Kennel Equip",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Kingsmoor",
+          "count": 17,
+          "selected": false
+        },
+        {
+          "key": "Kompis",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Kong",
+          "count": 48,
+          "selected": false
+        },
+        {
+          "key": "Kruuse",
+          "count": 10,
+          "selected": false
+        },
+        {
+          "key": "Kurgo",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Leuchtie",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Lexi",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Limex",
+          "count": 7,
+          "selected": false
+        },
+        {
+          "key": "Loc8tor",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Lone Star",
+          "count": 7,
+          "selected": false
+        },
+        {
+          "key": "Lupus",
+          "count": 8,
+          "selected": false
+        },
+        {
+          "key": "M&C",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Magnusson",
+          "count": 14,
+          "selected": false
+        },
+        {
+          "key": "Majstor",
+          "count": 14,
+          "selected": false
+        },
+        {
+          "key": "Masterpet",
+          "count": 17,
+          "selected": false
+        },
+        {
+          "key": "Maxipin",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Mera Dog High-Premium",
+          "count": 7,
+          "selected": false
+        },
+        {
+          "key": "Mera Dog Premium",
+          "count": 7,
+          "selected": false
+        },
+        {
+          "key": "Mera Dog Pure",
+          "count": 7,
+          "selected": false
+        },
+        {
+          "key": "MiM",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Mikki",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Millers",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "Mästers",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Natural Snack",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "Nature's Peak",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Naturea",
+          "count": 8,
+          "selected": false
+        },
+        {
+          "key": "Naturediet",
+          "count": 8,
+          "selected": false
+        },
+        {
+          "key": "Naturligt Hundtugg",
+          "count": 29,
+          "selected": false
+        },
+        {
+          "key": "Nina Ottosson",
+          "count": 28,
+          "selected": false
+        },
+        {
+          "key": "Nite Ize",
+          "count": 5,
+          "selected": false
+        },
+        {
+          "key": "Nobby",
+          "count": 59,
+          "selected": false
+        },
+        {
+          "key": "Northmate",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "NovaDog",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Numax",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Nutra Gold",
+          "count": 6,
+          "selected": false
+        },
+        {
+          "key": "Nutra Nuggets",
+          "count": 8,
+          "selected": false
+        },
+        {
+          "key": "Nutram",
+          "count": 8,
+          "selected": false
+        },
+        {
+          "key": "O'Tom",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "OZami",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Olewo",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Orbiloc",
+          "count": 10,
+          "selected": false
+        },
+        {
+          "key": "Orijen",
+          "count": 26,
+          "selected": false
+        },
+        {
+          "key": "Oster",
+          "count": 10,
+          "selected": false
+        },
+        {
+          "key": "Ozami",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "PCL",
+          "count": 10,
+          "selected": false
+        },
+        {
+          "key": "Party Pets",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Pawz",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Pedigree",
+          "count": 16,
+          "selected": false
+        },
+        {
+          "key": "Pet Head",
+          "count": 14,
+          "selected": false
+        },
+        {
+          "key": "Pet Inn",
+          "count": 6,
+          "selected": false
+        },
+        {
+          "key": "Pet Towel",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Pet-Food",
+          "count": 13,
+          "selected": false
+        },
+        {
+          "key": "PetAg",
+          "count": 5,
+          "selected": false
+        },
+        {
+          "key": "PetDiner",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "PetalCleanse",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Petcare",
+          "count": 9,
+          "selected": false
+        },
+        {
+          "key": "Petfood",
+          "count": 8,
+          "selected": false
+        },
+        {
+          "key": "Petmate",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Petosan",
+          "count": 9,
+          "selected": false
+        },
+        {
+          "key": "Petstages",
+          "count": 11,
+          "selected": false
+        },
+        {
+          "key": "Pettorway",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Petwise",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "Piss Off",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Planet Pet",
+          "count": 11,
+          "selected": false
+        },
+        {
+          "key": "Play 'N Treat",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Pommy's",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "Precept",
+          "count": 9,
+          "selected": false
+        },
+        {
+          "key": "Premier",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "Prima Hundtugg",
+          "count": 9,
+          "selected": false
+        },
+        {
+          "key": "Prime Hide",
+          "count": 7,
+          "selected": false
+        },
+        {
+          "key": "Pritax",
+          "count": 35,
+          "selected": false
+        },
+        {
+          "key": "Pro Plan",
+          "count": 40,
+          "selected": false
+        },
+        {
+          "key": "Pro Plan Veterinary Diets",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Pronature Holistic",
+          "count": 12,
+          "selected": false
+        },
+        {
+          "key": "Puppia",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Purina",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "Purina Dog Chow",
+          "count": 8,
+          "selected": false
+        },
+        {
+          "key": "ROK",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Racinel",
+          "count": 6,
+          "selected": false
+        },
+        {
+          "key": "Rauh!",
+          "count": 11,
+          "selected": false
+        },
+        {
+          "key": "Renske",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "Request",
+          "count": 10,
+          "selected": false
+        },
+        {
+          "key": "Robur",
+          "count": 14,
+          "selected": false
+        },
+        {
+          "key": "Rogz",
+          "count": 6,
+          "selected": false
+        },
+        {
+          "key": "Rosewood",
+          "count": 28,
+          "selected": false
+        },
+        {
+          "key": "Royal Canin",
+          "count": 142,
+          "selected": true
+        },
+        {
+          "key": "Royal Canin Veterinary Diets",
+          "count": 6,
+          "selected": true
+        },
+        {
+          "key": "Salmopet",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Sanal",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Savic",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Seraquin",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Sherpa Bag",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "Skudo",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "SmartPets",
+          "count": 6,
+          "selected": false
+        },
+        {
+          "key": "Specific",
+          "count": 63,
+          "selected": true
+        },
+        {
+          "key": "Spot",
+          "count": 16,
+          "selected": false
+        },
+        {
+          "key": "Standardt",
+          "count": 27,
+          "selected": false
+        },
+        {
+          "key": "Starmark",
+          "count": 8,
+          "selected": false
+        },
+        {
+          "key": "Staywell",
+          "count": 10,
+          "selected": false
+        },
+        {
+          "key": "Stomax",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Strandbodarnas Farm",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Svenska DjurApoteket",
+          "count": 19,
+          "selected": false
+        },
+        {
+          "key": "Tassarnas",
+          "count": 8,
+          "selected": false
+        },
+        {
+          "key": "Taste of the Wild",
+          "count": 16,
+          "selected": false
+        },
+        {
+          "key": "Tello",
+          "count": 7,
+          "selected": false
+        },
+        {
+          "key": "The Company of Animals",
+          "count": 12,
+          "selected": false
+        },
+        {
+          "key": "Thunderworks",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "TickLess",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Treateaters",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Trikem",
+          "count": 17,
+          "selected": false
+        },
+        {
+          "key": "Trixie",
+          "count": 136,
+          "selected": false
+        },
+        {
+          "key": "TropiClean",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Tubidog",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Urine Off",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "Valentino",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Versele-Laga",
+          "count": 10,
+          "selected": false
+        },
+        {
+          "key": "Vetbed",
+          "count": 6,
+          "selected": false
+        },
+        {
+          "key": "Vetiq",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Vetoquinol",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "Viacutan",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Virbac",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "Vitakraft",
+          "count": 19,
+          "selected": true
+        },
+        {
+          "key": "Vom",
+          "count": 15,
+          "selected": false
+        },
+        {
+          "key": "Wafcol",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Whimzees",
+          "count": 10,
+          "selected": false
+        },
+        {
+          "key": "Wonderboo",
+          "count": 19,
+          "selected": false
+        },
+        {
+          "key": "World Stickers",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "Yarrah",
+          "count": 18,
+          "selected": false
+        },
+        {
+          "key": "Yummeez",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "Ziwi Peak",
+          "count": 16,
+          "selected": false
+        },
+        {
+          "key": "ZooLac",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "ZooZoo",
+          "count": 10,
+          "selected": false
+        },
+        {
+          "key": "ZooZoo Premium",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Zoostuff",
+          "count": 9,
+          "selected": false
+        },
+        {
+          "key": "Ägna",
+          "count": 3,
+          "selected": false
+        }
+      ],
+      "type": "terms"
+    },
+    {
+      "name": "price",
+      "values": [
+        {
+          "key": "_50",
+          "count": 63,
+          "to": 50,
+          "selected": false
+        },
+        {
+          "key": "50_150",
+          "count": 33,
+          "from": 50,
+          "to": 150,
+          "selected": false
+        },
+        {
+          "key": "150_350",
+          "count": 141,
+          "from": 150,
+          "to": 350,
+          "selected": false
+        },
+        {
+          "key": "350_",
+          "count": 180,
+          "from": 350,
+          "selected": false
+        }
+      ],
+      "type": "range",
+      "min": 8,
+      "max": 2995
+    },
+    {
+      "name": "custom_fields.hundkategori",
+      "values": [
+        {
+          "key": "Aktiv",
+          "count": 19,
+          "selected": false
+        },
+        {
+          "key": "Light & Steriliserad",
+          "count": 29,
+          "selected": false
+        },
+        {
+          "key": "Mature & Senior",
+          "count": 28,
+          "selected": false
+        },
+        {
+          "key": "Valp & Junior",
+          "count": 81,
+          "selected": false
+        },
+        {
+          "key": "Vuxen",
+          "count": 128,
+          "selected": false
+        }
+      ],
+      "type": "terms"
+    },
+    {
+      "name": "custom_fields.livsstadium",
+      "values": [
+        {
+          "key": "Vuxen",
+          "count": 1,
+          "selected": false
+        }
+      ],
+      "type": "terms"
+    },
+    {
+      "name": "custom_fields.rasstorlekarflerval",
+      "values": [
+        {
+          "key": "Large",
+          "count": 38,
+          "selected": false
+        },
+        {
+          "key": "Medium",
+          "count": 36,
+          "selected": false
+        },
+        {
+          "key": "Small",
+          "count": 132,
+          "selected": false
+        },
+        {
+          "key": "Specifikt",
+          "count": 49,
+          "selected": false
+        }
+      ],
+      "type": "terms"
+    },
+    {
+      "name": "custom_fields.standardnetto",
+      "values": [
+        {
+          "key": "0.1000",
+          "count": 13,
+          "selected": false
+        },
+        {
+          "key": "0.1500",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "0.1950",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "0.2750",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "0.3000",
+          "count": 8,
+          "selected": false
+        },
+        {
+          "key": "0.3700",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "0.4000",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "0.4200",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "0.4350",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "0.5000",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "1.5000",
+          "count": 22,
+          "selected": false
+        },
+        {
+          "key": "10.0000",
+          "count": 5,
+          "selected": false
+        },
+        {
+          "key": "12.0000",
+          "count": 55,
+          "selected": false
+        },
+        {
+          "key": "13.0000",
+          "count": 4,
+          "selected": false
+        },
+        {
+          "key": "14.0000",
+          "count": 7,
+          "selected": false
+        },
+        {
+          "key": "15.0000",
+          "count": 26,
+          "selected": false
+        },
+        {
+          "key": "17.0000",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "2.0000",
+          "count": 14,
+          "selected": false
+        },
+        {
+          "key": "2.3400",
+          "count": 5,
+          "selected": false
+        },
+        {
+          "key": "2.5000",
+          "count": 14,
+          "selected": false
+        },
+        {
+          "key": "3.0000",
+          "count": 39,
+          "selected": false
+        },
+        {
+          "key": "3.5000",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "4.0000",
+          "count": 9,
+          "selected": false
+        },
+        {
+          "key": "5.0000",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "6.0000",
+          "count": 2,
+          "selected": false
+        },
+        {
+          "key": "6.5000",
+          "count": 5,
+          "selected": false
+        },
+        {
+          "key": "7.5000",
+          "count": 22,
+          "selected": false
+        },
+        {
+          "key": "8.0000",
+          "count": 9,
+          "selected": false
+        },
+        {
+          "key": "8.5000",
+          "count": 1,
+          "selected": false
+        }
+      ],
+      "type": "terms"
+    },
+    {
+      "name": "custom_fields.tuggbenmaterial",
+      "values": [
+        {
+          "key": "Oxhud Brun",
+          "count": 3,
+          "selected": false
+        },
+        {
+          "key": "Oxhud Vit",
+          "count": 13,
+          "selected": false
+        },
+        {
+          "key": "Torkad",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Vegetarisk",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Övrigt",
+          "count": 7,
+          "selected": false
+        }
+      ],
+      "type": "terms"
+    },
+    {
+      "name": "custom_fields.leksaksort",
+      "values": [
+        {
+          "key": "Med fyllning",
+          "count": 1,
+          "selected": false
+        }
+      ],
+      "type": "terms"
+    },
+    {
+      "name": "custom_fields.konsistens",
+      "values": [
+        {
+          "key": "Torrfoder",
+          "count": 269,
+          "selected": false
+        },
+        {
+          "key": "Våtfoder",
+          "count": 35,
+          "selected": false
+        }
+      ],
+      "type": "terms"
+    },
+    {
+      "name": "custom_fields.leksakstorlek",
+      "values": [
+        {
+          "key": "20 cm",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "25 cm",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "30 cm",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "35 cm",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "40 cm",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "45 cm",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "50 cm",
+          "count": 1,
+          "selected": false
+        }
+      ],
+      "type": "terms"
+    },
+    {
+      "name": "custom_fields.matplats_storlek",
+      "values": [
+        {
+          "key": "100 st",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "200 st",
+          "count": 1,
+          "selected": false
+        }
+      ],
+      "type": "terms"
+    },
+    {
+      "name": "custom_fields.koppelmaterial",
+      "values": [
+        {
+          "key": "Plysch",
+          "count": 1,
+          "selected": false
+        },
+        {
+          "key": "Syntettyg",
+          "count": 1,
+          "selected": false
+        }
+      ],
+      "type": "terms"
+    },
+    {
+      "name": "custom_fields.tuggtyp",
+      "values": [
+        {
+          "key": "Tablett",
+          "count": 1,
+          "selected": false
+        }
+      ],
+      "type": "terms"
+    }
+  ],
+  "meta": {
+    "query": "",
+    "offset": 0,
+    "limit": 24,
+    "total": 416,
+    "totalFacets": 25,
+    "filters": [
+      {
+        "type": "category",
+        "name": "category1",
+        "values": [
+          "Hund"
+        ]
+      },
+      {
+        "type": "terms",
+        "name": "custom_fields.manufacturer",
+        "values": [
+          "Dogman"
+        ]
+      },
+      {
+        "type": "terms",
+        "name": "custom_fields.manufacturer",
+        "values": [
+          "Four Friends"
+        ]
+      },
+      {
+        "type": "terms",
+        "name": "custom_fields.manufacturer",
+        "values": [
+          "Hill´s"
+        ]
+      },
+      {
+        "type": "terms",
+        "name": "custom_fields.manufacturer",
+        "values": [
+          "Royal Canin"
+        ]
+      },
+      {
+        "type": "terms",
+        "name": "custom_fields.manufacturer",
+        "values": [
+          "Royal Canin Veterinary Diets"
+        ]
+      },
+      {
+        "type": "terms",
+        "name": "custom_fields.manufacturer",
+        "values": [
+          "Specific"
+        ]
+      },
+      {
+        "type": "terms",
+        "name": "custom_fields.manufacturer",
+        "values": [
+          "Vitakraft"
+        ]
+      }
+    ],
+    "id": "604b2804-c28c-47f2-a8d6-2be3cf798465"
+  },
+  "products": [
+    {
+      "seller": "",
+      "short_description": "Royal Canin Mini Adult är ett helfoder för vuxna hundar av små raser (vikt upp till 10 kg), från 10 månader till 8 års ålder.",
+      "product_url": "https://animail.se/royal-canin-mini-adult-8kg.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Royal Canin Mini Adult  r ett helfoder f r vuxna hundar av sm  raser (vikt upp till 10 kg), fr n 10 m nader till 8  rs  lder. Det l ttsm lta fodret bidrar till att den lilla hunden beh ller idealvikten genom att energibehovet tillgodoses samtidigt som det inneh ller L-karnitin som hj lper hunden att f rbr nna fett. \n  Extra smaklig:  En sammans ttning som tillgodoser sm  hundars kr sna gommar med ett urval av exklusiva ingredienser.  \n  P lskondition:  Inneh ller n rings mnen som bidrar till en frisk hud och p ls. Berikad med EPA-DHA.   \n  Tandh lsa:  Minskar bildandet av tandsten tack vare  mnen som binder kalciumet i saliven.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Royal Canin Mini Adult 8 kg",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/m/i/mini_adult-packshot_2.jpg",
+      "price": [
+        449
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "49",
+      "sku": [
+        "A88-1001080"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/m/i/mini_adult-packshot_2.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "konsistens": [
+          "Torrfoder"
+        ],
+        "rasstorlekarflerval": [
+          "Small"
+        ],
+        "standardnetto": [
+          "8.0000"
+        ],
+        "hundkategori": [
+          "Vuxen"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Royal Canin"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Hundfoder",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Kampanjer",
+          "category3": "15% På Stor Säck Hundfoder Från Royal Canin!",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Hundfoder",
+          "category3": "Mängdrabatt",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Smaskiga sm  godishj rtan i prakisk burk. Perfekt bel ningsgodis som du slipper dela.",
+      "product_url": "https://animail.se/dogman-minihjartan-i-hink-500-g.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Dogman MiniHj rtan  r ett gott godis med smak av biff. Bitarna  r v ldigt sm  och passar d rf r utomordentligt som bel ningsgodis  ven f r sm  hundar. Godiset  r mjukt och enkelt att tugga f r hunden. \n Varf r inte visa hur mycket du tycker om din v n med dessa smaskiga hj rtan? Det l r definitivt bli uppskattat! \n MiniHj rtan levereras i en praktisk plastburk som inneh ller 500g.",
+      "discount": [
+        34
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Dogman Minihjärtan i hink 500g",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/4/7/472505.jpeg",
+      "price": [
+        79
+      ],
+      "stickers": {
+        "discount": false,
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "free-shipping": false
+      },
+      "id": "11771",
+      "sku": [
+        "899472505"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/4/7/472505.jpeg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "standardnetto": [
+          "0.5000"
+        ],
+        "hundkategori": [
+          "Valp & Junior"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Dogman"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Tuggben & Godis",
+          "category3": "Hundgodis",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": 119
+    },
+    {
+      "seller": "",
+      "short_description": "Royal Canin Medium Adult är ett helfoder för vuxna hundar av medelstora raser (vikt från 11 till 25 kg), från 12 månader till 7 års ålder.",
+      "product_url": "https://animail.se/royal-canin-medium-adult-25-15kg.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Royal Canin Medium Adult  r ett h elfoder f r vuxna hundar av medelstora raser (vikt fr n 11 till 25 kg), fr n 12 m nader till 7  rs  lder. Fodret b idrar till att bygga upp hundens naturliga f rsvar tack vare en sammans ttning av antioxidanter och mannan-oligosackarider.     \n    L ttsm lt:   Tryggar en optimal matsm ltning genom h gkvalitativa proteiner och ett balanserat inneh ll av kostfibrer f r att reglera magtarmsystemet.      \n  Viktiga fettsyror:   En sammans ttning av omega 3-fettsyror (EPA-DHA) som bidrar till en frisk hud.    \n  Mycket smakligt:   Tillfredst ller mellanstora hundars aptit tack vare en h g smaklighet.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Royal Canin Medium Adult 15kg",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/m/e/medium-adult.jpg",
+      "price": [
+        619
+      ],
+      "stickers": {
+        "free-shipping": true,
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false
+      },
+      "id": "61",
+      "sku": [
+        "A88-1011150"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/m/e/medium-adult.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "free_shipping": [
+          "true"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "konsistens": [
+          "Torrfoder"
+        ],
+        "rasstorlekarflerval": [
+          "Medium"
+        ],
+        "standardnetto": [
+          "15.0000"
+        ],
+        "hundkategori": [
+          "Vuxen"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Royal Canin"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Hundfoder",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Kampanjer",
+          "category3": "15% På Stor Säck Hundfoder Från Royal Canin!",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Hundfoder",
+          "category3": "Mängdrabatt",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Populära lammsnittar för hunden med känslig mage.",
+      "product_url": "https://animail.se/dogman-favoritgodis-lamm-ris-800-g.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "De smakrika lammsnittarna  r en storfavorit f r hundarna med k nslig mage! Inneh ller lamm och ris vilket g r dessa godbitar sn lla mot magen. Utvalda kvalitets mnen har sammanpressats f r att uppn  en enast ende smak som hunden  lskar. Snittarna kladdar inte och  r d rf r l tta att ta med i fickan. Kan ges som bel ning vid tr ning eller p  promenaden. \n Fritt fr n vete! \n P sen inneh ller 800 g.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Dogman Favoritgodis Lamm & Ris 800 g",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/4/4/448934.jpeg",
+      "price": [
+        39
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "15074",
+      "sku": [
+        "7312134489341"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/4/4/448934.jpeg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Dogman"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Tuggben & Godis",
+          "category3": "Hundgodis",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Royal Canin Miniature Schnauzer Adult är ett helfoder för vuxna och äldre hundar av rasen dvärgschnauzer från 10 månaders ålder.",
+      "product_url": "https://animail.se/royal-canin-miniature-schnauzer-25-6-5kg.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Royal Canin Miniature Schnauzer Adult  r ett helfoder  f r vuxna och  ldre hundar av rasen dv rgschnauzer fr n 10 m naders  lder.    \n  H lsosamma urinv gar:  Dv rgschnauzern har st rre risk f r att utveckla urinsten  n andra hundar. Urinen  r ofta koncentrerad vilket medf r en  kad risk att mikroskopiska kristaller klumpas ihop och bildar urinsten. Miniature Schnauzer Adult bidrar till ett friskt urinsystem.    \n  Unik p ls:  Den str va p lsstrukturen g r att dv rgschnauzern beh ver trimmas regelbundet. Huden  r mycket irritationsk nslig vilket ofta visar sig som rodnande, flagande eller mj lliga partier. Fodret fr mjar en frisk hud och en stark p ls med intensiv f rg. \n  Tandh lsa:  Minskar bildandet av tandsten tack vare  mnen som binder kalciumet i saliven.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Royal Canin Miniature Schnauzer Adult 7.5kg",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/m/i/miniature-schnauzer-adult_1_1.jpg",
+      "price": [
+        509
+      ],
+      "stickers": {
+        "free-shipping": true,
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false
+      },
+      "id": "82",
+      "sku": [
+        "1021206065"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/m/i/miniature-schnauzer-adult_1_1.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "free_shipping": [
+          "true"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "konsistens": [
+          "Torrfoder"
+        ],
+        "rasstorlekarflerval": [
+          "Specifikt"
+        ],
+        "standardnetto": [
+          "6.5000"
+        ],
+        "hundkategori": [
+          "Vuxen"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Royal Canin"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Hundfoder",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Kampanjer",
+          "category3": "15% På Stor Säck Hundfoder Från Royal Canin!",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Tuggpinnar som främjar god tandhälsa.",
+      "product_url": "https://animail.se/dogman-sticks-dental-m-l-28-pack.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Visst kan man  ta j ttegott godis utan att f  h l i t nderna! Dessa tuggpinnars funktionella stj rnform g r rent mellan t nderna och l ngs kanten p  tandk ttet. Natrimhexametafosfat har tillsatts f r att aktivt reducera tillv xten av plack och bidra till en fr schare andedr kt. \n F rpackningen inneh ller 28 st dental sticks f r mellanstora och stora hundar.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Dogman Sticks Dental M/L 28-pack",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/7/3/7312134791727.jpg",
+      "price": [
+        109
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "14193",
+      "sku": [
+        "7312134791727"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/7/3/7312134791727.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "tuggbenmaterial": [
+          "Övrigt"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Dogman"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Tuggben & Godis",
+          "category3": "Tuggben",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "20st Pressad tuggrulle av r hud",
+      "product_url": "https://animail.se/dogman-tuggrulle-pressad-25-cm-20-st.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "20st Dogman tuggrulle pressad. Tillverkad av brun r hud. \n Vikt: 85g/styck L ngd: 25 cm",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Dogman Tuggrulle Pressad 25 cm 20st",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/d/o/dogman_rulle_pressad_25cm.jpg",
+      "price": [
+        399
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "8906",
+      "sku": [
+        "899303198"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/d/o/dogman_rulle_pressad_25cm.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "tuggbenmaterial": [
+          "Oxhud Brun"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Dogman"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Tuggben & Godis",
+          "category3": "Tuggben",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "De populära leversnittarna är supergoda och kladdfria, perfekt belöningsgodis att ha i fickan.",
+      "product_url": "https://animail.se/dogman-klassiskt-favoritgodis-2-5-kg.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "De smakrika leversnittarna  r en storfavorit! Inneh ller utvalda kvalitets mnen som sammanpressats f r att uppn  en enast ende smak som hunden  lskar. Leversnittarna kladdar inte och  r d rf r l tta att ta med i fickan. Kan ges som bel ning vid tr ning eller p  promenaden. \n P sen inneh ller 2,5 kg.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Dogman Klassiskt Favoritgodis 2,5 kg",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/4/4/448930.jpeg",
+      "price": [
+        59
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "15072",
+      "sku": [
+        "7312134489303"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/4/4/448930.jpeg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Dogman"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Tuggben & Godis",
+          "category3": "Hundgodis",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Spannmålsfri köttkorv från Four Friends av högsta kvalitet med fisk & morötter.",
+      "product_url": "https://animail.se/four-friends-hund-kottkorv-adult-fish-12x800g.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Four Friends k ttkorv  r ett l ttsm lt helfoder med h g smaklighet f r vuxna hundar. V tfodret  r f rpackat i korvar och inneh ller inga spannm l eller konserveringsmedel.  \n Klart att anv nda och serveras i rumstemperatur.  ppnad f rpackning f rvaras i kylsk p.  \n  V tfoder har m nga f rdelar:  - Om du har en hund som dricker d ligt f r den i sig mer v tska med bl tmat, vilket f rebygger risken f r bland annat urinsten. - F r hundar som har d liga t nder och d rf r har sv rt att tugga. - F r hundar som beh ver lite extra f r att h lla vikten. - Till kr sna hundar som vill ha n got smaskigt men fortfarande nyttigt p  sitt torrfoder.  - Komplement till f rskfoder. Perfekt om du ska p  resa! \n En korv inneh ller 800 g.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Four Friends Hund Köttkorv Adult Fish 12x800g",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/f/f/ffds-adultfish.jpg",
+      "price": [
+        348
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "16816",
+      "sku": [
+        "7350028737086"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/f/f/ffds-adultfish.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "konsistens": [
+          "Våtfoder"
+        ],
+        "rasstorlekarflerval": [
+          "Small"
+        ],
+        "hundkategori": [
+          "Vuxen"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Four Friends"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Hundfoder",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Supersmakligt hundgodis från Four Friends",
+      "product_url": "https://animail.se/four-friends-dog-chicken-twist-bite-400g.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Liten tuggpinne av hög kvalitet gjord på kyckling och fisk. Ett  mindre snacks med tuggmotstånd som inte kladdar. Perfekt när du vill ge din hund något extra!",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Four Friends Dog Chicken Twist Bite 400g",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/9/6/9652_ffd_chickentwistbite.jpg",
+      "price": [
+        149
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "17550",
+      "sku": [
+        "2016A0110011"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/9/6/9652_ffd_chickentwistbite.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "rasstorlekarflerval": [
+          "Small"
+        ],
+        "standardnetto": [
+          "0.1000"
+        ],
+        "hundkategori": [
+          "Valp & Junior"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Four Friends"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Tuggben & Godis",
+          "category3": "Godis - Naturellt",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Julklappar",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Allt Till Valpen!",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Tuggrullar med kycklingk tt",
+      "product_url": "https://animail.se/dogman-tuggrulle-m-kycklingkott-3-p-10-cm.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Goda tuggrullar av oxhud imlindade i kycklingk tt. \n 3-p, ca 10 cm. \n   \n R protein 80% \n R fett 3,5% \n V xtr dar 0,65% \n R aska 0,85% \n Vatten 14%",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Dogman Tuggrulle m kycklingkött 3-p 10 cm",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/3/1/310223.jpg",
+      "price": [
+        39
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "8872",
+      "sku": [
+        "899310223"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/3/1/310223.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "tuggbenmaterial": [
+          "Övrigt"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Dogman"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Tuggben & Godis",
+          "category3": "Tuggben",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Supersmakligt hundgodis från Four Friends",
+      "product_url": "https://animail.se/1062.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Belöningsgodis av hög kvalitet gjord på kyckling och nöt. Ett segare godis med tuggmotstånd som inte kladdar. Perfekt när du vill ge din hund något extra!",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Four Friends Dog Chicken Rawhide 400g",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/9/6/9651_ffd_chickennrawhide.jpg",
+      "price": [
+        149
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "17552",
+      "sku": [
+        "2016A0110009"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/9/6/9651_ffd_chickennrawhide.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "rasstorlekarflerval": [
+          "Small"
+        ],
+        "standardnetto": [
+          "0.1000"
+        ],
+        "hundkategori": [
+          "Valp & Junior"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Four Friends"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Tuggben & Godis",
+          "category3": "Godis - Naturellt",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Julklappar",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Allt Till Valpen!",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Royal Canin Maxi Adult är ett helfoder för vuxna hundar av storvuxna raser, från 15 månader till 5 års ålder.",
+      "product_url": "https://animail.se/royal-canin-maxi-adult-15-kg.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Royal Canin Maxi Adult  r ett helfoder f r vuxna hundar av storvuxna raser (vikt fr n 26 till 44 kg), fr n 15 m nader till 5  rs  lder. Fodret inneh ller allt den vuxna hunden beh ver f r att m  bra och h lla en god kondition och muskelmassa. \n  H g sm ltbarhet:   Tryggar en optimal matsm ltning genom h gkvalitativa proteiner och ett balanserat inneh ll av kostfibrer som fr mjar magtarmh lsan.   \n  St rker ben och leder :  Bidrar till att att st rka ben och leder som uts tts f r stor p frestning p  hundar av stora raser.    \n  Mycket smaklig:   Tillfredst ller stora hundars aptit tack vare noga utvalda smak mnen.  \n  Viktiga fettsyror:   Sammans ttning med omega 3-fettsyror (EPA-DHA) som ger frisk hud.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Royal Canin Maxi Adult 15kg",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/m/a/maxi-adult-packshot-1_1.jpg",
+      "price": [
+        619
+      ],
+      "stickers": {
+        "free-shipping": true,
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false
+      },
+      "id": "9121",
+      "sku": [
+        "A88-1022150"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/m/a/maxi-adult-packshot-1_1.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "free_shipping": [
+          "true"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "konsistens": [
+          "Torrfoder"
+        ],
+        "rasstorlekarflerval": [
+          "Large"
+        ],
+        "standardnetto": [
+          "15.0000"
+        ],
+        "hundkategori": [
+          "Vuxen"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Royal Canin"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Hundfoder",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Kampanjer",
+          "category3": "15% På Stor Säck Hundfoder Från Royal Canin!",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Hundfoder",
+          "category3": "Mängdrabatt",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Royal Canin Labrador Retriever sterilised är ett komplett helfoder för kastrerade vuxna hundar av rasen labrador retriever från 15 månaders ålder.",
+      "product_url": "https://animail.se/royal-canin-labrador-retriever-sterilised-12-kg.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Royal Canin Labrador Retriever sterilised  r ett komplett helfoder f r kastrerade vuxna hundar av rasen labrador retriever fr n 15 m naders  lder. \n  Aptitkontroll:  Bidrar till att uppfylla de s rskilda behoven hos kastrerade vuxna labradoren genom en h gre proteinhalt (30%) och minskat fettinneh ll (11%). Sammans ttningen inneh ller ocks  L-Karnitin. Berikad med fibrer som g r att hunden k nner sig m tt och l ttare bibeh ller idealvikten. \n   Exklusiv foderbit:   Foderbitens storlek, form och textur  r anpassad till labradoren och f r hunden att  ta l ngsammare.   \n    St rker ben och leder:   Specifik sammans ttning som bidrar till sunda ben och bibeh llen idealvikt. Berikad med EPA och DHA.    \n     Frisk hud och vacker p ls:   Labrador Retriever Adult st rker hudens skyddsbarri r (exklusiv sammans ttning) och h ller hud och p ls friska (EPA och DHA). Berikad med boragoolja.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Royal Canin Labrador Retriever Sterilised 12 kg",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/l/a/labrador-retriever-sterilised.jpg",
+      "price": [
+        619
+      ],
+      "stickers": {
+        "free-shipping": true,
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false
+      },
+      "id": "10049",
+      "sku": [
+        "1021270120"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/l/a/labrador-retriever-sterilised.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "free_shipping": [
+          "true"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "konsistens": [
+          "Torrfoder"
+        ],
+        "rasstorlekarflerval": [
+          "Specifikt"
+        ],
+        "standardnetto": [
+          "12.0000"
+        ],
+        "hundkategori": [
+          "Light & Steriliserad"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Royal Canin"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Hundfoder",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Kampanjer",
+          "category3": "15% På Stor Säck Hundfoder Från Royal Canin!",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Supersmaskiga mjuka sticks som hundarna älskar!",
+      "product_url": "https://animail.se/vitakraft-beef-sticks-kalkon-12-g.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Vitakraft Sticks  r mjuka godispinnar med h g k tthalt och god smak av kalkon. Ge som ett mellanm l eller dela enkelt i mindre bitar och ge som bel ning. Utm rkt att anv nda n r du beh ver en mer l ngvarig bel ning, exempelvis vid hundm ten, eftersom du kan h lla i godiset och l ta hunden gnaga av sm  bitar i taget. \n Inneh ller inga konstgjorda konserveringsmedel, smak mnen eller f rg mnen.  \n Godbiten v ger 12 g.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Vitakraft Beef Sticks Kalkon 12 g",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/6/9/6910004_1.jpg",
+      "price": [
+        9
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "15688",
+      "sku": [
+        "4008239231109"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/6/9/6910004_1.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "rasstorlekarflerval": [
+          "Small"
+        ],
+        "hundkategori": [
+          "Vuxen"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Vitakraft"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Tuggben & Godis",
+          "category3": "Hundgodis",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Tuggpinnar som främjar god tandhälsa.",
+      "product_url": "https://animail.se/dogman-sticks-dental-s-28-pack.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Visst kan man  ta j ttegott godis utan att f  h l i t nderna! Dessa tuggpinnars funktionella stj rnform g r rent mellan t nderna och l ngs kanten p  tandk ttet. Natrimhexametafosfat har tillsatts f r att aktivt reducera tillv xten av plack och bidra till en fr schare andedr kt. \n F rpackningen inneh ller 28 st dental sticks f r mindre hundar.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Dogman Sticks Dental S 28-pack",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/7/3/7312134791703.jpg",
+      "price": [
+        109
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "14192",
+      "sku": [
+        "7312134791703"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/7/3/7312134791703.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "tuggbenmaterial": [
+          "Övrigt"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Dogman"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Tuggben & Godis",
+          "category3": "Tuggben",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Smakrika, lufttorkade svinryggsrullar.",
+      "product_url": "https://animail.se/dogman-svinryggsrullar-100-g.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Smakrika tuggrullar av torkad grishud. Tuggen  r helt utan tillsatser och har omsorgsfullt lufttorkats f r att smak och doft ska bevaras. Ge det som godis, bel ning eller som ett snacks mellan m ltiderna.  \n  F r b sta h llbarhet  r tuggen f rpackade i p sar. F rvara  ppnad p se torrt och i rumstemperatur eller svalare.  ppnad p se f rsluts v l.  \n F rpackningen inneh ller 3 st tuggrullar som  r 12 cm l nga.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Dogman Svinryggsrullar 100 g",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/4/8/480103.jpeg",
+      "price": [
+        29
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "15076",
+      "sku": [
+        "7312134801037"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/4/8/480103.jpeg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Dogman"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Tuggben & Godis",
+          "category3": "Godis - Naturellt",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Smakrika bitar av torkad nötnacke.",
+      "product_url": "https://animail.se/dogman-notnacke-200-g.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Smakrika torkade bitar av n tnacke. Tuggen  r helt utan tillsatser och har omsorgsfullt lufttorkats f r att smak och doft ska bevaras. Ge det som godis, bel ning eller som ett snacks mellan m ltiderna.  \n  F r b sta h llbarhet  r tuggen f rpackade i p sar. F rvara  ppnad p se torrt och i rumstemperatur eller svalare.  ppnad p se f rsluts v l.  \n F rpackningen inneh ller 200 g.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Dogman Nötnacke 200 g",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/4/8/480111.jpeg",
+      "price": [
+        39
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "15079",
+      "sku": [
+        "7312134801112"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/4/8/480111.jpeg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Dogman"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Tuggben & Godis",
+          "category3": "Godis - Naturellt",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Halloween Hund",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Hill´s Science Plan Canine Adult Chicken är komplett burkmat för vuxna hundar av alla raser.",
+      "product_url": "https://animail.se/hill-s-science-plan-canine-adult-chicken-burkmat-12x370-g.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Om din hund  lskar livet som de flesta hundar g r beh ver den den v lbalanserade n ringen som finns i Hills Science Plan* Canine Adult Chicken Formula. Det inneh ller alla de n dv ndiga n rings mnen som  vriga Science Plan*-foder med en oemotst ndlig smak av kyckling. Det  r ett utm rkt foder som hj lper hunden till v lbefinnande b de p  in- och utsidan.  -Science Plan* Adult with Chicken  r framtaget f r att tillgodose behoven av n ring och energi hos vuxna hundar mellan ett och sex  rs  lder.  -Ger frisk hud och glansig p ls.  -Sammansatt n ring och god smak f r vuxna hundar.  -Avpassad sammans ttning av n rings mnen fr n ingredienser av h g kvalitet, vilket g r att du undviker utfodring av  verskott eller brister i kosten.  Helt flak med 12 burkar.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Hill´s Science Plan Canine Adult Chicken burkmat 12x370 g",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/s/k/sk_rmavbild_2013-07-24_kl._09.45.28.png",
+      "price": [
+        279
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "515",
+      "sku": [
+        "1068037M"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/s/k/sk_rmavbild_2013-07-24_kl._09.45.28.png",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "konsistens": [
+          "Våtfoder"
+        ],
+        "standardnetto": [
+          "0.3700"
+        ],
+        "hundkategori": [
+          "Vuxen"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Hill´s"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Hundfoder",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Speciellt framtagen f r vuxna hundar av stora raser. Rent kycklingk tt och kontrollerad m ngd kalorier f r att tillgodose den stora hundens n rings- och energibehov. Kulorna  r extra stora f r att passa stora munnar och ge tuggmotst nd.",
+      "product_url": "https://animail.se/four-friends-hund-adult-large-breed-12kg.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "FourFriends hundfoder  r tillverkad av rena r varor utan konstiga tillsatser och helt utan on diga billiga ingredienser. De har  ven tillsatt aloe vera som  r en v lk nd botanisk v xt som anv nds i  rhundraden runt om i v rlden tack vare dess l kande och v lg rande effekter.  \n  Adult  r ett foder s peciellt framtaget f r vuxna hundar av stora raser. Rent kycklingk tt och kontrollerad m ngd kalorier f r att tillgodose den stora hundens n rings- och energibehov. Kulorna  r extra stora f r att passa stora munnar och ge tuggmotst nd. Inneh ller glukosamin och kondroitin.   K ttmj let best r av endast muskul ra delar p  k ttet som varsamt torkats.  \n FourFriends har en h g k tthalt och  r samtidigt fritt fr n gluten.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Four Friends Hund Adult Large Breed 12kg",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/f/f/ff_dog_12kg_adult_lb.jpeg",
+      "price": [
+        589
+      ],
+      "stickers": {
+        "free-shipping": true,
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false
+      },
+      "id": "12275",
+      "sku": [
+        "1009530"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/f/f/ff_dog_12kg_adult_lb.jpeg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "free_shipping": [
+          "true"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "konsistens": [
+          "Torrfoder"
+        ],
+        "rasstorlekarflerval": [
+          "Large"
+        ],
+        "standardnetto": [
+          "12.0000"
+        ],
+        "hundkategori": [
+          "Vuxen"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Four Friends"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Hundfoder",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Hundfoder",
+          "category3": "Mängdrabatt",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Weight Control  r ett foder f r hundar med  vervikt. Inneh ller b de torkat kyckling- och kalkonk tt som proteink lla. Det ger mindre m ngd kalorier, samtidigt som den h ga proteinm ngden underh ller muskelmassan och p  s  vis h ller  mnesoms ttningen uppe.",
+      "product_url": "https://animail.se/four-friends-hund-weight-control-12kg.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "FourFriends hundfoder  r tillverkad av rena r varor utan konstiga tillsatser och helt utan on diga billiga ingredienser. De har  ven tillsatt aloe vera som  r en v lk nd botanisk v xt som anv nds i  rhundraden runt om i v rlden tack vare dess l kande och v lg rande effekter.  \n   Weight Control  r ett foder f r hundar med  vervikt. Inneh ller b de torkat kyckling- och kalkonk tt som proteink lla. Det ger mindre m ngd kalorier, samtidigt som den h ga proteinm ngden underh ller muskelmassan och p  s  vis h ller  mnesoms ttningen uppe.   K ttmj let best r av endast muskul ra delar p  k ttet som varsamt torkats.  \n FourFriends har en h g k tthalt och  r samtidigt fritt fr n gluten.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Four Friends Hund Weight Control 12kg",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/f/f/ff_dog_12kg_weight_control.jpeg",
+      "price": [
+        589
+      ],
+      "stickers": {
+        "free-shipping": true,
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false
+      },
+      "id": "12276",
+      "sku": [
+        "1009540"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/f/f/ff_dog_12kg_weight_control.jpeg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "free_shipping": [
+          "true"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "konsistens": [
+          "Torrfoder"
+        ],
+        "rasstorlekarflerval": [
+          "Small"
+        ],
+        "standardnetto": [
+          "12.0000"
+        ],
+        "hundkategori": [
+          "Light & Steriliserad"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Four Friends"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Hundfoder",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Hundfoder",
+          "category3": "Mängdrabatt",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Godbit från Specific.",
+      "product_url": "https://animail.se/specific-dog-ct-hy-treats-300-g.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "SPECIFIC DOG CT-HY HYPOALLERGENIC TREATS  \n  Indikationer      F do mnesreaktioner relaterade till hudproblem och/eller mag-/ tarmbesv r.     Godbit som kan anv ndas vid mag-/tarmbesv r som diarr , kr kningar och gasbildning orsakad av nedsatt f rm ga att sm lta och uppta n rings mnen, exokrin pankreasinsufficiens (EPI), akut gastroenterit samt inflammatorisk tarmsjukdom (IBD).     Godbit till alla friska hundar i alla  ldrar \n  Fodrets egenskaper och f rklaring till sammans ttningen    Hydrolysed salmon protein -  Hydrolyserat laxprotein med en molekylvikt   10 000 Dalton ger en h g sm ltbarhet och har en l g allergiframkallande potential.    Rice (Gluten free) -  Ris har en l g allergiframkallande potential och en h g sm ltbarhet vilket g r det till en perfekt ingrediens i hypoallergena foder. Ris  r glutenfritt; vilket f rebygger glutenintolerans/-allergi hos hundar.    High digestibility -  Kvalitetsr varor med mycket h g sm ltbarhet g r att fodret  r s rskilt l mpligt f r patienter med tunntarmsdiarr .    All ages -  Hypoallergenic Treats kan ges till alla friska hundar i alla  ldrar. N ringsinneh llet  r anpassat efter s v l v xande som vuxna individer.  \n  Mer information      SPECIFIC CT-HY Hypoallergenic Treats inneh ller ett mycket begr nsat antal r varor, dessa anv nds ocks  i CYD-HY Food Allergy Management och C D-HY Allergy Management Plus. Hundar som utfodrats framg ngsrikt med n gon av dessa dieter kommer utan tvekan  ven att tolerera CT-HY Hypoallergenic Treats.",
+      "discount": [
+        13
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Specific Dog Hypoallergenic Treats CT-HY 300 g",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/s/p/specific_dog_ct-hy_treats_300_g.jpg",
+      "price": [
+        39
+      ],
+      "stickers": {
+        "discount": false,
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "free-shipping": false
+      },
+      "id": "10411",
+      "sku": [
+        "666031796"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/s/p/specific_dog_ct-hy_treats_300_g.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "standardnetto": [
+          "0.3000"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Specific"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Tuggben & Godis",
+          "category3": "Hundgodis",
+          "category4": "",
+          "category1": "Hund"
+        },
+        {
+          "category2": "Hundgodis",
+          "category3": "",
+          "category4": "",
+          "category1": "Veterinärfoder"
+        }
+      ],
+      "compare_at": 45
+    },
+    {
+      "seller": "",
+      "short_description": "Spannmålsfri köttkorv från Four Friends av högsta kvalitet med kyckling & potatis.",
+      "product_url": "https://animail.se/four-friends-hund-kottkorv-adult-chicken-12x800g.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Four Friends k ttkorv  r ett l ttsm lt helfoder med h g smaklighet f r vuxna hundar. V tfodret  r f rpackat i korvar och inneh ller inga spannm l eller konserveringsmedel.  \n Klart att anv nda och serveras i rumstemperatur.  ppnad f rpackning f rvaras i kylsk p.  \n  V tfoder har m nga f rdelar:  - Om du har en hund som dricker d ligt f r den i sig mer v tska med bl tmat, vilket f rebygger risken f r bland annat urinsten. - F r hundar som har d liga t nder och d rf r har sv rt att tugga. - F r hundar som beh ver lite extra f r att h lla vikten. - Till kr sna hundar som vill ha n got smaskigt men fortfarande nyttigt p  sitt torrfoder.  - Komplement till f rskfoder. Perfekt om du ska p  resa! \n En korv inneh ller 800 g.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Four Friends Hund Köttkorv Adult Chicken 12x800g",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/f/f/ffds-adultchicken.jpg",
+      "price": [
+        348
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "16814",
+      "sku": [
+        "7350028737062"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/f/f/ffds-adultchicken.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "konsistens": [
+          "Våtfoder"
+        ],
+        "rasstorlekarflerval": [
+          "Small"
+        ],
+        "hundkategori": [
+          "Vuxen"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Four Friends"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Hundfoder",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    },
+    {
+      "seller": "",
+      "short_description": "Spannmålsfri köttkorv från Four Friends av högsta kvalitet med nötkött & lever.",
+      "product_url": "https://animail.se/four-friends-hund-kottkorv-power-12x800g.html",
+      "color": [
+        
+      ],
+      "variants_ids": [
+        
+      ],
+      "image_2_url": "",
+      "description": "Four Friends k ttkorv  r ett l ttsm lt helfoder med h g smaklighet f r vuxna, aktiva hundar. V tfodret  r f rpackat i korvar och inneh ller inga spannm l eller konserveringsmedel.  \n Klart att anv nda och serveras i rumstemperatur.  ppnad f rpackning f rvaras i kylsk p.  \n  V tfoder har m nga f rdelar:  - Om du har en hund som dricker d ligt f r den i sig mer v tska med bl tmat, vilket f rebygger risken f r bland annat urinsten. - F r hundar som har d liga t nder och d rf r har sv rt att tugga. - F r hundar som beh ver lite extra f r att h lla vikten. - Till kr sna hundar som vill ha n got smaskigt men fortfarande nyttigt p  sitt torrfoder.  - Komplement till f rskfoder. Perfekt om du ska p  resa! \n En korv inneh ller 800 g.",
+      "discount": [
+        
+      ],
+      "created_at": "1970-01-01T00:00:00.000Z",
+      "availability": true,
+      "delivery_time": "",
+      "variants": [
+        
+      ],
+      "title": "Four Friends Hund Köttkorv Power 12x800g",
+      "thumbnail_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/f/f/ffds-power.jpg",
+      "price": [
+        348
+      ],
+      "stickers": {
+        "availability": true,
+        "in-stock": false,
+        "out-of-stock": false,
+        "discount": false,
+        "free-shipping": false
+      },
+      "id": "16817",
+      "sku": [
+        "7350028737093"
+      ],
+      "brand": "",
+      "quantity": 1,
+      "color_variants": 1,
+      "shipping_cost": "",
+      "image_url": "http://d2btg9txypwkc4.cloudfront.net/media/catalog/product/f/f/ffds-power.jpg",
+      "custom_fields": {
+        "visibility": [
+          "4"
+        ],
+        "type_id": [
+          "simple"
+        ],
+        "konsistens": [
+          "Våtfoder"
+        ],
+        "rasstorlekarflerval": [
+          "Small"
+        ],
+        "hundkategori": [
+          "Aktiv"
+        ],
+        "status": [
+          "1"
+        ],
+        "manufacturer": [
+          "Four Friends"
+        ]
+      },
+      "rating_score": -1,
+      "tags": [
+        
+      ],
+      "condition": "",
+      "product_type": "",
+      "material": [
+        
+      ],
+      "size": [
+        
+      ],
+      "shipping_weight": "",
+      "category": [
+        {
+          "category2": "Hundfoder",
+          "category3": "",
+          "category4": "",
+          "category1": "Hund"
+        }
+      ],
+      "compare_at": -1
+    }
+  ],
+  "banner": {
+    
+  }
+}

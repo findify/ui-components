@@ -1,0 +1,22 @@
+.sort, .breadcrumbs{
+  margin-bottom: 20px;
+}
+
+.sort{
+  margin-left: auto;
+}
+
+.filters{
+  padding-right: 10px;
+}
+
+.products{
+  padding-left: 10px;
+}
+
+.product {
+  padding-right: 15px;
+  &:nth-child(3){
+    padding-right: 0;
+  }
+}

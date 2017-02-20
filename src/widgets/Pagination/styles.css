@@ -1,0 +1,28 @@
+.root {
+  clear: fix;
+  white-space: nowrap;
+}
+
+.button {
+  margin: 0;
+  padding: 5px 8px;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color .1s ease-in;
+  &.active {
+    cursor: auto;
+    background-color: #f7f7f7;
+  }
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+.icon {
+  font-size: .7em;
+  margin: 0 5px;
+}

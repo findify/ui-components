@@ -4,3 +4,4 @@ dist
 lib
 __lib-es6__
 .DS_Store
+.vscode

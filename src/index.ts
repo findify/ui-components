@@ -1,5 +1,17 @@
-import './stylesheet';
+export { ResultsLayout } from './layouts/ResultsLayout';
 
-export { AutocompleteWidget } from './components/widgets/AutocompleteWidget';
-export { AutocompleteMobileWidget } from './components/widgets/AutocompleteMobileWidget';
-export { RatingWidget } from './components/widgets/RatingWidget';
+export { FacetsList } from './lists/FacetsList';
+export { ProductsList } from './lists/ProductsList';
+
+export { Autocomplete } from './widgets/Autocomplete';
+export { BreadCrumbs } from './widgets/BreadCrumbs';
+export { CategoryFacet } from './widgets/CategoryFacet';
+export { CheckboxFacet } from './widgets/CheckboxFacet';
+export { ColorFacet } from './widgets/ColorFacet';
+export { RangeFacet } from './widgets/RangeFacet';
+export { Grid } from './widgets/Grid';
+export { Pagination } from './widgets/Pagination';
+export { Product } from './widgets/Product';
+export { ProductsCarousel } from './widgets/ProductsCarousel';
+export { Rating } from './widgets/Rating';
+export { Sorting } from './widgets/Sorting';
