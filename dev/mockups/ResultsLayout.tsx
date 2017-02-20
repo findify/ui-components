@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { withServerEmulator } from '../helpers/withServerEmulator';
+import { withMJS } from '../helpers/withMJS';
 
-export default withServerEmulator(({ Component, ...props }: any) => (
-  <div style={{ margin: 50, width: '100%', position: 'relative' }}>
+export default withMJS(({ Component, ...props }: any) => (
+  <div style={{ margin: 50, width: '70%', position: 'relative' }}>
     <Component { ...props }/>
   </div>
 ));

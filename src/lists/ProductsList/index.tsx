@@ -15,19 +15,21 @@ const HOC = compose(
 export const Component = ({
   items,
   className,
-  itemClassName,
+  columnClass,
   columns,
   component: Component,
-  onProductClick
+  onProductClick,
+  config
 }: any) => (
-  <Grid columns={String(12 / columns)} className={className}>
+  <Grid columns={String(12 / config.columns)} className={className}>
     { 
       items.map(product =>
         <Component
           key={product.id}
           {...product}
+          config={config.product}
           onClick={onProductClick}
-          columnClass={itemClassName} />
+          columnClass={columnClass} />
       )
     }
   </Grid>

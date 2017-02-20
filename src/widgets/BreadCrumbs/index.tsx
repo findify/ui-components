@@ -20,7 +20,7 @@ const filtersMapping = {
   range: (props) => valueToKey(props.values[0])
 };
 
-const Filter = compose(
+const Filter: any = compose(
   pure,
 
   withProps(({ type, name, ...rest }: any) => ({
@@ -31,6 +31,7 @@ const Filter = compose(
     onRemove: ({ onChange, ...rest }: any) => () => onChange(rest)
   })
 )(({
+  config,
   children,
   onRemove
 }: any) =>
@@ -41,7 +42,7 @@ const Filter = compose(
 );
 
 export const HOC = compose(
-  withPropsOnChange(['i18n'], ({ i18n }) => ({
+  withPropsOnChange(['config'], ({ config: { i18n } }) => ({
     titleTemplate: template(i18n.title)
   })),
 
@@ -51,15 +52,24 @@ export const HOC = compose(
 );
 
 export const Component = ({
+  config,
+  filters,
+  onChange,
   title,
-  facets,
-  onChange
+  className
 }: any) => (
-  <div className={styles.wrap}>
+  <div className={cx(styles.wrap, className)}>
     <p className={styles.title}>{title}</p>
     {
-      facets.map((filter, index) =>
-        <Filter {...filter} key={filter.values[0]} {...{ index, onChange }} />)
+      filters.map((filter, index) =>
+        <Filter
+          {...filter}
+          label={config.facets.labels[filter.name]}
+          config={config.facets[filter.type]}
+          key={filter.values[0]}
+          index={index}
+          onChange={onChange} />
+        )
     }
   </div>
 );

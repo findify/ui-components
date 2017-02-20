@@ -1,23 +1,29 @@
 import * as React from 'react';
 import Dropdown from 'react-dropdown';
-import { compose, withProps, withPropsOnChange, withState } from 'recompose';
+import { compose, flattenProp, setDisplayName, withProps, withPropsOnChange, withState } from 'recompose';
+import * as cx from 'classnames';
 
 const styles = require('./styles.css');
 
-// TODO: Should be stateless as well as other components.
+// RESOLVED: TODO: Should be stateless as well as other components.
 export const Sorting: any = compose(
+  setDisplayName('Sorting'),
+  flattenProp('value'),
   withPropsOnChange(['value'], ({ config, options, value }: any) => ({
-    options: options.map(option => ({ value: option, label: config.i18n.options[option] || option })),
-    value: { value, label: config.i18n[value] }
+    value: { value, label: config.i18n.options[value] },
+    options: options.map(option =>
+      ({ value: option, label: config.i18n.options[option] || option })
+    )
   })),
-)
-(({
+)(({
   config,
   options,
   onChange,
-  value
+  value,
+  style,
+  className
 }: any) =>
-  <div className={styles.root}>
+  <div className={cx(styles.root, className)} style={style}>
     { config.i18n.title && <p className={styles.title}>{config.i18n.title}</p> }
     <Dropdown baseClassName={styles.dropdown} onChange={onChange} options={options} value={value} />
   </div>

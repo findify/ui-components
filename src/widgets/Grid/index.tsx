@@ -4,8 +4,8 @@ import * as cx from 'classnames';
 
 const styles = require('./styles.css');
 
-const Column = createEagerFactory(({ className, children, columnClass }: any) => (
-  <div className={cx(styles.column, className, columnClass)}>
+const Column = createEagerFactory(({ className, children, columnClass, columnStyle }: any) => (
+  <div className={cx(styles.column, className, columnClass)} style={columnStyle}>
     { children }
   </div>
 ))
@@ -20,7 +20,8 @@ export const Grid: any = compose(
           key: child.key,
           children: child,
           className: classNames[index] || classNames[0],
-          columnClass: child.props.columnClass
+          columnClass: child.props.columnClass,
+          columnStyle: child.props.columnStyle
         }))
     };
   })

@@ -1,13 +1,14 @@
 import { compose, defaultProps, flattenProp, mapProps } from 'recompose';
+import { camelizeKeys } from 'humps';
 import { withFacets } from './withFacets';
 import { withMeta } from './withMeta';
 
 const response = require('../data/raw.json');
-const config = require('../data/config.ts');
+const config = require('../data/config.ts').default;
 
-export const withServerEmulator = compose(
+export const withMJS = compose(
   defaultProps({
-    response,
+    response: camelizeKeys(response),
     config
   }),
 
@@ -16,11 +17,11 @@ export const withServerEmulator = compose(
   withFacets,
   withMeta,
 
-  mapProps(({ meta, items, facets, banner, redirect, ...rest }) => ({
+  mapProps(({ meta, products, facets, banner, redirect, ...rest }) => ({
     ...rest,
     response: { // Structure back response object 
       meta,
-      items,
+      products,
       facets,
       banner,
       redirect

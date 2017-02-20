@@ -1,27 +1,64 @@
 import * as React from 'react';
-import { compose, withHandlers, mapProps, withProps, defaultProps, setDisplayName } from 'recompose';
+import {
+  compose,
+  defaultProps,
+  mapProps,
+  pure,
+  setDisplayName,
+  withHandlers,
+  withProps,
+  withPropsOnChange
+} from 'recompose';
 import { format as currencyFormat } from 'currency-formatter';
 import { stringify } from 'querystring';
 import { Rating } from 'widgets/Rating';
+import * as Truncate from 'react-truncate';
+import { merge } from 'lodash';
 
 const styles = require('./styles.css');
 
+const defaultConfig = {
+  currency: 'USD',
+  title: {
+    lines: 3,
+    display: true
+  },
+  description: {
+    lines: 3,
+    display: true
+  }
+}
 
-// TODO: Change props interface according SA response
+const getPrice = (price, currency) => {
+  if (typeof price === 'string') return price;
+  if (!!price.reduce((a, b) => a === b ? a : NaN )) {
+    return currencyFormat(price[0], { code: currency })
+  } else {
+    return [
+      currencyFormat(Math.min.apply(Math,price), { code: currency }),
+      currencyFormat(Math.max.apply(Math,price), { code: currency }),
+    ].join(' - ')
+  }
+}
+const Title = ({ text, config }) => config.display && text && (
+  <h5 className={styles.title}>
+    <Truncate lines={config.lines || false}>{text}</Truncate>
+  </h5>
+);
 
-const Title = ({ text }) => text &&
-  <h5 className={styles.title}>{text}</h5>
+const Description = ({ text, config }) => config.display && text && (
+  <p className={styles.description}>
+    <Truncate lines={config.lines || false}>{text}</Truncate>
+  </p>
+)
 
-const Description = ({ text }) => text &&
-  <p className={styles.description}>{text}</p>
-
-const Price = ({ price, oldPrice, currency }) => price &&
+const Price = ({ price, oldPrice, currency }) => price && 
   <div className={styles.priceWrap}>
     <span className={styles.price}>
-      { currencyFormat(price[0], { code: currency }) }
+      { getPrice(price, currency) }
     </span>
     {
-      oldPrice &&
+      oldPrice && oldPrice > 0 &&
       <span className={styles.compare}>
         { currencyFormat(oldPrice, { code: currency }) }
       </span>
@@ -30,10 +67,7 @@ const Price = ({ price, oldPrice, currency }) => price &&
 
 export const HOC = compose(
   setDisplayName('Product'),
-
-  defaultProps({
-    currency: 'USD'
-  }),
+  pure,
 
   mapProps(({
     productUrl,
@@ -47,8 +81,13 @@ export const HOC = compose(
     ...rest
   })),
 
-  withProps(({ image, imageQuery }: any) => ({
+  withPropsOnChange(['image'], ({ image, imageQuery }: any) => ({
     image: imageQuery ? `${image}?${stringify(imageQuery)}` : image
+  })),
+
+  withPropsOnChange(['config'], ({ config, ...rest }: any) => ({
+    ...rest,
+    config: merge(defaultConfig, config),
   })),
 
   withHandlers({
@@ -71,15 +110,16 @@ export const Component = (({
   price,
   oldPrice,
   currency,
-  onClick
-}: any) =>
+  onClick,
+  config,
+}: any) => (
   <a onClick={onClick} href={url} className={styles.wrap}>
     <div className={styles.imageWrap}>
       <img className={styles.image} src={image} alt={title} />
     </div>
     <div className={styles.description}>
-      <Title text={title} />
-      <Description text={description} />
+      <Title text={title} config={config.title} />
+      <Description text={description} config={config.description}/>
     </div>
     {
       reviews &&
@@ -87,8 +127,8 @@ export const Component = (({
         <Rating count={reviews.totalReviews} value={reviews.averageScore} />
       </div>
     }
-    <Price price={price} oldPrice={oldPrice} currency={currency} />
+    <Price price={price} oldPrice={oldPrice} currency={config.currency} />
   </a>
-);
+));
 
 export const Product = HOC(Component);

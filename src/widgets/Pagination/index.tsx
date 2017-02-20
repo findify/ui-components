@@ -15,7 +15,7 @@ const getRange = ({ current, total, step }) => {
 };
 
 // RESOLVED: TODO: Should be stateless component
-export const Pagination = compose(
+export const Pagination: any = compose(
   setDisplayName('Pagination'),
   defaultProps({
     step: 2,
@@ -43,13 +43,14 @@ export const Pagination = compose(
   visiblePages,
   current,
   total,
-  i18n,
+  config,
+  style,
   ...rest
 }: any) => (
-  <div className={styles.wrap}>
+  <div className={styles.root} style={style}>
     {
       showPrev &&
-      <Button label={i18n.previous} prependIcon='fa fa-chevron-left' page={current - 1} {...rest} />
+      <Button label={config.i18n.previous} prependIcon='fa fa-chevron-left' page={current - 1} {...rest} />
     }
     {showFirst && <Button page={1} label={1} {...rest} />}
     {showFirst && <Button label='...' className={styles.disabled} />}
@@ -62,7 +63,7 @@ export const Pagination = compose(
     {showLast && <Button page={total} label={total} {...rest} />}
     {
       showNext &&
-      <Button label={i18n.next} page={current + 1} appendIcon='fa fa-chevron-right' {...rest} />
+      <Button label={config.i18n.next} page={current + 1} appendIcon='fa fa-chevron-right' {...rest} />
     }
   </div>
 ));

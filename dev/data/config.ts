@@ -9,7 +9,16 @@ export default {
 
   product: {
     currency: 'USD',
-    imageQuery: {},
+    image: {
+      query: {}
+    },
+    title: {
+      lines: 3,
+    },
+    description: {
+      lines: 5
+    }
+
   },
 
   productsCarousel: {
@@ -64,7 +73,7 @@ export default {
 
   pagination: {
     i18n: {
-      prev: 'previous',
+      previous: 'previous',
       next: 'next'
     }
   },

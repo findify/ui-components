@@ -62,4 +62,4 @@ const reducer = (state, { type, name, changes }) => {
   }
 };
 
-export const withFacets = withReducer('facets', 'onChange', reducer, props => props.facets);
+export const withFacets = withReducer('facets', 'onFacetsChange', reducer, props => props.facets);
