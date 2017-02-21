@@ -64,4 +64,4 @@ export const HOC = (Content, WrappedContent) => compose(
   )
 )(renderNothing);
 
-export const GenericFacet = HOC(Raw, Wrapper);
+export const GenericFacet: any = HOC(Raw, Wrapper);

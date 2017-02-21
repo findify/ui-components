@@ -2,9 +2,19 @@ import * as React from 'react';
 
 const props = {
   isOpen: true,
-  // `goBackTitle` should be in `i18n` prop.
-  title: 'Kategori',
-  goBackTitle: 'Alla kategorier',
+  label: 'Kategori',
+  type: 'category',
+  name: 'Kategori',
+  onChange: console.log,
+  config: {
+    maxItemsCount: 3,
+    rowHeight: 20,
+    i18n: {
+      goBackTitle: 'Alla kategorier',
+      more: 'Show more',
+      less: 'Less',
+    }
+  },
   values: [  
     {  
       "type":"category",
@@ -13,7 +23,7 @@ const props = {
       "hasChildren":true,
       "key":"Hund",
       "name":"category1", 
-      children: [
+      values: [
         {  
           "type":"category",
           "selected":false,
@@ -21,7 +31,7 @@ const props = {
           "hasChildren":true,
           "key":"Fågel",
           "name":"category1",
-          children: [
+          values: [
             {  
               "type":"category",
               "selected":false,

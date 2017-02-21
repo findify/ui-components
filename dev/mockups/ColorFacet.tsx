@@ -2,7 +2,9 @@ import * as React from 'react';
 
 const props = {
   isOpen: true,
-  title: 'Colors',
+  label: 'Colors',
+  type: 'color',
+  name: 'Colors',
   values: [  
     {  
       "key":"Blue",

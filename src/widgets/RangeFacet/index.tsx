@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { compose, withState, withHandlers, defaultProps } from 'recompose';
+import { compose, withState, withHandlers } from 'recompose';
 
 import { CheckboxBodyFacet } from 'internals/CheckboxBodyFacet';
 import { RangeBodyFacet } from 'internals/RangeBodyFacet';
 import { valueToKey } from 'helpers/valueToKey';
-const { GenericFacet } = require('internals/GenericFacet');
+import { GenericFacet } from 'internals/GenericFacet';
+import withConfig from 'helpers/withConfig';
 
 const stateToProps = props =>
   props.values.map(value => ({
@@ -14,12 +15,10 @@ const stateToProps = props =>
   }));
 
 export const RangeFacet = compose(
-  defaultProps({
-    config: {
-      cong: 'USD',
-      i18n: {
-        submit: 'go'
-      }
+  withConfig({
+    currency: 'USD',
+    i18n: {
+      submit: 'go'
     }
   }),
 )(props => (

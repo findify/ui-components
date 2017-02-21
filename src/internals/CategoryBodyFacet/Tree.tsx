@@ -9,8 +9,8 @@ import { SingleItem } from './SingleItem';
 export const Tree = compose(
   branch(
     ({ cursor }: any) => cursor.length > 2, // Max level is 2
-    renderComponent(({ children, cursor, ...rest }) =>
-      <Tree {...rest} {...children[cursor[0]]} cursor={cursor.filter((_, i) => i !== 1)}/>
+    renderComponent(({ values, cursor, ...rest }) =>
+      <Tree {...rest} {...values[cursor[0]]} cursor={cursor.filter((_, i) => i !== 1)}/>
     )
   ),
 
@@ -25,12 +25,16 @@ export const Tree = compose(
       onChange({ key: title, selected: !selected })
   }),
 
-  withProps(({ children, level }) => ({
-    hasSelectedSiblings: children && children.some(child => child.selected && child.children),
+  withProps(({ values, level }) => ({
+    hasSelectedSiblings: values && values.some(child => child.selected && child.values),
   })),
 
   branch(
-    ({ children }: any) => !!children,
+    ({ values, ...rest }: any) => {
+      console.log(rest);
+      
+      return !!values
+    },
     renderComponent(props => <NestedTree {...props} Nested={Tree} />),
     renderComponent(SingleItem)
   )

@@ -53,6 +53,26 @@ export default {
       }
     },
 
+    category: {
+      maxItemsCount: 3,
+      rowHeight: 20,
+      i18n: {
+        goBackTitle: 'All categories',
+        more: 'Show more',
+        less: 'Less',
+      }
+    },
+
+    checkbox: {
+      maxItemsCount: 3,
+      rowHeight: 20,
+      i18n: {
+        search: 'All categories',
+        more: 'Show more',
+        less: 'Less',
+      }
+    },
+
     labels: {
       'category': 'Hund',
       'custom_fields.manufacturer': 'Manufacturer',

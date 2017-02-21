@@ -2,9 +2,18 @@ import * as React from 'react';
 
 const props = {
   isOpen: true,
-  title: 'Range',
+  label: 'Range',
+  type: 'range',
+  name: 'Range',
+  onChange: console.log,
   min: 1,
   max: 20,
+  config: {
+    currency: 'USD',
+    i18n: {
+      submit: 'Apply'
+    }
+  },
   values: [  
     {
       "count":83,

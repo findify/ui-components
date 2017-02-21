@@ -8,10 +8,10 @@ const { branch } = require('recompose');
 
 const NestingComponent = ({ isRoot, ...rest }) => React.createElement('div', rest);
 
-const StaticList = ({ selected, Nested, children, ...rest }: any) => (
+const StaticList = ({ selected, Nested, values, ...rest }: any) => (
   <div className={styles.list}>
     { 
-      children.map((item, index) =>
+      values.map((item, index) =>
         <Nested
           {...rest}
           {...item}
@@ -45,19 +45,19 @@ const ListRenderer = compose(
   ),
 
   branch(
-    ({ isExpanded, childrenCount, hasSelectedSiblings, maxItemsCount }: any) =>
-      isExpanded && !hasSelectedSiblings && childrenCount > maxItemsCount,
+    ({ isExpanded, childrenCount, hasSelectedSiblings, config }: any) =>
+      isExpanded && !hasSelectedSiblings && childrenCount > config.maxItemsCount,
 
     compose(
-      withProps(({ Nested, children, ...rest }: any) => ({
-        rowHeight: rest.rowHeight,
-        itemsCount: rest.maxItemsCount,
-        items: children,
+      withProps(({ Nested, values, ...rest }: any) => ({
+        rowHeight: rest.config.rowHeight,
+        itemsCount: rest.config.maxItemsCount,
+        items: values,
         rowRenderer: ({ index, key, style }) =>
             <Nested
               {...rest}
-              {...children[index]}
-              title={children[index].key}
+              {...values[index]}
+              title={values[index].key}
               key={key}
               style={style}
               index={index} />
@@ -66,8 +66,8 @@ const ListRenderer = compose(
     ),
   
     compose(
-      withProps(({ children, maxItemsCount }: any) => ({
-          children: [...children.slice(0, maxItemsCount)]
+      withProps(({ values, config }: any) => ({
+          values: [...values.slice(0, config.maxItemsCount)]
       })),
       renderComponent(StaticList)
     )
@@ -111,7 +111,7 @@ const RootWrapper = (props: any) => (
     <div className={cx(styles.item, styles.selected)} onClick={props.onClick}>
       <p className={styles.title}>
         <span className={cx(styles.prevIcon, 'fa', 'fa-chevron-left')} />
-        { props.goBackTitle }
+        { props.config.i18n.goBackTitle }
       </p>
     </div>
     <ul className={styles.list}>
