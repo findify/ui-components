@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { compose, branch, renderComponent, mapProps, renderNothing, setDisplayName } from 'recompose';
-import { pick } from 'lodash';
+import { pick, merge } from 'lodash';
 
 import { AutocompleteBody } from 'internals/AutocompleteBody';
 import { AutocompleteMobileBody } from 'internals/AutocompleteMobileBody';
@@ -9,6 +9,13 @@ import { AutocompleteMobileBody } from 'internals/AutocompleteMobileBody';
 // TODO: children of `findify-widgets-autocomplete` should be:
 export const Autocomplete = compose(
   setDisplayName('Autocomplete'),
+  mapProps((props: any) => ({
+    ...props,
+    config: merge({}, {
+      direction: 'ltr',
+      i18n: {},
+    }, props.config),
+  })),
   branch(
     ({ isMobile }) => !isMobile,
     renderComponent(AutocompleteBody),
