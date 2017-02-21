@@ -2,6 +2,7 @@ import * as React from 'react';
 import { compose, branch, renderComponent, mapProps, renderNothing, setDisplayName } from 'recompose';
 import { pick } from 'lodash';
 import withConfig from 'helpers/withConfig';
+
 import { AutocompleteBody } from 'internals/AutocompleteBody';
 import { AutocompleteMobileBody } from 'internals/AutocompleteMobileBody';
 
