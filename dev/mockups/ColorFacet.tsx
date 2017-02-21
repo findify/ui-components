@@ -3,26 +3,26 @@ import * as React from 'react';
 const props = {
   isOpen: true,
   label: 'Colors',
-  type: 'color',
+  type: 'text',
   name: 'Colors',
   values: [  
     {  
-      "key":"Blue",
+      "value":"Blue",
       "count":83,
       "selected":false
     },
     {  
-      "key":"Red",
+      "value":"Red",
       "count":75,
       "selected":false
     },
     {  
-      "key":"Multicolor",
+      "value":"Multicolor",
       "count":73,
       "selected":false
     },
     {  
-      "key":"Yellow",
+      "value":"Yellow",
       "count":261,
       "selected":false
     }

@@ -3,14 +3,7 @@ import { compose, withState } from 'recompose';
 import config from '../data/config';
 
 const props = {
-  filters: [
-    {type: "category", name: "category1", values: ["Sleeve"]},
-    {type: "terms", name: "color", values: ["Blue"]},
-    {type: "terms", name: "color", values: ["White"]},
-    {type: "terms", name: "size", values: ["XS"]},
-    {type: "terms", name: "size", values: ["S/M"]},
-    {type: "range", name: "price", values: [{to: 10, custom: false}]}
-  ],
+  filters: require('../data/raw.json').meta.filters,
   onChange: console.log,
   total: 20,
   query: 'something',

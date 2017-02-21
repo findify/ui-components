@@ -8,14 +8,15 @@ const { branch } = require('recompose');
 
 const NestingComponent = ({ isRoot, ...rest }) => React.createElement('div', rest);
 
-const StaticList = ({ selected, Nested, values, ...rest }: any) => (
+const StaticList = ({ selected, Nested, children, ...rest }: any) => (
   <div className={styles.list}>
     { 
-      values.map((item, index) =>
+      children.map((item, index) =>
         <Nested
           {...rest}
           {...item}
-          title={item.key}
+          key={item.value}
+          title={item.value}
           index={index} />
       )
     }
@@ -49,15 +50,15 @@ const ListRenderer = compose(
       isExpanded && !hasSelectedSiblings && childrenCount > config.maxItemsCount,
 
     compose(
-      withProps(({ Nested, values, ...rest }: any) => ({
+      withProps(({ Nested, children, ...rest }: any) => ({
         rowHeight: rest.config.rowHeight,
         itemsCount: rest.config.maxItemsCount,
-        items: values,
+        items: children,
         rowRenderer: ({ index, key, style }) =>
             <Nested
               {...rest}
-              {...values[index]}
-              title={values[index].key}
+              {...children[index]}
+              title={children[index].value}
               key={key}
               style={style}
               index={index} />
@@ -66,8 +67,8 @@ const ListRenderer = compose(
     ),
   
     compose(
-      withProps(({ values, config }: any) => ({
-          values: [...values.slice(0, config.maxItemsCount)]
+      withProps(({ children, config }: any) => ({
+        children: [...children.slice(0, config.maxItemsCount)]
       })),
       renderComponent(StaticList)
     )

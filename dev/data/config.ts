@@ -73,6 +73,10 @@ export default {
       }
     },
 
+    types: {
+      'custom_fields.manufacturer': 'color',
+    },
+
     labels: {
       'category': 'Hund',
       'custom_fields.manufacturer': 'Manufacturer',

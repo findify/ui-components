@@ -37,7 +37,7 @@ export const ColorBodyFacet = ({
 }: any) => (
   <div className={styles.list}>
     {
-      values.map(item => <Item key={item.key} {...rest} {...{title: item.key, item}} />)
+      values.map(item => <Item key={item.value} {...rest} {...{title: item.value, item}} />)
     }
   </div>
 );

@@ -2,8 +2,7 @@ import * as React from 'react';
 import { camelizeKeys } from 'humps';
 
 const props = camelizeKeys({
-  // TODO: need to rename `products` prop to items to correspond SA api.
-  items: require('../data/raw.json').products,
+  items: require('../data/raw.json').items,
   title: 'CUSTOMERS WHO VIEWED THIS ALSO VIEWED',
   config: {
     slidesToShow: 5,

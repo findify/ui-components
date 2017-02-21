@@ -3,7 +3,7 @@ import * as React from 'react';
 const props = {
   isOpen: true,
   label: 'Checkbox',
-  type: 'checkbox',
+  type: 'text',
   name: 'Checkbox',
   onChange: console.log,
   config: {
@@ -17,52 +17,52 @@ const props = {
   },
   values: [  
     {  
-      "key":"Aktiv",
+      "value":"Aktiv",
       "count":83,
       "selected":false
     },
     {  
-      "key":"Light & Steriliserad",
+      "value":"Light & Steriliserad",
       "count":75,
       "selected":false
     },
     {  
-      "key":"Mature & Senior",
+      "value":"Mature & Senior",
       "count":73,
       "selected":false
     },
     {  
-      "key":"Valp & Junior",
+      "value":"Valp & Junior",
       "count":261,
       "selected":false
     },
     {  
-      "key":"Vuxen1",
+      "value":"Vuxen1",
       "count":558,
       "selected":false
     },
        {  
-      "key":"Aktiv1",
+      "value":"Aktiv1",
       "count":83,
       "selected":false
     },
     {  
-      "key":"Light & Steriliserad1",
+      "value":"Light & Steriliserad1",
       "count":75,
       "selected":false
     },
     {  
-      "key":"Mature & Senior1",
+      "value":"Mature & Senior1",
       "count":73,
       "selected":false
     },
     {  
-      "key":"Valp & Junior1",
+      "value":"Valp & Junior1",
       "count":261,
       "selected":false
     },
     {  
-      "key":"Vuxen2",
+      "value":"Vuxen2",
       "count":558,
       "selected":false
     }

@@ -42,7 +42,7 @@ export const ListRenderer = branch(
     <div className={cx(styles.list, className)}>
       { 
         [...items.slice(0, config.maxItemsCount)].map(item =>
-          <Item item={item} key={item.key} {...rest} title={item.label || item.key} />
+          <Item item={item} key={item.value} {...rest} title={item.label || item.value} />
         )
       }
     </div>
@@ -50,7 +50,7 @@ export const ListRenderer = branch(
   compose(
     withProps(({ items, ...rest }) => ({
       rowRenderer: ({ index, key, style }) =>
-        <Item item={items[index]} {...rest} title={items[index].key} key={key} style={style} />
+        <Item item={items[index]} {...rest} title={items[index].value} key={key} style={style} />
     })),
     renderComponent(VirtualizedList)
   )
