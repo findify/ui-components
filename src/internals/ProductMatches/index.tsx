@@ -35,7 +35,7 @@ export const ProductMatches = compose(
             href={p.productUrl}
             key={i}>
             <div className={styles.itemImage}>
-              <img className={styles.itemSrc} src={p.imageUrl} />
+              <img className={styles.itemSrc} src={p.thumbnailUrl} />
             </div>
             <span className={styles.itemTitle}>
               {p.title}
@@ -73,7 +73,7 @@ type Props = {
 
 type Product = {
   productUrl: string,
-  imageUrl: string,
+  thumbnailUrl: string,
   title: string,
   price: string,
   compareAt?: number,
