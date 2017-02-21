@@ -16,20 +16,10 @@ import * as Truncate from 'react-truncate';
 import { merge } from 'lodash';
 import { camelizeKeys } from 'humps';
 import { getPrice } from 'helpers/getPrice';
+import withConfig from 'helpers/withConfig';
 
 const styles = require('./styles.css');
 
-const defaultConfig = {
-  currency: 'USD',
-  title: {
-    lines: 3,
-    display: true
-  },
-  description: {
-    lines: 3,
-    display: true
-  }
-}
 
 const Title = ({ text, config }) => config.display && text && (
   <h5 className={styles.title}>
@@ -58,17 +48,24 @@ const Price = ({ price, oldPrice, currency }) => price &&
 
 export const HOC = compose(
   setDisplayName('Product'),
+  withConfig({
+    currency: 'USD',
+    title: {
+      lines: 3,
+      display: true
+    },
+    description: {
+      lines: 3,
+      display: true
+    }
+  }),
+
   pure,
 
   mapProps(props => camelizeKeys(props)),
 
   withPropsOnChange(['image'], ({ image, imageQuery }: any) => ({
     image: imageQuery ? `${image}?${stringify(imageQuery)}` : image
-  })),
-
-  withPropsOnChange(['config'], ({ config, ...rest }: any) => ({
-    ...rest,
-    config: merge(defaultConfig, config),
   })),
 
   withHandlers({

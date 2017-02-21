@@ -5,7 +5,7 @@ import * as cx from 'classnames';
 
 const styles = require('./styles.css');
 
-export const Button = compose(
+export const Button: any = compose(
   pure,
   withHandlers({
     onClick: ({ onChange, page }: any) => () => onChange(page)

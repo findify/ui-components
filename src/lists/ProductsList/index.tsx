@@ -1,13 +1,16 @@
 import * as React from 'react';
 import { compose, setDisplayName, defaultProps } from 'recompose';
+import withConfig from 'helpers/withConfig';
 
-const { Product } = require('widgets/Product');
-const { Grid } = require('widgets/Grid');
+import { Product } from 'widgets/Product';
+import { Grid } from 'widgets/Grid';
 
 const HOC = compose(
   setDisplayName('ProductsList'),
+  withConfig({
+    columns: 3
+  }),
   defaultProps({
-    columns: 3,
     component: Product
   })
 );
@@ -16,7 +19,6 @@ export const Component = ({
   items,
   className,
   columnClass,
-  columns,
   component: Component,
   onProductClick,
   config

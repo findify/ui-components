@@ -2,6 +2,7 @@ import * as React from 'react';
 import { compose, setDisplayName, mapProps, defaultProps } from 'recompose';
 import { Product } from 'widgets/Product';
 import * as cx from 'classnames';
+import withConfig from 'helpers/withConfig';
 
 import './slider.global.css';
 import './slider-theme.global.css';
@@ -24,8 +25,10 @@ const sliderProps = {
 
 export const HOC = compose(
   setDisplayName('ProductsCarousel'),
+  withConfig({
+    productsToShow: 5
+  }),
   defaultProps({
-    productsToShow: 5,
     component: Product
   })
 );
@@ -33,7 +36,10 @@ export const HOC = compose(
 export const Component = (({
   items,
   title,
-  productsToShow: slidesToShow,
+  config: {
+    productsToShow: slidesToShow,
+    ...config
+  },
   component: Component
 }: any) => (
   <div className={styles.wrap}>
@@ -44,7 +50,7 @@ export const Component = (({
       { 
         items.map(product =>
           <div key={product.id}>
-            <Component key={product.id} {...product} />
+            <Component key={product.id} {...product} config={config.product} />
           </div>
         )
       }
