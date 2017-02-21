@@ -9,14 +9,8 @@
   margin-bottom: 21px;
 }
 
-.items {
-  margin: 0 -8px;
-  clear: fix;
-}
-
 .item {
-  width: 50%;
-  float: left;
+  display: block;
   padding: 0 8px;
   margin-bottom: 15px;
   text-decoration: none;

@@ -8,12 +8,13 @@ const styles = require('./styles.css');
 
 export function AutocompleteBody({
   suggestions,
-  products,
+  items,
   onSearchSuggestionClick,
   onTipClick,
-  query,
+  meta = {},
   config: {
-    direction = 'ltr',
+    currency,
+    direction,
     i18n
   }
 }: Props) {
@@ -22,13 +23,14 @@ export function AutocompleteBody({
       suggestions,
       title: i18n.suggestionsTitle,
       onSearchSuggestionClick,
-      query 
+      query: meta.query,
+      currency
       }} />
   ); 
 
-  const productMatchesNode = products && products.length && (
+  const productMatchesNode = items && items.length && (
     <ProductMatches {...{
-      products,
+      items,
       title: i18n.productMatchesTitle
     }} />
   );
@@ -61,7 +63,7 @@ export function AutocompleteBody({
             onClick={() => onTipClick && onTipClick()} >
             {i18n.tipTitle}
             <span className={styles.tipQuery}>
-              &nbsp;"{query}"
+              &nbsp;"{meta.query}"
             </span>
           </div>
         )
@@ -71,15 +73,16 @@ export function AutocompleteBody({
 };
 
 type Props = {
-  query: string,
+  meta: any,
   suggestions: string[],
   onSearchSuggestionClick: (query: string) => void,
-  products?: Product[],
+  items?: Product[],
   onTipClick?: () => void,
   // direction: 'ltr' | 'rtl',
   // TODO:
   config: {
-    direction?: string,
+    currency: string,
+    direction: string,
     i18n: {
       suggestionsTitle?: string,
       productMatchesTitle?: string,
