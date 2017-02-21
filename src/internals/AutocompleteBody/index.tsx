@@ -23,7 +23,7 @@ export function AutocompleteBody({
       suggestions,
       title: i18n.suggestionsTitle,
       onSearchSuggestionClick,
-      query: meta.query,
+      query: meta.q,
       currency
       }} />
   ); 
@@ -63,7 +63,7 @@ export function AutocompleteBody({
             onClick={() => onTipClick && onTipClick()} >
             {i18n.tipTitle}
             <span className={styles.tipQuery}>
-              &nbsp;"{meta.query}"
+              &nbsp;"{meta.q}"
             </span>
           </div>
         )
