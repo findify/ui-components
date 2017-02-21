@@ -15,6 +15,10 @@ export const Autocomplete = compose(
     direction: 'ltr',
     i18n: {}
   }),
+  mapProps(props => ({
+    ...props,
+    suggestions: (props as any).suggestions.map((s) => s.value),
+  })),
   branch(
     ({ isMobile }) => !isMobile,
     renderComponent(AutocompleteBody),
@@ -22,10 +26,7 @@ export const Autocomplete = compose(
       branch(
         ({ isMobileSimple }) => isMobileSimple,
         compose(
-          mapProps(props => ({
-            ...pick(props, ['config', 'meta', 'onSearchSuggestionClick']),
-            suggestions: (props as any).suggestions.map((s) => s.value),
-          })),
+          mapProps(props => pick(props, ['config', 'meta', 'suggestions', 'onSearchSuggestionClick'])),
           renderComponent(AutocompleteBody),
         ),
         renderComponent(AutocompleteMobileBody),
