@@ -24,7 +24,7 @@ export const Autocomplete = compose(
         compose(
           mapProps(props => ({
             ...pick(props, ['config', 'meta', 'onSearchSuggestionClick']),
-            suggestions: props.suggestions.map((s) => s.value),
+            suggestions: (props as any).suggestions.map((s) => s.value),
           })),
           renderComponent(AutocompleteBody),
         ),
