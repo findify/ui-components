@@ -9,6 +9,7 @@ export default (env, { module, plugins, output, ...config }) => ({
   output: {
     ...output,
     library: 'FindifyUIComponents',
+    libraryTarget: 'umd',
   },
 
   module: {
