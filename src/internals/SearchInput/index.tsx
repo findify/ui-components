@@ -9,10 +9,16 @@ export const SearchInput = withHandlers({
 })
 (({
   onChange,
-  value
+  value,
+  placeholder
 }: any) => (
   <div className={styles.wrap}>
     <span className={cx(styles.icon, 'fa', 'fa-search')} />
-    <input  type='search' className={styles.input} onChange={onChange} defaultValue={value} />
+    <input
+      placeholder={placeholder}
+      type='search'
+      className={styles.input}
+      onChange={onChange}
+      defaultValue={value} />
   </div>
 ));

@@ -3,10 +3,10 @@ import { compose, withState } from 'recompose';
 
 const props = {
   options: ['relevant', 'priceAZ', 'priceZA'],
-  // RESOLVED: TODO: `title` should be in `i18n`
+  onChange: console.log,
+  value: 'relevant',
   config: {
     i18n: {
-      // RESOLVED: TODO: All these 3 keys should be in `options` object.
       title: 'Sort by:',
       options: {
         relevant: 'Relevans',

@@ -21,16 +21,16 @@ const Item = withHandlers({
   </div>
 ));
 
-const VirtualizedList = ({ items, rowRenderer, rowHeight, maxItemsCount }) => (
+const VirtualizedList = ({ items, rowRenderer, config }) => (
   <AutoSizer disableHeight>
     {
     ({ width }) =>
       <List
         className={styles.list}
         width={width}
-        height={maxItemsCount * rowHeight}
+        height={config.maxItemsCount * config.rowHeight}
         rowCount={items.length}
-        rowHeight={rowHeight}
+        rowHeight={config.rowHeight}
         rowRenderer={rowRenderer} />
     }
   </AutoSizer>
@@ -38,10 +38,10 @@ const VirtualizedList = ({ items, rowRenderer, rowHeight, maxItemsCount }) => (
 
 export const ListRenderer = branch(
   ({ isStatic }: any) => isStatic,
-  renderComponent(({ items, maxItemsCount, className, ...rest }) => (
+  renderComponent(({ items, config, className, ...rest }) => (
     <div className={cx(styles.list, className)}>
       { 
-        [...items.slice(0, maxItemsCount)].map(item =>
+        [...items.slice(0, config.maxItemsCount)].map(item =>
           <Item item={item} key={item.key} {...rest} title={item.label || item.key} />
         )
       }

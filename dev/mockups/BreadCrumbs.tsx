@@ -11,6 +11,7 @@ const props = {
     {type: "terms", name: "size", values: ["S/M"]},
     {type: "range", name: "price", values: [{to: 10, custom: false}]}
   ],
+  onChange: console.log,
   total: 20,
   query: 'something',
   config: {

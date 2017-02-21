@@ -2,21 +2,20 @@ import * as React from 'react';
 import { compose, lifecycle, shouldUpdate, withHandlers, withState } from 'recompose';
 
 import { CategoryBodyFacet } from 'internals/CategoryBodyFacet';
+import { GenericFacet } from 'internals/GenericFacet';
+import withConfig from 'helpers/withConfig';
 
-const { GenericFacet } = require('internals/GenericFacet');
-
-const mapper = (list, key, selected) => [
-  ...list.map(item =>
-    item.key === key
-    ? {...item, selected }
-    : item.children
-      ? {...item, children: mapper(item.children, key, selected)}
-      : item
-  )
-]
-
-export const CategoryFacet = props => (
-  <GenericFacet {...props} mapper={mapper} >
+export const CategoryFacet = withConfig({
+  maxItemsCount: 3,
+  rowHeight: 20,
+  i18n: {
+    goBackTitle: 'All categories',
+    search: 'Search',
+    more: 'Show more',
+    less: 'Less',
+  }
+})(props => (
+  <GenericFacet {...props} >
     <CategoryBodyFacet />
   </GenericFacet>
-);
+));

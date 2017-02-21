@@ -13,8 +13,8 @@ const props = {
   meta: {
     query: 'fru',
   },
-  onSearchSuggestionClick: noop,
-  onTipClick: noop,
+  onSearchSuggestionClick: console.log,
+  onTipClick: console.log,
   // TODO: Need to change product interface, to match search API data interface.
   // TODO: Need to rename `products` prop to `items`.
   items: require('../data/raw.json').products,

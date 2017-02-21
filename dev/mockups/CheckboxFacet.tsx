@@ -2,8 +2,19 @@ import * as React from 'react';
 
 const props = {
   isOpen: true,
-  title: 'Checkbox',
-  // TODO: Should be in `i18n` object
+  label: 'Checkbox',
+  type: 'checkbox',
+  name: 'Checkbox',
+  onChange: console.log,
+  config: {
+    maxItemsCount: 3,
+    rowHeight: 20,
+    i18n: {
+      search: 'Search',
+      more: 'Show more',
+      less: 'Less',
+    }
+  },
   values: [  
     {  
       "key":"Aktiv",

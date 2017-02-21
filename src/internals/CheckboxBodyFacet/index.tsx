@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { compose, defaultProps, withHandlers, withProps, withPropsOnChange, withState } from 'recompose';
+import {
+  compose,
+  defaultProps,
+  setDisplayName,
+  withHandlers,
+  withProps,
+  withPropsOnChange,
+  withState
+} from 'recompose';
 import * as cx from 'classnames';
 
 import { ExpandButton } from 'internals/ExpandButton';
@@ -8,10 +16,9 @@ import { ListRenderer } from './ListRenderer';
 
 const styles = require('./styles.css');
 
-export const CheckboxBodyFacet = compose(
+export const CheckboxBodyFacet: any = compose(
+  setDisplayName('CheckboxBodyFacet'),
   defaultProps({
-    rowHeight: 20,
-    maxItemsCount: 6,
     showExpander: false
   }),
 
@@ -32,11 +39,11 @@ export const CheckboxBodyFacet = compose(
   withProps((props: any) => ({
     hasSelected: !!props.selectedItems.length,
     hasNotSelected: !!props.notSelectedItems.length,
-    showMoreButton: props.showExpander && props.notSelectedItems.length > props.maxItemsCount,
+    showMoreButton: props.showExpander && props.notSelectedItems.length > props.config.maxItemsCount,
     showSearch: props.showExpander && props.expanded,
     showStaticContent: 
       props.showExpander &&
-      props.notSelectedItems.length < props.maxItemsCount ||
+      props.notSelectedItems.length < props.config.maxItemsCount ||
       !props.expanded
   })),
 
@@ -64,11 +71,11 @@ export const CheckboxBodyFacet = compose(
   <div className={styles.wrap}>
     {
       showSearch &&
-      <SearchInput value={search} onChange={onSearchChange} />
+      <SearchInput value={search} onChange={onSearchChange} placeholder={rest.config.i18n.search} />
     }
     {
       hasSelected &&
-      <ListRenderer items={selectedItems} onChange={onChange} className={styles.selectedItems} isStatic />
+      <ListRenderer {...rest} items={selectedItems} onChange={onChange} className={styles.selectedItems} isStatic />
     }
     {
       hasNotSelected &&
@@ -76,7 +83,10 @@ export const CheckboxBodyFacet = compose(
     }
     {
       showMoreButton &&
-      <ExpandButton expanded={expanded} onClick={toggleExpand} />
+      <ExpandButton
+        expanded={expanded}
+        onClick={toggleExpand}
+        label={expanded ? rest.config.i18n.less : rest.config.i18n.more} />
     }
   </div>
 ));

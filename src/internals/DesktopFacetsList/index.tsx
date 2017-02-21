@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { setDisplayName } from 'recompose';
+import { merge } from 'lodash';
 
 
 export const DesktopFacetsList = setDisplayName('DesktopFacetsList')
@@ -9,7 +10,7 @@ export const DesktopFacetsList = setDisplayName('DesktopFacetsList')
       React.Children.map(children, (child: any) =>
         React.cloneElement(child, {
           onChange,
-          config: config[child.props.type],
+          config: merge({}, child.props.config, config[child.props.type]),
           label: config.labels[child.props.name]
         })
       )

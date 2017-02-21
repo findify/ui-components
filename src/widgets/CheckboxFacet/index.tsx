@@ -1,14 +1,20 @@
 import * as React from 'react';
 import { compose, withState, withHandlers } from 'recompose';
 
-const { CheckboxBodyFacet } = require('internals/CheckboxBodyFacet');
-const { GenericFacet } = require('internals/GenericFacet');
+import { CheckboxBodyFacet } from 'internals/CheckboxBodyFacet';
+import { GenericFacet } from 'internals/GenericFacet';
+import withConfig from 'helpers/withConfig';
 
-const mapper = (list, key, selected) => 
-  [...list.map(item => item.key === key ? {...item, selected } : item)]
-
-export const CheckboxFacet = props => (
-  <GenericFacet {...props} mapper={mapper}>
+export const CheckboxFacet = withConfig({
+  maxItemsCount: 4,
+  rowHeight: 20,
+  i18n: {
+    search: 'Search',
+    more: 'More',
+    less: 'Less',
+  }
+})(props => (
+  <GenericFacet {...props}>
     <CheckboxBodyFacet showExpander />
   </GenericFacet>
-);
+));

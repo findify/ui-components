@@ -4,11 +4,11 @@ type Cursor = {
 };
 
 export const createCursor = (list, cursor, childrenCount): Cursor => {
-  if (!list.children) return { cursor, childrenCount };
+  if (!list.values) return { cursor, childrenCount };
 
-  const index = list.children.findIndex(item => item.selected);
-  const children = list.children[index];
+  const index = list.values.findIndex(item => item.selected);
+  const values = list.values[index];
   
-  if (index < 0) return { cursor, childrenCount: list.children.length };
-  return createCursor(children, [...cursor, index], children.length);
+  if (index < 0) return { cursor, childrenCount: list.values.length };
+  return createCursor(values, [...cursor, index], values.length);
 };
