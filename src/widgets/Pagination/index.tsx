@@ -4,8 +4,10 @@ import {
   branch, compose, defaultProps, pure, setDisplayName,
   renderNothing, withHandlers, withProps
 } from 'recompose';
+import withConfig from 'helpers/withConfig';
 
-const { Button } = require('./Button');
+import { Button } from './Button';
+
 const styles = require('./styles.css');
 
 const getRange = ({ current, total, step }) => {
@@ -14,17 +16,16 @@ const getRange = ({ current, total, step }) => {
   return range(min < 1 ? 1 : min, max > total ? total + 1 : max);
 };
 
-// RESOLVED: TODO: Should be stateless component
 export const Pagination: any = compose(
   setDisplayName('Pagination'),
-  defaultProps({
+  withConfig({
     step: 2,
     i18n: {
       previous: 'previews',
       next: 'next'
     }
   }),
-  withProps(({ current, total, step, visible }: any) => ({
+  withProps(({ current, total, visible, config: { step } }: any) => ({
     showFirst: current > step + 1,
     showLast: current < total - step,
     showPrev: current > step,
@@ -33,7 +34,7 @@ export const Pagination: any = compose(
   })),
 
   withHandlers({
-    changePage: ({ action }: any) => page => action({ page })
+    changePage: ({ onChange }: any) => page => onChange({ page })
   })
 )(({
   showFirst,
@@ -43,8 +44,8 @@ export const Pagination: any = compose(
   visiblePages,
   current,
   total,
-  config,
   style,
+  config,
   ...rest
 }: any) => (
   <div className={styles.root} style={style}>

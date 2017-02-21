@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { template } from 'lodash';
-import { compose, pure, withHandlers, withProps, withPropsOnChange } from 'recompose';
+import { compose, pure, withHandlers, withProps, setDisplayName, withPropsOnChange } from 'recompose';
 import * as cx from 'classnames';
-
+import withConfig from 'helpers/withConfig';
 const styles = require('./styles.css');
 
 const colorFilterStyles = ({ values, gradientUrl }) => ({
@@ -42,6 +42,13 @@ const Filter: any = compose(
 );
 
 export const HOC = compose(
+  setDisplayName('BreadCrumbs'),
+
+  withConfig({
+    i18n: {},
+    facets: []
+  }),
+
   withPropsOnChange(['config'], ({ config: { i18n } }) => ({
     titleTemplate: template(i18n.title)
   })),
