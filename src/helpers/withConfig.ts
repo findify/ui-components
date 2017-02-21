@@ -1,5 +1,5 @@
 import { createEagerFactory } from 'recompose';
-import { createHelper } from 'recompose/createHelper';
+import createHelper from 'recompose/createHelper';
 import { merge } from 'lodash';
 
 const withConfig = config => BaseComponent => {
