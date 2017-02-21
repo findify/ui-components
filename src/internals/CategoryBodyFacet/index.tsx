@@ -12,10 +12,10 @@ import { Tree } from './Tree';
 // TODO: Possible we need to remove state handling inside the component, as in current MJS, we are
 // setting the value to the facet after response was came form server. So, we need to make all facets components like BreadCrumbs, it's correct.
 export const CategoryBodyFacet = compose(
-  mapProps(({ values, ...rest }) => ({
+  mapProps(({ values: children, ...rest }) => ({
     ...rest,
-    ...createCursor({ values }, [], 0),
-    values
+    ...createCursor({ children }, [], 0),
+    children
   })),
 
   withState('isExpanded', 'setExpanded', false),

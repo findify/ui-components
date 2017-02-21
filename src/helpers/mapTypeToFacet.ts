@@ -5,9 +5,9 @@ import { RangeFacet } from 'widgets/RangeFacet';
 
 import { createEagerFactory } from 'recompose';
 
-export const mapTypeToFacet = (type: string) => ({
+export const mapTypeToFacet = (config?: any, type?: string) => ({
   category: createEagerFactory(CategoryFacet),
-  terms: createEagerFactory(CheckboxFacet),
+  text: createEagerFactory(CheckboxFacet),
   range: createEagerFactory(RangeFacet),
   color: createEagerFactory(ColorFacet)
-}[type]);
+}[config && config.type || type]);

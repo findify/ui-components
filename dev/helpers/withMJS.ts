@@ -16,11 +16,11 @@ export const withMJS = compose(
   withFacets,
   withMeta,
 
-  mapProps(({ meta, products, facets, banner, redirect, ...rest }) => ({
+  mapProps(({ meta, items, facets, banner, redirect, ...rest }) => ({
     ...rest,
     response: { // Structure back response object 
       meta,
-      products,
+      items,
       facets,
       banner,
       redirect

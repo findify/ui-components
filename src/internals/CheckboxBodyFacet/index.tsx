@@ -6,7 +6,7 @@ import {
   withHandlers,
   withProps,
   withPropsOnChange,
-  withState
+  withState,
 } from 'recompose';
 import * as cx from 'classnames';
 
@@ -29,13 +29,17 @@ export const CheckboxBodyFacet: any = compose(
     selectedItems: values.filter(item => item.selected)
   })),
 
-  withPropsOnChange(['values', 'search'], ({ values, search }) => {
+  withPropsOnChange(['values', 'search'], ({ values, search, showExpander }) => {
+    if (!showExpander) {
+      return {
+        notSelectedItems: values.filter(item => !item.selected)
+      }
+    }
     const regexp = new RegExp(search, 'ig');
     return {
-      notSelectedItems: values.filter(item => !item.selected && item.key.match(regexp))
+      notSelectedItems: values.filter(item => !item.selected && item.value.match(regexp))
     }
   }),
-
   withProps((props: any) => ({
     hasSelected: !!props.selectedItems.length,
     hasNotSelected: !!props.notSelectedItems.length,

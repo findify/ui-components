@@ -21,23 +21,23 @@ const props = {
       "selected":false,
       "count":2864,
       "hasChildren":true,
-      "key":"Hund",
+      "value":"Hund",
       "name":"category1", 
-      values: [
+      children: [
         {  
           "type":"category",
           "selected":false,
           "count":9,
           "hasChildren":true,
-          "key":"Fågel",
+          "value":"Fågel",
           "name":"category1",
-          values: [
+          children: [
             {  
               "type":"category",
               "selected":false,
               "count":9,
               "hasChildren":true,
-              "key":"Fågel1",
+              "value":"Fågel1",
               "name":"category1"
             },
             {  
@@ -45,7 +45,7 @@ const props = {
               "selected":false,
               "count":4,
               "hasChildren":true,
-              "key":"Reptil1",
+              "value":"Reptil1",
               "name":"category1"
             },
             {  
@@ -53,7 +53,7 @@ const props = {
               "selected":false,
               "count":1,
               "hasChildren":true,
-              "key":"Fisk1",
+              "value":"Fisk1",
               "name":"category1"
             }
           ]
@@ -63,7 +63,7 @@ const props = {
           "selected":false,
           "count":4,
           "hasChildren":true,
-          "key":"Reptil",
+          "value":"Reptil",
           "name":"category1"
         },
         {  
@@ -71,7 +71,7 @@ const props = {
           "selected":false,
           "count":1,
           "hasChildren":true,
-          "key":"Fisk",
+          "value":"Fisk",
           "name":"category1"
         }
       ]
@@ -81,7 +81,7 @@ const props = {
       "selected":false,
       "count":398,
       "hasChildren":true,
-      "key":"Katt",
+      "value":"Katt",
       "name":"category1"
     },
     {  
@@ -89,7 +89,7 @@ const props = {
       "selected":false,
       "count":389,
       "hasChildren":true,
-      "key":"Veterinärfoder",
+      "value":"Veterinärfoder",
       "name":"category1"
     },
     {  
@@ -97,7 +97,7 @@ const props = {
       "selected":false,
       "count":49,
       "hasChildren":true,
-      "key":"Smådjur",
+      "value":"Smådjur",
       "name":"category1"
     }
   ]

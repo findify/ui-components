@@ -27,14 +27,14 @@ export const ResultsLayout = ({
   return (
     <div>
       <BreadCrumbs
-        {...response.meta}
+        filters={response.meta.filters}
         className={styles.breadcrumbs}
         onChange={onBreadCrumbRemove}
         config={{ ...config.breadcrumbs, facets: config.facets }} />
 
       <Sorting
         className={styles.sort}
-        value={response.meta.sort || 'relevant'}
+        value={!!response.meta.sort.length && response.meta.sort || 'relevant'}
         onChange={onSortChange}
         options={['relevant', 'priceAZ', 'priceZA']}
         config={config.sorting} />
@@ -48,7 +48,11 @@ export const ResultsLayout = ({
             onChange={onFacetsChange}>
             {
               response.facets.map(facet =>
-                mapTypeToFacet(facet.type)({ ...facet, isMobile, key: facet.name })
+                mapTypeToFacet(config.facets.types[facet.name], facet.type)({
+                  ...facet,
+                  isMobile,
+                  key: facet.name
+                })
               )
             }
           </FacetsList>
@@ -59,7 +63,7 @@ export const ResultsLayout = ({
           <ProductsList
             config={{ ...config.productsGrid, product: config.product }}
             columnClass={styles.product}
-            items={response.products}
+            items={response.items}
             onProductClick={onProductClick} />
     
           <Pagination
@@ -67,7 +71,7 @@ export const ResultsLayout = ({
             style={{ textAlign: 'center' }}
             config={config.pagination}
             total={Math.ceil(response.meta.total / response.meta.limit)}
-            current={response.meta.offset / response.meta.limit} />
+            current={Math.ceil(response.meta.offset / response.meta.limit) || 1} />
     
         </div>
       </Grid>

@@ -17,17 +17,9 @@ const props = {
   onTipClick: console.log,
   // TODO: Need to change product interface, to match search API data interface.
   // TODO: Need to rename `products` prop to `items`.
-  items: require('../data/raw.json').products,
+  items: require('../data/autocomplete.json').items,
   // TODO: Should match SA response data
-  suggestions: [
-    'fruit',
-    'fruit gift',
-    'frog',
-    'fruit gift basket',
-    'fine',
-    'free',
-    'fresh',
-  ],
+  suggestions: require('../data/autocomplete.json').suggestions,
 };
 
 export default ({ Component }) => (
