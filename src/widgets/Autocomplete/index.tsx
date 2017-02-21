@@ -22,7 +22,10 @@ export const Autocomplete = compose(
       branch(
         ({ isMobileSimple }) => isMobileSimple,
         compose(
-          mapProps(props => pick(props, ['config', 'suggestions', 'meta', 'onSearchSuggestionClick'])),
+          mapProps(props => ({
+            ...pick(props, ['config', 'meta', 'onSearchSuggestionClick']),
+            suggestions: props.suggestions.map((s) => s.value),
+          })),
           renderComponent(AutocompleteBody),
         ),
         renderComponent(AutocompleteMobileBody),
