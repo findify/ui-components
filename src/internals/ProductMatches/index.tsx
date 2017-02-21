@@ -1,12 +1,21 @@
 import * as React from 'react';
-
+import { compose, mapProps } from 'recompose';
+import { camelizeKeys } from 'humps';
 import { Rating } from 'widgets/Rating';
-
+import { getPrice } from 'helpers/getPrice';
+import { format as currencyFormat } from 'currency-formatter';
+import { Grid } from 'widgets/Grid';
 const styles = require('./styles.css');
 
-export const ProductMatches = ({
-  products,
-  title
+export const ProductMatches = compose(
+  mapProps(({ items, ...rest }) => ({
+    ...rest,
+    items: camelizeKeys(items)
+  }))
+)(({
+  items,
+  title,
+  currency
 }: Props) => (
   <div className={styles.wrap}>
     {
@@ -18,15 +27,15 @@ export const ProductMatches = ({
         </div>
       )
     }
-    <div className={styles.items}>
+    <Grid columns='6' className={styles.items}>
       {
-        products && products.map((p: Product, i: number) =>
+        items && items.map((p: Product, i: number) =>
           <a
             className={styles.item}
-            href={p.link}
+            href={p.productUrl}
             key={i}>
             <div className={styles.itemImage}>
-              <img className={styles.itemSrc} src={p.imageLink} />
+              <img className={styles.itemSrc} src={p.imageUrl} />
             </div>
             <span className={styles.itemTitle}>
               {p.title}
@@ -40,34 +49,35 @@ export const ProductMatches = ({
             }
             <div className={styles.itemPrice}>
               {
-                p.discountPrice && (
+                p.compareAt && p.compareAt > 0 && (
                   <span className={styles.itemPriceDiscount}>
-                    {p.discountPrice}
+                    { currencyFormat(p.compareAt, { code: currency }) }
                   </span>
                 )
               }
               <span className={styles.itemPriceRegular}>
-                {p.price}
+                { getPrice(p.price, currency) }
               </span>
             </div>
           </a>
         )}
-    </div>
+    </Grid>
   </div>
-);
+));
 
 type Props = {
-  products?: Product[],
+  items?: Product[],
   title?: string,
+  currency: string
 };
 
 type Product = {
-  link: string,
-  imageLink: string,
+  productUrl: string,
+  imageUrl: string,
   title: string,
   price: string,
-  discountPrice?: string,
+  compareAt?: number,
   reviewsCount?: number,
-  rating?: number,
+  rating?: number
   // rating?: 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5,
 };

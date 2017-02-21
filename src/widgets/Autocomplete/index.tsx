@@ -11,6 +11,7 @@ import { AutocompleteMobileBody } from 'internals/AutocompleteMobileBody';
 export const Autocomplete = compose(
   setDisplayName('Autocomplete'),
   withConfig({
+    currency: 'USD',
     direction: 'ltr',
     i18n: {}
   }),
@@ -21,7 +22,7 @@ export const Autocomplete = compose(
       branch(
         ({ isMobileSimple }) => isMobileSimple,
         compose(
-          mapProps(props => pick(props, ['i18n', 'suggestions', 'query', 'onSearchSuggestionClick'])),
+          mapProps(props => pick(props, ['config', 'suggestions', 'meta', 'onSearchSuggestionClick'])),
           renderComponent(AutocompleteBody),
         ),
         renderComponent(AutocompleteMobileBody),
