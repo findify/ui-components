@@ -46,7 +46,10 @@ export const HOC = compose(
 
   withConfig({
     i18n: {},
-    facets: []
+    facets: {
+      labels: {},
+      types: {}
+    }
   }),
 
   withPropsOnChange(['config'], ({ config: { i18n } }) => ({
