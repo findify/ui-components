@@ -90,6 +90,6 @@
     "postversion": "git push && git push --tags && git checkout develop && git merge master && git push && npm publish",
     "preversion": "npm run check && git checkout master && git merge develop",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook  -c .storybook -o docs"
   }
 }
