@@ -109,4 +109,4 @@ export const Component = (({
   </a>
 ));
 
-export const Product = HOC(Component);
+export const Product: any = HOC(Component);

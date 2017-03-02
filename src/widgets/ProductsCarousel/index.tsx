@@ -36,6 +36,7 @@ export const HOC = compose(
 export const Component = (({
   items,
   title,
+  onProductClick,
   config: {
     productsToShow: slidesToShow,
     ...config
@@ -50,7 +51,7 @@ export const Component = (({
       { 
         items.map(product =>
           <div key={product.id}>
-            <Component key={product.id} {...product} config={config.product} />
+            <Component key={product.id} {...product} onClick={onProductClick} config={config.product} />
           </div>
         )
       }
@@ -58,4 +59,4 @@ export const Component = (({
   </div>
 ));
 
-export const ProductsCarousel = HOC(Component);
+export const ProductsCarousel:any = HOC(Component);

@@ -1,12 +1,12 @@
-import path from 'path';
-import { decamelize } from 'humps';
+const path = require('path');
+const { decamelize } = require('humps');
 
 const mapper = {
   widgets: 'widget',
   internals: 'block'
 }
 
-export const getLocalIdent = (loaderContext, _, localName) => {
+const getLocalIdent = (loaderContext, _, localName) => {
 	const rootDir = path.join(loaderContext.options.context, 'src');
 	const sourcePath = path
     .relative(rootDir, loaderContext.resourcePath)
@@ -18,3 +18,7 @@ export const getLocalIdent = (loaderContext, _, localName) => {
   const className = localName === 'root' ? '' : '__' + localName;
 	return `findify-${decamelize(sourcePath, { separator: '-' })}${className}`;
 };
+
+module.exports = {
+  getLocalIdent
+}
