@@ -21,6 +21,9 @@
     "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
+    "@kadira/react-storybook-addon-info": "^3.3.0",
+    "@kadira/storybook": "^2.21.0",
+    "@kadira/storybook-addon-knobs": "^1.7.1",
     "@types/react": "^0.14.55",
     "@types/react-virtualized": "^8.9.2",
     "@types/recompose": "^0.20.3",
@@ -38,6 +41,7 @@
     "file-loader": "^0.10.0",
     "html-webpack-plugin": "^2.28.0",
     "image-webpack-loader": "^3.2.0",
+    "json-loader": "^0.5.4",
     "normalize.css": "^5.0.0",
     "postcss-calc": "^5.3.1",
     "postcss-clearfix": "^1.0.0",
@@ -84,6 +88,8 @@
     "prepublish": "npm run build",
     "postpublish": "npm run clean",
     "postversion": "git push && git push --tags && git checkout develop && git merge master && git push && npm publish",
-    "preversion": "npm run check && git checkout master && git merge develop"
+    "preversion": "npm run check && git checkout master && git merge develop",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook  -c .storybook -o docs"
   }
 }
