@@ -1,13 +1,21 @@
 import * as React from 'react';
-import { Autocomplete } from '../../src/widgets/Autocomplete';
 import { withKnobs, text, boolean, number, select } from '@kadira/storybook-addon-knobs';
+import { host } from 'storybook-host';
 const { storiesOf, action } = require('@kadira/storybook');
+
+import { Autocomplete } from '../../src/widgets/Autocomplete';
 const product = require('../data/raw.json').items[0];
 const suggestions = require('../data/autocomplete.json').suggestions;
 const items = require('../data/autocomplete.json').items;
 
 storiesOf('Autocomplete', module)
   .addDecorator(withKnobs)
+  .addDecorator(host({
+    title: 'Search autocomplete variations',
+    align: 'left top',
+    width: '70%',
+  }))
+
   .addWithInfo('Desktop', () => {
     const config = {
       direction: select('Direction', {

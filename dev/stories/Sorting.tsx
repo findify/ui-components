@@ -1,11 +1,17 @@
 import * as React from 'react';
-import { Sorting } from '../../src/widgets/Sorting';
 import { withKnobs, text, boolean, number } from '@kadira/storybook-addon-knobs';
+import { host } from 'storybook-host';
 const { storiesOf, action } = require('@kadira/storybook');
+
+import { Sorting } from '../../src/widgets/Sorting';
 const product = require('../data/raw.json').items[0];
 
 storiesOf('Sorting', module)
   .addDecorator(withKnobs)
+  .addDecorator(host({
+    title: 'Sorting dropdown',
+    align: 'center top',
+  }))
   .addWithInfo('default', () => {
     const config = {
       i18n: {

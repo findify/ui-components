@@ -14,7 +14,7 @@ const stateToProps = props =>
     label: valueToKey(value, props.config.currency)
   }));
 
-export const RangeFacet = compose(
+export const RangeFacet: any = compose(
   withConfig({
     currency: 'USD',
     i18n: {

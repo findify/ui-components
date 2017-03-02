@@ -1,11 +1,19 @@
 import * as React from 'react';
-import { ProductsList } from '../../src/lists/ProductsList';
 import { withKnobs, text, boolean, number } from '@kadira/storybook-addon-knobs';
+import { host } from 'storybook-host';
 const { storiesOf, action } = require('@kadira/storybook');
+
+import { ProductsList } from '../../src/lists/ProductsList';
 const products = require('../data/raw.json').items;
 
 storiesOf('Products List', module)
   .addDecorator(withKnobs)
+  .addDecorator(host({
+    title: 'Products grid',
+    align: 'center top',
+    width: '70%',
+  }))
+
   .addWithInfo('default', () => {
 
     const config = {

@@ -1,11 +1,19 @@
 import * as React from 'react';
-import { ProductsCarousel } from '../../src/widgets/ProductsCarousel';
 import { withKnobs, text, boolean, number } from '@kadira/storybook-addon-knobs';
+import { host } from 'storybook-host';
 const { storiesOf, action } = require('@kadira/storybook');
+
+import { ProductsCarousel } from '../../src/widgets/ProductsCarousel';
 const products = require('../data/raw.json').items;
 
 storiesOf('Products Carousel', module)
   .addDecorator(withKnobs)
+  .addDecorator(host({
+    title: 'Products carousel',
+    align: 'center top',
+    width: '70%',
+  }))
+
   .addWithInfo('default', () => {
 
     const config = {
@@ -27,12 +35,11 @@ storiesOf('Products Carousel', module)
     };
   
     return (
-      <div style={{ width: '90%', margin: '0 auto'}}>
-        <ProductsCarousel
-          items={products}
-          config={config}
-          onProductClick={action('Click on product')}
-          />
-      </div>
+      <ProductsCarousel
+        title={text('Title', 'New products')} 
+        items={products}
+        config={config}
+        onProductClick={action('Click on product')}
+        />
     )
   })
