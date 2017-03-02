@@ -6,6 +6,7 @@ function loadStories() {
   require('../dev/stories/Product');
   require('../dev/stories/ProductsList');
   require('../dev/stories/ProductsCarousel');
+  require('../dev/stories/Facets');
   require('../dev/stories/FacetsList');
   require('../dev/stories/Autocomplete');
   require('../dev/stories/Pagination');
