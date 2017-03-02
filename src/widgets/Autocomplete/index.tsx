@@ -8,7 +8,7 @@ import { AutocompleteMobileBody } from 'internals/AutocompleteMobileBody';
 
 // TODO: should have className `findify-widgets-autocomplete`
 // TODO: children of `findify-widgets-autocomplete` should be:
-export const Autocomplete = compose(
+export const Autocomplete: any = compose(
   setDisplayName('Autocomplete'),
   withConfig({
     currency: 'USD',
