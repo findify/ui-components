@@ -18,10 +18,10 @@ storiesOf('Autocomplete', module)
 
   .addWithInfo('Desktop', () => {
     const config = {
-      direction: select('Direction', {
-        ltr: 'ltr',
-        rtl: 'rtl'
-      }, 'ltr'),
+      position: select('Position', {
+        left: 'left',
+        right: 'right'
+      }, 'left'),
       i18n: {
         suggestionsTitle: text('Suggestions title', 'Search suggestions'),
         productMatchesTitle: text('Products title', 'Product matches'),
@@ -31,7 +31,7 @@ storiesOf('Autocomplete', module)
   
     return (
       <Autocomplete
-        query={text('meta.query', 'fru')}
+        meta={{ query: text('meta.query', 'fru') }}
         suggestions={suggestions}
         items={items}
         onTipClick={action('Click on Tip')}
@@ -43,10 +43,10 @@ storiesOf('Autocomplete', module)
 
   .addWithInfo('Mobile', () => {
     const config = {
-      direction: select('Direction', {
-        ltr: 'ltr',
-        rtl: 'rtl'
-      }, 'ltr'),
+      position: select('Position', {
+        left: 'left',
+        right: 'right'
+      }, 'left'),
       i18n: {
         suggestionsTitle: text('Suggestions title', 'Search suggestions'),
         productMatchesTitle: text('Products title', 'Product matches'),
@@ -56,7 +56,7 @@ storiesOf('Autocomplete', module)
   
     return (
       <Autocomplete
-        query={text('meta.query', 'fru')}
+        meta={{ query: text('meta.query', 'fru') }}
         suggestions={suggestions}
         isMobile
         items={items}
@@ -69,10 +69,10 @@ storiesOf('Autocomplete', module)
 
   .addWithInfo('Small mobile', () => {
     const config = {
-      direction: select('Direction', {
-        ltr: 'ltr',
-        rtl: 'rtl'
-      }, 'ltr'),
+      position: select('Position', {
+        left: 'left',
+        right: 'right'
+      }, 'left'),
       i18n: {
         suggestionsTitle: text('Suggestions title', 'Search suggestions'),
         productMatchesTitle: text('Products title', 'Product matches'),
@@ -82,7 +82,7 @@ storiesOf('Autocomplete', module)
   
     return (
       <Autocomplete
-        query={text('meta.query', 'fru')}
+        meta={{ query: text('meta.query', 'fru') }}
         suggestions={suggestions}
         isMobile
         isMobileSimple

@@ -12,7 +12,7 @@ export const Autocomplete: any = compose(
   setDisplayName('Autocomplete'),
   withConfig({
     currency: 'USD',
-    direction: 'ltr',
+    position: 'left',
     i18n: {}
   }),
   mapProps(props => ({
@@ -26,7 +26,7 @@ export const Autocomplete: any = compose(
       branch(
         ({ isMobileSimple }) => isMobileSimple,
         compose(
-          mapProps(props => pick(props, ['config', 'meta', 'suggestions', 'onSearchSuggestionClick'])),
+          mapProps(props => pick(props, ['config', 'onTipClick', 'meta', 'suggestions', 'onSearchSuggestionClick'])),
           renderComponent(AutocompleteBody),
         ),
         renderComponent(AutocompleteMobileBody),
