@@ -1,5 +1,7 @@
 // import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import path from 'path';
+import nodeExternals from 'webpack-node-externals';
+
 export default (env, { module, plugins, output, ...config }) => ({
   ...config,
   entry: [
@@ -11,6 +13,8 @@ export default (env, { module, plugins, output, ...config }) => ({
     library: 'FindifyUIComponents',
     libraryTarget: 'umd',
   },
+
+  externals: env.externals ? [nodeExternals()] : [],
 
   module: {
     ...module,
