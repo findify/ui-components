@@ -4,7 +4,9 @@ import * as cx from 'classnames';
 const styles = require('./styles.css');
 
 export function AutocompleteMobileBody({
-  query,
+  meta: {
+    query
+  },
   suggestions,
   onSubmit,
   onClearClick,
@@ -60,7 +62,9 @@ function highlightSuggestion(value: string, highlighted: string) {
 }
 
 type Props = {
-  query: string,
+  meta: {
+    query: string
+  },
   suggestions: string[],
   onSubmit: (query: string) => void,
   onInput: (query: string) => void,

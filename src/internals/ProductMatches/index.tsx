@@ -5,6 +5,7 @@ import { Rating } from 'widgets/Rating';
 import { getPrice } from 'helpers/getPrice';
 import { format as currencyFormat } from 'currency-formatter';
 import { Grid } from 'widgets/Grid';
+
 const styles = require('./styles.css');
 
 export const ProductMatches = compose(

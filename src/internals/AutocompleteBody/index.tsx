@@ -11,19 +11,22 @@ export function AutocompleteBody({
   items,
   onSearchSuggestionClick,
   onTipClick,
-  meta = {},
+  meta: {
+    query
+  },
   config: {
     currency,
-    direction,
+    position,
     i18n
   }
 }: Props) {
+  
   const searchSuggestionsNode = (
     <SearchSuggestions {...{
       suggestions,
       title: i18n.suggestionsTitle,
       onSearchSuggestionClick,
-      query: meta.q,
+      query,
       currency
       }} />
   ); 
@@ -34,6 +37,7 @@ export function AutocompleteBody({
       title: i18n.productMatchesTitle
     }} />
   );
+  
 
   return (
     // TODO: Missing block name.
@@ -41,9 +45,9 @@ export function AutocompleteBody({
     // For elements we need to do: findify-block-autocomplete__element-name
 
     // Both TODOs are related to all components.
-    <div className={cx(styles.root, styles[direction])}>
+    <div className={cx(styles.root, styles[position])}>
       {
-        direction === 'rtl'
+        position === 'right'
         && (
           <div className={styles.container}>
             {productMatchesNode}
@@ -61,9 +65,9 @@ export function AutocompleteBody({
           <div
             className={styles.tip}
             onClick={() => onTipClick && onTipClick()} >
-            {i18n.tipTitle}
+            { i18n.tipTitle }
             <span className={styles.tipQuery}>
-              &nbsp;"{meta.q}"
+              &nbsp;"{query}"
             </span>
           </div>
         )
@@ -73,16 +77,16 @@ export function AutocompleteBody({
 };
 
 type Props = {
-  meta: any,
+  meta: {
+    query: string
+  },
   suggestions: string[],
   onSearchSuggestionClick: (query: string) => void,
   items?: Product[],
   onTipClick?: () => void,
-  // direction: 'ltr' | 'rtl',
-  // TODO:
   config: {
     currency: string,
-    direction: string,
+    position: 'left' | 'right',
     i18n: {
       suggestionsTitle?: string,
       productMatchesTitle?: string,

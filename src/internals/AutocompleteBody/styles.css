@@ -41,10 +41,10 @@
   width: 400px;
 }
 
-.ltr:before {
+.left:before {
   left: 20px;
 }
 
-.rtl:before {
+.right:before {
   right: 150px;
 }
