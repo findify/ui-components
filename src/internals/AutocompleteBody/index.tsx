@@ -31,13 +31,12 @@ export function AutocompleteBody({
       }} />
   ); 
 
-  const productMatchesNode = items && items.length && (
+  const productMatchesNode = !!items && !!items.length && (
     <ProductMatches {...{
       items,
       title: i18n.productMatchesTitle
     }} />
   );
-  
 
   return (
     // TODO: Missing block name.
