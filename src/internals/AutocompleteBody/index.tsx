@@ -12,7 +12,7 @@ export function AutocompleteBody({
   onSearchSuggestionClick,
   onTipClick,
   meta: {
-    query
+    q: query
   },
   config: {
     currency,
@@ -77,7 +77,7 @@ export function AutocompleteBody({
 
 type Props = {
   meta: {
-    query: string
+    q: string
   },
   suggestions: string[],
   onSearchSuggestionClick: (query: string) => void,
