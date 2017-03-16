@@ -28,6 +28,9 @@
   &:hover {
     background-color: #ececec;
   }
+  &.selected{
+    background-color: #ececec;
+  }
 }
 
 .highlighted-text {

@@ -1,10 +1,12 @@
 import * as React from 'react';
+import * as cx from 'classnames';
 
 const styles = require('./styles.css');
 
 type Props = {
   query: string,
   suggestions: string[],
+  selectedSuggestion?: number,
   onSearchSuggestionClick: (query: string) => void,
   title?: string
 };
@@ -12,6 +14,7 @@ type Props = {
 export const SearchSuggestions = ({
   title,
   suggestions,
+  selectedSuggestion,
   onSearchSuggestionClick,
   query
 }: Props) => (
@@ -30,7 +33,7 @@ export const SearchSuggestions = ({
         suggestions.map((suggestion: string, i: number) => (
           <span
             key={i}
-            className={styles.item}
+            className={cx(styles.item, selectedSuggestion === i && styles.selected)}
             onClick={() => onSearchSuggestionClick(suggestion)}
             dangerouslySetInnerHTML={{
               __html: highlightSuggestion(suggestion, query),
