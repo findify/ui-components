@@ -5,6 +5,7 @@ import { Rating } from 'widgets/Rating';
 import { getPrice } from 'helpers/getPrice';
 import { format as currencyFormat } from 'currency-formatter';
 import { Grid } from 'widgets/Grid';
+import Link from 'internals/Link';
 
 const styles = require('./styles.css');
 
@@ -31,7 +32,7 @@ export const ProductMatches = compose(
     <Grid columns='6' className={styles.items}>
       {
         items && items.map((p: Product, i: number) =>
-          <a
+          <Link
             className={styles.item}
             href={p.productUrl}
             key={i}>
@@ -60,7 +61,7 @@ export const ProductMatches = compose(
                 { getPrice(p.price, currency) }
               </span>
             </div>
-          </a>
+          </Link>
         )}
     </Grid>
   </div>
