@@ -5,7 +5,7 @@ const styles = require('./styles.css');
 
 export function AutocompleteMobileBody({
   meta: {
-    query
+    q: query
   },
   suggestions,
   onSubmit,
@@ -14,43 +14,42 @@ export function AutocompleteMobileBody({
 }: Props) {
   return (
     <div className={styles.wrap}>
-      <div className={styles.box}>
-        <form
-          className={styles.form}
-          onSubmit={() => onSubmit(query)}>
-          <div className={styles.formLeft}>
-            <input
-              className={styles.input}
-              type="text"
-              onChange={(e: any) => onInput(e.target.value)}
-              value={query}
-            />
-            <a
-              className={cx(styles.clear, 'fa', 'fa-times-circle')}
-              onClick={() => onClearClick()}
-            />
-          </div>
-          <div className={styles.formRight}>
-            <button
-              className={cx(styles.submit, 'fa', 'fa-search')}
-              type="submit"
-            />
-          </div>
-        </form>
-        <div className={styles.suggestions}>
-          {
-            suggestions.map((suggestion: string, i: number) =>
-              <span
-                key={i}
-                className={styles.suggestionsItem}
-                onClick={() => onSubmit(suggestion)}
-                dangerouslySetInnerHTML={{
-                  __html: highlightSuggestion(suggestion, query),
-                }}
-              />
-            )
-          }
+      <form
+        className={styles.form}
+        onSubmit={() => onSubmit(query)}>
+        <div className={styles.formLeft}>
+          <input
+            className={styles.input}
+            type="text"
+            onChange={(e: any) => onInput(e.target.value)}
+            value={query}
+            ref={r => r && r.focus()}
+          />
+          <a
+            className={cx(styles.clear, 'fa', 'fa-times-circle')}
+            onClick={() => onClearClick()}
+          />
         </div>
+        <div className={styles.formRight}>
+          <button
+            className={cx(styles.submit, 'fa', 'fa-search')}
+            type="submit"
+          />
+        </div>
+      </form>
+      <div className={styles.suggestions}>
+        {
+          suggestions.map((suggestion: string, i: number) =>
+            <span
+              key={i}
+              className={styles.suggestionsItem}
+              onClick={() => onSubmit(suggestion)}
+              dangerouslySetInnerHTML={{
+                __html: highlightSuggestion(suggestion, query),
+              }}
+            />
+          )
+        }
       </div>
     </div>
   );
@@ -63,7 +62,7 @@ function highlightSuggestion(value: string, highlighted: string) {
 
 type Props = {
   meta: {
-    query: string
+    q: string
   },
   suggestions: string[],
   onSubmit: (query: string) => void,
