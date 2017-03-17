@@ -21,9 +21,9 @@ import withConfig from 'helpers/withConfig';
 const styles = require('./styles.css');
 
 
-const Title:any = ({ text, config }) => !!config.display && !!text && (
+const Title:any = ({ text, config }) => config.display && text && (
   <h5 className={styles.title}>
-    <Truncate lines={config.lines || false}>awfawfawfawf</Truncate>
+    <Truncate lines={config.lines || false}>{text}</Truncate>
   </h5>
 );
 
