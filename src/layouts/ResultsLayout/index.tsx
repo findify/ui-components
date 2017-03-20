@@ -1,14 +1,14 @@
 import { Column } from 'react-virtualized';
 import * as React from 'react';
+import * as cx from 'classnames';
 
 import { Grid } from 'widgets/Grid';
 import { BreadCrumbs } from 'widgets/BreadCrumbs';
 import { Sorting } from 'widgets/Sorting';
 import { Pagination } from 'widgets/Pagination';
 import { ProductsList } from 'lists/ProductsList';
-import { FacetsList } from 'lists/FacetsList';
-
-import { mapTypeToFacet } from 'helpers/mapTypeToFacet';
+import { FacetsLayout } from '../FacetsLayout';
+import { Button } from 'internals/Button';
 
 const styles = require('./styles.css');
 
@@ -21,44 +21,59 @@ export const ResultsLayout = ({
   onPageChange,
   onSortChange,
   onBreadCrumbRemove,
+  onMobileFacetsOpen
 }) => {
   console.log(response);
   
   return (
     <div>
-      <BreadCrumbs
-        filters={response.meta.filters}
-        className={styles.breadcrumbs}
-        onChange={onBreadCrumbRemove}
-        config={{ ...config.breadcrumbs, facets: config.facets }} />
+      { 
+        !isMobile &&
+        <div>
+          <BreadCrumbs
+          filters={response.meta.filters}
+          className={styles.breadcrumbs}
+          onChange={onBreadCrumbRemove}
+          config={{ ...config.breadcrumbs, facets: config.facets }} />
 
-      <Sorting
-        className={styles.sort}
-        value={!!response.meta.sort.length && response.meta.sort || 'relevant'}
-        onChange={onSortChange}
-        options={['relevant', 'priceAZ', 'priceZA']}
-        config={config.sorting} />
-
-      <Grid columns='4|8'>
-        <div className={styles.filters}>
-          <FacetsList
-            isMobile={isMobile}
-            config={config.facets}
-            facets={response.facets}
-            onChange={onFacetsChange}>
-            {
-              response.facets.map(facet =>
-                mapTypeToFacet(config.facets.types[facet.name], facet.type)({
-                  ...facet,
-                  isMobile,
-                  key: facet.name
-                })
-              )
-            }
-          </FacetsList>
+          <Sorting
+            className={styles.sort}
+            value={!!response.meta.sort.length && response.meta.sort || 'relevant'}
+            onChange={onSortChange}
+            options={['relevant', 'priceAZ', 'priceZA']}
+            config={config.sorting} />
         </div>
+      }
+      {
+        !!isMobile &&
+        <Grid columns='6|6'>
+          <Button
+            onClick={onMobileFacetsOpen}
+            className={styles.mobileFacetsButton}
+            columnClass={styles.paddingRight}>
+            { config.facets.i18n.showMobileFacets }{ response.meta.filters && `(${response.meta.filters.length})`}
+          </Button>
+
+          <Sorting
+            isMobile={isMobile}
+            columnClass={styles.paddingLeft}
+            className={cx(styles.sort, styles.mobileSort)}
+            value={!!response.meta.sort.length && response.meta.sort || 'relevant'}
+            onChange={onSortChange}
+            options={['relevant', 'priceAZ', 'priceZA']}
+            config={config.sorting} />
+        </Grid>
+      }
+
+      <Grid columns={isMobile ? '12' : '4|8'}>
+        {
+          !isMobile &&
+          <div>
+            <FacetsLayout {...{ isMobile, config, response, onFacetsChange }}/>
+          </div>
+        }
     
-        <div className={styles.products}>
+        <div className={cx(styles.products, !isMobile && styles.productsWithPadding)}>
     
           <ProductsList
             config={{ ...config.productsGrid, product: config.product }}

@@ -6,11 +6,28 @@
   margin-left: auto;
 }
 
+.mobileSort{
+  width: 100%;
+}
+
+.mobileFacetsButton{
+  width: 100%;
+}
+
+.paddingLeft{
+  padding-left: 10px;
+}
+.paddingRight{
+  padding-right: 10px;
+}
+
 .filters{
   padding-right: 10px;
 }
 
-.products{
+.products{}
+
+.productsWithPadding{
   padding-left: 10px;
 }
 

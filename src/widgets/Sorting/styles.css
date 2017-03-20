@@ -10,6 +10,10 @@
   margin: 0;
 }
 
+.mobile{
+  text-align: center;
+}
+
 .dropdown {
   /* It's just to make dropdown class been created */
   margin: 0;
