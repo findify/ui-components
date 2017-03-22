@@ -2,23 +2,28 @@ import * as React from 'react';
 import { compose, withState } from 'recompose';
 
 const props = {
-  options: ['relevant', 'priceAZ', 'priceZA'],
   onChange: console.log,
-  value: 'relevant',
   config: {
+    options: [
+      {field: 'default', order: ''},
+      {field: 'price', order: 'desc'},
+      {field: 'price', order: 'asc'},
+      {field: 'created_at', order: 'desc'},
+    ],
     i18n: {
       title: 'Sort by:',
       options: {
-        relevant: 'Relevans',
-        priceAZ: 'Pris: Högt till lågt',
-        priceZA: 'Pris: Lågt till högt'
+        "default": 'Relative',
+        "price|desc": 'Price: from low to high',
+        "price|asc": 'Price: from hight to low',
+        "created_at|desc": 'Created: first new',
       }
     }
   }
 };
 
 export default compose(
-  withState('value', 'setValue', props.options[0]),
+  withState('value', 'setValue', props.config.options[0]),
 )
 (({ Component, value, setValue }: any) => (
   <div style={{ margin: 50, width: 400, position: 'relative' }}>

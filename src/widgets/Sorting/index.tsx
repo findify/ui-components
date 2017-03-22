@@ -1,19 +1,44 @@
 import * as React from 'react';
 import Dropdown from 'react-dropdown';
-import { compose, flattenProp, setDisplayName, withProps, withPropsOnChange, withState } from 'recompose';
+import { compact } from 'lodash';
+import {
+  compose,
+  flattenProp,
+  setDisplayName,
+  withHandlers,
+  withProps,
+  withPropsOnChange,
+  withState
+} from 'recompose';
 import * as cx from 'classnames';
+import withConfig from 'helpers/withConfig';
 
 const styles = require('./styles.css');
 
-// RESOLVED: TODO: Should be stateless as well as other components.
+const createValue = option => compact([option.field, option.order]).join('|');
+
 export const Sorting: any = compose(
   setDisplayName('Sorting'),
   flattenProp('value'),
-  withPropsOnChange(['value'], ({ config, options, value }: any) => ({
-    value: { value, label: config.i18n.options[value] },
-    options: options.map(option =>
-      ({ value: option, label: config.i18n.options[option] || option })
-    )
+  withConfig({
+    i18n: {
+      options: {}
+    }
+  }),
+  withHandlers({
+    onChange: ({ onChange }) => ({ value }) => {
+      const [field, order] = value.split('|');
+      onChange({ field, order });
+    }
+  }),
+  withPropsOnChange(['options'], ({ config, options}) => ({
+    options: options.map(option => {
+      const value = createValue(option);
+      return { value, label: config.i18n.options[value] || option }
+    })
+  })),
+  withPropsOnChange(['value'], ({ config, value, options }: any) => ({
+    value: !!value && options.find(o => o.value === createValue(value)) || options[0],
   })),
 )(({
   config,
@@ -21,10 +46,14 @@ export const Sorting: any = compose(
   onChange,
   value,
   style,
-  className
-}: any) =>
-  <div className={cx(styles.root, className)} style={style}>
-    { config.i18n.title && <p className={styles.title}>{config.i18n.title}</p> }
-    <Dropdown baseClassName={styles.dropdown} onChange={onChange} options={options} value={value} />
+  className,
+  isMobile
+}: any) => (
+  <div className={cx(styles.root, className, isMobile && styles.mobile)} style={style}>
+    { !isMobile && config.i18n.title && <p className={styles.title}>{config.i18n.title}</p> }
+    <Dropdown
+      baseClassName={styles.dropdown}
+      onChange={onChange} options={options} value={value} />
   </div>
-);
+));
+

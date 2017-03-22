@@ -8,7 +8,6 @@ export const SingleItem = ({
   count,
   onClick,
   selected,
-  cursor,
   index,
   style
 }: any) => (

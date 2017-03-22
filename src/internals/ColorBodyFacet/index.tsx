@@ -6,9 +6,8 @@ import * as color from 'tinycolor2';
 const styles = require('./styles.css');
 
 const Item = compose(
-  withPropsOnChange(['title'], ({ title }: any) => ({
-    // TODO: implement color mappings support
-    background: title !== 'Multicolor' && title.toLowerCase(),
+  withPropsOnChange(['title'], ({ title, config: { mapping } }: any) => ({
+    background: title !== 'Multicolor' && mapping[title],
     checkMarkStyles: ({ color: color(title).isDark() ? '#fff' : '#333'})
   })),
   withHandlers({

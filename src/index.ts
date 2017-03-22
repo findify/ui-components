@@ -1,6 +1,7 @@
 import './styles.global.css';
 
 export { ResultsLayout } from './layouts/ResultsLayout';
+export { FacetsLayout } from './layouts/FacetsLayout';
 
 export { FacetsList } from './lists/FacetsList';
 export { ProductsList } from './lists/ProductsList';

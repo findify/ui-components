@@ -15,7 +15,7 @@ export const Grid: any = compose(
   withPropsOnChange(['columns', 'children'], ({ columns, children }: GridType) => {
     const classNames = columns.split('|').map(value => styles[`column-${value}`]);
     return {
-      children: React.Children.map(children, (child: any, index: number) =>
+      children: React.Children.map(children, (child: any, index: number) => child &&
         Column({
           key: child.key,
           children: child,

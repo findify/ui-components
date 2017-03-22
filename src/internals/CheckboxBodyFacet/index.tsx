@@ -60,6 +60,7 @@ export const CheckboxBodyFacet: any = compose(
   notSelectedItems,
   search,
   expanded,
+  isMobile,
 
   onChange,
   toggleExpand,
@@ -79,14 +80,25 @@ export const CheckboxBodyFacet: any = compose(
     }
     {
       hasSelected &&
-      <ListRenderer {...rest} items={selectedItems} onChange={onChange} className={styles.selectedItems} isStatic />
+      <ListRenderer
+        {...rest}
+        items={selectedItems}
+        onChange={onChange}
+        className={styles.selectedItems}
+        isStatic />
     }
     {
       hasNotSelected &&
-      <ListRenderer {...rest} items={notSelectedItems} onChange={onChange} isStatic={showStaticContent} />
+      <ListRenderer
+        {...rest}
+        items={notSelectedItems}
+        onChange={onChange}
+        slice={!isMobile && rest.config.maxItemsCount}
+        isMobile={isMobile}
+        isStatic={!isMobile && showStaticContent} />
     }
     {
-      showMoreButton &&
+      !isMobile && showMoreButton &&
       <ExpandButton
         expanded={expanded}
         onClick={toggleExpand}

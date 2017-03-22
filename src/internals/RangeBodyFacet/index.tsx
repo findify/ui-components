@@ -15,18 +15,18 @@ export const RangeBodyFacet = compose(
   withState('minValue', 'setMin', props => props.min),
   withState('maxValue', 'setMax', props => props.max),
   withHandlers({
-    onCommit: ({ values, onChange, minValue: from, maxValue: to, setMin, setMax, config }) =>
+    onCommit: ({ name, values, onChange, minValue: from, maxValue: to, setMin, setMax, config }) =>
     () => {
       if (!from && !to) return;
       const label = valueToKey({ from, to }, config.currency);
       const key = getRangeFacetKey({ from, to });
       if (values.find(item => item.key === key)) return;
-      onChange({ selected: true, from, to, key, label});
+      onChange({ selected: true, from, to, key, label, name });
       setMin(void 0);
       setMax(void 0);
     },
-    updateMin: ({ setMin }) => e => setMin(parseInt(e.target.value)),
-    updateMax: ({ setMax }) => e => setMax(parseInt(e.target.value)),
+    updateMin: ({ setMin }) => value => setMin(value),
+    updateMax: ({ setMax }) => value => setMax(value),
   })
 )(({
   minValue,

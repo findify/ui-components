@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { compose, branch, renderComponent, mapProps, renderNothing, setDisplayName } from 'recompose';
+import { compose, branch, renderComponent, mapProps, renderNothing, setDisplayName, defaultProps } from 'recompose';
 import { pick } from 'lodash';
 import withConfig from 'helpers/withConfig';
+import provideLocation from 'helpers/provideLocation';
 
 import { AutocompleteBody } from 'internals/AutocompleteBody';
 import { AutocompleteMobileBody } from 'internals/AutocompleteMobileBody';
@@ -10,14 +11,20 @@ import { AutocompleteMobileBody } from 'internals/AutocompleteMobileBody';
 // TODO: children of `findify-widgets-autocomplete` should be:
 export const Autocomplete: any = compose(
   setDisplayName('Autocomplete'),
+  provideLocation,
   withConfig({
     currency: 'USD',
     position: 'left',
     i18n: {}
   }),
-  mapProps(props => ({
+  defaultProps({
+    meta: {},
+    suggestion: [],
+    items: []
+  }),
+  mapProps(({ suggestions = [], ...props }) => ({
     ...props,
-    suggestions: (props as any).suggestions.map((s) => s.value),
+    suggestions: (suggestions as any).map((s) => s.value),
   })),
   branch(
     ({ isMobile }) => !isMobile,

@@ -123,7 +123,7 @@ const RootWrapper = (props: any) => (
 
 export const NestedTree = branch(
   ({ cursor, selected, isRoot, level }: any) => 
-    !isRoot && selected && cursor.length === 1,
+    !isRoot && selected && cursor.size === 1,
   renderComponent(RootWrapper),
   renderComponent(NestedList),
 )(renderNothing);

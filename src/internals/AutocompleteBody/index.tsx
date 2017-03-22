@@ -11,8 +11,9 @@ export function AutocompleteBody({
   items,
   onSearchSuggestionClick,
   onTipClick,
+  selectedSuggestion,
   meta: {
-    query
+    q: query
   },
   config: {
     currency,
@@ -23,6 +24,7 @@ export function AutocompleteBody({
   
   const searchSuggestionsNode = (
     <SearchSuggestions {...{
+      selectedSuggestion,
       suggestions,
       title: i18n.suggestionsTitle,
       onSearchSuggestionClick,
@@ -77,9 +79,10 @@ export function AutocompleteBody({
 
 type Props = {
   meta: {
-    query: string
+    q: string
   },
   suggestions: string[],
+  selectedSuggestion: number,
   onSearchSuggestionClick: (query: string) => void,
   items?: Product[],
   onTipClick?: () => void,

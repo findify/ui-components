@@ -23,7 +23,7 @@ export const Rating = (({
       }
     </div>
     {
-      count && (
+      !!count && (
         <span className={styles.count}>({ count })</span>
       )
     }

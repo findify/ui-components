@@ -12,7 +12,7 @@ import {
 import { format as currencyFormat } from 'currency-formatter';
 import { stringify } from 'querystring';
 import { Rating } from 'widgets/Rating';
-import * as Truncate from 'react-truncate';
+import Truncate from 'react-truncate';
 import { merge } from 'lodash';
 import { camelizeKeys } from 'humps';
 import { getPrice } from 'helpers/getPrice';
@@ -21,13 +21,13 @@ import withConfig from 'helpers/withConfig';
 const styles = require('./styles.css');
 
 
-const Title = ({ text, config }) => config.display && text && (
+const Title: any = ({ text, config }) => config.display && !!text && (
   <h5 className={styles.title}>
     <Truncate lines={config.lines || false}>{text}</Truncate>
   </h5>
 );
 
-const Description = ({ text, config }) => config.display && text && (
+const Description: any = ({ text, config }) => config.display && !!text && (
   <p className={styles.description}>
     <Truncate lines={config.lines || false}>{text}</Truncate>
   </p>

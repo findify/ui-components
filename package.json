@@ -4,10 +4,15 @@
   "version": "0.2.17",
   "author": "1ven",
   "repository": "https://github.com/findify/findify-ui-components.git",
+  "peerDependencies": {
+    "react": ">=15.0.0"
+  },
   "dependencies": {
+    "babel-register": "^6.24.0",
     "classnames": "^2.2.5",
     "currency-formatter": "^1.1.1",
     "humps": "^2.0.0",
+    "immutable": "^3.8.1",
     "normalize.css": "^5.0.0",
     "react": "^15.4.1",
     "react-addons-shallow-compare": "^15.4.2",
@@ -81,13 +86,12 @@
   "main": "./dist/findify-ui-components.js",
   "scripts": {
     "start": "webpack-dashboard -- ./node_modules/.bin/webpack-dev-server",
-    "build": "npm run build:umd && npm run build:umd:min",
+    "build": "npm run build:umd",
     "build:umd": "./node_modules/.bin/webpack --env.production --env.externals --output-path='./dist' --output-filename='findify-ui-components.js'",
     "build:umd:min": "./node_modules/.bin/webpack --env.production --optimize-minimize --output-path='./dist' --output-filename='findify-ui-components.min.js'",
     "check": "npm run build && npm run clean",
     "clean": "rimraf ./lib ./dist",
     "lint": "tslint --project .",
-    "prepublish": "npm run build",
     "postpublish": "npm run clean",
     "postversion": "git push && git push --tags && git checkout develop && git merge master && git push && npm publish",
     "preversion": "npm run check && git checkout master && git merge develop",

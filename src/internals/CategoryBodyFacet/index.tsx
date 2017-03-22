@@ -1,27 +1,51 @@
 import * as React from 'react';
-import { compose, withState, withHandlers, mapProps } from 'recompose';
+import { compose, withState, withHandlers, mapProps, onlyUpdateForKeys } from 'recompose';
 import * as cx from 'classnames';
+import { compact, get } from 'lodash';
 import { ExpandButton } from 'internals/ExpandButton';
+import { List } from 'immutable';
 
 const styles = require('./styles.css');
 
 import { createCursor } from './cursor';
 import { Tree } from './Tree';
 
-// TODO: Category facet is like radiobutton. User can select only one value in the list
-// TODO: Possible we need to remove state handling inside the component, as in current MJS, we are
-// setting the value to the facet after response was came form server. So, we need to make all facets components like BreadCrumbs, it's correct.
+const mapArrayToFacetsCreator = (children, selected) => (array, forceUnselect?) =>
+array.map((position, index) => {
+  const selector = array.takeWhile((_, i) => i <= index).map(p => `[${p}]`).join('.children');
+  try {
+    const { children: _, ...facet } = get(children, selector);
+    if (forceUnselect) return { ...facet, selected: false };
+    return index === array.size - 1 ? { ...facet, selected } : facet;
+  } catch (e) {
+    return;
+  }
+});
+
 export const CategoryBodyFacet = compose(
+  onlyUpdateForKeys(['values']),
   mapProps(({ values: children, ...rest }) => ({
     ...rest,
-    ...createCursor({ children }, [], 0),
-    children
+    ...createCursor({ children }, List([]) , 0),
+    track: List([]),
+    children,
   })),
 
   withState('isExpanded', 'setExpanded', false),
 
   withHandlers({
-    toggleExpander: ({ isExpanded, setExpanded }) => () => setExpanded(!isExpanded)
+    toggleExpander: ({ isExpanded, setExpanded }) => () => setExpanded(!isExpanded),
+    onChange: ({ children, onChange, cursor }) => ({ track, selected }) => {
+      console.log(track);
+      
+      const mapArray = mapArrayToFacetsCreator(children, selected);
+      return onChange(
+        mapArray(cursor, true)
+        .concat(mapArray(track))
+        .filter(v => !!v)
+        .toArray()
+      );
+    }
   })
 )
 ((props: any) => (

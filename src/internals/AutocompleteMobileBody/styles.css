@@ -1,12 +1,12 @@
 .wrap {
+  position: fixed;
+  left: 0;
+  right: 0;
   height: 100%;
-  background: white;
+  width: 100%;
+  background: #f7f7f7;
 }
 
-.box {
-  height: 100%;
-  background-color: #f7f7f7;
-}
 
 .form {
   padding: 10px;

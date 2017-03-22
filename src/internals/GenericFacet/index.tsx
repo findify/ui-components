@@ -15,7 +15,7 @@ import * as cx from 'classnames';
 const styles = require('./styles.css');
 
 export const Raw = ({ children, ...rest }) => (
-  <div className={styles.content}>
+  <div className={cx(styles.content, rest.isMobile && styles.mobile)}>
   {
     React.Children.map(children, (child: any) => React.cloneElement(child, rest))
   }

@@ -28,7 +28,7 @@ storiesOf('Facets List', module)
         onChange={action('Change facet')}>
         {
           facets.map(facet =>
-            mapTypeToFacet(cfg.facets[facet.name], facet.type)({
+            mapTypeToFacet(cfg.facets[facet.name] || facet.type)({
               ...facet,
               isMobile: false,
               key: facet.name
@@ -48,7 +48,7 @@ storiesOf('Facets List', module)
         onChange={action('Change facet')}>
         {
           facets.map(facet =>
-            mapTypeToFacet(cfg.facets[facet.name], facet.type)({
+            mapTypeToFacet(cfg.facets[facet.name] || facet.type)({
               ...facet,
               isMobile: true,
               key: facet.name
