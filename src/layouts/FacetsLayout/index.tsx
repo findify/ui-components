@@ -17,13 +17,15 @@ export const FacetsLayout: any = ({
     onClose={onMobileFacetsClose}
     onChange={onFacetsChange}>
     {
-      response.facets.map(facet =>
-        mapTypeToFacet(config.facets.types[facet.name], facet.type)({
+      response.facets.map(facet => {
+        const type = config.facets.types && config.facets.types[facet.name] || facet.type;
+        return mapTypeToFacet(type)({
           ...facet,
           isMobile,
+          config: config.facets[type],
           key: facet.name
         })
-      )
+      })
     }
   </FacetsList>
 );

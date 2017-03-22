@@ -16,7 +16,7 @@ export function AutocompleteMobileBody({
     <div className={styles.wrap}>
       <form
         className={styles.form}
-        onSubmit={() => onSubmit(query)}>
+        onSubmit={(e) => onSubmit(query, e)}>
         <div className={styles.formLeft}>
           <input
             className={styles.input}
@@ -65,7 +65,7 @@ type Props = {
     q: string
   },
   suggestions: string[],
-  onSubmit: (query: string) => void,
+  onSubmit: (query: string, event?: object) => void,
   onInput: (query: string) => void,
   onClearClick: () => void
 };

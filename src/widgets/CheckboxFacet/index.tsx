@@ -6,7 +6,7 @@ import { GenericFacet } from 'internals/GenericFacet';
 import withConfig from 'helpers/withConfig';
 
 export const CheckboxFacet = withConfig({
-  maxItemsCount: 4,
+  maxItemsCount: 6,
   rowHeight: 20,
   i18n: {
     search: 'Search',

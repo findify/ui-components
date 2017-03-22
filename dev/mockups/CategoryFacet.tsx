@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { withFacets } from '../helpers/withFacets';
 
 const props = {
   isOpen: true,
@@ -104,8 +105,11 @@ export const values = [
   }
 ];
 
-export default ({ Component }) => (
-  <div style={{ margin: 50, width: 400, position: 'relative' }}>
-    <Component { ...props } values={values}/>
-  </div>
-);
+export default ({ Component }) => {
+  const Base: any = withFacets(Component);
+  return (
+    <div style={{ margin: 50, width: 400, position: 'relative' }}>
+      <Base { ...props } values={values}/>
+    </div>
+  );
+}

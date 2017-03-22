@@ -10,5 +10,5 @@ export const createCursor = (list, cursor, childrenCount): Cursor => {
   const children = list.children[index];
   
   if (index < 0) return { cursor, childrenCount: list.children.length };
-  return createCursor(children, [...cursor, index], children.length);
+  return createCursor(children, cursor.push(index), children.length);
 };

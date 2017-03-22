@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { compose, setDisplayName, withHandlers, withProps, withState } from 'recompose';
+import { compose, setDisplayName, withHandlers, withPropsOnChange, withState } from 'recompose';
 import * as cx from 'classnames';
 
 const styles = require('./styles.css');
@@ -14,35 +14,40 @@ export const MobileFacetsList = compose(
   withState('changes', 'updateChanges', {}),
   withState('selectedFacet', 'setSelectedFacet', false),
 
-  withProps(({ changes, facets }) => ({
+  withPropsOnChange(['changes', 'facets'], ({ changes, facets }) => ({
     hasNotCommittedData: !!Object.keys(changes).length,
     facets: facets.map(facet => {
-        if (!Object.keys(changes).includes(facet.name)) return facet;
-        const changedFacet = changes[facet.name];
-        const isRange = facet.type === 'range';
-        let values = facet.values;
-        if (isRange) {
-          const valuesKeys = facet.values.map(value => getRangeFacetKey(value));
-          const notInList = Object.keys(changedFacet).filter(key => !valuesKeys.includes(key));
-          if (!!notInList.length) {
-            values = [...notInList.map(key => changedFacet[key].changes), ...values]
-          }
+      if (!Object.keys(changes).includes(facet.name)) return facet;
+  
+      const changedFacet = changes[facet.name];
+      const isRange = facet.type === 'range';
+      let values = facet.values;
+  
+      if (isRange) {
+        const valuesKeys = facet.values.map(value => getRangeFacetKey(value));
+        const notInList = Object.keys(changedFacet).filter(key => !valuesKeys.includes(key));
+        if (!!notInList.length) {
+          values = [...notInList.map(key => changedFacet[key].changes), ...values]
         }
-        return {
-          ...facet,
-          values: values.map(value => {
-            const key = isRange ? getRangeFacetKey(value) : value.key;
-            return !!changedFacet[key]
-              ? changedFacet[key].changes
-              : value
-          })
-        }
-      })
+      }
+      
+      const update = {
+        ...facet,
+        values: values.map(value => {
+          const key = isRange ? getRangeFacetKey(value) : value.value;
+          return !!changedFacet[key]
+            ? changedFacet[key].changes
+            : value
+        })
+      }
+      return update;
+    })
   })),
   withHandlers({
     onCommit: ({ updateChanges, onChange, changes, updateFacets, setSelectedFacet }) => (direct) => {
       const update = direct || changes;
       const res = new Array();
+      
       for (let facet of Object.keys(update)) {
         for (let field of Object.keys(update[facet])) {
           res.push(update[facet][field]);
@@ -60,8 +65,8 @@ export const MobileFacetsList = compose(
         .length,
 
     onChange: ({ updateChanges, changes }) => (update) =>  {
-      const { name, changes: { key } } = update;
-      updateChanges({ ...changes, [name]: { ...changes[name], [key]: update } });
+      const { name, changes: { value } } = update;
+      updateChanges({ ...changes, [name]: { ...changes[name], [value]: update } });
     },
 
     onBackToFacets: ({ setSelectedFacet }) => () => setSelectedFacet(false)
@@ -83,9 +88,12 @@ export const MobileFacetsList = compose(
             ...update,
             [name]: {
               ...update[name],
-              [value.key]: {
-                ...value,
-                selected: false
+              [value.value]: {
+                type: facet.type,
+                changes: {
+                  ...value,
+                  selected: false
+                }
               }
             }
           };
@@ -112,7 +120,6 @@ export const MobileFacetsList = compose(
         <Facet
           key={facets[index].name}
           label={config.labels[facets[index].name]}
-          config={config[facets[index].type]}
           children={child}
           {...rest}
           {...facets[index]} />

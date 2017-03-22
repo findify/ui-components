@@ -19,7 +19,6 @@
 .content{
   flex: 1;
   overflow: hidden;
-  overflow-y: auto;
 }
 
 .button {
@@ -60,7 +59,8 @@
 
 .body{
   padding: 0 15px;
-  margin-top: 8px;
+  padding-top: 8px;
+  height: 100%;
 }
 
 .preview {

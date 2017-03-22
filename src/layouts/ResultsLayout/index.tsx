@@ -24,7 +24,6 @@ export const ResultsLayout = ({
   onMobileFacetsOpen
 }) => {
   console.log(response);
-  
   return (
     <div>
       { 
@@ -38,9 +37,9 @@ export const ResultsLayout = ({
 
           <Sorting
             className={styles.sort}
-            value={!!response.meta.sort.length && response.meta.sort || 'relevant'}
+            value={!!response.meta.sort.length && response.meta.sort[0]}
             onChange={onSortChange}
-            options={['relevant', 'priceAZ', 'priceZA']}
+            options={config.sorting.options}
             config={config.sorting} />
         </div>
       }
@@ -51,16 +50,20 @@ export const ResultsLayout = ({
             onClick={onMobileFacetsOpen}
             className={styles.mobileFacetsButton}
             columnClass={styles.paddingRight}>
-            { config.facets.i18n.showMobileFacets }{ response.meta.filters && `(${response.meta.filters.length})`}
+            { config.facets.i18n.showMobileFacets }
+            { 
+              response.meta.filters && !!response.meta.filters.length &&
+              ` (${response.meta.filters.length})`
+            }
           </Button>
 
           <Sorting
             isMobile={isMobile}
             columnClass={styles.paddingLeft}
             className={cx(styles.sort, styles.mobileSort)}
-            value={!!response.meta.sort.length && response.meta.sort || 'relevant'}
+            value={!!response.meta.sort.length && response.meta.sort[0]}
             onChange={onSortChange}
-            options={['relevant', 'priceAZ', 'priceZA']}
+            options={config.sorting.options}
             config={config.sorting} />
         </Grid>
       }
@@ -80,13 +83,15 @@ export const ResultsLayout = ({
             columnClass={styles.product}
             items={response.items}
             onProductClick={onProductClick} />
-    
-          <Pagination
-            onChange={onPageChange}
-            style={{ textAlign: 'center' }}
-            config={config.pagination}
-            total={Math.ceil(response.meta.total / response.meta.limit)}
-            current={Math.ceil(response.meta.offset / response.meta.limit) || 1} />
+          {
+            !!response.meta.total && response.meta.total > response.meta.limit &&
+              <Pagination
+                onChange={onPageChange}
+                style={{ textAlign: 'center' }}
+                config={config.pagination}
+                total={Math.ceil(response.meta.total / response.meta.limit)}
+                current={Math.ceil(response.meta.offset / response.meta.limit) + 1} />
+          }
     
         </div>
       </Grid>

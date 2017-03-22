@@ -6,7 +6,7 @@ import { GenericFacet } from 'internals/GenericFacet';
 import withConfig from 'helpers/withConfig';
 
 export const CategoryFacet = withConfig({
-  maxItemsCount: 3,
+  maxItemsCount: 6,
   rowHeight: 20,
   i18n: {
     goBackTitle: 'All categories',

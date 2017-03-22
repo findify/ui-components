@@ -21,13 +21,13 @@ import withConfig from 'helpers/withConfig';
 const styles = require('./styles.css');
 
 
-const Title:any = ({ text, config }) => config.display && text && (
+const Title: any = ({ text, config }) => config.display && !!text && (
   <h5 className={styles.title}>
     <Truncate lines={config.lines || false}>{text}</Truncate>
   </h5>
 );
 
-const Description = ({ text, config }) => config.display && text && (
+const Description: any = ({ text, config }) => config.display && !!text && (
   <p className={styles.description}>
     <Truncate lines={config.lines || false}>{text}</Truncate>
   </p>

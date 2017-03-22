@@ -10,7 +10,6 @@ export const DesktopFacetsList = setDisplayName('DesktopFacetsList')
       React.Children.map(children, (child: any) =>
         React.cloneElement(child, {
           onChange,
-          config: merge({}, child.props.config, config[child.props.type]),
           label: config.labels[child.props.name]
         })
       )
