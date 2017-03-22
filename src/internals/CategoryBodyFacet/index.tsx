@@ -22,13 +22,22 @@ array.map((position, index) => {
   }
 });
 
+const getLost = cursor => {
+  let size = cursor.size;
+  return cursor.size > 2
+  ? cursor.takeWhile((k) => {
+      size--;
+      return size > 1;
+    })
+  : List([]);
+}
+
 export const CategoryBodyFacet = compose(
-  onlyUpdateForKeys(['values']),
   mapProps(({ values: children, ...rest }) => ({
     ...rest,
     ...createCursor({ children }, List([]) , 0),
     track: List([]),
-    children,
+    children
   })),
 
   withState('isExpanded', 'setExpanded', false),
@@ -36,12 +45,12 @@ export const CategoryBodyFacet = compose(
   withHandlers({
     toggleExpander: ({ isExpanded, setExpanded }) => () => setExpanded(!isExpanded),
     onChange: ({ children, onChange, cursor }) => ({ track, selected }) => {
-      console.log(track);
-      
       const mapArray = mapArrayToFacetsCreator(children, selected);
+      const allTracks = getLost(cursor).concat(track); // Holy Sh*t, we loosing tracks when skipping lvl
+      const facets = mapArray(track);
       return onChange(
         mapArray(cursor, true)
-        .concat(mapArray(track))
+        .concat(mapArray(allTracks))
         .filter(v => !!v)
         .toArray()
       );
@@ -50,7 +59,7 @@ export const CategoryBodyFacet = compose(
 )
 ((props: any) => (
   <div>
-    <Tree className={styles.wrap} {...props} isRoot selected />
+    <Tree className={styles.wrap} {...props} isRoot selected has_children />
     {
       props.childrenCount > props.config.maxItemsCount &&
       <ExpandButton
