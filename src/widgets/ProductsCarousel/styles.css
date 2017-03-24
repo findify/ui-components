@@ -1,7 +1,8 @@
 .title {
   font-size: 18px;
   color: #404040;
-  margin: 10px 0; 
+  padding: 10px 0;
+  margin: 0;
   text-align: center; 
 }
 
