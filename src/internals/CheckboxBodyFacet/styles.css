@@ -1,6 +1,7 @@
 .wrap {
-  margin: 5px 0;
+  padding: 5px 0;
   width: 100%;
+  flex: 1 1 auto;
 }
 
 .list {

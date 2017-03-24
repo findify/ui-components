@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { template } from 'lodash';
-import { compose, pure, withHandlers, withProps, setDisplayName, withPropsOnChange } from 'recompose';
 import * as cx from 'classnames';
+import template from 'helpers/template';
 import withConfig from 'helpers/withConfig';
-const styles = require('./styles.css');
+import escape from 'helpers/escape';
+import formatRange from 'helpers/formatRange';
+import {
+  compose, pure, withHandlers, withProps,
+  setDisplayName, withPropsOnChange, createEagerElement
+} from 'recompose';
 
-const valueToKey = ({ from, to }, currency = 'USD') =>
-  from && to && `${from} ${currency} - ${to} ${currency}` ||
-  from && !to && `${from} ${currency} and more` ||
-  !from && to && `less then ${to} ${currency}`;
+const styles = require('./styles.css');
 
 const filtersMapping = {
   default: ({ value }) => value,
-  range: props => valueToKey(props),
+  range: props => formatRange(props),
   color: ({ value, config: { mapping } }) => {
     const isMulticolor = value === 'Multicolor';
     const classNames = [styles.colorFilter, isMulticolor && 'multiply-gradient'];
@@ -56,12 +57,12 @@ export const HOC = compose(
     }
   }),
 
-  withPropsOnChange(['config'], ({ config: { i18n } }) => ({
-    titleTemplate: template(i18n.title)
+  withPropsOnChange(['config'], ({ config: { templates } }) => ({
+    titleTemplate: template(templates.results)
   })),
 
-  withProps(({ query, total, titleTemplate }) => ({
-    title: titleTemplate({ query, total })
+  withPropsOnChange(['total', 'q'], ({ total, q, titleTemplate }) => ({
+    title: titleTemplate(total, escape(q))
   }))
 );
 
@@ -73,20 +74,24 @@ export const Component = ({
   className
 }: any) => (
   <div className={cx(styles.wrap, className)}>
-    <p className={styles.title}>{title}</p>
+    <p className={styles.title} dangerouslySetInnerHTML={{ __html: title }} />
     {
       filters.map((filter, index) =>
         filter.values.map(item => {
           const key = [filter.name, item.value, item.from, item.to].join('_');
-          return <Filter
-            {...filter}
-            {...item}
-            componentType={config.facets.types[filter.name] || filter.type}
-            label={config.facets.labels[filter.name]}
-            config={config.facets[config.facets.types[filter.name] || filter.type]}
-            key={key}
-            index={index}
-            onChange={onChange} />
+          return createEagerElement(Filter, {
+            ...filter,
+            ...item,
+            key,
+            index,
+            onChange,
+            componentType: config.facets.types[filter.name] || filter.type,
+            label: config.facets.labels[filter.name],
+            config: {
+              ...config.facets[config.facets.types[filter.name] || filter.type],
+              currency: config.currency
+            }
+          })
         })
       )
     }

@@ -3,10 +3,10 @@ import * as cx from 'classnames';
 import {
   withHandlers, branch, renderComponent, withState,
   compose, withProps, renderNothing, withPropsOnChange,
+  createEagerElement
 } from 'recompose';
 import { List, AutoSizer } from 'react-virtualized';
-
-const { WindowScroller } = require('react-virtualized');
+import sizeMe from 'react-sizeme';
 const styles = require('./styles.css');
 
 const Item = withHandlers({
@@ -25,38 +25,46 @@ const Item = withHandlers({
   </div>
 ));
 
-const VirtualizedList = ({ scrollTop, height, items, rowRenderer, config }) => (
-  <AutoSizer disableHeight>
+const StaticList = ({ items, config, className, showAll, ...rest }) => (
+  <div className={cx(styles.list, className)}>
+    { 
+      items.map(item =>
+        createEagerElement(Item, {
+          ...rest,
+          item,
+          key: item.value,
+          title: item.label || item.value
+        })
+      )
+    }
+  </div>
+);
+
+const VirtualizedList = withProps(({ items, ...rest }) => ({
+  rowRenderer: ({ index, key, style }) =>
+    createEagerElement(Item, {
+      ...rest,
+      item: items[index],
+      title: items[index].value,
+      key,
+      style
+    })
+}))(({ isMobile, items, rowRenderer, config }: any) => (
+  <AutoSizer disableHeight={!isMobile}>
     {
-    ({ width }) =>
+    ({ width, height }) =>
       <List
         className={styles.list}
         width={width}
-        scrollTop={scrollTop}
         height={height || config.maxItemsCount * config.rowHeight}
         rowCount={items.length}
-        overscanRowCount={10}
+        overscanRowCount={2}
         rowHeight={config.rowHeight}
         rowRenderer={rowRenderer} />
     }
   </AutoSizer>
-);
+));
 
-const FullHeightScroll = withState(
-  'parent', 'setParent', void 0
-)(({
-  setParent,
-  parent,
-  ...props
-}: any) => (
-  <div ref={r => r && setParent(r)} style={{ height: '100%' }}>
-    <WindowScroller scrollElement={parent}>
-      {
-        scrollProps => <VirtualizedList {...props} {...scrollProps} />
-      }
-    </WindowScroller>
-  </div>
-))
 
 export const ListRenderer: any = compose(
   withPropsOnChange(['slice', 'items'], ({ items, slice }) => ({
@@ -64,25 +72,7 @@ export const ListRenderer: any = compose(
   })),
   branch(
     ({ isStatic }: any) => isStatic,
-    renderComponent(({ items, config, className, showAll, ...rest }) => (
-      <div className={cx(styles.list, className)}>
-        { 
-          items.map(item =>
-            <Item item={item} key={item.value} {...rest} title={item.label || item.value} />
-          )
-        }
-      </div>
-    )),
-    compose(
-      withProps(({ items, ...rest }) => ({
-        rowRenderer: ({ index, key, style }) =>
-          <Item item={items[index]} {...rest} title={items[index].value} key={key} style={style} />
-      })),
-      branch(
-        ({ isMobile }) => !isMobile,
-        renderComponent(VirtualizedList),
-        renderComponent(FullHeightScroll)
-      )
-    )
+    renderComponent(StaticList),
+    renderComponent(VirtualizedList),
   )
 )(renderNothing);

@@ -30,10 +30,14 @@ export const ResultsLayout = ({
         !isMobile &&
         <div>
           <BreadCrumbs
-          filters={response.meta.filters}
+          {...response.meta}
           className={styles.breadcrumbs}
           onChange={onBreadCrumbRemove}
-          config={{ ...config.breadcrumbs, facets: config.facets }} />
+          config={{
+            ...config.breadcrumbs,
+            facets: config.facets,
+            currency: config.currency
+          }} />
 
           <Sorting
             className={styles.sort}
@@ -79,7 +83,13 @@ export const ResultsLayout = ({
         <div className={cx(styles.products, !isMobile && styles.productsWithPadding)}>
     
           <ProductsList
-            config={{ ...config.productsGrid, product: config.product }}
+            config={{
+              ...config.productsGrid,
+              product: {
+                ...config.product,
+                currency: config.currency
+              }
+            }}
             columnClass={styles.product}
             items={response.items}
             onProductClick={onProductClick} />

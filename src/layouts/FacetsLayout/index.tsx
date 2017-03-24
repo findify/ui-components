@@ -22,7 +22,7 @@ export const FacetsLayout: any = ({
         return mapTypeToFacet(type)({
           ...facet,
           isMobile,
-          config: config.facets[type],
+          config: { ...config.facets[type], currency: config.currency },
           key: facet.name
         })
       })

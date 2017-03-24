@@ -19,6 +19,7 @@ const sliderProps = {
   slidesToShow: 5,
   slidesToScroll: 1,
   arrows: true,
+  lazyLoad: true,
   nextArrow: <Arrow dir='right' />,
   prevArrow: <Arrow dir='left' />
 };
@@ -35,15 +36,15 @@ export const HOC = compose(
 
 export const Component = (({
   items,
-  title,
   onProductClick,
   config: {
     productsToShow: slidesToShow,
+    title,
     ...config
   },
   component: Component
 }: any) => (
-  <div className={styles.wrap}>
+  <div className={styles.root}>
     { 
       title && <h4 className={styles.title}>{ title }</h4>
     }

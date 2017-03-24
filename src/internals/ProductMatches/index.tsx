@@ -6,6 +6,7 @@ import { getPrice } from 'helpers/getPrice';
 import { format as currencyFormat } from 'currency-formatter';
 import { Grid } from 'widgets/Grid';
 import Link from 'internals/Link';
+import Image from 'internals/Image';
 
 const styles = require('./styles.css');
 
@@ -37,7 +38,7 @@ export const ProductMatches = compose(
             href={p.productUrl}
             key={i}>
             <div className={styles.itemImage}>
-              <img className={styles.itemSrc} src={p.thumbnailUrl} />
+              <Image className={styles.itemSrc} src={p.thumbnailUrl} />
             </div>
             <span className={styles.itemTitle}>
               {p.title}
@@ -53,7 +54,7 @@ export const ProductMatches = compose(
               {
                 p.compareAt && p.compareAt > 0 && (
                   <span className={styles.itemPriceDiscount}>
-                    { currencyFormat(p.compareAt, { code: currency }) }
+                    { currencyFormat(p.compareAt, currency) }
                   </span>
                 )
               }
@@ -70,7 +71,9 @@ export const ProductMatches = compose(
 type Props = {
   items?: Product[],
   title?: string,
-  currency: string
+  currency: {
+    code?: string
+  }
 };
 
 type Product = {
