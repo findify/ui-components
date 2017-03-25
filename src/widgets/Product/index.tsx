@@ -18,6 +18,7 @@ import { camelizeKeys } from 'humps';
 import Image from 'internals/Image';
 import { getPrice } from 'helpers/getPrice';
 import withConfig from 'helpers/withConfig';
+import withHooks from 'helpers/withHooks';
 
 const styles = require('./styles.css');
 
@@ -81,7 +82,9 @@ export const HOC = compose(
         return onClick(rest);
       }
     }
-  })
+  }),
+
+  withHooks('product')
 );
 
 export const Component = (({
