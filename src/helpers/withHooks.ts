@@ -15,11 +15,19 @@ const createHook = type => (hookName, decorator) => branch(
   identity
 );
 
+
+
 export default featureType => BaseComponent => {
   const hook = createHook(featureType);
+  const updateCallback = instance =>
+    instance.props.hooks[featureType].didUpdate({
+      node: findDOMNode(instance),
+      data: instance.props
+    });
 
   return compose(
     getContext({ hooks: PropTypes.object }),
+
     hook('mapProps', mapProps((props:any) => {
       const { hooks, ...restProps } = props;  
       const propsToMap = removeFunctions(restProps);
@@ -32,11 +40,11 @@ export default featureType => BaseComponent => {
     })),
 
     hook('didUpdate', lifecycle({
+      componentDidMount() {
+        updateCallback(this)
+      },
       componentDidUpdate(){
-        this.props.hooks[featureType].didUpdate({
-          node: findDOMNode(this),
-          data: this.props
-        })
+        updateCallback(this)
       }
     })),
   )(BaseComponent);
