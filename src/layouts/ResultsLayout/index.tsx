@@ -9,10 +9,10 @@ import { Pagination } from 'widgets/Pagination';
 import { ProductsList } from 'lists/ProductsList';
 import { FacetsLayout } from '../FacetsLayout';
 import { Button } from 'internals/Button';
-
+import withHooks from 'helpers/withHooks';
 const styles = require('./styles.css');
 
-export const ResultsLayout = ({
+export const ResultsLayout = withHooks('results')(({
   config,
   isMobile,
   response,
@@ -23,17 +23,20 @@ export const ResultsLayout = ({
   onBreadCrumbRemove,
   onMobileFacetsOpen
 }) => {
-  console.log(response);
   return (
     <div>
       { 
         !isMobile &&
         <div>
           <BreadCrumbs
-          filters={response.meta.filters}
+          {...response.meta}
           className={styles.breadcrumbs}
           onChange={onBreadCrumbRemove}
-          config={{ ...config.breadcrumbs, facets: config.facets }} />
+          config={{
+            ...config.breadcrumbs,
+            facets: config.facets,
+            currency: config.currency
+          }} />
 
           <Sorting
             className={styles.sort}
@@ -79,7 +82,13 @@ export const ResultsLayout = ({
         <div className={cx(styles.products, !isMobile && styles.productsWithPadding)}>
     
           <ProductsList
-            config={{ ...config.productsGrid, product: config.product }}
+            config={{
+              ...config.productsGrid,
+              product: {
+                ...config.product,
+                currency: config.currency
+              }
+            }}
             columnClass={styles.product}
             items={response.items}
             onProductClick={onProductClick} />
@@ -98,4 +107,4 @@ export const ResultsLayout = ({
 
     </div>
   )
-}
+})

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { compose, withState, withHandlers, mapProps } from 'recompose';
 import NumberInput from 'react-number-input';
-import { valueToKey } from 'helpers/valueToKey';
+import formatRange from 'helpers/formatRange';
+import { findCurrency } from 'currency-formatter'
 import { getRangeFacetKey } from 'helpers/getRangeFacetKey';
 
 const styles = require('./styles.css');
@@ -11,6 +12,7 @@ export const RangeBodyFacet = compose(
     ...rest,
     min: parseInt(min),
     max: parseInt(max),
+    currencySymbol: findCurrency(rest.config.currency.code).symbol
   })),
   withState('minValue', 'setMin', props => props.min),
   withState('maxValue', 'setMax', props => props.max),
@@ -18,7 +20,7 @@ export const RangeBodyFacet = compose(
     onCommit: ({ name, values, onChange, minValue: from, maxValue: to, setMin, setMax, config }) =>
     () => {
       if (!from && !to) return;
-      const label = valueToKey({ from, to }, config.currency);
+      const label = formatRange({ from, to, config });
       const key = getRangeFacetKey({ from, to });
       if (values.find(item => item.key === key)) return;
       onChange({ selected: true, from, to, key, label, name });
@@ -35,6 +37,7 @@ export const RangeBodyFacet = compose(
   updateMax,
   onCommit,
   config,
+  currencySymbol,
   max,
   min,
   i18n
@@ -42,12 +45,12 @@ export const RangeBodyFacet = compose(
   <div className={styles.wrap}>
     <div className={styles.inputWrap}>
       <NumberInput className={styles.input} value={minValue} min={min} max={maxValue} onChange={updateMin}/>
-      <span className={styles.currency}>{config.currency}</span>
+      <span className={styles.currency}>{currencySymbol}</span>
     </div>
     <div className={styles.separator}>-</div>
     <div className={styles.inputWrap}>
       <NumberInput className={styles.input} value={maxValue} min={minValue} max={max} onChange={updateMax}/>
-      <span className={styles.currency}>{config.currency}</span>
+      <span className={styles.currency}>{currencySymbol}</span>
     </div>
     <div className={styles.commitWrap}>
       <button className={styles.button} onClick={onCommit}>{config.i18n.submit}</button>

@@ -3,12 +3,15 @@ import { compose, withState } from 'recompose';
 import config from '../data/config';
 
 const props = {
-  filters: require('../data/raw.json').meta.filters,
+  filters: [],
   onChange: console.log,
   total: 20,
-  query: 'something',
+  q: 'something',
   config: {
-    facets: config.facets
+    facets: config.facets,
+    templates: {
+      results: 'Showing %s results for \"<strong>%s</strong>\"'
+    }
   }
 };
 

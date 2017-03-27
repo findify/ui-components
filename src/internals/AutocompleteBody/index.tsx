@@ -3,6 +3,7 @@ import * as cx from 'classnames';
 
 import { SearchSuggestions } from 'internals/SearchSuggestions';
 import { ProductMatches } from 'internals/ProductMatches';
+import { createEagerElement } from 'recompose';
 
 const styles = require('./styles.css');
 
@@ -22,22 +23,24 @@ export function AutocompleteBody({
   }
 }: Props) {
   
-  const searchSuggestionsNode = (
-    <SearchSuggestions {...{
+  const searchSuggestionsNode = createEagerElement(
+    SearchSuggestions,
+    {
       selectedSuggestion,
       suggestions,
-      title: i18n.suggestionsTitle,
       onSearchSuggestionClick,
       query,
-      currency
-      }} />
-  ); 
+      title: i18n.suggestionsTitle,
+    }
+  ) 
 
-  const productMatchesNode = !!items && !!items.length && (
-    <ProductMatches {...{
+  const productMatchesNode = !!items && !!items.length && createEagerElement(
+    ProductMatches,
+    {
       items,
-      title: i18n.productMatchesTitle
-    }} />
+      currency,
+      title: i18n.productMatchesTitle,
+    }
   );
 
   return (

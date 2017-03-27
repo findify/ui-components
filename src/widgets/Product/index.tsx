@@ -15,8 +15,10 @@ import { Rating } from 'widgets/Rating';
 import Truncate from 'react-truncate';
 import { merge } from 'lodash';
 import { camelizeKeys } from 'humps';
+import Image from 'internals/Image';
 import { getPrice } from 'helpers/getPrice';
 import withConfig from 'helpers/withConfig';
+import withHooks from 'helpers/withHooks';
 
 const styles = require('./styles.css');
 
@@ -41,7 +43,7 @@ const Price = ({ price, oldPrice, currency }) => price &&
     {
       oldPrice && oldPrice > 0 &&
       <span className={styles.compare}>
-        { currencyFormat(oldPrice, { code: currency }) }
+        { currencyFormat(oldPrice, currency) }
       </span>
     }
   </div>
@@ -49,13 +51,18 @@ const Price = ({ price, oldPrice, currency }) => price &&
 export const HOC = compose(
   setDisplayName('Product'),
   withConfig({
-    currency: 'USD',
+    currency: {
+      code: 'USD'
+    },
     title: {
       lines: 3,
       display: true
     },
     description: {
       lines: 3,
+      display: true
+    },
+    price: {
       display: true
     }
   }),
@@ -75,7 +82,9 @@ export const HOC = compose(
         return onClick(rest);
       }
     }
-  })
+  }),
+
+  withHooks('product')
 );
 
 export const Component = (({
@@ -83,6 +92,7 @@ export const Component = (({
   imageUrl,
   imageQuery,
   description,
+  thumbnailUrl,
   title,
   reviews,
   price,
@@ -93,7 +103,7 @@ export const Component = (({
 }: any) => (
   <a onClick={onClick} href={productUrl} className={styles.wrap}>
     <div className={styles.imageWrap}>
-      <img className={styles.image} src={imageUrl} alt={title} />
+      <Image className={styles.image} src={imageUrl} placeholder={thumbnailUrl} alt={title} />
     </div>
     <div className={styles.description}>
       <Title text={title} config={config.title} />
@@ -105,7 +115,9 @@ export const Component = (({
         <Rating count={reviews.totalReviews} value={reviews.averageScore} />
       </div>
     }
-    <Price price={price} oldPrice={compareAt} currency={config.currency} />
+    {
+      config.price.display && <Price price={price} oldPrice={compareAt} currency={config.currency} />
+    }
   </a>
 ));
 

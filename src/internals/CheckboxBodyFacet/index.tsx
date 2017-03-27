@@ -93,7 +93,7 @@ export const CheckboxBodyFacet: any = compose(
         {...rest}
         items={notSelectedItems}
         onChange={onChange}
-        slice={!isMobile && rest.config.maxItemsCount}
+        slice={!isMobile && !expanded && rest.config.maxItemsCount}
         isMobile={isMobile}
         isStatic={!isMobile && showStaticContent} />
     }

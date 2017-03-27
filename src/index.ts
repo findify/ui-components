@@ -2,6 +2,7 @@ import './styles.global.css';
 
 export { ResultsLayout } from './layouts/ResultsLayout';
 export { FacetsLayout } from './layouts/FacetsLayout';
+export { NoResultsLayout } from './layouts/NoResultsLayout';
 
 export { FacetsList } from './lists/FacetsList';
 export { ProductsList } from './lists/ProductsList';

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { FacetsList } from 'lists/FacetsList';
+import withHooks from 'helpers/withHooks';
 
 import { mapTypeToFacet } from 'helpers/mapTypeToFacet';
 
-export const FacetsLayout: any = ({
+export const FacetsLayout: any = withHooks('facets')(({
   isMobile,
   config,
   response,
@@ -22,10 +23,10 @@ export const FacetsLayout: any = ({
         return mapTypeToFacet(type)({
           ...facet,
           isMobile,
-          config: config.facets[type],
+          config: { ...config.facets[type], currency: config.currency },
           key: facet.name
         })
       })
     }
   </FacetsList>
-);
+));

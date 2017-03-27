@@ -19,6 +19,7 @@
 .content{
   flex: 1;
   overflow: hidden;
+  position: relative;
 }
 
 .button {
@@ -58,9 +59,12 @@
 }
 
 .body{
-  padding: 0 15px;
-  padding-top: 8px;
-  height: 100%;
+  padding: 8px 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .preview {

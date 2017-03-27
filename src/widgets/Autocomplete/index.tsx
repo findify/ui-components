@@ -13,7 +13,9 @@ export const Autocomplete: any = compose(
   setDisplayName('Autocomplete'),
   provideLocation,
   withConfig({
-    currency: 'USD',
+    currency: {
+      code: 'USD'
+    },
     position: 'left',
     i18n: {}
   }),
