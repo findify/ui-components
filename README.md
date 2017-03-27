@@ -42,6 +42,7 @@ ReactDOM.render(<Autocomplete {...props} />, document.getElementById('autocomple
 
 # Documentation
 - [API Reference](https://findify.readme.io/reference#initialization)
+- [UI Components Playground](https://findify.github.io/ui-components)
 
 # License
 MIT
