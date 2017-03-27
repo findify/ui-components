@@ -88,7 +88,7 @@
   "main": "./dist/findify-ui-components.js",
   "scripts": {
     "start": "webpack-dashboard -- ./node_modules/.bin/webpack-dev-server",
-    "build": "npm run build:umd && build:umd:min",
+    "build": "npm run build:umd && npm run build:umd:min",
     "build:umd": "./node_modules/.bin/webpack --env.production --env.externals --output-path='./dist' --output-filename='findify-ui-components.js'",
     "build:umd:min": "./node_modules/.bin/webpack --env.production --optimize-minimize --output-path='./dist' --output-filename='findify-ui-components.min.js'",
     "check": "npm run build && npm run clean",
