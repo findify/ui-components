@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { compose, onlyUpdateForKeys, branch, renderComponent, withHandlers, withProps, renderNothing } from 'recompose';
+import {
+  branch,
+  compose,
+  onlyUpdateForKeys,
+  renderComponent,
+  renderNothing,
+  withHandlers,
+  withProps,
+  withPropsOnChange
+} from 'recompose';
 import * as cx from 'classnames';
 
 const styles = require('./styles.css');
@@ -10,17 +19,30 @@ const Button = ({ onClick, children, flat }: any) => (
   </button>
 );
 
-const RootHeader = branch(
-  ({ hasNotCommittedData }: any) => hasNotCommittedData,
-  renderComponent(() => (
-    <div />
-  )),
-  renderComponent(({ onClose, config }) => (
-    <Button onClick={onClose} flat>
-      <span className={cx(styles.icon, styles.pre, 'fa', 'fa-chevron-left')} />
-      { config.i18n.hideFilters }
-    </Button>
-  )),
+const RootHeader = compose(
+  withProps(({ facets, getSelected }) => ({
+    selectedFacets: facets.filter(facet => !!getSelected(facet.name))
+  })),
+  branch(
+    ({ selectedFacets }: any) => !!selectedFacets.length,
+    renderComponent(({ onClose, onResetAll, config }) => (
+      <div className={styles.buttonsGroup}>
+        <Button onClick={onResetAll}>
+          { config.i18n.resetAllFilters }
+        </Button>
+        <div className={styles.divider} />
+        <Button onClick={onClose} className={styles.light}>
+          { config.i18n.showResults }
+        </Button>
+      </div>
+    )),
+    renderComponent(({ onClose, config }) => (
+      <Button onClick={onClose} flat>
+        <span className={cx(styles.icon, styles.pre, 'fa', 'fa-chevron-left')} />
+        { config.i18n.hideFilters }
+      </Button>
+    )),
+  )
 )(renderNothing);
 
 
@@ -56,7 +78,12 @@ export const FacetTitle = branch(
     )(({ selectedFacet, onReset, showRest, config }: any) => (
     <div className={styles.facetTitle}>
       <h5 className={styles.facetTitleName}>{ config.labels[selectedFacet] }</h5>
-      { showRest && <span className={styles.resetButton} onClick={onReset}>Reset</span> }
+      { 
+        showRest &&
+        <span className={styles.resetButton} onClick={onReset}>
+          {config.i18n.reset}
+        </span>
+      }
     </div>
   ))),
 )(renderNothing);

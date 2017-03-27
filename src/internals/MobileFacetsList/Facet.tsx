@@ -8,35 +8,50 @@ const styles = require('./styles.css');
 
 const FacetPreview = compose(
   withProps(({ values }: any) => {
-    const selectedItems = values.find(item => item.selected);
+    const selectedItems = values.filter(item => item.selected).map(item => item.value);
+    
     return {
-      hasSelectedItems: !!selectedItems && selectedItems.length,
-      selectedItems
+      hasSelectedItems: !!selectedItems && !!selectedItems.length,
+      selectedItems: selectedItems.join(', ')
     }
   }),
   withHandlers({
-    onReset: ({ onReset, name }) => () => onReset(name),
+    onReset: ({ onReset, name, type }) => e => onReset(type, name),
     onSelect: ({ name, setSelectedFacet }) => () => setSelectedFacet(name)
   })
 )(({
   label,
   onSelect,
   onReset,
-  hasSelectedItems
+  hasSelectedItems,
+  selectedItems,
+  config,
+  globalConfig
 }: any) => (
   <button className={styles.preview} onClick={onSelect}>
-    <div className={styles.previewContent}>
-      <h5 className={styles.previewTitle}>{ label }</h5>
-    </div>
-    <div className={styles.previewActions}>
-      {
-        hasSelectedItems &&
-        <span className={styles.previewRest} onClick={onReset}>Reset</span>
-      }
-      <span className={cx(styles.previewIcon, 'fa', 'fa-chevron-right')}/>
+    <div className={styles.previewContainer}>
+      <div className={styles.previewContent}>
+        <h5 className={styles.previewTitle}>{ label }</h5>
+        {
+          !!selectedItems &&
+            <div className={styles.selectedItems}>
+              {selectedItems}
+            </div>
+        }
+      </div>
+      <div className={styles.previewActions}>
+        {
+          hasSelectedItems &&
+          <span className={styles.previewReset} onClick={onReset}>
+            {globalConfig.i18n.reset}
+          </span>
+        }
+        <span className={cx(styles.previewIcon, 'fa', 'fa-chevron-right')}/>
+      </div>
     </div>
   </button>
-));
+)
+);
 
 
 const FacetBody = ({

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { compose, setDisplayName, withHandlers, withPropsOnChange, withState } from 'recompose';
+import { compose, setDisplayName, withHandlers, withPropsOnChange, withState, createEagerElement } from 'recompose';
 import * as cx from 'classnames';
 
 const styles = require('./styles.css');
@@ -59,10 +59,10 @@ export const MobileFacetsList = compose(
     },
 
     getSelected: ({ facets }) => facetKey => facets
-        .find(facet => facet.name === facetKey)
-        .values
-        .filter(value => value.selected)
-        .length,
+      .find(facet => facet.name === facetKey)
+      .values
+      .filter(value => value.selected)
+      .length,
 
     onChange: ({ updateChanges, changes }) => (update) =>  {
       const { name, changes: { value } } = update;
@@ -73,7 +73,7 @@ export const MobileFacetsList = compose(
   }),
 
   withHandlers({
-    onReset: ({ onCommit, onChange, updateChanges, facets, changes }) => (type, name) => {
+    onReset: ({ onCommit, onChange, updateChanges, facets, changes }) => (type, name, commit = true) => {
       const facet = facets.find(facet => facet.name === name);
       let update = {...changes};
       const hasUnsaved = !!update[name];
@@ -99,7 +99,16 @@ export const MobileFacetsList = compose(
           };
         }
       };
-      onCommit(update);
+      if (commit) return onCommit(update);
+      return update;
+    },
+  }),
+  withHandlers({
+    onResetAll: ({ facets, onReset, getSelected, onCommit }) => () => {
+      const update = facets
+        .filter(facet => !!getSelected(facet.name))
+        .map(facet => onReset(facet.type, facet.name, false))
+      return onCommit(Object.assign({}, ...update));
     }
   })
 )
@@ -111,18 +120,20 @@ export const MobileFacetsList = compose(
 }: Response) => (
   <div className={cx(styles.wrap, !rest.selectedFacet && styles.wrapDark)}>
     <div className={styles.header}>
-      <Header {...rest} config={config} />
+      <Header {...rest} facets={facets} config={config} />
     </div>
     <FacetTitle {...rest} facets={facets} config={config} />
     <div className={styles.content}>
     { 
       children.map((child, index) =>
-        <Facet
-          key={facets[index].name}
-          label={config.labels[facets[index].name]}
-          children={child}
-          {...rest}
-          {...facets[index]} />
+        createEagerElement(Facet, {
+          ...rest,
+          ...facets[index],
+          key: facets[index].name,
+          label: config.labels[facets[index].name],
+          children: child,
+          globalConfig: config
+        })
       )
     }
     </div>
