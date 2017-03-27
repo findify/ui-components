@@ -13,6 +13,7 @@ export function AutocompleteBody({
   onSearchSuggestionClick,
   onTipClick,
   selectedSuggestion,
+  onProductClick,
   meta: {
     q: query
   },
@@ -39,6 +40,7 @@ export function AutocompleteBody({
     {
       items,
       currency,
+      onProductClick,
       title: i18n.productMatchesTitle,
     }
   );
@@ -89,6 +91,7 @@ type Props = {
   onSearchSuggestionClick: (query: string) => void,
   items?: Product[],
   onTipClick?: () => void,
+  onProductClick?: () => void,
   config: {
     currency: string,
     position: 'left' | 'right',

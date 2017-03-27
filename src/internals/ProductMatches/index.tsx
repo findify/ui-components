@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { compose, mapProps } from 'recompose';
+import { compose, mapProps, withHandlers } from 'recompose';
 import { camelizeKeys } from 'humps';
 import { Rating } from 'widgets/Rating';
 import { getPrice } from 'helpers/getPrice';
@@ -11,7 +11,15 @@ import withHooks from 'helpers/withHooks';
 
 const styles = require('./styles.css');
 
-const Product:any = withHooks('products')(({
+const Product: any = compose(
+  withHandlers({
+    onClick: ({ onProductClick, productUrl, id }) => e => {
+      e.preventDefault();
+      return onProductClick({ productUrl, id });
+    }
+  }),
+  withHooks('products')
+)(({
   productUrl,
   currency,
   thumbnailUrl,
@@ -20,8 +28,8 @@ const Product:any = withHooks('products')(({
   reviewsCount,
   compareAt,
   price
-}) => (
-  <Link
+} : any) => (
+  <a
     className={styles.item}
     href={productUrl}>
     <div className={styles.itemImage}>
@@ -49,7 +57,7 @@ const Product:any = withHooks('products')(({
         { getPrice(price, currency) }
       </span>
     </div>
-  </Link>
+  </a>
 ));
 
 export const ProductMatches = compose(
@@ -60,7 +68,8 @@ export const ProductMatches = compose(
 )(({
   items,
   title,
-  currency
+  currency,
+  onProductClick
 }: Props) => (
   <div className={styles.wrap}>
     {
@@ -75,7 +84,11 @@ export const ProductMatches = compose(
     <Grid columns='6' className={styles.items}>
       {
         items && items.map((p: Product, i: number) =>
-          <Product key={i} {...p} currency={currency} />
+          <Product
+            {...p}
+            key={p.id}
+            currency={currency}
+            onProductClick={onProductClick} />
         )
       }
     </Grid>
@@ -87,10 +100,12 @@ type Props = {
   title?: string,
   currency: {
     code?: string
-  }
+  },
+  onProductClick?: () => void 
 };
 
 type Product = {
+  id: any,
   productUrl: string,
   thumbnailUrl: string,
   title: string,
