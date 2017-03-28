@@ -57,12 +57,12 @@ export const HOC = compose(
     }
   }),
 
-  withPropsOnChange(['config'], ({ config: { templates } }) => ({
-    titleTemplate: template(templates.results)
+  withPropsOnChange(['config'], ({ config: { i18n } }) => ({
+    titleTemplate: template(i18n.showing)
   })),
 
-  withPropsOnChange(['total', 'q'], ({ total, q, titleTemplate }) => ({
-    title: titleTemplate(total, escape(q))
+  withPropsOnChange(['total', 'q'], ({ total, filters, q, titleTemplate, config }) => ({
+    title: !q && !filters.length ? config.i18n.noQuery : titleTemplate(total, escape(q))
   }))
 );
 
