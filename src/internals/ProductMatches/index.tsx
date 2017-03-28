@@ -30,9 +30,11 @@ const Product: any = compose(
   rating,
   reviewsCount,
   compareAt,
-  price
+  price,
+  onClick
 } : any) => (
   <a
+    onClick={onClick}
     className={styles.item}
     href={productUrl}>
     <div className={styles.itemImage}>
