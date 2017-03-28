@@ -50,6 +50,9 @@ const Price = ({ price, oldPrice, currency }) => price &&
 
 export const HOC = compose(
   setDisplayName('Product'),
+
+  pure,
+
   withConfig({
     currency: {
       code: 'USD'
@@ -66,8 +69,6 @@ export const HOC = compose(
       display: true
     }
   }),
-
-  pure,
 
   mapProps(props => camelizeKeys(props)),
 

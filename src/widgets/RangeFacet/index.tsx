@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { compose, withState, withHandlers } from 'recompose';
+import { compose, pure } from 'recompose';
 
 import { CheckboxBodyFacet } from 'internals/CheckboxBodyFacet';
 import { RangeBodyFacet } from 'internals/RangeBodyFacet';
@@ -10,11 +10,12 @@ import withConfig from 'helpers/withConfig';
 const stateToProps = ({ values, config }) =>
   values.map(value => ({
     ...value,
-    key: [value.from, value.to].join('_'),
+    key: value.from + '_' + value.to,
     label: formatRange({ from: value.from, to: value.to, config })
   }));
 
 export const RangeFacet: any = compose(
+  pure,
   withConfig({
     maxItemsCount: 6,
     rowHeight: 20,

@@ -3,13 +3,13 @@ import { compose, withState } from 'recompose';
 
 const props = {
   onChange: console.log,
+  options: [
+    {field: 'default', order: ''},
+    {field: 'price', order: 'desc'},
+    {field: 'price', order: 'asc'},
+    {field: 'created_at', order: 'desc'},
+  ],
   config: {
-    options: [
-      {field: 'default', order: ''},
-      {field: 'price', order: 'desc'},
-      {field: 'price', order: 'asc'},
-      {field: 'created_at', order: 'desc'},
-    ],
     i18n: {
       title: 'Sort by:',
       options: {
@@ -23,10 +23,10 @@ const props = {
 };
 
 export default compose(
-  withState('value', 'setValue', props.config.options[0]),
+  withState('value', 'setValue', props.options[0]),
 )
 (({ Component, value, setValue }: any) => (
   <div style={{ margin: 50, width: 400, position: 'relative' }}>
-    <Component { ...props } value={value} onChange={option => setValue(option.value)}/>
+    <Component { ...props } value={value} onChange={option => setValue(option)}/>
   </div>
 ));

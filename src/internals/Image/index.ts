@@ -1,16 +1,21 @@
 import { DOM } from 'react';
-import { compose, lifecycle, mapProps, onlyUpdateForKeys, withState } from 'recompose';
+import { compose, lifecycle, mapProps, onlyUpdateForKeys, withState, pure } from 'recompose';
 import * as cx from 'classNames';
 
 const styles = require('./styles.css');
 
 const ImageComponent:any = compose(
+  pure,
   withState('isLoading', 'setIsLoading', true),
   lifecycle({
     componentWillMount() {
       const img = new Image();
-      img.onload = () => this.props.setIsLoading(false);
+      this.isMounted = true;
+      img.onload = () => this.isMounted && this.props.setIsLoading(false);
       img.src = this.props.src;
+    },
+    componentWillUnmount() {
+      this.isMounted = false;
     }
   }),
   mapProps(({ isLoading, className, src, placeholder, setIsLoading }: any) => ({

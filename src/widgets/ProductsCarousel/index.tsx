@@ -29,9 +29,6 @@ export const HOC = compose(
   withConfig({
     productsToShow: 5
   }),
-  defaultProps({
-    component: Product
-  })
 );
 
 export const Component = (({
@@ -41,8 +38,7 @@ export const Component = (({
     productsToShow: slidesToShow,
     title,
     ...config
-  },
-  component: Component
+  }
 }: any) => (
   <div className={styles.root}>
     { 
@@ -52,7 +48,7 @@ export const Component = (({
       { 
         items.map(product =>
           <div key={product.id}>
-            <Component key={product.id} {...product} onClick={onProductClick} config={config.product} />
+            <Product key={product.id} {...product} onClick={onProductClick} config={config.product} />
           </div>
         )
       }

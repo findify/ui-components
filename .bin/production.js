@@ -1,6 +1,8 @@
 import path from 'path';
 import nodeExternals from 'webpack-node-externals';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import webpack from 'webpack';
 
 export default (env, { module, plugins, output, ...config }) => ({
   ...config,
@@ -42,6 +44,7 @@ export default (env, { module, plugins, output, ...config }) => ({
             loader: 'babel-loader',
             options: {
               babelrc: false,
+              plugins: ['transform-react-constant-elements', 'babel-plugin-lodash'],
               presets: [
                 ['es2015', { modules: false }],
                 'stage-0',
@@ -56,6 +59,26 @@ export default (env, { module, plugins, output, ...config }) => ({
   },
   plugins: [
     ...plugins,
-    new ExtractTextPlugin('styles.css')
+    new ExtractTextPlugin('styles.css'),
+    new OptimizeCssAssetsPlugin({
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: {
+        autoprefixer: false,
+        discardDuplicates: true,
+        discardUnused: true,
+        mergeRules: true,
+        mergeLonghand: true,
+        minifyFontValues: true,
+        minifyGradients: true,
+        discardComments: {
+          removeAll: true
+        }
+      },
+      canPrint: true
+    }),
+    new webpack.LoaderOptionsPlugin({
+      debug: false,
+      minimize: true
+    })
   ]
 });

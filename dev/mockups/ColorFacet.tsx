@@ -5,6 +5,9 @@ const props = {
   label: 'Colors',
   type: 'text',
   name: 'Colors',
+  config: {
+    mapping: {}
+  }
 }
 
 export const values = [  

@@ -7,6 +7,7 @@ import {
   withProps,
   withPropsOnChange,
   withState,
+  pure
 } from 'recompose';
 import * as cx from 'classnames';
 
@@ -18,6 +19,8 @@ const styles = require('./styles.css');
 
 export const CheckboxBodyFacet: any = compose(
   setDisplayName('CheckboxBodyFacet'),
+  pure,
+
   defaultProps({
     showExpander: false
   }),

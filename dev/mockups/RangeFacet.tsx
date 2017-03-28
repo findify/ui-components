@@ -9,9 +9,13 @@ const props = {
   min: 1,
   max: 20,
   config: {
-    currency: 'USD',
+    currency: {
+      code: 'USD'
+    },
     i18n: {
-      submit: 'Apply'
+      submit: 'Apply',
+      under: 'Less than',
+      up: 'More than'
     }
   },
 }
