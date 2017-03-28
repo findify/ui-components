@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { compose, mapProps, withHandlers } from 'recompose';
+import { branch, compose, mapProps, pure, renderNothing, withHandlers } from 'recompose';
 import { camelizeKeys } from 'humps';
 import { Rating } from 'widgets/Rating';
 import { getPrice } from 'helpers/getPrice';
@@ -12,12 +12,15 @@ import withHooks from 'helpers/withHooks';
 const styles = require('./styles.css');
 
 const Product: any = compose(
+  pure,
+
   withHandlers({
     onClick: ({ onProductClick, productUrl, id }) => e => {
       e.preventDefault();
       return onProductClick({ productUrl, id });
     }
   }),
+
   withHooks('products')
 )(({
   productUrl,
@@ -61,6 +64,10 @@ const Product: any = compose(
 ));
 
 export const ProductMatches = compose(
+  branch(
+    ({ items }) => !items || !items.length,
+    renderNothing,
+  ),
   mapProps(({ items, ...rest }) => ({
     ...rest,
     items: camelizeKeys(items)

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   compose, renderComponent, withHandlers,
   renderNothing, withProps, withPropsOnChange,
-  createEagerElement
+  createEagerElement, pure
 } from 'recompose';
 
 const { branch } = require('recompose');
@@ -11,6 +11,8 @@ import { NestedTree } from './NestedTree';
 import { SingleItem } from './SingleItem';
 
 export const Tree = compose(
+  pure,
+
   withPropsOnChange(['cursor'], ({ cursor, track, index, value }) => ({
     track: index === void 0 ? track : track.push(index)
   })),

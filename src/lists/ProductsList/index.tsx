@@ -10,23 +10,19 @@ const HOC = compose(
   withConfig({
     columns: 3
   }),
-  defaultProps({
-    component: Product
-  })
 );
 
 export const Component = ({
   items,
   className,
   columnClass,
-  component: Component,
   onProductClick,
   config
 }: any) => (
   <Grid columns={String(12 / config.columns)} className={className}>
     { 
       items.map(product =>
-        <Component
+        <Product
           key={product.id}
           {...product}
           config={config.product}

@@ -1,11 +1,13 @@
 import { hasModifier } from 'tslint/lib';
 import * as React from 'react';
 import * as cx from 'classnames';
-import { mapProps } from 'recompose';
+import { compose, pure, mapProps } from 'recompose';
 
 const styles = require('./styles.css');
 
-const Start = mapProps(({ diff }: any) => ({
+const itemsArray = [...Array(5).keys()];
+
+const Start:any = mapProps(({ diff }: any) => ({
   iconClass: `fa-star${diff === 0.5 ? '-half-o' : diff <= 0 ? '' : '-o'}`
 }))
 (({ iconClass }: any) =>
@@ -18,14 +20,12 @@ export const Rating = (({
 }: Props) =>
   <div className={styles.wrap}>
     <div className={styles.stars}>
-      {
-        [...Array(5).keys()].map((item: number) =>  <Start key={item} diff={item - value} />)
+      { 
+        itemsArray.map((item: number) => <Start key={item} diff={item - value} />)
       }
     </div>
     {
-      !!count && (
-        <span className={styles.count}>({ count })</span>
-      )
+      !!count && <span className={styles.count}>({ count })</span>
     }
   </div>
 );

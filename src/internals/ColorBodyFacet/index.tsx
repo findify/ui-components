@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { compose, withHandlers, withPropsOnChange } from 'recompose';
+import { compose, withHandlers, withPropsOnChange, createEagerElement, pure } from 'recompose';
 import * as cx from 'classnames';
 import * as color from 'tinycolor2';
 
 const styles = require('./styles.css');
 
 const Item = compose(
+  pure,
   withPropsOnChange(['title'], ({ title, config: { mapping } }: any) => ({
     background: title !== 'Multicolor' && mapping[title],
     checkMarkStyles: ({ color: color(title).isDark() ? '#fff' : '#333'})
@@ -36,7 +37,14 @@ export const ColorBodyFacet = ({
 }: any) => (
   <div className={styles.list}>
     {
-      values.map(item => <Item key={item.value} {...rest} {...{title: item.value, item}} />)
+      values.map(item =>
+        createEagerElement(Item, {
+          ...rest,
+          key: item.value,
+          title: item.value,
+          item
+        })
+      )
     }
   </div>
 );
