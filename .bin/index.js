@@ -1,7 +1,5 @@
 import path from 'path';
 import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-
 import { getLocalIdent } from './helpers/cssIndent.js';
 import pkg from '../package.json';
 
@@ -119,10 +117,6 @@ const defaultConfig = environment => ({
         NODE_ENV: JSON.stringify(environment)
       }
     }),
-
-    new HtmlWebpackPlugin({
-      title: pkg.description,
-    })
   ]
 });
 

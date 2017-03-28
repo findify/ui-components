@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import path from 'path';
 import DashboardPlugin from 'webpack-dashboard/plugin';
 import AddAssetHtmlPlugin from 'add-asset-html-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default (env, { module, plugins, ...config }) => ({
   ...config,
@@ -48,6 +49,9 @@ export default (env, { module, plugins, ...config }) => ({
     }),
     new AddAssetHtmlPlugin({
       filepath: require.resolve(path.join(process.cwd(), 'node_modules/dll/vendor.dll.js'))
-    })
+    }),
+    new HtmlWebpackPlugin({
+      title: pkg.description,
+    }),
   ],
 });
