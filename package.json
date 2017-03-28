@@ -40,6 +40,8 @@
     "autoprefixer": "^6.7.2",
     "babel-core": "^6.21.0",
     "babel-loader": "^6.3.2",
+    "babel-plugin-lodash": "^3.2.11",
+    "babel-plugin-transform-react-constant-elements": "^6.23.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.22.0",
@@ -88,7 +90,7 @@
   "main": "./dist/findify-ui-components.js",
   "scripts": {
     "start": "webpack-dashboard -- ./node_modules/.bin/webpack-dev-server",
-    "build": "npm run build:umd && build:umd:min",
+    "build": "npm run build:umd && npm run build:umd:min",
     "build:umd": "./node_modules/.bin/webpack --env.production --env.externals --output-path='./dist' --output-filename='findify-ui-components.js'",
     "build:umd:min": "./node_modules/.bin/webpack --env.production --optimize-minimize --output-path='./dist' --output-filename='findify-ui-components.min.js'",
     "check": "npm run build && npm run clean",
