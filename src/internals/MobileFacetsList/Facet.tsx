@@ -38,7 +38,6 @@ const FacetPreview = compose(
   hasSelectedItems,
   selectedItems,
   config,
-  globalConfig
 }: any) => (
   <button className={styles.preview} onClick={onSelect}>
     <div className={styles.previewContainer}>
@@ -55,7 +54,7 @@ const FacetPreview = compose(
         {
           hasSelectedItems &&
           <span className={styles.previewReset} onClick={onReset}>
-            {globalConfig.facets.i18n.reset}
+            {config.facets.i18n.reset}
           </span>
         }
         <span className={cx(styles.previewIcon, 'fa', 'fa-chevron-right')}/>
@@ -82,15 +81,11 @@ const FacetBody = withPropsOnChange(
   facet,
   type,
   factory,
-  config,
+  ...rest
 }: any) =>
 <div className={styles.body}>
   {
-    factory({
-      ...facet,
-      config,
-      isMobile: true
-    })
+    factory({ ...rest, ...facet, isMobile: true })
   }
 </div>
 );
