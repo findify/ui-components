@@ -6,6 +6,7 @@
 html, body {
   font-family: 'Source Sans Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   box-sizing: border-box;
 }
 
