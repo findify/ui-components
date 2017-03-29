@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as cx from 'classnames';
-import { compose, renderNothing, renderComponent, withProps } from 'recompose';
-import { List, AutoSizer } from 'react-virtualized';
+import { compose, renderNothing, renderComponent, withProps, branch } from 'recompose';
+import { AutoSizer } from 'react-virtualized/dist/commonjs/AutoSizer';
+import { List } from 'react-virtualized/dist/commonjs/List';
 
 const styles = require('./styles.css');
-const { branch } = require('recompose');
 
 const NestingComponent = ({ isRoot, ...rest }) => React.createElement('div', rest);
 

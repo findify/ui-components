@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { branch, compose, withProps, withHandlers, renderNothing, renderComponent } from 'recompose';
+import {
+  branch,
+  compose,
+  renderComponent,
+  renderNothing,
+  withHandlers,
+  withProps,
+  withPropsOnChange
+} from 'recompose';
 import * as cx from 'classnames';
 
 import { mapTypeToFacet } from 'helpers/mapTypeToFacet';
@@ -7,7 +15,11 @@ import { mapTypeToFacet } from 'helpers/mapTypeToFacet';
 const styles = require('./styles.css');
 
 const FacetPreview = compose(
-  withProps(({ values }: any) => {
+  withPropsOnChange(['type'], ({ config, facet }) => ({
+    type: config.facets.types && config.facets.types[facet.name] || facet.type
+  })),
+
+  withPropsOnChange(['values'], ({ values }: any) => {
     const selectedItems = values.filter(item => item.selected).map(item => item.value);
     
     return {
@@ -43,30 +55,46 @@ const FacetPreview = compose(
         {
           hasSelectedItems &&
           <span className={styles.previewReset} onClick={onReset}>
-            {globalConfig.i18n.reset}
+            {globalConfig.facets.i18n.reset}
           </span>
         }
         <span className={cx(styles.previewIcon, 'fa', 'fa-chevron-right')}/>
       </div>
     </div>
   </button>
-)
-);
+));
 
 
-const FacetBody = ({
-  children,
-  ...props
-}: any) => (
-  <div className={styles.body}>
-    { 
-      React.cloneElement(children, {
-        ...props,
-        isMobile: true,
-        maxItemsCount: 20 
-      })
+const FacetBody = withPropsOnChange(
+  ['type'],
+  ({ config, facet }) => {
+    console.log(config);
+    
+    const type = config.facets.types && config.facets.types[facet.name] || facet.type;
+    return {
+      type,
+      factory: mapTypeToFacet(type),
+      config: {
+        ...config.facets[type],
+        currency: config.currency
+      }
     }
-  </div>
+  }
+)(({
+  facet,
+  type,
+  factory,
+  config,
+}: any) =>
+<div className={styles.body}>
+  {
+    factory({
+      ...facet,
+      config,
+      isMobile: true
+    })
+  }
+</div>
 );
 
 

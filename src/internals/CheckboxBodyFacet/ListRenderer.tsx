@@ -5,8 +5,8 @@ import {
   compose, withProps, renderNothing, withPropsOnChange,
   createEagerElement
 } from 'recompose';
-import { List, AutoSizer } from 'react-virtualized';
-import sizeMe from 'react-sizeme';
+import { AutoSizer } from 'react-virtualized/dist/commonjs/AutoSizer';
+import { List } from 'react-virtualized/dist/commonjs/List';
 const styles = require('./styles.css');
 
 const Item = withHandlers({
