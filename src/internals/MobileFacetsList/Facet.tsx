@@ -68,8 +68,6 @@ const FacetPreview = compose(
 const FacetBody = withPropsOnChange(
   ['type'],
   ({ config, facet }) => {
-    console.log(config);
-    
     const type = config.facets.types && config.facets.types[facet.name] || facet.type;
     return {
       type,
