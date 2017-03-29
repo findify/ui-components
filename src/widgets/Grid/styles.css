@@ -1,5 +1,4 @@
 .wrap{
-  clear: fix;
   font-size: 0;
   line-height: 0;
 }
@@ -11,6 +10,20 @@
   font-size: 14px;
   line-height: 1.2;
   vertical-align: top;
+}
+
+@supports(display: flex) {
+  .wrap{
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+    font-size: inherit;
+    line-height: inherit;
+    flex-wrap: wrap;
+  }
+  .column{
+    display: block;
+  }
 }
 
 @for $i from 1 to 12 {

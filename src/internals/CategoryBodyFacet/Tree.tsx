@@ -2,10 +2,9 @@ import * as React from 'react';
 import {
   compose, renderComponent, withHandlers,
   renderNothing, withProps, withPropsOnChange,
-  createEagerElement, pure
+  createEagerElement, pure, branch
 } from 'recompose';
 
-const { branch } = require('recompose');
 
 import { NestedTree } from './NestedTree';
 import { SingleItem } from './SingleItem';

@@ -4,6 +4,8 @@ import DashboardPlugin from 'webpack-dashboard/plugin';
 import AddAssetHtmlPlugin from 'add-asset-html-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
+import pkg from '../package.json';
+
 export default (env, { module, plugins, ...config }) => ({
   ...config,
   entry: [

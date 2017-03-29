@@ -72,10 +72,6 @@ export const HOC = compose(
 
   mapProps(props => camelizeKeys(props)),
 
-  withPropsOnChange(['image'], ({ image, imageQuery }: any) => ({
-    image: imageQuery ? `${image}?${stringify(imageQuery)}` : image
-  })),
-
   withHandlers({
     onClick: ({ onClick, ...rest }) => e => {
       if (onClick) {

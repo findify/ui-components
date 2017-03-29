@@ -113,7 +113,6 @@ export const MobileFacetsList = compose(
   })
 )
 (({
-  children,
   facets,
   config,
   ...rest
@@ -125,14 +124,15 @@ export const MobileFacetsList = compose(
     <FacetTitle {...rest} facets={facets} config={config} />
     <div className={styles.content}>
     { 
-      children.map((child, index) =>
+      facets.map((facet, index) =>
         createEagerElement(Facet, {
           ...rest,
-          ...facets[index],
-          key: facets[index].name,
-          label: config.labels[facets[index].name],
-          children: child,
-          globalConfig: config
+          ...facet,
+          config,
+          facet,
+          key: facet.name,
+          label: config.facets.labels[facet.name],
+          type: facet.type
         })
       )
     }

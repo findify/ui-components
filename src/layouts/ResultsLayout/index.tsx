@@ -1,4 +1,3 @@
-import { Column } from 'react-virtualized';
 import * as React from 'react';
 import * as cx from 'classnames';
 
@@ -53,7 +52,9 @@ export const ResultsLayout = withHooks('results')(({
             onClick={onMobileFacetsOpen}
             className={styles.mobileFacetsButton}
             columnClass={styles.paddingRight}>
-            { config.facets.i18n.showMobileFacets }
+            { 
+              config.facets.i18n.showMobileFacets
+            }
             { 
               response.meta.filters && !!response.meta.filters.length &&
               ` (${response.meta.filters.length})`
@@ -74,9 +75,7 @@ export const ResultsLayout = withHooks('results')(({
       <Grid columns={isMobile ? '12' : '4|8'}>
         {
           !isMobile &&
-          <div>
-            <FacetsLayout {...{ isMobile, config, response, onFacetsChange }}/>
-          </div>
+          <FacetsLayout {...{ isMobile, config, response, onFacetsChange }}/>
         }
     
         <div className={cx(styles.products, !isMobile && styles.productsWithPadding)}>

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { compose, withPropsOnChange, createEagerFactory, setDisplayName } from 'recompose';
 import * as cx from 'classnames';
+import { memoize } from 'lodash';
 
 const styles = require('./styles.css');
 
@@ -8,12 +9,14 @@ const Column = createEagerFactory(({ className, children, columnClass, columnSty
   <div className={cx(styles.column, className, columnClass)} style={columnStyle}>
     { children }
   </div>
-))
+));
+
+const getClassName = memoize((columns) => columns.split('|').map(value => styles[`column-${value}`]));
 
 export const Grid: any = compose(
   setDisplayName('Grid'),
   withPropsOnChange(['columns', 'children'], ({ columns, children }: GridType) => {
-    const classNames = columns.split('|').map(value => styles[`column-${value}`]);
+    const classNames = getClassName(columns);
     return {
       children: React.Children.map(children, (child: any, index: number) => child &&
         Column({

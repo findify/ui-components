@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { compose, setDisplayName, defaultProps } from 'recompose';
+import { compose, setDisplayName, defaultProps, createEagerElement } from 'recompose';
 import withConfig from 'helpers/withConfig';
 
 import { Product } from 'widgets/Product';
@@ -22,12 +22,13 @@ export const Component = ({
   <Grid columns={String(12 / config.columns)} className={className}>
     { 
       items.map(product =>
-        <Product
-          key={product.id}
-          {...product}
-          config={config.product}
-          onClick={onProductClick}
-          columnClass={columnClass} />
+        createEagerElement(Product, {
+          ...product,
+          key: product.id,
+          config: config.product,
+          onClick: onProductClick,
+          columnClass: columnClass
+        })
       )
     }
   </Grid>
