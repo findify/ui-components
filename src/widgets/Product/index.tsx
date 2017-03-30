@@ -19,9 +19,9 @@ import Image from 'internals/Image';
 import { getPrice } from 'helpers/getPrice';
 import withConfig from 'helpers/withConfig';
 import withHooks from 'helpers/withHooks';
+import * as cx from 'classnames';
 
 const styles = require('./styles.css');
-
 
 const Title: any = ({ text, config }) => config.display && !!text && (
   <h5 className={styles.title}>
@@ -98,9 +98,12 @@ export const Component = (({
   onClick,
   config,
 }: any) => (
-  <a onClick={onClick} href={productUrl} className={styles.wrap}>
+  <a
+    onClick={onClick}
+    href={productUrl}
+    className={cx(styles.root, config.simple && styles.simple)}>
     <div className={styles.imageWrap}>
-      <Image className={styles.image} src={imageUrl} placeholder={thumbnailUrl} alt={title} />
+      <Image className={styles.image} src={imageUrl || thumbnailUrl} alt={title} />
     </div>
     <div className={styles.description}>
       <Title text={title} config={config.title} />

@@ -18,9 +18,9 @@ export function AutocompleteBody({
     q: query
   },
   config: {
-    currency,
     position,
-    i18n
+    i18n,
+    ...config
   }
 }: Props) {
   
@@ -39,7 +39,7 @@ export function AutocompleteBody({
     ProductMatches,
     {
       items,
-      currency,
+      config,
       onProductClick,
       title: i18n.productMatchesTitle,
     }
@@ -51,33 +51,35 @@ export function AutocompleteBody({
     // For elements we need to do: findify-block-autocomplete__element-name
 
     // Both TODOs are related to all components.
-    <div className={cx(styles.root, styles[position])}>
-      {
-        position === 'right'
-        && (
-          <div className={styles.container}>
-            {productMatchesNode}
-            {searchSuggestionsNode}
-          </div>
-        ) || (
-          <div className={styles.container}>
-            {searchSuggestionsNode}
-            {productMatchesNode}
-          </div>
-        )
-      }
-      {
-        i18n.tipTitle && (
-          <div
-            className={styles.tip}
-            onClick={() => onTipClick && onTipClick()} >
-            { i18n.tipTitle }
-            <span className={styles.tipQuery}>
-              &nbsp;"{query}"
-            </span>
-          </div>
-        )
-      }
+    <div className={styles.wrap}>
+      <div className={cx(styles.root, styles[position])}>
+        {
+          position === 'right'
+          && (
+            <div className={styles.container}>
+              {productMatchesNode}
+              {searchSuggestionsNode}
+            </div>
+          ) || (
+            <div className={styles.container}>
+              {searchSuggestionsNode}
+              {productMatchesNode}
+            </div>
+          )
+        }
+        {
+          i18n.tipTitle && (
+            <div
+              className={styles.tip}
+              onClick={() => onTipClick && onTipClick()} >
+              { i18n.tipTitle }
+              <span className={styles.tipQuery}>
+                &nbsp;"{query}"
+              </span>
+            </div>
+          )
+        }
+      </div>
     </div>
   );
 };

@@ -98,10 +98,6 @@
     "check": "npm run build && npm run clean",
     "clean": "rimraf ./lib ./dist",
     "lint": "tslint --project .",
-    "prepublish": "npm run build",
-    "postpublish": "npm run clean",
-    "postversion": "git push && git push --tags && git checkout develop && git merge master && git push && npm publish",
-    "preversion": "npm run check && git checkout master && git merge develop",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook  -c .storybook -o docs"
   }

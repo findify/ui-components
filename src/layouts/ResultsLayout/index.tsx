@@ -11,7 +11,8 @@ import { Button } from 'internals/Button';
 import withHooks from 'helpers/withHooks';
 const styles = require('./styles.css');
 
-export const ResultsLayout = withHooks('results')(({
+export const ResultsLayout = withHooks('results')
+(({
   config,
   isMobile,
   response,
@@ -21,7 +22,7 @@ export const ResultsLayout = withHooks('results')(({
   onSortChange,
   onBreadCrumbRemove,
   onMobileFacetsOpen
-}) => {
+}: any) => {
   return (
     <div>
       { 
