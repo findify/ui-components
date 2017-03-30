@@ -1,12 +1,18 @@
-.wrap {
+.root {
   padding: 15px;
   display: block;
   background-color: transparent;
   transition: background-color .35s ease-in-out;
   text-decoration: none;
   user-select: none;
+  &.simple{
+    padding: 0 8px 15px 8px;
+  }
   &:hover {
     background-color: #f7f7f7;
+  }
+  &.simple:hover{
+    background-color: initial;
   }
 }
 
@@ -23,6 +29,10 @@
   font-size: 14px;
   margin: 5px 0;
   word-wrap: break-word;
+  .simple &{
+    margin: 10px 0;
+    font-weight: normal;
+  }
 }
 
 .description {
@@ -40,15 +50,22 @@
   margin: 5px 0;
   white-space: nowrap;
   line-height: inherit;
+  .simple &{
+    margin: 0
+  }
 }
 
 .price, .compare {
   font-size: 14px;
   color: #404040;
   display: inline-block;
+  .simple &{
+    font-weight: bold;
+  }
 }
 
- .compare {
+.compare {
   text-decoration: line-through;
   margin-left: 5px;
- }
+}
+

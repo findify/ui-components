@@ -1,11 +1,13 @@
+.wrap{
+  padding: 15px 10px 10px;
+}
+
 .root {
-  display: inline-block;
-  vertical-align: top;
+  display: block;
   position: relative;
   box-shadow: 0 0 8px 0 rgba(0,0,0,.5);
-  margin: 15px 10px 10px;
   background: white;
-  border-radius: 2px / 2px;
+  border-radius: 4px / 4px;
 
   &:before {
     content: ' ';

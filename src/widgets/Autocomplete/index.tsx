@@ -17,7 +17,17 @@ export const Autocomplete: any = compose(
       code: 'USD'
     },
     position: 'left',
-    i18n: {}
+    i18n: {},
+    columns: 2,
+    product: {
+      simple: true,
+      title: {
+        lines: 0,
+      },
+      description: {
+        display: false
+      }
+    }
   }),
   defaultProps({
     meta: {},
