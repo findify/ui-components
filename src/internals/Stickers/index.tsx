@@ -33,7 +33,7 @@ const getPosition = memoize((position) => {
 const getContent = memoize((value, templates) => {
   if (!isArray(value)) return templates.single;
   if (value.length === 1) return template(templates.single)(value[0]);
-  return template(templates.multiply)(Math.max.apply(Math, value));
+  return template(templates.multiple)(Math.max.apply(Math, value));
 })
 
 const getStyles = memoize(styles => {

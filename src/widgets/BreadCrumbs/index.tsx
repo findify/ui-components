@@ -61,10 +61,10 @@ export const HOC = compose(
     titleTemplate: template(i18n.showing)
   })),
 
-  withPropsOnChange(['total', 'q'], ({ total, filters, q, titleTemplate, config }) => ({
+  withPropsOnChange(['total', 'q'], ({ total, filters, q, corrected_q, titleTemplate, config }) => ({
     title: !q && !filters.length
       ? config.i18n.noQuery
-      : titleTemplate(total) + (q ? `<strong>"${escape(q)}"</strong>:` : ':')
+      : titleTemplate(total) + (q ? ` <strong>"${escape(corrected_q || q)}"</strong>:` : ':')
   }))
 );
 
