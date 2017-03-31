@@ -18,6 +18,7 @@
 
 .image-wrap {
   position: relative;
+  overflow: hidden;
 }
 
 .image {

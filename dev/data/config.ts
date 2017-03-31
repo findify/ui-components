@@ -25,6 +25,41 @@ export default {
     productsToShow: 5,
   },
 
+  stickers: {
+    discount: {
+      position: "bottom-right",
+      template: {
+        single: "%s% off",
+        multiple: "Up to %s% off",
+      },
+      styles: {
+        fontFamily: "'Source Sans Pro', sans-serif",
+        fontSize: "12",
+        fontWeight: "600",
+        textTransform: "none",
+        color: "#ffffff",
+        background: "#D83751",
+        opacity: "0.9",
+      }
+    },
+    "free-shipping": {
+      position: "top-center",
+      template: {
+        single: "Free shipping",
+        multiple: "Free shipping",
+      },
+      styles: {
+        fontFamily: "'Source Sans Pro', sans-serif",
+        fontSize: "12",
+        fontWeight: "600",
+        textTransform: "none",
+        color: "#ffffff",
+        background: "#D83751",
+        opacity: "0.9",
+      }
+    }
+  },
+
   sorting: {
     i18n: {
       title: 'Sort by:',

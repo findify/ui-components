@@ -8,7 +8,9 @@ import { Pagination } from 'widgets/Pagination';
 import { ProductsList } from 'lists/ProductsList';
 import { FacetsLayout } from '../FacetsLayout';
 import { Button } from 'internals/Button';
+import { Banner } from 'internals/Banner';
 import withHooks from 'helpers/withHooks';
+
 const styles = require('./styles.css');
 
 export const ResultsLayout = withHooks('results')
@@ -21,7 +23,8 @@ export const ResultsLayout = withHooks('results')
   onPageChange,
   onSortChange,
   onBreadCrumbRemove,
-  onMobileFacetsOpen
+  onMobileFacetsOpen,
+  onBannerClick
 }: any) => {
   return (
     <div>
@@ -80,10 +83,15 @@ export const ResultsLayout = withHooks('results')
         }
     
         <div className={cx(styles.products, !isMobile && styles.productsWithPadding)}>
-    
+
+          {
+            response.banner && response.banner.products &&
+            <Banner {...response.banner.products} onClick={onBannerClick} />
+          }
           <ProductsList
             config={{
               ...config.productsGrid,
+              stickers: config.stickers,
               product: {
                 ...config.product,
                 currency: config.currency
@@ -92,6 +100,7 @@ export const ResultsLayout = withHooks('results')
             columnClass={styles.product}
             items={response.items}
             onProductClick={onProductClick} />
+
           {
             !!response.meta.total && response.meta.total > response.meta.limit &&
               <Pagination

@@ -25,7 +25,10 @@ export const Component = ({
         createEagerElement(Product, {
           ...product,
           key: product.id,
-          config: config.product,
+          config: {
+            ...config.product,
+            stickers: config.stickers
+          },
           onClick: onProductClick,
           columnClass: columnClass
         })

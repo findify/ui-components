@@ -1,5 +1,5 @@
 import { DOM } from 'react';
-import { compose, lifecycle, mapProps, onlyUpdateForKeys, withState, pure } from 'recompose';
+import { compose, lifecycle, onlyUpdateForKeys, pure, withProps, mapProps, withState } from 'recompose';
 import * as cx from 'classNames';
 
 const styles = require('./styles.css');
@@ -18,7 +18,8 @@ const ImageComponent:any = compose(
       this.isMounted = false;
     }
   }),
-  mapProps(({ isLoading, className, src, placeholder, setIsLoading }: any) => ({
+  mapProps(({ isLoading, className, src, placeholder, setIsLoading, ...rest }: any) => ({
+    ...rest,
     src: isLoading ? void 0 : src,
     className: cx(className, isLoading && styles.loading || styles.loaded)
   })),
