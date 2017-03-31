@@ -99,7 +99,6 @@
     "check": "npm run build && npm run clean",
     "clean": "rimraf ./lib ./dist",
     "lint": "tslint --project .",
-    "postinstall": "webpack --env.dll",
     "prepublish": "npm run build",
     "postpublish": "npm run clean",
     "postversion": "git push && git push --tags && git checkout develop && git merge master && git push && npm publish",
