@@ -1,25 +1,20 @@
 import * as React from 'react';
 import {
-  compose,
-  defaultProps,
-  mapProps,
-  pure,
-  setDisplayName,
-  withHandlers,
-  withProps,
-  withPropsOnChange
+  compose, defaultProps, mapProps,
+  pure, setDisplayName, withHandlers,
+  withProps, withPropsOnChange
 } from 'recompose';
 import { format as currencyFormat } from 'currency-formatter';
-import { stringify } from 'querystring';
-import { Rating } from 'widgets/Rating';
+import * as cx from 'classnames';
 import Truncate from 'react-truncate';
-import { merge } from 'lodash';
 import { camelizeKeys } from 'humps';
+
+import { Rating } from 'widgets/Rating';
 import Image from 'internals/Image';
+import { Stickers } from 'internals/Stickers';
 import { getPrice } from 'helpers/getPrice';
 import withConfig from 'helpers/withConfig';
 import withHooks from 'helpers/withHooks';
-import * as cx from 'classnames';
 
 const styles = require('./styles.css');
 
@@ -67,10 +62,11 @@ export const HOC = compose(
     },
     price: {
       display: true
-    }
+    },
+    stickers: {}
   }),
 
-  mapProps(props => camelizeKeys(props)),
+  mapProps(({ config, ...props }) => ({ ...camelizeKeys(props), config })),
 
   withHandlers({
     onClick: ({ onClick, ...rest }) => e => {
@@ -94,9 +90,9 @@ export const Component = (({
   reviews,
   price,
   compareAt,
-  currency,
   onClick,
   config,
+  stickers
 }: any) => (
   <a
     onClick={onClick}
@@ -104,6 +100,7 @@ export const Component = (({
     className={cx(styles.root, config.simple && styles.simple)}>
     <div className={styles.imageWrap}>
       <Image className={styles.image} src={imageUrl || thumbnailUrl} alt={title} />
+      <Stickers config={config.stickers} stickers={stickers} />
     </div>
     <div className={styles.description}>
       <Title text={title} config={config.title} />
@@ -116,7 +113,8 @@ export const Component = (({
       </div>
     }
     {
-      config.price.display && <Price price={price} oldPrice={compareAt} currency={config.currency} />
+      config.price.display &&
+      <Price price={price} oldPrice={compareAt} currency={config.currency} />
     }
   </a>
 ));

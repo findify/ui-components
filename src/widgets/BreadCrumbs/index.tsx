@@ -62,7 +62,9 @@ export const HOC = compose(
   })),
 
   withPropsOnChange(['total', 'q'], ({ total, filters, q, titleTemplate, config }) => ({
-    title: !q && !filters.length ? config.i18n.noQuery : titleTemplate(total, escape(q))
+    title: !q && !filters.length
+      ? config.i18n.noQuery
+      : titleTemplate(total) + (q ? `<strong>"${escape(q)}"</strong>:` : ':')
   }))
 );
 

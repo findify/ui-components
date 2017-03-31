@@ -36,7 +36,9 @@ export const Component = (({
   onProductClick,
   config: {
     productsToShow: slidesToShow,
+    slickSetting = {},
     title,
+    stickers,
     ...config
   }
 }: any) => (
@@ -44,11 +46,17 @@ export const Component = (({
     { 
       title && <h4 className={styles.title}>{ title }</h4>
     }
-    <Slider {...{ ...sliderProps, slidesToShow }}>
+    <Slider {...{ ...sliderProps, ...slickSetting, slidesToShow }}>
       { 
         items.map(product =>
           <div key={product.id}>
-            <Product key={product.id} {...product} onClick={onProductClick} config={config.product} />
+            <Product
+              {...product}
+              onClick={onProductClick}
+              config={{
+                ...config.product,
+                stickers
+              }} />
           </div>
         )
       }

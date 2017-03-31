@@ -13,6 +13,7 @@ const vendor = [
   'react-dropdown',
   'currency-formatter',
   'react-slick',
+  'react-truncate',
   // ... Write here any libs you want to exclude from main bundle
 ];
 

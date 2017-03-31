@@ -63,8 +63,7 @@ const props = camelizeKeys({
   "stickers": {
     "discount": [
       40
-    ],
-    "availability": true
+    ]
   },
   "reviews": {
     "average_score": 5,
