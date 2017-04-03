@@ -40,6 +40,7 @@ const VirtualizedList = ({ items, rowRenderer, rowHeight, itemsCount }: any) => 
               ({ getRowHeight, setRef }) =>
                 <List
                   width={width}
+                  ref={setRef}
                   height={itemsCount * rowHeight}
                   rowCount={items.length}
                   rowHeight={getRowHeight}
