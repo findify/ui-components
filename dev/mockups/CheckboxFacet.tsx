@@ -49,7 +49,7 @@ export const values = [
     "selected":false
   },
   {  
-    "value":"Light & Steriliserad1",
+    "value":"Light & Steriliserad1 Light & Steriliserad1 Light & Steriliserad1 Light & Steriliserad1",
     "count":75,
     "selected":false
   },
