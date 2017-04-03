@@ -7,6 +7,8 @@ import {
 } from 'recompose';
 import { AutoSizer } from 'react-virtualized/dist/commonjs/AutoSizer';
 import { List } from 'react-virtualized/dist/commonjs/List';
+import { CellMeasurer } from 'react-virtualized/dist/commonjs/CellMeasurer';
+
 const styles = require('./styles.css');
 
 const Item = withHandlers({
@@ -52,15 +54,27 @@ const VirtualizedList = withProps(({ items, ...rest }) => ({
 }))(({ isMobile, items, rowRenderer, config }: any) => (
   <AutoSizer disableHeight={!isMobile}>
     {
-    ({ width, height }) =>
-      <List
-        className={styles.list}
-        width={width}
-        height={height || config.maxItemsCount * config.rowHeight}
+      ({ width, height }) =>
+      <CellMeasurer
+        cellRenderer={
+          ({ rowIndex, ...rest }) => rowRenderer({ index: rowIndex, ...rest })
+        }
+        columnCount={1}
         rowCount={items.length}
-        overscanRowCount={2}
-        rowHeight={config.rowHeight}
-        rowRenderer={rowRenderer} />
+        width={width}>
+        {
+          ({ getRowHeight, setRef }) =>
+          <List
+            width={width}
+            ref={setRef}
+            className={styles.list}
+            height={isMobile ? height : config.maxItemsCount * config.rowHeight}
+            rowCount={items.length}
+            overscanRowCount={2}
+            rowHeight={getRowHeight}
+            rowRenderer={rowRenderer} />
+        }
+      </CellMeasurer>
     }
   </AutoSizer>
 ));

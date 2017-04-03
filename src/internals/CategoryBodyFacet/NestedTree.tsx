@@ -3,6 +3,7 @@ import * as cx from 'classnames';
 import { compose, renderNothing, renderComponent, withProps, branch } from 'recompose';
 import { AutoSizer } from 'react-virtualized/dist/commonjs/AutoSizer';
 import { List } from 'react-virtualized/dist/commonjs/List';
+import { CellMeasurer } from 'react-virtualized/dist/commonjs/CellMeasurer';
 
 const styles = require('./styles.css');
 
@@ -28,12 +29,24 @@ const VirtualizedList = ({ items, rowRenderer, rowHeight, itemsCount }: any) => 
     <AutoSizer disableHeight>
       {
         ({ width }) =>
-          <List
-            width={width}
-            height={itemsCount * rowHeight}
-            rowCount={items.length}
-            rowHeight={rowHeight}
-            rowRenderer={rowRenderer} />
+          <CellMeasurer
+            cellRenderer={
+              ({ rowIndex, ...rest }) => rowRenderer({ index: rowIndex, ...rest })
+            }
+            columnCount={1}
+            rowCount={itemsCount}
+            width={width}>
+            {
+              ({ getRowHeight, setRef }) =>
+                <List
+                  width={width}
+                  ref={setRef}
+                  height={itemsCount * rowHeight}
+                  rowCount={items.length}
+                  rowHeight={getRowHeight}
+                  rowRenderer={rowRenderer} />
+            }
+          </CellMeasurer>
       }
     </AutoSizer>
   </div>
@@ -55,13 +68,13 @@ const ListRenderer = compose(
         itemsCount: rest.config.maxItemsCount,
         items: children,
         rowRenderer: ({ index, key, style }) =>
-            <Nested
-              {...rest}
-              {...children[index]}
-              title={children[index].value}
-              key={key}
-              style={style}
-              index={index} />
+          <Nested
+            {...rest}
+            {...children[index]}
+            title={children[index].value}
+            key={key}
+            style={style}
+            index={index} />
         })),
       renderComponent(VirtualizedList)
     ),
