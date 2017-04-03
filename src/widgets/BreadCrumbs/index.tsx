@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as cx from 'classnames';
 import template from 'helpers/template';
 import withConfig from 'helpers/withConfig';
-import escape from 'helpers/escape';
+import { escape } from 'lodash';
 import formatRange from 'helpers/formatRange';
 import {
   compose, pure, withHandlers, withProps,

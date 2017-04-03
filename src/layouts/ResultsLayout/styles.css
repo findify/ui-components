@@ -30,10 +30,3 @@
 .productsWithPadding{
   padding-left: 10px;
 }
-
-.product {
-  padding-right: 15px;
-  &:nth-child(3){
-    padding-right: 0;
-  }
-}

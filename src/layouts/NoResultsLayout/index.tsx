@@ -3,7 +3,7 @@ import { compose, withPropsOnChange } from 'recompose';
 import { ProductsList } from 'lists/ProductsList';
 import template from 'helpers/template';
 import withHooks from 'helpers/withHooks';
-import escape from 'helpers/escape';
+import { escape } from 'lodash';
 
 const styles = require('./styles.css');
 
