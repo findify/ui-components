@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { compose, withState, withHandlers, mapProps } from 'recompose';
-import NumberInput from 'react-number-input';
+import NumberInput from 'react-numeric-input';
 import formatRange from 'helpers/formatRange';
 import { findCurrency } from 'currency-formatter'
 import { getRangeFacetKey } from 'helpers/getRangeFacetKey';
@@ -27,8 +27,14 @@ export const RangeBodyFacet = compose(
       setMin(void 0);
       setMax(void 0);
     },
-    updateMin: ({ setMin }) => value => setMin(value),
-    updateMax: ({ setMax }) => value => setMax(value),
+    updateMin: ({ setMin, min, maxValue }) => (_, value) => {
+      const val = parseInt(value) || min;
+      return setMin(val > maxValue ? maxValue : val)
+    },
+    updateMax: ({ setMax, max, minValue }) => (_, value) => {
+      const val = parseInt(value) || max;
+      return setMax(val < minValue ? minValue : val);
+    },
   })
 )(({
   minValue,
@@ -41,19 +47,30 @@ export const RangeBodyFacet = compose(
   max,
   min,
   i18n
-}: any) =>
+}: any) => (
   <div className={styles.wrap}>
     <div className={styles.inputWrap}>
-      <NumberInput className={styles.input} value={minValue} min={min} max={maxValue} onChange={updateMin}/>
+      <NumberInput
+        style={false}
+        className={styles.input}
+        value={minValue}
+        min={0}
+        max={maxValue}
+        onChange={updateMin} />
       <span className={styles.currency}>{currencySymbol}</span>
     </div>
     <div className={styles.separator}>-</div>
     <div className={styles.inputWrap}>
-      <NumberInput className={styles.input} value={maxValue} min={minValue} max={max} onChange={updateMax}/>
+      <NumberInput
+        style={false}
+        className={styles.input}
+        value={maxValue}
+        min={minValue}
+        onChange={updateMax} />
       <span className={styles.currency}>{currencySymbol}</span>
     </div>
     <div className={styles.commitWrap}>
       <button className={styles.button} onClick={onCommit}>{config.i18n.submit}</button>
     </div>
   </div>
-);
+));

@@ -20,8 +20,8 @@ const Facet = withPropsOnChange(
 );
 
 export const DesktopFacetsList = setDisplayName('DesktopFacetsList')
-(({ facets, ...rest }: DesktopFacetsListType) => 
-  <div>
+(({ facets, className, ...rest }: DesktopFacetsListType) => 
+  <div className={className}>
     {
       facets.map(facet => createEagerElement(Facet, {
         ...rest,
@@ -37,5 +37,6 @@ type DesktopFacetsListType = {
   children: any[],
   onChange: void,
   config: any,
+  className?: string,
   facets
 };

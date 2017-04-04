@@ -36,6 +36,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color .1s ease-in;
+  outline: none!important;
   &:hover {
     background-color: color(#f7f7f7 shade(5%));
   }

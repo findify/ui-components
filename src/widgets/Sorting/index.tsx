@@ -7,7 +7,6 @@ import {
   setDisplayName,
   withHandlers,
   withProps,
-  withPropsOnChange,
   withState
 } from 'recompose';
 import * as cx from 'classnames';
@@ -31,15 +30,16 @@ export const Sorting: any = compose(
       onChange({ field, order });
     }
   }),
-  withPropsOnChange(['options'], ({ config, options}) => ({
-    options: options.map(option => {
+  withProps(({ config, value, options}) => {
+    const opts = options.map(option => {
       const value = createValue(option);
       return { value, label: config.i18n.options[value] || option }
-    })
-  })),
-  withPropsOnChange(['value'], ({ config, value, options }: any) => ({
-    value: !!value && options.find(o => o.value === createValue(value)) || options[0],
-  })),
+    });
+    return {
+      options: opts,
+      value: !!value && opts.find(o => o.value === createValue(value)) || opts[0],
+    }
+  }),
 )(({
   config,
   options,

@@ -14,7 +14,7 @@ const props = {
     },
     i18n: {
       submit: 'Apply',
-      under: 'Less than',
+      under: '&amp; than',
       up: 'More than'
     }
   },
