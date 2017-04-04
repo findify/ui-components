@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { range } from 'lodash';
+import * as cx from 'classnames';
 import { 
   branch, compose, defaultProps, pure, setDisplayName,
   renderNothing, withHandlers, withProps
@@ -46,9 +47,10 @@ export const Pagination: any = compose(
   total,
   style,
   config,
+  className,
   ...rest
 }: any) => (
-  <div className={styles.root} style={style}>
+  <div className={cx(styles.root, className)} style={style}>
     {
       showPrev &&
       <Button label={config.i18n.previous} prependIcon='fa fa-chevron-left' page={current - 1} {...rest} />
