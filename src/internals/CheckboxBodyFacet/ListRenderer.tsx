@@ -47,7 +47,7 @@ const VirtualizedList = withProps(({ items, ...rest }) => ({
     createEagerElement(Item, {
       ...rest,
       item: items[index],
-      title: items[index].value,
+      title: items[index].label || items[index].value,
       key,
       style
     })

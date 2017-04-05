@@ -20,9 +20,6 @@ const Button = ({ onClick, children, flat }: any) => (
 );
 
 const RootHeader = compose(
-  withProps(({ facets, getSelected }) => ({
-    selectedFacets: facets.filter(facet => !!getSelected(facet.name))
-  })),
 
   branch(
     ({ selectedFacets }: any) => !!selectedFacets.length,
@@ -30,7 +27,7 @@ const RootHeader = compose(
     renderComponent(({ onClose, onResetAll, config }) => (
       <div className={styles.buttonsGroup}>
         <Button onClick={onResetAll}>
-          { config.facets.i18n.resetAllFilters }
+          { config.facets.i18n.resetAll }
         </Button>
         <div className={styles.divider} />
         <Button onClick={onClose} className={styles.light}>
@@ -61,7 +58,7 @@ const FacetHeader = branch(
   renderComponent(({ onBackToFacets, config }) => (
     <Button onClick={onBackToFacets} flat>
       <span className={cx(styles.icon, styles.pre, 'fa', 'fa-chevron-left')} />
-      { config.facets.i18n.backToFilters }
+      { config.facets.i18n.backToMenu }
     </Button>
   )),
 
@@ -96,7 +93,10 @@ export const FacetTitle = branch(
 
 
 export const Header: any = compose(
-  onlyUpdateForKeys(['selectedFacet', 'changes', 'hasNotCommittedData']),
+  withProps(({ facets, getSelected }) => ({
+    selectedFacets: facets.filter(facet => !!getSelected(facet.name))
+  })),
+  onlyUpdateForKeys(['selectedFacet', 'selectedFacets', 'changes', 'hasNotCommittedData']),
   branch(
     ({ selectedFacet }: any) => !!selectedFacet,
     renderComponent(FacetHeader),

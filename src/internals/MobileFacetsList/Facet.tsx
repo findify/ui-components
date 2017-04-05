@@ -11,6 +11,7 @@ import {
 import * as cx from 'classnames';
 
 import { mapTypeToFacet } from 'helpers/mapTypeToFacet';
+import formatRange from 'helpers/formatRange';
 
 const styles = require('./styles.css');
 
@@ -19,8 +20,13 @@ const FacetPreview = compose(
     type: config.facets.types && config.facets.types[facet.name] || facet.type
   })),
 
-  withPropsOnChange(['values'], ({ values }: any) => {
-    const selectedItems = values.filter(item => item.selected).map(item => item.value);
+  withPropsOnChange(['values'], ({ values, type, config }: any) => {
+    const selectedItems = values
+      .filter(item => item.selected)
+      .map(item => type === 'range'
+        ? formatRange({...item, config: { ...config.facets.range, currency: config.currency } })
+        : item.value
+      );
     
     return {
       hasSelectedItems: !!selectedItems && !!selectedItems.length,
@@ -82,13 +88,13 @@ const FacetBody = withPropsOnChange(
   type,
   factory,
   ...rest
-}: any) =>
-<div className={styles.body}>
-  {
-    factory({ ...rest, ...facet, isMobile: true })
-  }
-</div>
-);
+}: any) => (
+  <div className={styles.body}>
+    {
+      factory({ ...rest, ...facet, isMobile: true })
+    }
+  </div>
+));
 
 
 export const Facet: any = compose(
