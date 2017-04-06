@@ -15,29 +15,30 @@ import { Stickers } from 'internals/Stickers';
 import { getPrice } from 'helpers/getPrice';
 import withConfig from 'helpers/withConfig';
 import withHooks from 'helpers/withHooks';
+import withStyles from 'helpers/withStyles';
 
 const styles = require('./styles.css');
 
-const Title: any = ({ text, config }) => config.display && !!text && (
-  <h5 className={styles.title}>
+const Title: any = ({ text, config, ...rest }) => config.display && !!text && (
+  <h5 className={styles.title} {...rest}>
     <Truncate lines={config.lines || false}>{text}</Truncate>
   </h5>
 );
 
-const Description: any = ({ text, config }) => config.display && !!text && (
-  <p className={styles.description}>
+const Description: any = ({ text, config, ...rest }) => config.display && !!text && (
+  <p className={styles.description} {...rest}>
     <Truncate lines={config.lines || false}>{text}</Truncate>
   </p>
 )
 
-const Price = ({ price, oldPrice, currency }) => price && 
-  <div className={styles.priceWrap}>
-    <span className={styles.price}>
+const Price = ({ price, oldPrice, currency, style }) => price && 
+  <div className={styles.priceWrap} style={style && style.main}>
+    <span className={styles.price} style={style && style.regular}>
       { getPrice(price, currency) }
     </span>
     {
       oldPrice && oldPrice > 0 &&
-      <span className={styles.compare}>
+      <span className={styles.compare} style={style && style.discount}>
         { currencyFormat(oldPrice, currency) }
       </span>
     }
@@ -76,7 +77,7 @@ export const HOC = compose(
       }
     }
   }),
-
+  withStyles(['product', 'stickers']),
   withHooks('product')
 );
 
@@ -92,19 +93,24 @@ export const Component = (({
   compareAt,
   onClick,
   config,
-  stickers
+  stickers,
+  styles: {
+    product: productStyles,
+    stickers: stickersStyle
+  }
 }: any) => (
   <a
+    style={productStyles.main}
     onClick={onClick}
     href={productUrl}
     className={cx(styles.root, config.simple && styles.simple)}>
     <div className={styles.imageWrap}>
       <Image className={styles.image} src={imageUrl || thumbnailUrl} alt={title} />
-      <Stickers config={config.stickers} stickers={stickers} />
+      <Stickers styles={stickersStyle} config={config.stickers} stickers={stickers} />
     </div>
     <div className={styles.description}>
-      <Title text={title} config={config.title} />
-      <Description text={description} config={config.description}/>
+      <Title text={title} config={config.title} style={productStyles.title} />
+      <Description text={description} config={config.description} style={productStyles.description} />
     </div>
     {
       reviews &&
@@ -114,7 +120,7 @@ export const Component = (({
     }
     {
       config.price.display &&
-      <Price price={price} oldPrice={compareAt} currency={config.currency} />
+      <Price price={price} oldPrice={compareAt} currency={config.currency} style={productStyles.price} />
     }
   </a>
 ));

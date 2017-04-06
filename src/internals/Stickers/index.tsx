@@ -46,10 +46,10 @@ const getStyles = memoize(styles => {
 });
 
 const Sticker: any = compose(
-  withProps(({ config, value }) => ({
+  withProps(({ config, value, styles }) => ({
     position: getPosition(config.position),
     content: getContent(value, config.template),
-    style: getStyles(config.styles)
+    style: getStyles(styles)
   }))
 )(({
   position,
@@ -63,7 +63,7 @@ const Sticker: any = compose(
     </div>
 ));
 
-export const Stickers: any = ({ stickers, config }) => React.DOM.div(
+export const Stickers: any = ({ stickers, config, styles }) => React.DOM.div(
 {},
   !!stickers && Object
   .keys(stickers)
@@ -72,6 +72,11 @@ export const Stickers: any = ({ stickers, config }) => React.DOM.div(
     return !!stickers[key] && !!config[key];
   })
   .map(key =>
-    createEagerElement(Sticker, { key, value: stickers[key], config: config[key] })
+    createEagerElement(Sticker, {
+      key,
+      value: stickers[key],
+      config: config[key],
+      styles: styles[key]
+    })
   )
 )
