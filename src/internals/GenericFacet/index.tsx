@@ -11,6 +11,7 @@ import {
   withState
 } from 'recompose';
 import * as cx from 'classnames';
+import withStyles from 'helpers/withStyles';
 
 const styles = require('./styles.css');
 
@@ -29,7 +30,8 @@ export const Wrapper = (Content) => compose(
   withState('isOpen', 'toggleFacet', props => props.isOpen),
   withHandlers({
     toggleOpen: ({ isOpen, toggleFacet }: any) => () => toggleFacet(!isOpen)
-  })
+  }),
+  withStyles(['facets']),
 )(({
   isOpen,
   toggleOpen,
@@ -38,7 +40,7 @@ export const Wrapper = (Content) => compose(
 }: any) => (
   <div className={styles.wrap}>
     <div className={styles.toggle}>
-      <h5 className={styles.title}>{ label }</h5>
+      <h5 style={rest.styles.facets.title} className={styles.title}>{ label }</h5>
       <button className={cx(styles.icon, 'fa', isOpen ? 'fa-minus' : 'fa-plus')} onClick={toggleOpen} />
     </div>
     { isOpen && <Content {...rest} /> }

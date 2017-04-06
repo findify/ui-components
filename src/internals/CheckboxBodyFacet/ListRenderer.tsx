@@ -3,13 +3,15 @@ import * as cx from 'classnames';
 import {
   withHandlers, branch, renderComponent, withState,
   compose, withProps, renderNothing, withPropsOnChange,
-  createEagerElement
+  createEagerElement, 
 } from 'recompose';
 import { AutoSizer } from 'react-virtualized/dist/commonjs/AutoSizer';
 import { List } from 'react-virtualized/dist/commonjs/List';
 import { CellMeasurer } from 'react-virtualized/dist/commonjs/CellMeasurer';
 
 const styles = require('./styles.css');
+
+const getStyle = (style, custom = {}) => ({ ...style, ...custom });
 
 const Item = withHandlers({
   onClick: ({ onChange, item }: any) => () => 
@@ -18,11 +20,20 @@ const Item = withHandlers({
   title,
   item,
   onClick,
-  style
+  style,
+  styles: {
+    facets: s
+  }
 }: any) => (
-  <div style={style} className={cx(styles.item, item.selected && styles.selected)} onClick={onClick}>
+  <div 
+    style={getStyle(style, item.selected && s.active || s.item)}
+    className={cx(styles.item, item.selected && styles.selected)}
+    onClick={onClick}>
     <div className={cx(styles.checkbox, 'fa', item.selected ? 'fa-check-square' : 'fa-square-o')} />
-    <span className={styles.title}>{ title }</span>
+    <span
+      className={styles.title}>
+      { title }
+    </span>
     <span className={styles.count}>({ item.count })</span>
   </div>
 ));
@@ -43,14 +54,15 @@ const StaticList = ({ items, config, className, showAll, ...rest }) => (
 );
 
 const VirtualizedList = withProps(({ items, ...rest }) => ({
-  rowRenderer: ({ index, key, style }) =>
-    createEagerElement(Item, {
+  rowRenderer: ({ index, key, style }) => {
+    return createEagerElement(Item, {
       ...rest,
       item: items[index],
       title: items[index].label || items[index].value,
       key,
       style
     })
+  }
 }))(({ isMobile, items, rowRenderer, config }: any) => (
   <AutoSizer disableHeight={!isMobile}>
     {
