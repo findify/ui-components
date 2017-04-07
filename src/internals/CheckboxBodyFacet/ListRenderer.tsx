@@ -19,10 +19,7 @@ const Item = withHandlers({
   title,
   item,
   onClick,
-  style,
-  styles: {
-    facets: s
-  }
+  style
 }: any) => (
   <div 
     style={style}
