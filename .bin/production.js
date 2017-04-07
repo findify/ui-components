@@ -44,9 +44,12 @@ export default (env, { module, plugins, output, ...config }) => ({
             loader: 'babel-loader',
             options: {
               babelrc: false,
-              plugins: ['transform-react-constant-elements', 'babel-plugin-lodash'],
+              plugins: [
+                'lodash'
+              ],
               presets: [
                 ['es2015', { modules: false }],
+                'react-optimize',
                 'stage-0',
                 'react'
               ]
