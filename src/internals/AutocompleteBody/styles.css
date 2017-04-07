@@ -1,8 +1,8 @@
-.wrap{
+.root{
   padding: 15px 10px 10px;
 }
 
-.root {
+.wrap {
   display: block;
   position: relative;
   box-shadow: 0 0 8px 0 rgba(0,0,0,.5);

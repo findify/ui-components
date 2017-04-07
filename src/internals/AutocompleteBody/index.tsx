@@ -51,8 +51,8 @@ export function AutocompleteBody({
     // For elements we need to do: findify-block-autocomplete__element-name
 
     // Both TODOs are related to all components.
-    <div className={styles.wrap}>
-      <div className={cx(styles.root, styles[position])}>
+    <div className={styles.root}>
+      <div className={cx(styles.wrap, styles[position])}>
         {
           position === 'right'
           && (

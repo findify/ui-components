@@ -18,10 +18,7 @@ export const SearchSuggestions = ({
   suggestions,
   selectedSuggestion,
   onSearchSuggestionClick,
-  query,
-  styles: {
-    suggestions: style
-  }
+  query
 }: Props) => (
   <div className={styles.wrap}>
     {
@@ -38,7 +35,6 @@ export const SearchSuggestions = ({
         suggestions.map((suggestion: string, i: number) => (
           <span
             key={i}
-            style={style}
             className={cx(
               styles.item,
               customStyles.autocompleteSuggestion,
