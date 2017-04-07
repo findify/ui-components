@@ -4,6 +4,9 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import webpack from 'webpack';
 
+const extractGlobal = new ExtractTextPlugin('styles.css');
+const extractCustom = new ExtractTextPlugin('custom.css');
+
 export default (env, { module, plugins, output, ...config }) => ({
   ...config,
   entry: [
@@ -25,16 +28,23 @@ export default (env, { module, plugins, output, ...config }) => ({
       module.rules.image,
       {
         ...module.rules.localCSS,
-        use: ExtractTextPlugin.extract({
+        use: extractGlobal.extract({
           fallback: "style-loader",
           use: module.rules.localCSS.use.filter((_, i) => !!i)
         })
       },
       {
         ...module.rules.globalCSS,
-        use: ExtractTextPlugin.extract({
+        use: extractGlobal.extract({
           fallback: "style-loader",
           use: module.rules.globalCSS.use.filter((_, i) => !!i)
+        })
+      },
+      {
+        ...module.rules.customCSS,
+        use: extractCustom.extract({
+          fallback: "style-loader",
+          use: module.rules.customCSS.use[1]
         })
       },
       {
@@ -62,7 +72,8 @@ export default (env, { module, plugins, output, ...config }) => ({
   },
   plugins: [
     ...plugins,
-    new ExtractTextPlugin('styles.css'),
+    extractGlobal,
+    extractCustom,
     new OptimizeCssAssetsPlugin({
       cssProcessor: require('cssnano'),
       cssProcessorOptions: {

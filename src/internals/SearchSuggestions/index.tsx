@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as cx from 'classnames';
-import withStyles from 'helpers/withStyles';
 
 const styles = require('./styles.css');
+const customStyles = require('customStyles');
 
 type Props = {
   query: string,
@@ -13,7 +13,7 @@ type Props = {
   styles: any 
 };
 
-export const SearchSuggestions = withStyles(['suggestions'])(({
+export const SearchSuggestions = ({
   title,
   suggestions,
   selectedSuggestion,
@@ -39,7 +39,11 @@ export const SearchSuggestions = withStyles(['suggestions'])(({
           <span
             key={i}
             style={style}
-            className={cx(styles.item, selectedSuggestion === i && styles.selected)}
+            className={cx(
+              styles.item,
+              customStyles.autocompleteSuggestion,
+              selectedSuggestion === i && styles.selected
+            )}
             onClick={() => onSearchSuggestionClick(suggestion)}
             dangerouslySetInnerHTML={{
               __html: highlightSuggestion(suggestion, query),
@@ -48,7 +52,7 @@ export const SearchSuggestions = withStyles(['suggestions'])(({
       }
     </div>
   </div>
-));
+);
 
 function highlightSuggestion(value: string, highlighted: string) {
   const regexp = new RegExp(`(${highlighted})`);

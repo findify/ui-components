@@ -49,7 +49,7 @@ const Sticker: any = compose(
   withProps(({ config, value, styles }) => ({
     position: getPosition(config.position),
     content: getContent(value, config.template),
-    style: getStyles(styles)
+    style: getStyles(config.styles)
   }))
 )(({
   position,
@@ -63,7 +63,7 @@ const Sticker: any = compose(
     </div>
 ));
 
-export const Stickers: any = ({ stickers, config, styles }) => React.DOM.div(
+export const Stickers: any = ({ stickers, config }) => React.DOM.div(
 {},
   !!stickers && Object
   .keys(stickers)
@@ -75,8 +75,7 @@ export const Stickers: any = ({ stickers, config, styles }) => React.DOM.div(
     createEagerElement(Sticker, {
       key,
       value: stickers[key],
-      config: config[key],
-      styles: styles[key]
+      config: config[key]
     })
   )
 )

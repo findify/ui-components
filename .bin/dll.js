@@ -9,7 +9,7 @@ const vendor = [
   'lodash',
   'react-virtualized',
   'react-addons-shallow-compare',
-  'react-number-input',
+  'react-numeric-input',
   'react-dropdown',
   'currency-formatter',
   'react-slick',

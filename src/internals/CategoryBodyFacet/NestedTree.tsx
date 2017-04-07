@@ -8,6 +8,7 @@ import { CellMeasurer } from 'react-virtualized/dist/commonjs/CellMeasurer';
 const styles = require('./styles.css');
 
 const NestingComponent = ({ isRoot, ...rest }) => React.createElement('div', rest);
+const customStyles = require('customStyles');
 
 const StaticList = ({ selected, Nested, children, ...rest }: any) => (
   <div className={styles.list}>
@@ -104,7 +105,14 @@ export const NestedList = ({
     className={cx(className || styles.nestedItem, isRoot && styles.rootItem)}>
     { 
       !isRoot &&
-      <div className={cx(styles.item, selected && styles.selected)} onClick={onClick}>
+      <div
+        className={cx(
+          styles.item,
+          customStyles.facetItem,
+          selected && styles.selected,
+          selected && customStyles.facetItemSelected,
+        )}
+        onClick={onClick}>
         <p className={styles.title}>
           <span className={cx(styles.prevIcon, 'fa', 'fa-chevron-left')} />
           { title }
@@ -122,7 +130,13 @@ const RootWrapper = (props: any) => (
     isRoot
     style={props.style}
     className={cx(styles.nestedItem, styles.rootItem)}>
-    <div className={cx(styles.item, styles.selected)} onClick={props.onClick}>
+    <div
+      className={cx(
+        styles.item,
+        styles.selected,
+        customStyles.facetItemSelected
+      )}
+      onClick={props.onClick}>
       <p className={styles.title}>
         <span className={cx(styles.prevIcon, 'fa', 'fa-chevron-left')} />
         { props.config.i18n.goBackTitle }

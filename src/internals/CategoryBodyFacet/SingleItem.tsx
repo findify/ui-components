@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as cx from 'classnames';
 
 const styles = require('./styles.css');
+const customStyles = require('customStyles');
 
 export const SingleItem = ({
   title,
@@ -14,7 +15,12 @@ export const SingleItem = ({
   <li
     style={style}
     onClick={onClick}
-    className={cx(styles.item, selected && styles.selected)}>
+    className={cx(
+      styles.item,
+      customStyles.facetItem,
+      selected && styles.selected,
+      selected && customStyles.facetItemSelected,
+    )}>
     <p className={styles.title}>{ title }</p>
     <span className={styles.count}>({ count })</span>
   </li>

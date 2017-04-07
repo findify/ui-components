@@ -11,9 +11,9 @@ import {
   withState
 } from 'recompose';
 import * as cx from 'classnames';
-import withStyles from 'helpers/withStyles';
 
 const styles = require('./styles.css');
+const customStyles = require('customStyles');
 
 export const Raw = ({ children, ...rest }) => (
   <div className={cx(styles.content, rest.isMobile && styles.mobile)}>
@@ -31,16 +31,15 @@ export const Wrapper = (Content) => compose(
   withHandlers({
     toggleOpen: ({ isOpen, toggleFacet }: any) => () => toggleFacet(!isOpen)
   }),
-  withStyles(['facets']),
 )(({
   isOpen,
   toggleOpen,
   label,
   ...rest
 }: any) => (
-  <div className={styles.wrap}>
+  <div className={cx(styles.wrap, customStyles.facet)}>
     <div className={styles.toggle}>
-      <h5 style={rest.styles.facets.title} className={styles.title}>{ label }</h5>
+      <h5 className={cx(styles.title, customStyles.facetTitle)}>{ label }</h5>
       <button className={cx(styles.icon, 'fa', isOpen ? 'fa-minus' : 'fa-plus')} onClick={toggleOpen} />
     </div>
     { isOpen && <Content {...rest} /> }

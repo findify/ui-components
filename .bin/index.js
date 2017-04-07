@@ -14,7 +14,10 @@ const defaultConfig = environment => ({
     modules: [
       path.resolve(process.cwd(), 'src'),
       'node_modules'
-    ]
+    ],
+    alias: {
+      customStyles: path.resolve(process.cwd(), 'src/styles.custom.css'),
+    }
   },
 
   output: {
@@ -36,8 +39,25 @@ const defaultConfig = environment => ({
         ]
       },
 
+      customCSS: {
+        test: /\.custom\.css/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              camelCase: true,
+              importLoaders: 1,
+              localIdentName: '[hash:base64:5]'
+            }
+          },
+          'postcss-loader'
+        ]
+      },
+
       localCSS: {
-        test: /^((?!global).)*\.css/,
+        test: /^((?!(global|custom)).)*\.css/,
         use: [
           'style-loader',
           {

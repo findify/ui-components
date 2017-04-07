@@ -11,8 +11,6 @@ import { CellMeasurer } from 'react-virtualized/dist/commonjs/CellMeasurer';
 
 const styles = require('./styles.css');
 
-const getStyle = (style, custom = {}) => ({ ...style, ...custom });
-
 const Item = withHandlers({
   onClick: ({ onChange, item }: any) => () => 
     onChange({ ...item, selected: !item.selected })
@@ -26,7 +24,7 @@ const Item = withHandlers({
   }
 }: any) => (
   <div 
-    style={getStyle(style, item.selected && s.active || s.item)}
+    style={style}
     className={cx(styles.item, item.selected && styles.selected)}
     onClick={onClick}>
     <div className={cx(styles.checkbox, 'fa', item.selected ? 'fa-check-square' : 'fa-square-o')} />

@@ -15,30 +15,30 @@ import { Stickers } from 'internals/Stickers';
 import { getPrice } from 'helpers/getPrice';
 import withConfig from 'helpers/withConfig';
 import withHooks from 'helpers/withHooks';
-import withStyles from 'helpers/withStyles';
 
 const styles = require('./styles.css');
+const customStyles = require('customStyles');
 
 const Title: any = ({ text, config, ...rest }) => config.display && !!text && (
-  <h5 className={styles.title} {...rest}>
+  <h5 className={cx(styles.title, customStyles.productTitle)} {...rest}>
     <Truncate lines={config.lines || false}>{text}</Truncate>
   </h5>
 );
 
 const Description: any = ({ text, config, ...rest }) => config.display && !!text && (
-  <p className={styles.description} {...rest}>
+  <p className={cx(styles.description, customStyles.productDescription)} {...rest}>
     <Truncate lines={config.lines || false}>{text}</Truncate>
   </p>
 )
 
-const Price = ({ price, oldPrice, currency, style }) => price && 
-  <div className={styles.priceWrap} style={style && style.main}>
-    <span className={styles.price} style={style && style.regular}>
+const Price = ({ price, oldPrice, currency }) => price && 
+  <div className={cx(styles.priceWrap, customStyles.productPrice)}>
+    <span className={cx(styles.price, customStyles.productPriceRegular)}>
       { getPrice(price, currency) }
     </span>
     {
       oldPrice && oldPrice > 0 &&
-      <span className={styles.compare} style={style && style.discount}>
+      <span className={cx(styles.compare, customStyles.productPriceSale)}>
         { currencyFormat(oldPrice, currency) }
       </span>
     }
@@ -77,7 +77,6 @@ export const HOC = compose(
       }
     }
   }),
-  withStyles(['product', 'stickers']),
   withHooks('product')
 );
 
@@ -94,23 +93,18 @@ export const Component = (({
   onClick,
   config,
   stickers,
-  styles: {
-    product: productStyles,
-    stickers: stickersStyle
-  }
 }: any) => (
   <a
-    style={productStyles.main}
     onClick={onClick}
     href={productUrl}
-    className={cx(styles.root, config.simple && styles.simple)}>
+    className={cx(styles.root, customStyles.product, config.simple && styles.simple)}>
     <div className={styles.imageWrap}>
       <Image className={styles.image} src={imageUrl || thumbnailUrl} alt={title} />
-      <Stickers styles={stickersStyle} config={config.stickers} stickers={stickers} />
+      <Stickers config={config.stickers} stickers={stickers} />
     </div>
     <div className={styles.description}>
-      <Title text={title} config={config.title} style={productStyles.title} />
-      <Description text={description} config={config.description} style={productStyles.description} />
+      <Title text={title} config={config.title}/>
+      <Description text={description} config={config.description}/>
     </div>
     {
       reviews &&
@@ -120,7 +114,7 @@ export const Component = (({
     }
     {
       config.price.display &&
-      <Price price={price} oldPrice={compareAt} currency={config.currency} style={productStyles.price} />
+      <Price price={price} oldPrice={compareAt} currency={config.currency} />
     }
   </a>
 ));

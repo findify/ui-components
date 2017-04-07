@@ -6,6 +6,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 import pkg from '../package.json';
 
+
 export default (env, { module, plugins, ...config }) => ({
   ...config,
   entry: [
@@ -22,6 +23,7 @@ export default (env, { module, plugins, ...config }) => ({
       module.rules.image,
       module.rules.localCSS,
       module.rules.globalCSS,
+      module.rules.customCSS,
       {
         ...module.rules.ts,
         use: ['react-hot-loader/webpack', 'ts-loader?silent=true']
