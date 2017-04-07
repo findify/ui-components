@@ -8,6 +8,7 @@ import { Product } from 'widgets/Product';
 import * as cx from 'classnames';
 import withConfig from 'helpers/withConfig';
 import withHooks from 'helpers/withHooks';
+import watchFrameSize from 'helpers/watchFrameSize';
 
 import './slider.global.css';
 import './slider-theme.global.css';
@@ -43,8 +44,10 @@ export const HOC = compose(
 
   withConfig({ productsToShow: 5 }),
 
-  withPropsOnChange(['node'],({ node, config }) => ({
-    slidesToShow: node && countProductsToShow(node.position.get('width')) || config.productsToShow
+  watchFrameSize,
+
+  withPropsOnChange(['frameSize'],({ frameSize, config }) => ({
+    slidesToShow: frameSize.width && countProductsToShow(frameSize.width) || config.productsToShow
   })),
 
   withHooks('slider')
