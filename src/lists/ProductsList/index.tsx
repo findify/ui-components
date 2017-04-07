@@ -1,15 +1,26 @@
 import * as React from 'react';
-import { compose, setDisplayName, defaultProps, createEagerElement } from 'recompose';
+import { compose, setDisplayName, defaultProps, createEagerElement, withPropsOnChange } from 'recompose';
 import withConfig from 'helpers/withConfig';
-
+import watchFrameSize from 'helpers/watchFrameSize';
 import { Product } from 'widgets/Product';
 import { Grid } from 'widgets/Grid';
+
+const countColumns = (width) => {
+  if (width > 600) return 3;
+  return 2;
+};
 
 const HOC = compose(
   setDisplayName('ProductsList'),
   withConfig({
     columns: 3
   }),
+
+  watchFrameSize,
+
+  withPropsOnChange(['frameSize'],({ frameSize, config }) => ({
+    columns: frameSize.width && countColumns(frameSize.width) || config.columns
+  })),
 );
 
 export const Component = ({
@@ -17,9 +28,10 @@ export const Component = ({
   className,
   columnClass,
   onProductClick,
-  config
+  config,
+  columns
 }: any) => (
-  <Grid columns={String(12 / config.columns)} className={className}>
+  <Grid columns={String(12 / columns)} className={className}>
     { 
       items.map(product =>
         createEagerElement(Product, {
