@@ -10,6 +10,7 @@ import { List } from 'react-virtualized/dist/commonjs/List';
 import { CellMeasurer } from 'react-virtualized/dist/commonjs/CellMeasurer';
 
 const styles = require('./styles.css');
+const customStyles = require('customStyles');
 
 const Item = withHandlers({
   onClick: ({ onChange, item }: any) => () => 
@@ -25,7 +26,12 @@ const Item = withHandlers({
 }: any) => (
   <div 
     style={style}
-    className={cx(styles.item, item.selected && styles.selected)}
+    className={cx(
+      styles.item,
+      customStyles.facetItem,
+      item.selected && styles.selected,
+      item.selected && customStyles.facetItemSelected,
+    )}
     onClick={onClick}>
     <div className={cx(styles.checkbox, 'fa', item.selected ? 'fa-check-square' : 'fa-square-o')} />
     <span
