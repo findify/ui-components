@@ -34,6 +34,7 @@ export default BaseComponent => {
     componentDidMount() {
       const { window: frameWindow } = this.context;
       win = frameWindow || window;
+      this.resize();
       win.addEventListener('resize', this.resize);
       win.addEventListener('load', this.resize);
     }

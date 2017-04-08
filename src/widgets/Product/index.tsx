@@ -77,6 +77,7 @@ export const HOC = compose(
       }
     }
   }),
+
   withHooks('product')
 );
 
