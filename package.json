@@ -1,7 +1,7 @@
 {
   "name": "findify-ui-components",
   "description": "Findify react ui components",
-  "version": "0.2.36",
+  "version": "0.2.37",
   "author": "1ven",
   "repository": "https://github.com/findify/findify-ui-components.git",
   "peerDependencies": {
