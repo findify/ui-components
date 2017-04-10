@@ -4,6 +4,8 @@ import withConfig from 'helpers/withConfig';
 import watchFrameSize from 'helpers/watchFrameSize';
 import { Product } from 'widgets/Product';
 import { Grid } from 'widgets/Grid';
+import withHooks from 'helpers/withHooks';
+
 
 const countColumns = (width) => {
   if (width > 600) return 3;
@@ -18,9 +20,11 @@ const HOC = compose(
 
   watchFrameSize,
 
-  withPropsOnChange(['frameSize'],({ frameSize, config }) => ({
+  withPropsOnChange(['frameSize'], ({ frameSize, config }) => ({
     columns: frameSize.width && countColumns(frameSize.width) || config.columns
   })),
+
+  withHooks('products')
 );
 
 export const Component = ({

@@ -3,19 +3,18 @@ import { Component, PropTypes } from 'react';
 import { createEagerFactory } from 'recompose';
 export default BaseComponent => {
   const factory = createEagerFactory(BaseComponent);
-  let win: any = void 0;
 
   return class FrameSizeWatcher extends Component<any, any>{
+    win: any = void 0;
+
     constructor(props) {
       super(props);
       this.resize = this.resize.bind(this);
     }
 
     state = {
-      frameSize: {
-        width: 0,
-        height: 0
-      }
+      width: 0,
+      height: 0
     }
 
     static contextTypes = {
@@ -23,29 +22,28 @@ export default BaseComponent => {
     }
   
     resize() {
-      const width = win.innerWidth;
-      const height = win.innerHeight;
-      const { frameSize } = this.state;
-      if (width !== frameSize.width || height !== frameSize.height) {
-        this.setState({ frameSize: { width, height }});
+      const width = this.win.innerWidth;
+      const height = this.win.innerHeight;
+      if (width !== this.state.width || height !== this.state.height) {
+        this.setState({ width, height });
       }
     }
   
-    componentDidMount() {
+    componentWillMount() {
       const { window: frameWindow } = this.context;
-      win = frameWindow || window;
+      this.win = frameWindow || window;
       this.resize();
-      win.addEventListener('resize', this.resize);
-      win.addEventListener('load', this.resize);
+      this.win.addEventListener('resize', this.resize);
+      this.win.addEventListener('load', this.resize);
     }
 
     componentWillUnmount() {
-      win.removeEventListener('resize', this.resize);
-      win.removeEventListener('load', this.resize);
+      this.win.removeEventListener('resize', this.resize);
+      this.win.removeEventListener('load', this.resize);
     }
 
     render() {
-      return factory({ ...this.props, ...this.state });
+      return factory({ ...this.props, frameSize: this.state });
     }
   }
 };

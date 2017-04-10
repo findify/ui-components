@@ -11,6 +11,25 @@ import {
 
 const styles = require('./styles.css');
 
+const getTitle = ({
+  q,
+  corrected_q,
+  filters,
+  total,
+  tpl,
+  query_type,
+  config: { i18n }
+}) => {
+  if (!q && !filters.length) return i18n.noQuery;
+  if (!!corrected_q) {
+    return `${tpl(total)} <strong>"${escape(corrected_q)}"</strong>. ${i18n.zeroResultsFor} ${q}.`;
+  }
+  if (query_type === 'or') {
+    return `${i18n.zeroResultsFor} <strong>"${escape(q)}"</strong>. ${i18n.partialMatch}:`;
+  }
+  return tpl(total) + (q ? ` <strong>"${escape(q)}"</strong>:` : ':');
+};
+
 const filtersMapping = {
   default: ({ value }) => value,
   range: props => formatRange(props),
@@ -58,13 +77,11 @@ export const HOC = compose(
   }),
 
   withPropsOnChange(['config'], ({ config: { i18n } }) => ({
-    titleTemplate: template(i18n.showing)
+    tpl: template(i18n.showing)
   })),
 
-  withPropsOnChange(['total', 'q'], ({ total, filters, q, corrected_q, titleTemplate, config }) => ({
-    title: !q && !filters.length
-      ? config.i18n.noQuery
-      : titleTemplate(total) + (q ? ` <strong>"${escape(corrected_q || q)}"</strong>:` : ':')
+  withPropsOnChange(['total', 'q', 'corrected_q'], (props:any) => ({
+    title: getTitle(props)
   }))
 );
 

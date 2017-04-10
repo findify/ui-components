@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { compose, withState, withHandlers, mapProps, onlyUpdateForKeys } from 'recompose';
+import { compose, withState, withHandlers, mapProps, pure } from 'recompose';
 import * as cx from 'classnames';
 import { compact, get } from 'lodash';
 import { ExpandButton } from 'internals/ExpandButton';
@@ -10,7 +10,8 @@ const styles = require('./styles.css');
 import { createCursor } from './cursor';
 import { Tree } from './Tree';
 
-const mapArrayToFacetsCreator = (children, selected) => (array, forceUnselect?) =>
+const mapArrayToFacetsCreator = (children, selected) =>
+(array, forceUnselect?) =>
 array.map((position, index) => {
   const selector = array.takeWhile((_, i) => i <= index).map(p => `[${p}]`).join('.children');
   try {

@@ -12,7 +12,7 @@ import { SingleItem } from './SingleItem';
 export const Tree = compose(
   pure,
 
-  withPropsOnChange(['cursor'], ({ cursor, track, index, value }) => ({
+  withProps(({ cursor, track, index, value }) => ({
     track: index === void 0 ? track : track.push(index)
   })),
 
