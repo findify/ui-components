@@ -24,7 +24,8 @@
     "react-truncate": "^2.0.5",
     "react-virtualized": "^8.11.4",
     "recompose": "^0.22.0",
-    "tinycolor2": "^1.4.1"
+    "tinycolor2": "^1.4.1",
+    "match-media": "^0.2.0"
   },
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "^3.3.0",

@@ -16,6 +16,10 @@
   }
 }
 
+:global(.findify-widget--products-carousel) .root:hover{
+  background-color: inherit;
+}
+
 .image-wrap {
   position: relative;
   overflow: hidden;

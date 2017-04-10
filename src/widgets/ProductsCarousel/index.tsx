@@ -10,6 +10,7 @@ import withConfig from 'helpers/withConfig';
 import withHooks from 'helpers/withHooks';
 import watchFrameSize from 'helpers/watchFrameSize';
 
+import 'match-media'; // Polyfill for slick-slider
 import './slider.global.css';
 import './slider-theme.global.css';
 
