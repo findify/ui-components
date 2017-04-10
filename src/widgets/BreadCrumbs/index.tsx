@@ -25,7 +25,7 @@ const getTitle = ({
     return `${tpl(total)} <strong>"${escape(corrected_q)}"</strong>. ${i18n.zeroResultsFor} ${q}.`;
   }
   if (query_type === 'or') {
-    return `${i18n.zeroResultsFor} <strong>"${escape(q)}"</strong>. ${i18n.partialMatch}:`;
+    return `${i18n.zeroResultsFor} <strong>"${escape(q)}"</strong>. ${i18n.partialMatch}`;
   }
   return tpl(total) + (q ? ` <strong>"${escape(q)}"</strong>:` : ':');
 };
