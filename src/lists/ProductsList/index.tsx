@@ -20,8 +20,8 @@ const HOC = compose(
 
   watchFrameSize,
 
-  withPropsOnChange(['frameSize'], ({ frameSize, config }) => ({
-    columns: frameSize.width && countColumns(frameSize.width) || config.columns
+  withPropsOnChange(['frameSize'], ({ columns, frameSize, config }) => ({
+    columns: columns || (frameSize.width && countColumns(frameSize.width) || config.columns)
   })),
 
   withHooks('products')

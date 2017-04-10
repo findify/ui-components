@@ -36,6 +36,7 @@ export const ProductMatches = compose(
       )
     }
     <ProductsList
+      columns={2}
       items={items}
       config={config}
       onProductClick={onProductClick}

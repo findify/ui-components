@@ -47,7 +47,6 @@ const defaultConfig = environment => ({
             loader: 'css-loader',
             options: {
               modules: true,
-              camelCase: true,
               importLoaders: 1,
               localIdentName: '[hash:base64:5]'
             }

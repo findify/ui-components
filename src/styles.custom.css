@@ -20,17 +20,18 @@
 /* Facet */
 .facet{
   font-family: var(--typography-filter-font);
+}
 
-  &-title{
-    color: var(--colors-filter-header);
-  }
+.facetTitle{
+  color: var(--colors-filter-header);
+}
 
-  &-item {
-    color: var(--colors-filter-list);
-    &-selected{
-      color: var(--colors-filter-selected);
-    }
-  }
+.facetItem {
+  color: var(--colors-filter-list);
+}
+
+.facetItemSelected{
+  color: var(--colors-filter-selected);
 }
 
 /* PRODUCT */
@@ -38,35 +39,33 @@
   font-family: var(--typography-product-font);
   text-align: var(--typography-product-alignment);
   text-transform: var(--typography-product-transform);
+}
 
-  &-title {
-    color: var(--colors-product-title);
-    font-size: calc(var(--typography-product-size) * 1em);
-  }
+.productTitle {
+  color: var(--colors-product-title);
+  font-size: calc(var(--typography-product-size) * 1em);
+}
 
-  &-description{
-    color: var(--colors-product-description);
-    font-size: calc(var(--typography-product-size) * 1em);
-  }
+.productDescription{
+  color: var(--colors-product-description);
+  font-size: calc(var(--typography-product-size) * 1em);
+}
 
-  &-price{
-    font-family: var(--typography-price-font);
-    font-size: calc(var(--typography-price-size) * 1em);
-  }
+.productPrice{
+  font-family: var(--typography-price-font);
+  font-size: calc(var(--typography-price-size) * 1em);
+}
 
-  &-price-sale{
-    color: var( --colors-price-sale);
-  }
+.productPriceSale{
+  color: var( --colors-price-sale);
+}
 
-  &-price-regular{
-    color: var( --colors-price-regular);
-  }
+.productPriceRegular{
+  color: var( --colors-price-regular);
 }
 
 /* AUTOCOMPLETE */
-.autocomplete {
-  &-suggestion{
-    font-family: var(--typography-autocompleteSuggestion-font);
-    color: var(--colors-autocompleteSuggestion-title);
-  }
+.autocompleteSuggestion{
+  font-family: var(--typography-autocompleteSuggestion-font);
+  color: var(--colors-autocompleteSuggestion-title);
 }
