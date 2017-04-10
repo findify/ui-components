@@ -34,10 +34,6 @@ export const Autocomplete: any = compose(
     suggestion: [],
     items: []
   }),
-  mapProps(({ suggestions = [], ...props }) => ({
-    ...props,
-    suggestions: (suggestions as any).map((s) => s.value),
-  })),
   branch(
     ({ isMobile }) => !isMobile,
     renderComponent(AutocompleteBody),

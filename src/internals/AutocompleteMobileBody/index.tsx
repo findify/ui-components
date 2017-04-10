@@ -43,13 +43,13 @@ export const AutocompleteMobileBody = withHandlers({
     </form>
     <div className={styles.suggestions}>
       {
-        suggestions.map((suggestion: string, i: number) =>
+        !!suggestions && suggestions.map((suggestion: any, i: number) =>
           <span
             key={i}
             className={styles.suggestionsItem}
             onClick={() => onSubmit(suggestion)}
             dangerouslySetInnerHTML={{
-              __html: highlightSuggestion(suggestion, query),
+              __html: highlightSuggestion(suggestion.value, query),
             }}
           />
         )
