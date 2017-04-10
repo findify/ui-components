@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as cx from 'classnames';
-import { compose, renderNothing, renderComponent, withProps, branch } from 'recompose';
+import { branch, compose, defaultProps, renderComponent, renderNothing, withProps } from 'recompose';
 import { AutoSizer } from 'react-virtualized/dist/commonjs/AutoSizer';
 import { List } from 'react-virtualized/dist/commonjs/List';
 import { CellMeasurer } from 'react-virtualized/dist/commonjs/CellMeasurer';
@@ -10,8 +10,8 @@ const styles = require('./styles.css');
 const NestingComponent = ({ isRoot, ...rest }) => React.createElement('div', rest);
 const customStyles = require('customStyles');
 
-const StaticList = ({ selected, Nested, children, ...rest }: any) => (
-  <div className={styles.list}>
+const StaticList = ({ withScroll, selected, Nested, children, ...rest }: any) => (
+  <div className={cx(styles.list, withScroll && styles.scroll)}>
     { 
       children.map((item, index) =>
         <Nested
@@ -61,23 +61,11 @@ const ListRenderer = compose(
 
   branch(
     ({ isExpanded, childrenCount, hasSelectedSiblings, config }: any) =>
-      isExpanded && !hasSelectedSiblings && childrenCount > config.maxItemsCount,
+      isExpanded,
 
     compose(
-      withProps(({ Nested, children, ...rest }: any) => ({
-        rowHeight: rest.config.rowHeight,
-        itemsCount: rest.config.maxItemsCount,
-        items: children,
-        rowRenderer: ({ index, key, style }) =>
-          <Nested
-            {...rest}
-            {...children[index]}
-            title={children[index].value}
-            key={key}
-            style={style}
-            index={index} />
-        })),
-      renderComponent(VirtualizedList)
+      defaultProps({ withScroll: true }),
+      renderComponent(StaticList)
     ),
   
     compose(

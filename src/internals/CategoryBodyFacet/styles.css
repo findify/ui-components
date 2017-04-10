@@ -39,7 +39,7 @@
   display: table-cell;
 }
 
-.next-icon, prev-icon {
+.next-icon, .prev-icon {
   margin: 0 0 0 5px;
   font-size: .7em;
   color: #404040;
@@ -58,6 +58,11 @@
   .item.selected & {
     display: none;
   }
+}
+
+.scroll{
+  max-height: 150px;
+  overflow-y: auto;
 }
 
 

@@ -81,11 +81,63 @@ export const values = [
   },
   {  
     "type":"category",
-    "selected":false,
+    "selected":true,
     "count":398,
     "hasChildren":true,
     "value":"Katt",
-    "name":"category1"
+    "name":"category1",
+    children: [
+      {  
+        "type":"category",
+        "selected":false,
+        "count":9,
+        "hasChildren":true,
+        "value":"Fågel",
+        "name":"category1",
+        children: [
+          {  
+            "type":"category",
+            "selected":false,
+            "count":9,
+            "hasChildren":true,
+            "value":"Fågel1",
+            "name":"category1"
+          },
+          {  
+            "type":"category",
+            "selected":false,
+            "count":4,
+            "hasChildren":true,
+            "value":"Reptil1",
+            "name":"category1"
+          },
+          {  
+            "type":"category",
+            "selected":false,
+            "count":1,
+            "hasChildren":true,
+            "value":"Fisk1",
+            "name":"category1"
+          }
+        ]
+      },
+      {  
+        "type":"category",
+        "selected":false,
+        "count":4,
+        "hasChildren":true,
+        "value":"Reptil",
+        "name":"category1"
+      },
+      {  
+        "type":"category",
+        "selected":false,
+        "count":1,
+        "hasChildren":true,
+        "value":"Fisk",
+        "name":"category1"
+      }
+    ]
   },
   {  
     "type":"category",
