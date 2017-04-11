@@ -28,7 +28,7 @@ const sliderProps = {
   slidesToShow: 5,
   slidesToScroll: 1,
   arrows: true,
-  lazyLoad: true,
+  lazyLoad: false,
   nextArrow: <Arrow dir='right' />,
   prevArrow: <Arrow dir='left' />
 };
