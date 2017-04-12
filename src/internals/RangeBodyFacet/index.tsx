@@ -53,7 +53,7 @@ export const RangeBodyFacet = compose(
       <NumberInput
         style={false}
         className={styles.input}
-        placeholder={minValue}
+        value={minValue}
         min={0}
         max={maxValue}
         onChange={updateMin} />
@@ -64,7 +64,7 @@ export const RangeBodyFacet = compose(
       <NumberInput
         style={false}
         className={styles.input}
-        placeholder={maxValue}
+        value={maxValue}
         min={minValue}
         onChange={updateMax} />
       <span className={styles.currency}>{currencySymbol}</span>
