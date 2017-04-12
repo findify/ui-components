@@ -1,27 +1,22 @@
 import * as React from 'react';
-import { compose, setDisplayName, defaultProps, createEagerElement, withPropsOnChange } from 'recompose';
+import { compose, mapProps, setDisplayName, defaultProps, createEagerElement, withPropsOnChange } from 'recompose';
 import withConfig from 'helpers/withConfig';
-import watchFrameSize from 'helpers/watchFrameSize';
 import { Product } from 'widgets/Product';
 import { Grid } from 'widgets/Grid';
 import withHooks from 'helpers/withHooks';
-
+import sizeMe from 'react-sizeme';
 
 const countColumns = (width) => {
-  if (width > 600) return 3;
+  if (width > 400) return 3;
   return 2;
 };
 
 const HOC = compose(
   setDisplayName('ProductsList'),
-  withConfig({
-    columns: 3
-  }),
 
-  watchFrameSize,
-
-  withPropsOnChange(['frameSize'], ({ columns, frameSize, config }) => ({
-    columns: columns || (frameSize.width && countColumns(frameSize.width) || config.columns)
+  sizeMe(),
+  withPropsOnChange(['size'], ({size}) => ({ 
+    columns: countColumns(size.width)
   })),
 
   withHooks('products')

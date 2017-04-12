@@ -13,6 +13,7 @@
     "currency-formatter": "^1.1.1",
     "humps": "^2.0.0",
     "immutable": "^3.8.1",
+    "match-media": "^0.2.0",
     "normalize.css": "^5.0.0",
     "qs": "^6.4.0",
     "react": "^15.4.1",
@@ -20,12 +21,12 @@
     "react-dom": "^15.4.1",
     "react-dropdown": "^1.2.0",
     "react-numeric-input": "2.0.4",
+    "react-sizeme": "^2.3.1",
     "react-slick": "^0.14.6",
     "react-truncate": "^2.0.5",
     "react-virtualized": "^8.11.4",
     "recompose": "^0.22.0",
-    "tinycolor2": "^1.4.1",
-    "match-media": "^0.2.0"
+    "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "^3.3.0",

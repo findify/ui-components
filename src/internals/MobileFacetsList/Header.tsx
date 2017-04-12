@@ -10,6 +10,7 @@ import {
   withPropsOnChange
 } from 'recompose';
 import * as cx from 'classnames';
+import { keys } from 'lodash';
 
 const styles = require('./styles.css');
 
@@ -47,7 +48,7 @@ const RootHeader = compose(
 
 
 const FacetHeader = branch(
-  ({ changes, selectedFacet }: any) => !!changes[selectedFacet],
+  ({ changes, selectedFacet }: any) => !!(changes[selectedFacet] && !!keys(changes[selectedFacet]).length),
 
   renderComponent(({ onCommit, config }) => (
     <Button onClick={() => onCommit()}>
@@ -58,7 +59,7 @@ const FacetHeader = branch(
   renderComponent(({ onBackToFacets, config }) => (
     <Button onClick={onBackToFacets} flat>
       <span className={cx(styles.icon, styles.pre, 'fa', 'fa-chevron-left')} />
-      { config.facets.i18n.backToMenu }
+      { config.facets.i18n.backToFilters }
     </Button>
   )),
 
@@ -69,8 +70,8 @@ export const FacetTitle = branch(
   ({ selectedFacet }: any) => !selectedFacet,
   renderNothing,
   renderComponent(compose(
-    withProps((props: any) => ({
-      showRest: !!props.changes[props.selectedFacet] || !!props.getSelected(props.selectedFacet)
+    withProps(({ changes, selectedFacet, getSelected }) => ({
+      showRest: !!(changes[selectedFacet] && !!keys(changes[selectedFacet]).length) || !!getSelected(selectedFacet)
     })),
     withHandlers({
       onReset: ({ onReset, selectedFacet, facets }) => () => {
