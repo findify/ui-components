@@ -10,14 +10,14 @@ const styles = require('./styles.css');
 export const RangeBodyFacet = compose(
   mapProps(({ min, max, ...rest }) => ({
     ...rest,
-    min: parseInt(min),
-    max: parseInt(max),
+    initialMin: parseInt(min),
+    initialMax: parseInt(max),
   })),
   withPropsOnChange(['config'], ({ config }) =>({
     currencySymbol: <span className={styles.currency}>{findCurrency(config.currency.code).symbol}</span>
   })),
-  withState('minValue', 'setMinValue', props => props.min),
-  withState('maxValue', 'setMaxValue', props => props.max),
+  withState('minValue', 'setMinValue', props => props.initialMin),
+  withState('maxValue', 'setMaxValue', props => props.initialMax),
   withState('min', 'setMin', void 0),
   withState('max', 'setMax', void 0),
   withHandlers({
@@ -55,6 +55,8 @@ export const RangeBodyFacet = compose(
     i18n
   },
   currencySymbol,
+  initialMin,
+  initialMax,
   max,
   min,
 }: any) => (
@@ -67,7 +69,7 @@ export const RangeBodyFacet = compose(
         style={false}
         className={styles.input}
         value={min}
-        min={0}
+        min={initialMin}
         max={maxValue}
         onChange={updateMin} />
       { 
@@ -84,6 +86,7 @@ export const RangeBodyFacet = compose(
         className={styles.input}
         value={max}
         min={minValue}
+        max={initialMax}
         onChange={updateMax} />
       { 
         !currency.symbolOnLeft && currencySymbol
