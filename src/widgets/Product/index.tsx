@@ -103,7 +103,7 @@ export const Component = (({
       <Image className={styles.image} src={imageUrl || thumbnailUrl} alt={title} />
       <Stickers config={config.stickers} stickers={stickers} />
     </div>
-    <div className={styles.description}>
+    <div className={styles.content}>
       <Title text={title} config={config.title}/>
       <Description text={description} config={config.description}/>
     </div>
