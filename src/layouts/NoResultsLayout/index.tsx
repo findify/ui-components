@@ -9,7 +9,7 @@ const styles = require('./styles.css');
 
 const HOC = compose(
   withPropsOnChange(['config', 'query'], ({ config, query }) => ({
-    title: template(config.i18n.noResult)(escape(query))
+    title: config.i18n.noResult.replace('<span class="findify-query"></span>', (escape(query)))
   })),
   withHooks('noResults')
 );
