@@ -60,8 +60,8 @@ const ListRenderer = compose(
   ),
 
   branch(
-    ({ isExpanded, childrenCount, hasSelectedSiblings, config }: any) =>
-      isExpanded,
+    ({ isExpanded, isMobile, childrenCount, hasSelectedSiblings, config }: any) =>
+      isExpanded || isMobile,
 
     compose(
       defaultProps({ withScroll: true }),
