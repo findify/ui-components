@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { compose, withPropsOnChange, createEagerFactory, setDisplayName } from 'recompose';
+import { compose, pure, withPropsOnChange, createEagerFactory, setDisplayName } from 'recompose';
 import * as cx from 'classnames';
 import { memoize } from 'lodash';
 
@@ -14,9 +14,11 @@ const Column = createEagerFactory(({ className, children, columnClass, columnSty
 const getClassName = memoize((columns) => columns.split('|').map(value => styles[`column-${value}`]));
 
 export const Grid: any = compose(
+  pure,
   setDisplayName('Grid'),
   withPropsOnChange(['columns', 'children'], ({ columns, children }: GridType) => {
     const classNames = getClassName(columns);
+    console.log(children)
     return {
       children: React.Children.map(children, (child: any, index: number) => child &&
         Column({

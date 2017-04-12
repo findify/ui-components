@@ -22,7 +22,7 @@ const Component: any = ({
 }) => (
   <div className={styles.root}>
     <p className={styles.title} dangerouslySetInnerHTML={{ __html: title }}/>
-    <ProductsList {...config} items={items} onProductClick={onProductClick} />
+    <ProductsList config={config} items={items} onProductClick={onProductClick} />
   </div>
 );
 

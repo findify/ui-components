@@ -40,12 +40,15 @@ export default featureType => BaseComponent => {
     })),
 
     hook('didUpdate', lifecycle({
-      componentDidMount() {
-        updateCallback(this)
-      },
       componentDidUpdate(){
         updateCallback(this)
       }
+    })),
+
+    hook('didMount', lifecycle({
+      componentDidMount() {
+        updateCallback(this)
+      },
     })),
   )(BaseComponent);
 }
