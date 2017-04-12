@@ -44,19 +44,20 @@ export const MobileFacetsList = compose(
     })
   })),
   withHandlers({
-    onCommit: ({ updateChanges, onChange, changes, updateFacets, setSelectedFacet }) => (direct) => {
-      const update = direct || changes;
-      const res = new Array();
-      
-      for (let facet of Object.keys(update)) {
-        for (let field of Object.keys(update[facet])) {
-          res.push(update[facet][field]);
+    onCommit: ({ updateChanges, onChange, changes, updateFacets, setSelectedFacet }) =>
+      (direct, shouldCollapse = true) => {
+        const update = direct || changes;
+        const res = new Array();
+        
+        for (let facet of Object.keys(update)) {
+          for (let field of Object.keys(update[facet])) {
+            res.push(update[facet][field]);
+          }
         }
-      }
-      updateChanges({});
-      onChange(res);
-      setSelectedFacet(false);
-    },
+        updateChanges({});
+        onChange(res);
+        shouldCollapse && setSelectedFacet(false);
+      },
 
     getSelected: ({ facets }) => facetKey => facets
       .find(facet => facet.name === facetKey)
@@ -64,15 +65,23 @@ export const MobileFacetsList = compose(
       .filter(value => value.selected)
       .length,
 
-    onChange: ({ updateChanges, changes }) => (update) =>  {
-      const { name, changes: { value } } = update;
-      updateChanges({ ...changes, [name]: { ...changes[name], [value]: update } });
-    },
-
     onBackToFacets: ({ setSelectedFacet }) => () => setSelectedFacet(false)
   }),
 
   withHandlers({
+    onChange: ({ updateChanges, changes, onCommit }) => (update) =>  {
+      const { type, name, changes: { value } } = update;
+      
+      if (changes && changes[name] && changes[name][value]) {
+        const mutation = { ...changes };
+        delete mutation[name][value];
+        return updateChanges(mutation);
+      }
+      updateChanges({ ...changes, [name]: { ...changes[name], [value]: update } },
+        () => type === 'category' && onCommit()
+      );
+    },
+
     onReset: ({ onCommit, onChange, updateChanges, facets, changes }) => (type, name, commit = true) => {
       const facet = facets.find(facet => facet.name === name);
       let update = {...changes};
@@ -99,7 +108,7 @@ export const MobileFacetsList = compose(
           };
         }
       };
-      if (commit) return onCommit(update);
+      if (commit) return onCommit(update, false);
       return update;
     },
   }),

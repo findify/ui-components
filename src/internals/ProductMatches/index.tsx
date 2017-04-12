@@ -19,6 +19,7 @@ export const ProductMatches = compose(
     ...rest,
     items: camelizeKeys(items)
   })),
+  
 )(({
   items,
   title,

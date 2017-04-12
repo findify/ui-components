@@ -18,7 +18,6 @@ export const Autocomplete: any = compose(
     },
     position: 'left',
     i18n: {},
-    columns: 2,
     product: {
       simple: true,
       title: {

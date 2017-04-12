@@ -30,14 +30,13 @@ export default withState('isOpen', 'toggleOpen', false)
   return (
     <div>
       {/*<button onClick={() => toggleOpen(true)}>Open Mobile popup</button>*/}
-      {/*{ 
-        isOpen &&
+      { 
         <div style={rootStyle}>
           <div style={containerStyle}>
             <Container { ...props } {...{ toggleOpen, isMobile: true }} />
           </div>
         </div>
-      }*/}
+      }
       {/*<div style={{ margin: 50, width: 400, position: 'relative' }}>
         <Container {...props} />
       </div>*/}

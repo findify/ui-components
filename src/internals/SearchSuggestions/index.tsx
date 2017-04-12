@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as cx from 'classnames';
+import withHooks from 'helpers/withHooks';
 
 const styles = require('./styles.css');
 const customStyles = require('customStyles');
@@ -13,7 +14,7 @@ type Props = {
   styles: any 
 };
 
-export const SearchSuggestions = ({
+export const SearchSuggestions = withHooks('suggestions')(({
   title,
   suggestions,
   selectedSuggestion,
@@ -48,7 +49,7 @@ export const SearchSuggestions = ({
       }
     </div>
   </div>
-);
+));
 
 function highlightSuggestion(value: string, highlighted: string) {
   const regexp = new RegExp(`(${highlighted})`);
