@@ -1,6 +1,6 @@
 import { DOM } from 'react';
 import { compose, lifecycle, onlyUpdateForKeys, pure, withProps, mapProps, withState } from 'recompose';
-import * as cx from 'classNames';
+import * as cx from 'classnames';
 
 const styles = require('./styles.css');
 
