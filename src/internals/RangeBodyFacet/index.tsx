@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { compose, withState, withHandlers, mapProps } from 'recompose';
+import { compose, withState, withHandlers, mapProps, withPropsOnChange } from 'recompose';
 import NumberInput from 'react-numeric-input';
 import formatRange from 'helpers/formatRange';
 import { findCurrency } from 'currency-formatter'
@@ -12,10 +12,14 @@ export const RangeBodyFacet = compose(
     ...rest,
     min: parseInt(min),
     max: parseInt(max),
-    currencySymbol: findCurrency(rest.config.currency.code).symbol
   })),
-  withState('minValue', 'setMin', props => props.min),
-  withState('maxValue', 'setMax', props => props.max),
+  withPropsOnChange(['config'], ({ config }) =>({
+    currencySymbol: <span className={styles.currency}>{findCurrency(config.currency.code).symbol}</span>
+  })),
+  withState('minValue', 'setMinValue', props => props.min),
+  withState('maxValue', 'setMaxValue', props => props.max),
+  withState('min', 'setMin', void 0),
+  withState('max', 'setMax', void 0),
   withHandlers({
     onCommit: ({ name, values, onChange, minValue: from, maxValue: to, setMin, setMax, config }) =>
     () => {
@@ -27,13 +31,17 @@ export const RangeBodyFacet = compose(
       setMin(void 0);
       setMax(void 0);
     },
-    updateMin: ({ setMin, min, maxValue }) => (_, value) => {
+    updateMin: ({ setMinValue, setMin, min, maxValue }) => (_, value) => {
       const val = parseInt(value) || min;
-      return setMin(val > maxValue ? maxValue : val)
+      const normalizedValue = val > maxValue ? maxValue : val
+      setMin(normalizedValue)
+      return setMinValue(normalizedValue)
     },
-    updateMax: ({ setMax, max, minValue }) => (_, value) => {
+    updateMax: ({ setMaxValue, setMax, max, minValue }) => (_, value) => {
       const val = parseInt(value) || max;
-      return setMax(val < minValue ? minValue : val);
+      const normalizedValue = val < minValue ? minValue : val;
+      setMax(normalizedValue)
+      return setMaxValue(normalizedValue);
     },
   })
 )(({
@@ -42,35 +50,47 @@ export const RangeBodyFacet = compose(
   updateMin,
   updateMax,
   onCommit,
-  config,
+  config: {
+    currency,
+    i18n
+  },
   currencySymbol,
   max,
   min,
-  i18n
 }: any) => (
   <div className={styles.wrap}>
     <div className={styles.inputWrap}>
+      { 
+        !!currency.symbolOnLeft && currencySymbol
+      }
       <NumberInput
         style={false}
         className={styles.input}
-        value={minValue}
+        value={min}
         min={0}
         max={maxValue}
         onChange={updateMin} />
-      <span className={styles.currency}>{currencySymbol}</span>
+      { 
+        !currency.symbolOnLeft && currencySymbol
+      }
     </div>
     <div className={styles.separator}>-</div>
     <div className={styles.inputWrap}>
+      { 
+        !!currency.symbolOnLeft && currencySymbol
+      }
       <NumberInput
         style={false}
         className={styles.input}
-        value={maxValue}
+        value={max}
         min={minValue}
         onChange={updateMax} />
-      <span className={styles.currency}>{currencySymbol}</span>
+      { 
+        !currency.symbolOnLeft && currencySymbol
+      }
     </div>
     <div className={styles.commitWrap}>
-      <button className={styles.button} onClick={onCommit}>{config.i18n.submit}</button>
+      <button className={styles.button} onClick={onCommit}>{i18n.submit}</button>
     </div>
   </div>
 ));

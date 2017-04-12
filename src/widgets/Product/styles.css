@@ -44,6 +44,7 @@
   color: #404040;
   font-size: 14px;
   margin: 5px 0;
+  font-weight: normal;
   word-wrap: break-word;
   .simple &{
     margin: 10px 0;
