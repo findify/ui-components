@@ -15,8 +15,6 @@ const createHook = type => (hookName, decorator) => branch(
   identity
 );
 
-
-
 export default featureType => BaseComponent => {
   const hook = createHook(featureType);
   const updateCallback = instance =>
@@ -41,13 +39,19 @@ export default featureType => BaseComponent => {
 
     hook('didUpdate', lifecycle({
       componentDidUpdate(){
-        updateCallback(this)
+        this.props.hooks[featureType].didUpdate({
+          node: findDOMNode(this),
+          data: this.props
+        });
       }
     })),
 
     hook('didMount', lifecycle({
       componentDidMount() {
-        updateCallback(this)
+        this.props.hooks[featureType].didMount({
+          node: findDOMNode(this),
+          data: this.props
+        });
       },
     })),
   )(BaseComponent);
