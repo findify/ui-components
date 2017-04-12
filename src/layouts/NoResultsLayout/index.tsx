@@ -9,7 +9,10 @@ const styles = require('./styles.css');
 
 const HOC = compose(
   withPropsOnChange(['config', 'query'], ({ config, query }) => ({
-    title: config.i18n.noResult.replace('<span class="findify-query"></span>', (escape(query)))
+    title: config.i18n.noResult.replace(
+      '<span class="findify-query"></span>',
+      `<strong>${escape(query)}</strong>`
+    )
   })),
   withHooks('noResults')
 );
