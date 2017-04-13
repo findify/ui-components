@@ -7,6 +7,8 @@ import withHooks from 'helpers/withHooks';
 import sizeMe from 'react-sizeme';
 
 const countColumns = (width) => {
+  if (width > 1100) return 5;
+  if (width > 700) return 4;
   if (width > 400) return 3;
   return 2;
 };

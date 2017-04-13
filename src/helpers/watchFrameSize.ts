@@ -1,6 +1,7 @@
-import { Component, PropTypes } from 'react';
-
+import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { createEagerFactory } from 'recompose';
+
 export default BaseComponent => {
   const factory = createEagerFactory(BaseComponent);
 

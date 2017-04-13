@@ -4,6 +4,7 @@ import NumberInput from 'react-numeric-input';
 import formatRange from 'helpers/formatRange';
 import { findCurrency } from 'currency-formatter'
 import { getRangeFacetKey } from 'helpers/getRangeFacetKey';
+import * as cx from 'classnames';
 
 const styles = require('./styles.css');
 
@@ -13,9 +14,18 @@ export const RangeBodyFacet = compose(
     initialMin: parseInt(min),
     initialMax: parseInt(max),
   })),
-  withPropsOnChange(['config'], ({ config }) =>({
-    currencySymbol: <span className={styles.currency}>{findCurrency(config.currency.code).symbol}</span>
-  })),
+  withPropsOnChange(['config'], ({ config }) => {
+    const currency = findCurrency(config.currency.code);
+    const symbolOnLeft = config.currency.symbolOnLeft || currency.symbolOnLeft;
+    return {
+      symbolOnLeft,
+      currencySymbol: (
+        <span className={cx(styles.currency, symbolOnLeft && styles.pullRight)}>
+          { currency.symbol }
+        </span>
+      )
+    }
+  }),
   withState('minValue', 'setMinValue', props => props.initialMin),
   withState('maxValue', 'setMaxValue', props => props.initialMax),
   withState('min', 'setMin', void 0),
@@ -51,19 +61,19 @@ export const RangeBodyFacet = compose(
   updateMax,
   onCommit,
   config: {
-    currency,
     i18n
   },
+  symbolOnLeft,
   currencySymbol,
   initialMin,
   initialMax,
   max,
   min,
 }: any) => (
-  <div className={styles.wrap}>
+  <div className={styles.root}>
     <div className={styles.inputWrap}>
       { 
-        !!currency.symbolOnLeft && currencySymbol
+        !!symbolOnLeft && currencySymbol
       }
       <NumberInput
         style={false}
@@ -73,13 +83,13 @@ export const RangeBodyFacet = compose(
         max={maxValue}
         onChange={updateMin} />
       { 
-        !currency.symbolOnLeft && currencySymbol
+        !symbolOnLeft && currencySymbol
       }
     </div>
     <div className={styles.separator}>-</div>
     <div className={styles.inputWrap}>
       { 
-        !!currency.symbolOnLeft && currencySymbol
+        !!symbolOnLeft && currencySymbol
       }
       <NumberInput
         style={false}
@@ -89,7 +99,7 @@ export const RangeBodyFacet = compose(
         max={initialMax}
         onChange={updateMax} />
       { 
-        !currency.symbolOnLeft && currencySymbol
+        !symbolOnLeft && currencySymbol
       }
     </div>
     <div className={styles.commitWrap}>

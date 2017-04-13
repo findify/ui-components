@@ -18,7 +18,6 @@ export const Grid: any = compose(
   setDisplayName('Grid'),
   withPropsOnChange(['columns', 'children'], ({ columns, children }: GridType) => {
     const classNames = getClassName(columns);
-    console.log(children)
     return {
       children: React.Children.map(children, (child: any, index: number) => child &&
         Column({

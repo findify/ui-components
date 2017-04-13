@@ -1,14 +1,14 @@
-.wrap {
+.root {
   display: table;
   font-size: 14px;
 }
 
-.inputWrap {
+.input-wrap {
   display: table-cell;
   white-space: nowrap;
 }
 
-.commitWrap {
+.commit-wrap {
   display: table-cell;
   width: 100%;
   text-align: right;
@@ -18,12 +18,18 @@
   margin: 0 1px;
   width: 44px;
   padding: 3px 2px;
-  margin-right: 5px;
   border: 2px solid #ececec;
   outline: none;
   transition: border-color .1s ease-in;
   &:focus {
     border-color: color(#ececec shade(10%));
+  }
+}
+
+.currency{
+  margin: 0 0 0 3px;
+  &.pull-right {
+    margin: 0 3px 0 0;
   }
 }
 
@@ -46,3 +52,24 @@
   display: table-cell;
   padding: 0 10px;
 }
+
+@supports(display: flex) {
+  .root{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .input-wrap{
+    margin-bottom: 5px;
+  }
+  .commit-wrap {
+    display: block;
+    margin-bottom: 5px;
+    flex: 1;
+  }
+  .separator{
+    margin-bottom: 5px;
+  }
+}
+

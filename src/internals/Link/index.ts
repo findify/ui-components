@@ -1,4 +1,5 @@
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+
 import {
   compose, setDisplayName, getContext,
   withHandlers, componentFromProp, defaultProps,
@@ -7,8 +8,11 @@ import {
 
 const Link: any = compose(
   setDisplayName('Link'),
+
   defaultProps({ component: 'a' }),
+
   getContext({ location: PropTypes.object }),
+
   withHandlers({
     onClick: ({ location, ...props }) => e => {
       e.preventDefault();
@@ -17,6 +21,7 @@ const Link: any = compose(
       }
     }
   }),
+
   mapProps(({ location, ...props }) => props)
 )(componentFromProp('component'));
 

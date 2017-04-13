@@ -11,6 +11,7 @@ import {
   withState
 } from 'recompose';
 import * as cx from 'classnames';
+import withHooks from 'helpers/withHooks';
 
 const styles = require('./styles.css');
 const customStyles = require('customStyles');
@@ -48,15 +49,20 @@ export const Wrapper = (Content) => compose(
 
 export const HOC = (Content, WrappedContent) => compose(
   setDisplayName('GenericFacet'),
+
   mapProps(({ stateToProps, ...props }: any) => ({
     ...props,
     values: stateToProps ? stateToProps(props) : props.values
   })),
+
   withHandlers({
     onChange: ({ name, type, values, onChange }: any) => changes => {
       onChange({ type, name, changes });
     }
   }),
+
+  withHooks('facet'),
+
   branch(
     // Return raw content for Mobile wrapper
     ({ isMobile }: any) => isMobile,

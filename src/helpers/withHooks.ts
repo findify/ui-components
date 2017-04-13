@@ -1,7 +1,7 @@
 import { compose, createEagerFactory, branch, lifecycle, mapProps, getContext } from 'recompose';
 import { findDOMNode } from 'react-dom';
 import { identity, isObject, isFunction } from 'lodash';
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 
 const removeFunctions = props => Object.keys(props).reduce((acc, key) =>
   isFunction(props[key]) ? acc : { ...acc, [key]: props[key] }
