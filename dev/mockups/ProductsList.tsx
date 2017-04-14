@@ -4,7 +4,7 @@ import config from '../data/config';
 
 const props = camelizeKeys({
   items: require('../data/raw.json').items,
-  config: { ...config.productsGrid, product: config.product }
+  config: { ...config.productsGrid, product: config.product, title: 'ololo' }
 })
 
 export default ({ Component }) => (

@@ -6,8 +6,10 @@ import { Grid } from 'widgets/Grid';
 import withHooks from 'helpers/withHooks';
 import sizeMe from 'react-sizeme';
 
+const styles = require('./styles.css');
+
 const countColumns = (width) => {
-  if (width > 1100) return 5;
+  if (width > 1100) return 6;
   if (width > 700) return 4;
   if (width > 400) return 3;
   return 2;
@@ -32,22 +34,27 @@ export const Component = ({
   config,
   columns
 }: any) => (
-  <Grid columns={String(12 / columns)} className={className}>
+  <div className={styles.root}>
     { 
-      items.map(product =>
-        createEagerElement(Product, {
-          ...product,
-          key: product.id,
-          config: {
-            ...config.product,
-            stickers: config.stickers
-          },
-          onClick: onProductClick,
-          columnClass: columnClass
-        })
-      )
+      config.title && <h4 className={styles.title}>{ config.title }</h4>
     }
-  </Grid>
+    <Grid columns={String(12 / columns)} className={className}>
+      { 
+        items.map(product =>
+          createEagerElement(Product, {
+            ...product,
+            key: product.id,
+            config: {
+              ...config.product,
+              stickers: config.stickers
+            },
+            onClick: onProductClick,
+            columnClass: columnClass
+          })
+        )
+      }
+    </Grid>
+  </div>
 );
 
 export const ProductsList: any = HOC(Component);
