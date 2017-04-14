@@ -12,7 +12,7 @@ const getPosition = memoize((position) => {
   const root: any = {};
   let container: any = {};
 
-  if (y === 'middle') {
+  if (y === 'center') {
     root.top = '50%';
     container = {
       WebkitTransform: translateZ,
