@@ -63,19 +63,19 @@ const Sticker: any = compose(
     </div>
 ));
 
-export const Stickers: any = ({ stickers, config }) => React.DOM.div(
-{},
-  !!stickers && Object
-  .keys(stickers)
-  .filter(i => {
-    const key = decamelize(i, { separator: '-' });
-    return !!stickers[key] && !!config[key];
-  })
-  .map(key =>
-    createEagerElement(Sticker, {
-      key,
-      value: stickers[key],
-      config: config[key]
-    })
+export const Stickers: any = ({ stickers, config }) => {
+  const cfg = camelizeKeys(config);
+
+  return React.DOM.div({},
+    !!stickers && Object
+    .keys(stickers)
+    .filter(i => stickers[i] && !!cfg[i])
+    .map(key => 
+      createEagerElement(Sticker, {
+        key,
+        value: stickers[key],
+        config: cfg[key]
+      })
+    )
   )
-)
+}

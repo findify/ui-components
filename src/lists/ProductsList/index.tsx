@@ -19,7 +19,7 @@ const HOC = compose(
   setDisplayName('ProductsList'),
 
   sizeMe(),
-  withPropsOnChange(['size'], ({size}) => ({ 
+  withPropsOnChange(['size'], ({ size }) => ({
     columns: countColumns(size.width)
   })),
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { camelizeKeys } from 'humps';
 
-const props = camelizeKeys({
+const props = {
   "id": "1525387649",
   "sku": [
     "SL-ANIM-CHA-JS-XS",
@@ -61,9 +61,7 @@ const props = camelizeKeys({
     "14860563911"
   ],
   "stickers": {
-    "discount": [
-      40
-    ]
+    "free-shipping": true
   },
   "reviews": {
     "average_score": 5,
@@ -86,8 +84,44 @@ const props = camelizeKeys({
       "yes"
     ]
   },
-  "compare_at": 25
-});
+  "compare_at": 25,
+  config: {
+    stickers: {
+      discount: {
+        position: "bottom-center",
+        template: {
+          single: "%s% off",
+          multiple: "Up to %s% off",
+        },
+        styles: {
+          fontFamily: "‘Source Sans Pro’, sans-serif",
+          fontSize: "12",
+          fontWeight: "600",
+          textTransform: "none",
+          color: "#ffffff ",
+          background: "#D83751 ",
+          opacity: "0.9",
+        }
+      },
+      "free-shipping": {
+        position: "bottom-center",
+        template: {
+          single: "Free shipping",
+          multiple: "Free shipping",
+        },
+        styles: {
+          fontFamily: "‘Source Sans Pro’, sans-serif",
+          fontSize: "12",
+          fontWeight: "600",
+          textTransform: "none",
+          color: "#ffffff ",
+          background: "#D83751 ",
+          opacity: "0.9",
+        }
+      }
+    },
+  }
+};
 
 export default ({ Component }) => (
   <div style={{ margin: 50, width: 150, position: 'relative' }}>
