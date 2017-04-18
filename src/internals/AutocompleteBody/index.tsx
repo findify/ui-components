@@ -7,7 +7,7 @@ import { createEagerElement } from 'recompose';
 
 const styles = require('./styles.css');
 
-export function AutocompleteBody({
+export const AutocompleteBody: any = ({
   suggestions,
   items,
   onSearchSuggestionClick,
@@ -22,7 +22,7 @@ export function AutocompleteBody({
     i18n,
     ...config
   }
-}: Props) {
+}: Props) => {
   if (suggestions && !suggestions.length) return null;
 
   const searchSuggestionsNode = createEagerElement(
