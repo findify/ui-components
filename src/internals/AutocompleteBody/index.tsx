@@ -23,7 +23,8 @@ export function AutocompleteBody({
     ...config
   }
 }: Props) {
-  
+  if (suggestions && !suggestions.length) return null;
+
   const searchSuggestionsNode = createEagerElement(
     SearchSuggestions,
     {
