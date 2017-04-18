@@ -39,14 +39,14 @@ const getContent = memoize((value, templates) => {
 const getStyles = memoize(styles => {
   const normalizedStyles = {
     ...styles,
-    fontFamily: styles.fontFamily.replace(';', ''),
+    fontFamily: styles.fontFamily && styles.fontFamily.replace(';', ''),
     fontSize: styles.fontSize + 'px',
   }
   return normalizedStyles;
 });
 
 const Sticker: any = compose(
-  withProps(({ config, value, styles }) => ({
+  withProps(({ config, value }) => ({
     position: getPosition(config.position),
     content: getContent(value, config.template),
     style: getStyles(config.styles)
