@@ -108,7 +108,7 @@ export const Component = (({
       <Description text={description} config={config.description}/>
     </div>
     {
-      reviews &&
+      reviews && !!reviews.averageScore &&
       <div className={styles.rating}>
         <Rating count={reviews.totalReviews} value={reviews.averageScore} />
       </div>
