@@ -22,12 +22,17 @@ const Item = compose(
   onClick,
   checkMarkStyles,
 }: any) =>
-  <button
-    className={cx(styles.item, title === 'Multicolor' && 'multiply-gradient')}
-    style={{ background }}
-    onClick={onClick}>
-    { item.selected && <span style={checkMarkStyles} className={cx(styles.checkMark, 'fa', 'fa-check')}/>}
-  </button>
+  <div className={styles.item}>
+    <button
+      className={cx(styles.ball, title === 'Multicolor' && 'multiply-gradient')}
+      style={{ background }}
+      onClick={onClick}>
+      { item.selected && <span style={checkMarkStyles} className={cx(styles.checkMark, 'fa', 'fa-check')}/>}
+    </button>
+    <div className={styles.tooltip}>
+      {title}
+    </div>
+  </div>
 );
 
 
@@ -35,7 +40,7 @@ export const ColorBodyFacet = ({
   values,
   ...rest
 }: any) => (
-  <div className={styles.list}>
+  <div className={styles.root}>
     {
       values.map(item =>
         createEagerElement(Item, {
