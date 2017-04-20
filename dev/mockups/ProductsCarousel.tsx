@@ -2,7 +2,7 @@ import * as React from 'react';
 import { camelizeKeys } from 'humps';
 
 const props = {
-  items: require('../data/raw.json').items,
+  items: require('../data/raw.json').items.slice(0, 3),
   title: 'CUSTOMERS WHO VIEWED THIS ALSO VIEWED',
   config: {
     slidesToShow: 5,
