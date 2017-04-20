@@ -25,7 +25,7 @@ const Arrow = ({ dir, className, currentSlide, slideCount, ...props }: any) => (
 );
 
 const sliderProps = {
-  infinite: true,
+  infinite: false,
   slidesToShow: 5,
   slidesToScroll: 1,
   arrows: true,
