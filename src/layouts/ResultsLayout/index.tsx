@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as cx from 'classnames';
+import { compose, defaultProps } from 'recompose';
 
 import { Grid } from 'widgets/Grid';
 import { BreadCrumbs } from 'widgets/BreadCrumbs';
@@ -14,7 +15,15 @@ import withHooks from 'helpers/withHooks';
 
 const styles = require('./styles.css');
 
-export const ResultsLayout = withHooks('results')
+export const ResultsLayout = compose(
+  defaultProps({
+    columns: {
+      facets: 4,
+      products: 8,
+    }
+  }),
+  withHooks('results')
+)
 (({
   config,
   isMobile,
@@ -26,7 +35,8 @@ export const ResultsLayout = withHooks('results')
   onBreadCrumbRemove,
   onMobileFacetsOpen,
   onBannerClick,
-  onPoweredByClick
+  onPoweredByClick,
+  columns
 }: any) => (
   <div>
     { 
@@ -77,7 +87,7 @@ export const ResultsLayout = withHooks('results')
       </Grid>
     }
 
-    <Grid columns={isMobile ? '12' : '4|8'}>
+    <Grid columns={isMobile ? '12' : `${columns.facets}|${columns.products}`}>
       {
         !isMobile &&
         <FacetsLayout {...{ isMobile, config, response, onFacetsChange, columnClass: styles.facets }}/>
