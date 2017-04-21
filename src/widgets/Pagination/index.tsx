@@ -53,7 +53,12 @@ export const Pagination: any = compose(
   <div className={cx(styles.root, className)} style={style}>
     {
       showPrev &&
-      <Button label={config.i18n.previous} prependIcon='fa fa-chevron-left' page={current - 1} {...rest} />
+      <Button
+        className={styles.prev}
+        label={config.i18n.previous}
+        prependIcon='fa fa-chevron-left'
+        page={current - 1}
+        {...rest} />
     }
     {showFirst && <Button page={1} label={1} {...rest} />}
     {showFirst && <Button label='...' className={styles.disabled} />}
@@ -66,7 +71,12 @@ export const Pagination: any = compose(
     {showLast && <Button page={total} label={total} {...rest} />}
     {
       showNext &&
-      <Button label={config.i18n.next} page={current + 1} appendIcon='fa fa-chevron-right' {...rest} />
+      <Button
+        className={styles.next}
+        label={config.i18n.next}
+        page={current + 1}
+        appendIcon='fa fa-chevron-right'
+        {...rest} />
     }
   </div>
 ));
