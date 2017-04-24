@@ -101,12 +101,8 @@ export const ResultsLayout = compose(
         }
         <ProductsList
           config={{
-            ...config.productsGrid,
-            stickers: config.stickers,
-            product: {
-              ...config.product,
-              currency: config.currency
-            }
+            ...config,
+            ...config.productsGrid
           }}
           columnClass={styles.product}
           items={response.items}
