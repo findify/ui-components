@@ -84,7 +84,9 @@ export const Component = (({
               {...product}
               onClick={onProductClick}
               config={{
+                ...config,
                 ...config.product,
+                currency: config.currency,
                 stickers
               }} />
           </div>
