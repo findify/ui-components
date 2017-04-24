@@ -46,7 +46,8 @@ export const Component = ({
             key: product.id,
             config: {
               ...config.product,
-              stickers: config.stickers
+              stickers: config.stickers,
+              currency: config.currency
             },
             onClick: onProductClick,
             columnClass: columnClass
