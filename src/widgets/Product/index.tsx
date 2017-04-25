@@ -78,7 +78,8 @@ export const HOC = compose(
     }
   }),
 
-  withHooks('product')
+  withHooks('product'), // Deprecated hook
+  withHooks('item'),
 );
 
 export const Component = (({

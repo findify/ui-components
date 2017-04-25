@@ -23,7 +23,8 @@ const HOC = compose(
     columns: countColumns(size.width)
   })),
 
-  withHooks('products')
+  withHooks('products'),
+  withHooks('grid'),
 );
 
 export const Component = ({

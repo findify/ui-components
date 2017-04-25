@@ -53,7 +53,8 @@ export const HOC = compose(
     slidesToShow: countProductsToShow(size.width)
   })),
 
-  withHooks('slider')
+  withHooks('slider'),  // Deprecated hook
+  withHooks('carousel'),
 );
 
 export const Component = (({

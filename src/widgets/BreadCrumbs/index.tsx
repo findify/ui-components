@@ -90,10 +90,14 @@ export const Component = ({
   filters,
   onChange,
   title,
-  className
+  className,
+  displayQuery
 }: any) => (
   <div className={cx(styles.wrap, className)}>
-    <p className={styles.title} dangerouslySetInnerHTML={{ __html: title }} />
+    {
+      displayQuery &&
+      <p className={styles.title} dangerouslySetInnerHTML={{ __html: title }} />
+    }
     {
       filters.map((filter, index) =>
         filter.values.map(item => {

@@ -36,7 +36,8 @@ export const ResultsLayout = compose(
   onMobileFacetsOpen,
   onBannerClick,
   onPoweredByClick,
-  columns
+  columns,
+  type
 }: any) => (
   <div>
     { 
@@ -46,6 +47,7 @@ export const ResultsLayout = compose(
         {...response.meta}
         className={styles.breadcrumbs}
         onChange={onBreadCrumbRemove}
+        displayQuery={type !== 'collection'}
         config={{
           ...config.breadcrumbs,
           facets: config.facets,

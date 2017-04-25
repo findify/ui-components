@@ -1,7 +1,13 @@
 import { compose, createEagerFactory, branch, lifecycle, mapProps, getContext } from 'recompose';
 import { findDOMNode } from 'react-dom';
-import { identity, isObject, isFunction } from 'lodash';
+import { identity, isObject, isFunction, isArray } from 'lodash';
 import PropTypes from 'prop-types';
+
+const types = {
+  mapProps: 'mapProps',
+  didUpdate: 'didUpdate',
+  didMount: 'didMount'
+};
 
 const removeFunctions = props => Object.keys(props).reduce((acc, key) =>
   isFunction(props[key]) ? acc : { ...acc, [key]: props[key] }
@@ -17,19 +23,16 @@ const createHook = type => (hookName, decorator) => branch(
 
 export default featureType => BaseComponent => {
   const hook = createHook(featureType);
-  const updateCallback = instance =>
-    instance.props.hooks[featureType].didUpdate({
-      node: findDOMNode(instance),
-      data: instance.props
-    });
 
   return compose(
     getContext({ hooks: PropTypes.object }),
 
-    hook('mapProps', mapProps((props:any) => {
+    hook(types.mapProps, mapProps((props:any) => {
       const { hooks, ...restProps } = props;  
       const propsToMap = removeFunctions(restProps);
-      const mappedProps = hooks[featureType].mapProps(propsToMap);
+      
+      const mappedProps = hooks[featureType][types.mapProps](propsToMap);
+
       if (!mappedProps || !isObject(mappedProps) || mappedProps === propsToMap) return props;
       return {
         ...props,
@@ -37,18 +40,18 @@ export default featureType => BaseComponent => {
       };
     })),
 
-    hook('didUpdate', lifecycle({
+    hook(types.didUpdate, lifecycle({
       componentDidUpdate(){
-        this.props.hooks[featureType].didUpdate({
+        this.props.hooks[featureType][types.didUpdate]({
           node: findDOMNode(this),
           data: this.props
         });
       }
     })),
 
-    hook('didMount', lifecycle({
+    hook(types.didMount, lifecycle({
       componentDidMount() {
-        this.props.hooks[featureType].didMount({
+        this.props.hooks[featureType][types.didMount]({
           node: findDOMNode(this),
           data: this.props
         });

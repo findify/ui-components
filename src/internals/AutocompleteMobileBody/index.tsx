@@ -1,26 +1,51 @@
 import * as React from 'react';
 import * as cx from 'classnames';
-import { withHandlers } from 'recompose';
+import { compose, withState, withHandlers, createEagerElement } from 'recompose';
 
 const styles = require('./styles.css');
 
-export const AutocompleteMobileBody = withHandlers({
-  onChange: ({ onInput }) => e => onInput(e.target.value)
-})
-(({
-  meta: {
-    q: query
-  },
+const Suggestion: any = withHandlers({
+  handleClick: ({ suggestion, onClick }) => e => {
+    e.preventDefault();
+    return onClick(suggestion);
+  }
+})(({ handleClick, suggestion, query }:any) => (
+  <span
+    className={styles.suggestionsItem}
+    onClick={handleClick}
+    dangerouslySetInnerHTML={{
+      __html: highlightSuggestion(suggestion.value, query),
+    }}
+  />
+));
+
+export const AutocompleteMobileBody = compose(
+  withState('query', 'setQuery', props => props.query),
+  withHandlers({
+    onChange: ({ onInput, setQuery }) => e => {
+      e.preventDefault();
+      setQuery(e.target.value);
+      return onInput(e.target.value);
+    },
+    onSubmit: ({ onSubmit, query }) => e => {
+      e.preventDefault();
+      return onSubmit(query);
+    },
+    onSelect: ({ onSubmit }) => (suggestion) => onSubmit(suggestion)
+  })
+)(({
+  query,
   suggestions,
   onSubmit,
   onClearClick,
   onInput,
-  onChange
+  onChange,
+  onSelect
 }: Props) => (
   <div className={styles.wrap}>
     <form
       className={styles.form}
-      onSubmit={(e) => onSubmit(query, e)}>
+      onSubmit={onSubmit}>
       <div className={styles.formLeft}>
         <input
           className={styles.input}
@@ -43,15 +68,15 @@ export const AutocompleteMobileBody = withHandlers({
     </form>
     <div className={styles.suggestions}>
       {
-        !!suggestions && suggestions.map((suggestion: any, i: number) =>
-          <span
-            key={i}
-            className={styles.suggestionsItem}
-            onClick={() => onSubmit(suggestion)}
-            dangerouslySetInnerHTML={{
-              __html: highlightSuggestion(suggestion.value, query),
-            }}
-          />
+        !!suggestions && suggestions.map((suggestion: any) =>
+          createEagerElement(Suggestion,
+            {
+              key: suggestion.value,
+              onClick: onSelect,
+              suggestion,
+              query
+            }
+          )
         )
       }
     </div>
@@ -64,12 +89,11 @@ function highlightSuggestion(value: string, highlighted: string) {
 }
 
 type Props = {
-  meta: {
-    q: string
-  },
+  query: string,
   suggestions: string[],
-  onSubmit: (query: string, event?: object) => void,
+  onSubmit: (event?: object) => void,
   onInput: (query: string) => void,
   onClearClick: () => void,
-  onChange
+  onChange,
+  onSelect
 };
