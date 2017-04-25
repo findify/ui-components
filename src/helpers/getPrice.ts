@@ -8,7 +8,7 @@ export const getPrice = (price, currency) => {
   console.log(ddd);
   
   if (!!price.reduce((a, b) => a === b ? a : NaN )) {
-    return format(price[0], currency)
+    return format(price[0], currency);
   }
 
   return [
