@@ -2,7 +2,6 @@ import * as React from 'react';
 import { compose, createEagerElement, withProps } from 'recompose';
 import { memoize, isArray } from 'lodash';
 import template from 'helpers/template';
-import { camelizeKeys, decamelize } from 'humps';
 const styles = require('./styles.css');
 
 const translateZ = 'translateY(-50%)';
@@ -56,25 +55,23 @@ const Sticker: any = compose(
   style,
   content
 }: any) => (
-    <div className={styles.root} style={position.root}>
-      <div className={styles.sticker} style={{ ...position.container, ...style }}>
-        {content}
-      </div>
+  <div className={styles.root} style={position.root}>
+    <div className={styles.sticker} style={{ ...position.container, ...style }}>
+      {content}
     </div>
+  </div>
 ));
 
 export const Stickers: any = ({ stickers, config }) => {
-  const cfg = camelizeKeys(config);
-
   return React.DOM.div({},
     !!stickers && Object
     .keys(stickers)
-    .filter(i => stickers[i] && !!cfg[i])
+    .filter(i => stickers[i] && !!config[i])
     .map(key => 
       createEagerElement(Sticker, {
         key,
         value: stickers[key],
-        config: cfg[key]
+        config: config[key]
       })
     )
   )

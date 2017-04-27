@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { branch, compose, mapProps, pure, renderNothing, withHandlers } from 'recompose';
-import { camelizeKeys } from 'humps';
 import { Rating } from 'widgets/Rating';
 import { getPrice } from 'helpers/getPrice';
 import { format as currencyFormat } from 'currency-formatter';
@@ -14,12 +13,7 @@ export const ProductMatches = compose(
   branch(
     ({ items }) => !items || !items.length,
     renderNothing,
-  ),
-  mapProps(({ items, ...rest }) => ({
-    ...rest,
-    items: camelizeKeys(items)
-  })),
-  
+  )  
 )(({
   items,
   title,

@@ -7,7 +7,6 @@ import {
 import { format as currencyFormat } from 'currency-formatter';
 import * as cx from 'classnames';
 import Truncate from 'react-truncate';
-import { camelizeKeys } from 'humps';
 
 import { Rating } from 'widgets/Rating';
 import Image from 'internals/Image';
@@ -67,8 +66,6 @@ export const HOC = compose(
     stickers: {}
   }),
 
-  mapProps(({ config, ...props }) => ({ ...camelizeKeys(props), config })),
-
   withHandlers({
     onClick: ({ onClick, ...rest }) => e => {
       if (onClick) {
@@ -83,25 +80,25 @@ export const HOC = compose(
 );
 
 export const Component = (({
-  productUrl,
-  imageUrl,
+  product_url,
+  image_url,
   imageQuery,
   description,
-  thumbnailUrl,
+  thumbnail_url,
   title,
   reviews,
   price,
-  compareAt,
+  compare_at,
   onClick,
   config,
   stickers,
 }: any) => (
   <a
     onClick={onClick}
-    href={productUrl}
+    href={product_url}
     className={cx(styles.root, customStyles.product, config.simple && styles.simple)}>
     <div className={styles.imageWrap}>
-      <Image className={styles.image} src={imageUrl || thumbnailUrl} alt={title} />
+      <Image className={styles.image} src={image_url || thumbnail_url} alt={title} />
       <Stickers config={config.stickers} stickers={stickers} />
     </div>
     <div className={styles.content}>
@@ -116,7 +113,7 @@ export const Component = (({
     }
     {
       config.price.display &&
-      <Price price={price} oldPrice={compareAt} currency={config.currency} />
+      <Price price={price} oldPrice={compare_at} currency={config.currency} />
     }
   </a>
 ));
