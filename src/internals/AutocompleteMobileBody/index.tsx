@@ -23,12 +23,12 @@ export const AutocompleteMobileBody = compose(
   withState('query', 'setQuery', props => props.query),
   withHandlers({
     onChange: ({ onInput, setQuery }) => e => {
-      e.preventDefault();
+      if (e) e.preventDefault();
       setQuery(e.target.value);
       return onInput(e.target.value);
     },
     onSubmit: ({ onSubmit, query }) => e => {
-      e.preventDefault();
+      if (e) e.preventDefault();
       return onSubmit(query);
     },
     onSelect: ({ onSubmit }) => (suggestion) => onSubmit(suggestion)

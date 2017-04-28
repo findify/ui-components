@@ -52,7 +52,10 @@ const Filter: any = compose(
   })),
 
   withHandlers({
-    onRemove: ({ onChange, ...rest }: any) => () => onChange(rest)
+    onRemove: ({ onChange, ...rest }: any) => e => {
+      if (e) e.preventDefault();
+      return onChange(rest);
+    }
   })
 )(({
   config,

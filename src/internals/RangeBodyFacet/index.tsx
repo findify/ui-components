@@ -32,7 +32,8 @@ export const RangeBodyFacet = compose(
   withState('max', 'setMax', void 0),
   withHandlers({
     onCommit: ({ name, values, onChange, minValue: from, maxValue: to, setMin, setMax, config }) =>
-    () => {
+    e => {
+      if (e) e.preventDefault();
       if (!from && !to) return;
       const label = formatRange({ from, to, config });
       const key = getRangeFacetKey({ from, to });

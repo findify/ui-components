@@ -55,7 +55,10 @@ export const CheckboxBodyFacet: any = compose(
   })),
 
   withHandlers({
-    toggleExpand: ({ expanded, setExpanded }) => () => setExpanded(!expanded),
+    toggleExpand: ({ expanded, setExpanded }) => e => {
+      if (e) e.preventDefault();
+      return setExpanded(!expanded);
+    },
     onSearchChange: ({ setSearch }) => query => setSearch(query)
   })
 )(({

@@ -8,7 +8,10 @@ const styles = require('./styles.css');
 export const Button: any = compose(
   pure,
   withHandlers({
-    onClick: ({ onChange, page }: any) => () => onChange(page)
+    onClick: ({ onChange, page }: any) => e => {
+      if (e) e.preventDefault();
+      return onChange(page);
+    }
   })
 )(({
   label,

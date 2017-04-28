@@ -12,8 +12,10 @@ const Item = compose(
     checkMarkStyles: ({ color: color(title).isDark() ? '#fff' : '#333'})
   })),
   withHandlers({
-    onClick: ({ onChange, selected, item }: any) => e => 
-      onChange({ ...item, selected: !item.selected }),
+    onClick: ({ onChange, selected, item }: any) => e => {
+      if (e) e.preventDefault();
+      return onChange({ ...item, selected: !item.selected });
+    }
   })
 )(({
   title,

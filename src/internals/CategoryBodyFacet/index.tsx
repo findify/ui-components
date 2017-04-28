@@ -44,7 +44,10 @@ export const CategoryBodyFacet = compose(
   withState('isExpanded', 'setExpanded', false),
 
   withHandlers({
-    toggleExpander: ({ isExpanded, setExpanded }) => () => setExpanded(!isExpanded),
+    toggleExpander: ({ isExpanded, setExpanded }) => e => {
+      if (e) e.preventDefault();
+      return setExpanded(!isExpanded)
+    },
     onChange: ({ children, onChange, cursor }) => ({ track, selected }) => {
       const mapArray = mapArrayToFacetsCreator(children, selected);
       const allTracks = getLost(cursor).concat(track); // Holy Sh*t, we loosing tracks when skipping lvl
