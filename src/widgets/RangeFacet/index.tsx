@@ -4,6 +4,7 @@ import { unescape } from 'lodash';
 
 import { CheckboxBodyFacet } from 'internals/CheckboxBodyFacet';
 import { RangeBodyFacet } from 'internals/RangeBodyFacet';
+import formatRange from 'helpers/formatRange';
 import { GenericFacet } from 'internals/GenericFacet';
 import withConfig from 'helpers/withConfig';
 
@@ -11,7 +12,7 @@ const stateToProps = ({ values, config }) =>
   values.map(value => ({
     ...value,
     key: value.from + '_' + value.to,
-    label: `${value.from || unescape(config.i18n.up) } - ${value.to || unescape(config.i18n.under)}`
+    label: formatRange({ from: value.from, to: value.to, config })
   }));
 
 export const RangeFacet: any = compose(

@@ -4,6 +4,7 @@ import template from 'helpers/template';
 import withConfig from 'helpers/withConfig';
 import { escape } from 'lodash';
 import formatRange from 'helpers/formatRange';
+import formatPrice from 'helpers/formatPrice';
 import { Rating } from 'widgets/rating';
 import {
   compose, pure, withHandlers, withProps,
@@ -33,8 +34,8 @@ const getTitle = ({
 
 const filtersMapping = {
   default: ({ value }) => value,
-  price: props => formatRange(props),
-  range: props => `${props.from} - ${props.to}`,
+  price: props => formatPrice(props),
+  range: props => formatRange(props),
   rating: props => <Rating value={props.from} />,
   color: ({ value, config: { mapping } }) => {
     const isMulticolor = value === 'Multicolor';
