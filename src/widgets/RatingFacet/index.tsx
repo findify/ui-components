@@ -5,27 +5,24 @@ import { unescape } from 'lodash';
 import { CheckboxBodyFacet } from 'internals/CheckboxBodyFacet';
 import { RangeBodyFacet } from 'internals/RangeBodyFacet';
 import { GenericFacet } from 'internals/GenericFacet';
+import { Item } from 'internals/CheckboxBodyFacet/Rating';
 import withConfig from 'helpers/withConfig';
 
 const stateToProps = ({ values, config }) =>
   values.map(value => ({
     ...value,
     key: value.from + '_' + value.to,
-    label: `${value.from || unescape(config.i18n.up) } - ${value.to || unescape(config.i18n.under)}`
+    label: value.from
   }));
 
-export const RangeFacet: any = compose(
+export const RatingFacet: any = compose(
   pure,
   withConfig({
     maxItemsCount: 6,
     rowHeight: 20,
-    i18n: {
-      submit: 'go'
-    }
   }),
 )(props => (
   <GenericFacet {...props} stateToProps={stateToProps}>
-    <CheckboxBodyFacet />
-    <RangeBodyFacet />
+    <CheckboxBodyFacet itemComponent={Item}/>
   </GenericFacet>
 ));

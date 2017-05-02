@@ -13,6 +13,8 @@ export { CategoryFacet } from './widgets/CategoryFacet';
 export { CheckboxFacet } from './widgets/CheckboxFacet';
 export { ColorFacet } from './widgets/ColorFacet';
 export { RangeFacet } from './widgets/RangeFacet';
+export { PriceFacet } from './widgets/PriceFacet';
+export { RatingFacet } from './widgets/RatingFacet';
 export { Grid } from './widgets/Grid';
 export { Pagination } from './widgets/Pagination';
 export { Product } from './widgets/Product';

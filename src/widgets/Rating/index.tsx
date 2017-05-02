@@ -8,7 +8,7 @@ const styles = require('./styles.css');
 const itemsArray = [...Array(5).keys()];
 
 const Start:any = mapProps(({ diff }: any) => ({
-  iconClass: `fa-star${diff === 0.5 ? '-half-o' : diff <= 0 ? '' : '-o'}`
+  iconClass: `fa-star${diff === 0.5 ? '-half-o' : diff < 0 ? '' : '-o'}`
 }))
 (({ iconClass }: any) =>
   <span className={cx(styles.star, iconClass, 'fa')} />

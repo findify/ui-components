@@ -8,42 +8,16 @@ import {
 import { AutoSizer } from 'react-virtualized/dist/commonjs/AutoSizer';
 import { List } from 'react-virtualized/dist/commonjs/List';
 import { CellMeasurer } from 'react-virtualized/dist/commonjs/CellMeasurer';
+import { Item } from './Checkbox';
 
 const styles = require('./styles.css');
 const customStyles = require('customStyles');
 
-const Item = withHandlers({
-  onClick: ({ onChange, item }: any) => () => 
-    onChange({ ...item, selected: !item.selected })
-})(({
-  title,
-  item,
-  onClick,
-  style
-}: any) => (
-  <div 
-    style={style}
-    className={cx(
-      styles.item,
-      customStyles.facetItem,
-      item.selected && styles.selected,
-      item.selected && customStyles.facetItemSelected,
-    )}
-    onClick={onClick}>
-    <div className={cx(styles.checkbox, 'fa', item.selected ? 'fa-check-square' : 'fa-square-o')} />
-    <span
-      className={styles.title}>
-      { title }
-    </span>
-    <span className={styles.count}>({ item.count })</span>
-  </div>
-));
-
-const StaticList = ({ items, config, className, showAll, ...rest }) => (
+const StaticList = ({ items, className, itemComponent = Item, showAll, ...rest }) => (
   <div className={cx(styles.list, className)}>
     { 
       items.map(item =>
-        createEagerElement(Item, {
+        createEagerElement(itemComponent, {
           ...rest,
           item,
           key: item.value,
@@ -54,9 +28,9 @@ const StaticList = ({ items, config, className, showAll, ...rest }) => (
   </div>
 );
 
-const VirtualizedList = withProps(({ items, ...rest }) => ({
+const VirtualizedList = withProps(({ items, itemComponent = Item, ...rest }) => ({
   rowRenderer: ({ index, key, style }) => {
-    return createEagerElement(Item, {
+    return createEagerElement(itemComponent, {
       ...rest,
       item: items[index],
       title: items[index].label || items[index].value,
