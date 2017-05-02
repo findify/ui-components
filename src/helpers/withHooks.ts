@@ -25,7 +25,7 @@ export default featureType => BaseComponent => {
   const hook = createHook(featureType);
 
   return compose(
-    getContext({ hooks: PropTypes.object }),
+    getContext({ hooks: PropTypes.object, featureConfig: PropTypes.object }),
 
     hook(types.mapProps, mapProps((props:any) => {
       const { hooks, ...restProps } = props;  
@@ -42,19 +42,25 @@ export default featureType => BaseComponent => {
 
     hook(types.didUpdate, lifecycle({
       componentDidUpdate(){
-        this.props.hooks[featureType][types.didUpdate]({
-          node: findDOMNode(this),
-          data: this.props
-        });
+        this.props.hooks[featureType][types.didUpdate](
+          {
+            node: findDOMNode(this),
+            data: this.props
+          },
+          this.props.featureConfig
+        );
       }
     })),
 
     hook(types.didMount, lifecycle({
       componentDidMount() {
-        this.props.hooks[featureType][types.didMount]({
-          node: findDOMNode(this),
-          data: this.props
-        });
+        this.props.hooks[featureType][types.didMount](
+          {
+            node: findDOMNode(this),
+            data: this.props
+          },
+          this.props.featureConfig
+        );
       },
     })),
   )(BaseComponent);
