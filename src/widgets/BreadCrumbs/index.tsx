@@ -4,6 +4,7 @@ import template from 'helpers/template';
 import withConfig from 'helpers/withConfig';
 import { escape } from 'lodash';
 import formatRange from 'helpers/formatRange';
+import { Rating } from 'widgets/rating';
 import {
   compose, pure, withHandlers, withProps,
   setDisplayName, withPropsOnChange, createEagerElement
@@ -32,7 +33,9 @@ const getTitle = ({
 
 const filtersMapping = {
   default: ({ value }) => value,
-  range: props => formatRange(props),
+  price: props => formatRange(props),
+  range: props => `${props.from} - ${props.to}`,
+  rating: props => <Rating value={props.from} />,
   color: ({ value, config: { mapping } }) => {
     const isMulticolor = value === 'Multicolor';
     const classNames = [styles.colorFilter, isMulticolor && 'multiply-gradient'];

@@ -2,6 +2,14 @@
   padding: 15px 10px 10px;
 }
 
+.small{
+  width: 210px;
+}
+
+.large{
+  width: 500px;
+}
+
 .wrap {
   display: block;
   position: relative;

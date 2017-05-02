@@ -6,7 +6,7 @@ const Facet = withPropsOnChange(
   ['type'], ({ config, facet }) => {
     const type = config.facets.types && config.facets.types[facet.name] || facet.type;
     return {
-      type,
+      type: facet.type,
       config: { ...config.facets[type], currency: config.currency },
       factory: mapTypeToFacet(type)
     }
