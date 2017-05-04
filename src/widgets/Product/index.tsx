@@ -69,6 +69,7 @@ export const HOC = compose(
   withHandlers({
     onClick: ({ onClick, ...rest }) => e => {
       if (onClick) {
+        if (e.isDefaultPrevented()) return;
         e.preventDefault();
         return onClick(rest);
       }
