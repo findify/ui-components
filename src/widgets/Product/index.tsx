@@ -63,6 +63,9 @@ export const HOC = compose(
     price: {
       display: true
     },
+    reviews: {
+      display: true
+    },
     stickers: {}
   }),
 
@@ -107,9 +110,9 @@ export const Component = (({
       <Description text={description} config={config.description}/>
     </div>
     {
-      reviews && !!reviews.averageScore &&
+      config.reviews.display && reviews && !!reviews.average_score &&
       <div className={styles.rating}>
-        <Rating count={reviews.totalReviews} value={reviews.averageScore} />
+        <Rating count={reviews.total_reviews} value={reviews.average_score} />
       </div>
     }
     {
