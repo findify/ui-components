@@ -76,8 +76,8 @@ export const Component = (({
       createEagerElement(Slider,
         {
           ...sliderProps,
-          ...slickSetting,
-          slidesToShow
+          slidesToShow,
+          ...slickSetting
         },
         items.map(product =>
           <div key={product.hash || product.id}>
