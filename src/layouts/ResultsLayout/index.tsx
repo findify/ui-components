@@ -36,6 +36,7 @@ export const ResultsLayout = compose(
   onMobileFacetsOpen,
   onBannerClick,
   onPoweredByClick,
+  onClearAll,
   columns,
   type
 }: any) => (
@@ -92,7 +93,7 @@ export const ResultsLayout = compose(
     <Grid columns={isMobile ? '12' : `${columns.facets}|${columns.products}`}>
       {
         !isMobile &&
-        <FacetsLayout {...{ isMobile, config, response, onFacetsChange, columnClass: styles.facets }}/>
+        <FacetsLayout {...{ isMobile, config, response, onFacetsChange, onClearAll, columnClass: styles.facets }}/>
       }
   
       <div className={cx(styles.products, !isMobile && styles.productsWithPadding)}>

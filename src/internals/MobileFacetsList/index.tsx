@@ -111,15 +111,9 @@ export const MobileFacetsList = compose(
       if (commit) return onCommit(update, false);
       return update;
     },
+
+    onResetAll: ({ onClearAll }) => onClearAll
   }),
-  withHandlers({
-    onResetAll: ({ facets, onReset, getSelected, onCommit }) => () => {
-      const update = facets
-        .filter(facet => !!getSelected(facet.name))
-        .map(facet => onReset(facet.type, facet.name, false))
-      return onCommit(Object.assign({}, ...update));
-    }
-  })
 )
 (({
   facets,
