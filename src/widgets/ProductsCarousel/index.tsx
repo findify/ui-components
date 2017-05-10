@@ -80,7 +80,7 @@ export const Component = (({
           slidesToShow
         },
         items.map(product =>
-          <div key={product.id}>
+          <div key={product.hash || product.id}>
             <Product
               {...product}
               onClick={onProductClick}

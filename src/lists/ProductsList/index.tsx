@@ -44,7 +44,7 @@ export const Component = ({
         items.map(product =>
           createEagerElement(Product, {
             ...product,
-            key: product.id,
+            key: product.hash || product.id,
             config: {
               ...config.product,
               stickers: config.stickers,
