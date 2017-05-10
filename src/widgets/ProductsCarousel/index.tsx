@@ -25,11 +25,6 @@ const Arrow = ({ dir, className, currentSlide, slideCount, ...props }: any) => (
 );
 
 const sliderProps = {
-  infinite: false,
-  slidesToShow: 5,
-  slidesToScroll: 1,
-  arrows: true,
-  lazyLoad: false,
   nextArrow: <Arrow dir='right' />,
   prevArrow: <Arrow dir='left' />
 };
@@ -46,7 +41,15 @@ const countProductsToShow = (width) => {
 export const HOC = compose(
   setDisplayName('ProductsCarousel'),
 
-  withConfig({ productsToShow: 5 }),
+  withConfig({
+    slickSettings: {
+      infinite: false,
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      arrows: true,
+      lazyLoad: false
+    }
+  }),
 
   sizeMe(),
   withPropsOnChange(['size'], ({size}) => ({ 
@@ -62,7 +65,7 @@ export const Component = (({
   onProductClick,
   slidesToShow,
   config: {
-    slickSetting = emptyObject,
+    slickSettings,
     title,
     stickers,
     ...config
@@ -77,7 +80,7 @@ export const Component = (({
         {
           ...sliderProps,
           slidesToShow,
-          ...slickSetting
+          ...slickSettings
         },
         items.map(product =>
           <div key={product.hash || product.id}>
