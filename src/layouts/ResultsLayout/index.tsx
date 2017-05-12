@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as cx from 'classnames';
-import { compose, defaultProps } from 'recompose';
+import { compose, defaultProps, withPropsOnChange } from 'recompose';
 
 import { Grid } from 'widgets/Grid';
 import { BreadCrumbs } from 'widgets/BreadCrumbs';
@@ -17,11 +17,18 @@ const styles = require('./styles.css');
 
 export const ResultsLayout = compose(
   defaultProps({
+    showFacets: true,
     columns: {
       facets: 4,
       products: 8,
     }
   }),
+
+  withPropsOnChange(['isMobile'], ({ isMobile }) => ({
+    showMobileHeader: !!isMobile,
+    showFacets: !isMobile
+  })),
+
   withHooks('results')
 )
 (({
@@ -38,11 +45,13 @@ export const ResultsLayout = compose(
   onPoweredByClick,
   onClearAll,
   columns,
+  showMobileHeader,
+  showFacets,
   type
 }: any) => (
   <div>
     { 
-      !isMobile &&
+      !showMobileHeader &&
       <div>
         <BreadCrumbs
         {...response.meta}
@@ -64,7 +73,7 @@ export const ResultsLayout = compose(
       </div>
     }
     {
-      !!isMobile &&
+      showMobileHeader &&
       <Grid columns='6|6'>
         <Button
           onClick={onMobileFacetsOpen}
@@ -90,9 +99,9 @@ export const ResultsLayout = compose(
       </Grid>
     }
 
-    <Grid columns={isMobile ? '12' : `${columns.facets}|${columns.products}`}>
+    <Grid columns={showFacets ? `${columns.facets}|${columns.products}` : '12'}>
       {
-        !isMobile &&
+        showFacets &&
         <FacetsLayout {...{ isMobile, config, response, onFacetsChange, onClearAll, columnClass: styles.facets }}/>
       }
   
@@ -131,3 +140,4 @@ export const ResultsLayout = compose(
 
   </div>
 ));
+
