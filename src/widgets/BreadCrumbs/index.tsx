@@ -5,7 +5,7 @@ import withConfig from 'helpers/withConfig';
 import { escape } from 'lodash';
 import formatRange from 'helpers/formatRange';
 import formatPrice from 'helpers/formatPrice';
-import { Rating } from 'widgets/rating';
+import { Rating } from 'widgets/Rating';
 import {
   compose, pure, withHandlers, withProps,
   setDisplayName, withPropsOnChange, createEagerElement

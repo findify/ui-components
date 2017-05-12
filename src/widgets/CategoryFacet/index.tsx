@@ -5,6 +5,8 @@ import { CategoryBodyFacet } from 'internals/CategoryBodyFacet';
 import { GenericFacet } from 'internals/GenericFacet';
 import withConfig from 'helpers/withConfig';
 
+const Body = CategoryBodyFacet;
+
 export const CategoryFacet = withConfig({
   maxItemsCount: 6,
   rowHeight: 20,
@@ -16,6 +18,6 @@ export const CategoryFacet = withConfig({
   }
 })(props => (
   <GenericFacet {...props} >
-    <CategoryBodyFacet />
+    <Body />
   </GenericFacet>
 ));
