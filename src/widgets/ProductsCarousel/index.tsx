@@ -5,7 +5,7 @@ import {
   createEagerElement
 } from 'recompose';
 import { Product } from 'widgets/Product';
-import * as cx from 'classnames';
+const cx = require('classnames');
 import withConfig from 'helpers/withConfig';
 import withHooks from 'helpers/withHooks';
 import watchFrameSize from 'helpers/watchFrameSize';

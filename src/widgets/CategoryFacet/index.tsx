@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { compose, lifecycle, shouldUpdate, withHandlers, withState } from 'recompose';
 
-import { CategoryBodyFacet } from 'internals/CategoryBodyFacet';
+const { CategoryBodyFacet } = require('internals/CategoryBodyFacet');
 import { GenericFacet } from 'internals/GenericFacet';
 import withConfig from 'helpers/withConfig';
 
-const Body = CategoryBodyFacet;
 
 export const CategoryFacet = withConfig({
   maxItemsCount: 6,
@@ -18,6 +17,6 @@ export const CategoryFacet = withConfig({
   }
 })(props => (
   <GenericFacet {...props} >
-    <Body />
+    <CategoryBodyFacet />
   </GenericFacet>
 ));

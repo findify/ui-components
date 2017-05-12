@@ -7,6 +7,8 @@ import formatPrice from 'helpers/formatPrice';
 import { GenericFacet } from 'internals/GenericFacet';
 import withConfig from 'helpers/withConfig';
 
+const Body = CheckboxBodyFacet;
+
 const stateToProps = ({ values, config }) =>
   values.map(value => ({
     ...value,
@@ -25,7 +27,7 @@ export const PriceFacet: any = compose(
   }),
 )(props => (
   <GenericFacet {...props} stateToProps={stateToProps}>
-    <CheckboxBodyFacet />
+    <Body />
     <RangeBodyFacet useCurrency />
   </GenericFacet>
 ));

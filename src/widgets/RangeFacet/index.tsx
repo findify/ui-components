@@ -2,11 +2,13 @@ import * as React from 'react';
 import { compose, pure } from 'recompose';
 import { unescape } from 'lodash';
 
-import { CheckboxBodyFacet } from 'internals/CheckboxBodyFacet';
+const { CheckboxBodyFacet } = require('internals/CheckboxBodyFacet');
 import { RangeBodyFacet } from 'internals/RangeBodyFacet';
 import formatRange from 'helpers/formatRange';
 import { GenericFacet } from 'internals/GenericFacet';
 import withConfig from 'helpers/withConfig';
+
+const Body = CheckboxBodyFacet;
 
 const stateToProps = ({ values, config }) =>
   values.map(value => ({
@@ -26,7 +28,7 @@ export const RangeFacet: any = compose(
   }),
 )(props => (
   <GenericFacet {...props} stateToProps={stateToProps}>
-    <CheckboxBodyFacet />
+    <Body />
     <RangeBodyFacet />
   </GenericFacet>
 ));

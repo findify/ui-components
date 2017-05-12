@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { compose, withState, withHandlers } from 'recompose';
 
-import { CheckboxBodyFacet } from 'internals/CheckboxBodyFacet';
+const { CheckboxBodyFacet } = require('internals/CheckboxBodyFacet');
 import { GenericFacet } from 'internals/GenericFacet';
 import withConfig from 'helpers/withConfig';
 
