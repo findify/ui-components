@@ -41,10 +41,11 @@ export const Component = ({
     }
     <Grid columns={String(12 / columns)} className={className}>
       { 
-        items.map(product =>
+        items.map((product, i) =>
           createEagerElement(Product, {
             ...product,
             key: product.hash || product.id,
+            index: i,
             config: {
               ...config.product,
               stickers: config.stickers,
