@@ -9,9 +9,12 @@ const types = {
   didMount: 'didMount'
 };
 
-const removeFunctions = props => Object.keys(props).reduce((acc, key) =>
-  isFunction(props[key]) ? acc : { ...acc, [key]: props[key] }
-, {});
+const splitProps = props => Object.keys(props).reduce((acc, key) => {
+  const index = isFunction(props[key]) ? 1 : 0;
+  const update = { ...acc[index], [key]: props[key] };
+  acc[index] = update;
+  return acc;
+}, [{}, {}]);
 
 const check = (type, hookName) => ({ hooks }) => hooks && hooks[type] && hooks[type][hookName];
 
@@ -29,9 +32,9 @@ export default featureType => BaseComponent => {
 
     hook(types.mapProps, mapProps((props:any) => {
       const { hooks, ...restProps } = props;  
-      const propsToMap = removeFunctions(restProps);
-      
-      const mappedProps = hooks[featureType][types.mapProps](propsToMap);
+      const propsToMap = splitProps(restProps);
+
+      const mappedProps = hooks[featureType][types.mapProps](...propsToMap);
 
       if (!mappedProps || !isObject(mappedProps) || mappedProps === propsToMap) return props;
       return {
