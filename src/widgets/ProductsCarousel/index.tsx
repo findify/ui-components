@@ -44,7 +44,6 @@ export const HOC = compose(
   withConfig({
     slickSettings: {
       infinite: false,
-      slidesToShow: 5,
       slidesToScroll: 1,
       arrows: true,
       lazyLoad: false
