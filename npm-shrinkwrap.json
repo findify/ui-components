@@ -1,6 +1,6 @@
 {
   "name": "findify-ui-components",
-  "version": "0.2.87",
+  "version": "0.2.88",
   "dependencies": {
     "@kadira/react-split-pane": {
       "version": "1.4.7",
