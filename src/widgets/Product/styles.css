@@ -86,3 +86,10 @@
   margin-left: 5px;
 }
 
+.color{
+  text-transform: none;
+  font-size: 13px;
+  color: #b2b2b2;
+  margin: 5px 0;
+}
+

@@ -66,7 +66,10 @@ export const HOC = compose(
     reviews: {
       display: true
     },
-    stickers: {}
+    stickers: {},
+    i18n: {
+      colorsAvailable: 'Colors available'
+    }
   }),
 
   withHandlers({
@@ -93,6 +96,7 @@ export const Component = (({
   reviews,
   price,
   compare_at,
+  color_variants,
   onClick,
   config,
   stickers,
@@ -109,6 +113,10 @@ export const Component = (({
       <Title text={title} config={config.title}/>
       <Description text={description} config={config.description}/>
     </div>
+    {
+      !!color_variants && color_variants > 1 &&
+      <p className={styles.color}>{color_variants} {config.i18n.colorsAvailable}</p>
+    }
     {
       config.reviews.display && reviews && !!reviews.average_score &&
       <div className={styles.rating}>
