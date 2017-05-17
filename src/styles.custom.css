@@ -56,12 +56,12 @@
   font-size: calc(var(--typography-price-size) * 1em);
 }
 
-.productPriceSale{
-  color: var( --colors-price-sale);
-}
-
 .productPriceRegular{
   color: var( --colors-price-regular);
+}
+
+.productPriceSale{
+  color: var( --colors-price-sale);
 }
 
 /* AUTOCOMPLETE */

@@ -56,6 +56,9 @@ export default (env, { module, plugins, ...config }) => ({
     }),
     new HtmlWebpackPlugin({
       title: pkg.description,
-    }),
+      hash: true,
+      inject: 'body',
+      template: path.resolve(process.cwd(), 'dev/templates/index.html')
+    })
   ],
 });

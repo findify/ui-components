@@ -5,10 +5,9 @@ import { AppContainer } from 'react-hot-loader';
 import { withMockup } from './helpers/withMockup';
 import '../src/styles.global.css';
 
-const root = document.createElement('div');
-document.body.appendChild(root);
+const render = (widgets = require('../src/index')) => {
+  const root = document.getElementById('root');
 
-const render = (widgets) => {
   ReactDOM.render(
     <AppContainer>
       <div>
@@ -19,7 +18,11 @@ const render = (widgets) => {
   );
 };
 
-render(require('../src/index'));
+if (['complete', 'loaded', 'interactive'].includes(document.readyState) && document.body) {
+  render();
+} else {
+  document.addEventListener('DOMContentLoaded', () => render(), false);
+}
 
 if (module.hot) {
   module.hot.accept('../src/index', () => {
