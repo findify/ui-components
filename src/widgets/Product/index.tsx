@@ -33,21 +33,28 @@ const Description: any = ({ text, config, ...rest }) => config.display && !!text
 )
 
 const Price: any = withProps(({ discount, oldPrice, price }) => ({
-  hasDiscount: (!oldPrice || oldPrice < 0) && !isEmpty(discount) && priceIsSampleArray(price)
+  hasDiscount: (!oldPrice || oldPrice < 0) && !isEmpty(discount) && priceIsSampleArray(price),
+  hasCompare: oldPrice && oldPrice > 0
 }))(({
   price,
   oldPrice,
   currency,
   hasDiscount,
+  hasCompare,
   config
 }: any) => price && 
   <div className={cx(styles.priceWrap, customStyles.productPrice)}>
-    <span className={cx(styles.price, customStyles.productPriceRegular, hasDiscount && styles.discount)}>
+    <span
+      className={cx(
+        styles.price,
+        customStyles.productPriceRegular,
+        (hasDiscount || hasCompare) && customStyles.productPriceSale
+      )}>
       { getPrice(price, currency) }
     </span>
     {
-      oldPrice && oldPrice > 0 &&
-      <span className={cx(styles.compare, customStyles.productPriceSale)}>
+      hasCompare &&
+      <span className={cx(styles.compare)}>
         { currencyFormat(oldPrice, currency) }
       </span>
     }
