@@ -43,12 +43,12 @@ const Price = ({ price, oldPrice, currency, discount, config }) => price &&
         { currencyFormat(oldPrice, currency) }
       </span>
     }
-    {
+    {/*{
       (!oldPrice || oldPrice < 0) && !isEmpty(discount) && priceIsSampleArray(price) &&
        <span className={cx(styles.discount)}>
         { template(config.i18n.discount)(discount[0]) }
       </span>
-    }
+    }*/}
   </div>
 
 export const HOC = compose(
