@@ -7,13 +7,15 @@ import {
 import { format as currencyFormat } from 'currency-formatter';
 import * as cx from 'classnames';
 import Truncate from 'react-truncate';
+import { isEmpty } from 'lodash';
 
 import { Rating } from 'widgets/Rating';
 import Image from 'internals/Image';
 import { Stickers } from 'internals/Stickers';
-import { getPrice } from 'helpers/getPrice';
+import { getPrice, priceIsSampleArray } from 'helpers/getPrice';
 import withConfig from 'helpers/withConfig';
 import withHooks from 'helpers/withHooks';
+import template from 'helpers/template';
 
 const styles = require('./styles.css');
 const customStyles = require('customStyles');
@@ -30,7 +32,7 @@ const Description: any = ({ text, config, ...rest }) => config.display && !!text
   </p>
 )
 
-const Price = ({ price, oldPrice, currency }) => price && 
+const Price = ({ price, oldPrice, currency, discount, config }) => price && 
   <div className={cx(styles.priceWrap, customStyles.productPrice)}>
     <span className={cx(styles.price, customStyles.productPriceRegular)}>
       { getPrice(price, currency) }
@@ -39,6 +41,12 @@ const Price = ({ price, oldPrice, currency }) => price &&
       oldPrice && oldPrice > 0 &&
       <span className={cx(styles.compare, customStyles.productPriceSale)}>
         { currencyFormat(oldPrice, currency) }
+      </span>
+    }
+    {
+      (!oldPrice || oldPrice < 0) && !isEmpty(discount) && priceIsSampleArray(price) &&
+       <span className={cx(styles.discount)}>
+        { template(config.i18n.discount)(discount[0]) }
       </span>
     }
   </div>
@@ -68,7 +76,8 @@ export const HOC = compose(
     },
     stickers: {},
     i18n: {
-      colorsAvailable: 'Colors available'
+      colorsAvailable: 'Colors available',
+      discount: '(%s% discount)'
     }
   }),
 
@@ -96,6 +105,7 @@ export const Component = (({
   reviews,
   price,
   compare_at,
+  discount,
   color_variants,
   onClick,
   config,
@@ -125,7 +135,12 @@ export const Component = (({
     }
     {
       config.price.display &&
-      <Price price={price} oldPrice={compare_at} currency={config.currency} />
+      <Price
+        price={price}
+        oldPrice={compare_at}
+        currency={config.currency}
+        config={config}
+        discount={discount} />
     }
   </a>
 ));

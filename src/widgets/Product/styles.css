@@ -86,6 +86,11 @@
   margin-left: 5px;
 }
 
+.discount{
+  margin-left: 5px;
+  color: rgb(216, 55, 81);
+}
+
 .color{
   text-transform: none;
   font-size: 13px;
