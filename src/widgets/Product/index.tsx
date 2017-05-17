@@ -32,9 +32,17 @@ const Description: any = ({ text, config, ...rest }) => config.display && !!text
   </p>
 )
 
-const Price = ({ price, oldPrice, currency, discount, config }) => price && 
+const Price: any = withProps(({ discount, oldPrice, price }) => ({
+  hasDiscount: (!oldPrice || oldPrice < 0) && !isEmpty(discount) && priceIsSampleArray(price)
+}))(({
+  price,
+  oldPrice,
+  currency,
+  hasDiscount,
+  config
+}: any) => price && 
   <div className={cx(styles.priceWrap, customStyles.productPrice)}>
-    <span className={cx(styles.price, customStyles.productPriceRegular)}>
+    <span className={cx(styles.price, customStyles.productPriceRegular, hasDiscount && styles.discount)}>
       { getPrice(price, currency) }
     </span>
     {
@@ -43,13 +51,8 @@ const Price = ({ price, oldPrice, currency, discount, config }) => price &&
         { currencyFormat(oldPrice, currency) }
       </span>
     }
-    {/*{
-      (!oldPrice || oldPrice < 0) && !isEmpty(discount) && priceIsSampleArray(price) &&
-       <span className={cx(styles.discount)}>
-        { template(config.i18n.discount)(discount[0]) }
-      </span>
-    }*/}
   </div>
+)
 
 export const HOC = compose(
   setDisplayName('Product'),
