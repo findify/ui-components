@@ -41,6 +41,7 @@ export const AutocompleteMobileBody = compose(
     onClearClick: ({ onInput, setQuery, inputElement }) => e => {
       if (e) e.preventDefault();
       inputElement.value = '';
+      inputElement.focus();
       setQuery('');
       return onInput('');
     }
