@@ -21,6 +21,7 @@ const Suggestion: any = withHandlers({
 
 export const AutocompleteMobileBody = compose(
   withState('query', 'setQuery', props => props.query),
+  withState('inputElement', 'setInputElement', null),
   withHandlers({
     onChange: ({ onInput, setQuery }) => e => {
       if (e) e.preventDefault();
@@ -31,10 +32,15 @@ export const AutocompleteMobileBody = compose(
       if (e) e.preventDefault();
       return onSubmit(query);
     },
+    registerInput: ({ setInputElement }) => r => {
+      if (!r) return;
+      setInputElement(r);
+      return r.focus();
+    },
     onSelect: ({ onSubmit }) => (suggestion) => onSubmit(suggestion),
-    onClearClick: ({ onInput, setQuery }) => e => {
+    onClearClick: ({ onInput, setQuery, inputElement }) => e => {
       if (e) e.preventDefault();
-      e.target.value = '';
+      inputElement.value = '';
       setQuery('');
       return onInput('');
     }
@@ -46,7 +52,8 @@ export const AutocompleteMobileBody = compose(
   onClearClick,
   onInput,
   onChange,
-  onSelect
+  onSelect,
+  registerInput
 }: Props) => (
   <div className={styles.wrap}>
     <form
@@ -58,7 +65,7 @@ export const AutocompleteMobileBody = compose(
           type="text"
           onChange={onChange}
           defaultValue={query}
-          ref={r => r && r.focus()}
+          ref={registerInput}
         />
         <a
           className={cx(styles.clear, 'fa', 'fa-times-circle')}
@@ -100,6 +107,7 @@ type Props = {
   onSubmit: (event?: object) => void,
   onInput: (query: string) => void,
   onClearClick: () => void,
+  registerInput: any,
   onChange,
   onSelect
 };
