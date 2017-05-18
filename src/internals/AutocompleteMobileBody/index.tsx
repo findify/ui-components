@@ -31,7 +31,12 @@ export const AutocompleteMobileBody = compose(
       if (e) e.preventDefault();
       return onSubmit(query);
     },
-    onSelect: ({ onSubmit }) => (suggestion) => onSubmit(suggestion)
+    onSelect: ({ onSubmit }) => (suggestion) => onSubmit(suggestion),
+    onClearClick: ({ onInput, setQuery }) => e => {
+      if (e) e.preventDefault();
+      setQuery('');
+      return onInput('');
+    }
   })
 )(({
   query,
@@ -56,7 +61,7 @@ export const AutocompleteMobileBody = compose(
         />
         <a
           className={cx(styles.clear, 'fa', 'fa-times-circle')}
-          onClick={() => onClearClick()}
+          onClick={onClearClick}
         />
       </div>
       <div className={styles.formRight}>
