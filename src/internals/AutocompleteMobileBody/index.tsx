@@ -34,6 +34,7 @@ export const AutocompleteMobileBody = compose(
     onSelect: ({ onSubmit }) => (suggestion) => onSubmit(suggestion),
     onClearClick: ({ onInput, setQuery }) => e => {
       if (e) e.preventDefault();
+      e.target.value = '';
       setQuery('');
       return onInput('');
     }
