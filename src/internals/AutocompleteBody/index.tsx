@@ -47,14 +47,9 @@ export const AutocompleteBody: any = ({
   );
 
   const displayClass = !items && styles.hidden;
-  const sizeClass = !!items && (items.length && styles.large || styles.small);
-
+  const sizeClass = !!items && items.length && styles.large || styles.small;
+  
   return (
-    // TODO: Missing block name.
-    // TODO: Output className should be: findify-block-autocomplete findify-block-autocomplete_ltr
-    // For elements we need to do: findify-block-autocomplete__element-name
-
-    // Both TODOs are related to all components.
     <div className={cx(styles.root, displayClass, sizeClass)}>
       <div className={cx(styles.wrap, styles[position])}>
         {
