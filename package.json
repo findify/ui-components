@@ -3,10 +3,6 @@
   "description": "Findify react ui components",
   "version": "0.2.101",
   "author": "1ven",
-  "repository": "https://github.com/findify/findify-ui-components.git",
-  "peerDependencies": {
-    "react": ">=15.0.0"
-  },
   "dependencies": {
     "babel-register": "^6.24.0",
     "classnames": "^2.2.5",
@@ -26,7 +22,7 @@
     "react-slick": "^0.14.6",
     "react-truncate": "git+https://github.com/Bitaru/react-truncate.git",
     "react-virtualized": "^8.11.4",
-    "recompose": "0.23.1",
+    "recompose": "^0.23.1",
     "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
@@ -44,6 +40,7 @@
     "babel-loader": "^6.3.2",
     "babel-plugin-lodash": "^3.2.11",
     "babel-plugin-transform-react-constant-elements": "^6.23.0",
+    "babel-preset-env": "^1.3.2",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-react-optimize": "^1.0.1",
@@ -95,19 +92,23 @@
   ],
   "license": "MIT",
   "main": "./dist/findify-ui-components.js",
+  "peerDependencies": {
+    "react": ">=15.0.0"
+  },
+  "repository": "https://github.com/findify/findify-ui-components.git",
   "scripts": {
-    "start": "webpack-dashboard -- ./node_modules/.bin/webpack-dev-server",
     "build": "npm run build:umd && npm run build:umd:min",
+    "build-storybook": "build-storybook  -c .storybook -o docs",
     "build:umd": "./node_modules/.bin/webpack --env.production --env.externals --output-path='./dist' --output-filename='findify-ui-components.js'",
     "build:umd:min": "./node_modules/.bin/webpack --env.production --optimize-minimize --output-path='./dist' --output-filename='findify-ui-components.min.js'",
     "check": "npm run build && npm run clean",
     "clean": "rimraf ./lib ./dist",
     "lint": "tslint --project .",
-    "prepublish": "npm run clean && npm run build",
     "postpublish": "npm run clean",
     "postversion": "git push && git push --tags && git checkout develop && git merge master && git push && npm publish",
+    "prepublish": "npm run clean && npm run build",
     "preversion": "npm run check && git checkout master && git merge develop",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook  -c .storybook -o docs"
+    "start": "webpack-dashboard -- ./node_modules/.bin/webpack-dev-server",
+    "storybook": "start-storybook -p 6006"
   }
 }

@@ -1,12 +1,11 @@
-import { createEagerFactory } from 'recompose';
-import createHelper from 'recompose/createHelper';
+import { createEagerFactory, wrapDisplayName } from 'recompose';
 import { merge } from 'lodash';
 
-const withConfig = config => BaseComponent => {
+const withConfig: any = config => BaseComponent => {
   const factory = createEagerFactory(BaseComponent)
   const WithConfig = ownerProps =>
     factory({ ...ownerProps, config: merge({}, config, ownerProps.config) });
   return WithConfig
 }
 
-export default createHelper(withConfig, 'withConfig')
+export default withConfig;

@@ -55,12 +55,18 @@ export default (env, { module, plugins, output, ...config }) => ({
             options: {
               babelrc: false,
               plugins: [
-                'lodash'
+                'lodash',
+                "transform-object-rest-spread",
+                "babel-plugin-transform-class-properties",
+                "transform-react-constant-elements",
+                "transform-react-remove-prop-types",
+                "transform-react-pure-class-to-function"
               ],
               presets: [
-                ['es2015', { modules: false }],
-                'react-optimize',
-                'stage-0',
+                ["env", {
+                  "modules": false,
+                  "targets": { "browsers": ["last 2 versions", "ie > 8"] },
+                }],
                 'react'
               ]
             }
