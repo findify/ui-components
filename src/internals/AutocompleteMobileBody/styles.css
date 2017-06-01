@@ -1,10 +1,14 @@
 .wrap {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   background: #f7f7f7;
+}
+
+:global(.findify-root) .wrap{
+  position: absolute;
 }
 
 

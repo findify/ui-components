@@ -1,11 +1,12 @@
 .root {
   font-size: 14px;
-  padding: 6%;
+  padding: 6%!important;
   display: block;
   background-color: transparent;
   transition: background-color .35s ease-in-out;
   text-decoration: none;
   user-select: none;
+  border: none!important;
   &.simple{
     padding: 0 8px 15px 8px;
   }
