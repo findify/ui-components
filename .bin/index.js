@@ -3,7 +3,7 @@ import webpack from 'webpack';
 import { getLocalIdent } from './helpers/cssIndent.js';
 import pkg from '../package.json';
 
-const environments = ['development', 'production', 'dll'];
+const environments = ['development', 'production', 'dll', 'css'];
 
 const getEnvironment = env =>
   env && environments.find(e => !!env[e]) || process.env.NODE_ENV || 'development';

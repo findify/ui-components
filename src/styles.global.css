@@ -1,4 +1,4 @@
-.findify-component-root{
+.findify-root{
   font-family: 'Source Sans Pro', sans-serif; /* 1 */
   line-height: 1.15; /* 2 */
   -ms-text-size-adjust: 100%; /* 3 */
@@ -47,7 +47,7 @@
   }
 
   button,
-  html [type="button"], /* 1 */
+  [type="button"], /* 1 */
   [type="reset"],
   [type="submit"] {
     -webkit-appearance: button;
@@ -88,80 +88,80 @@
   [type="search"]::-webkit-search-decoration {
     -webkit-appearance: none;
   }
-}
 
-button[class^="findify"],
-select[class^="findify"],
-input[class^="findify"] {
-  overflow: visible;
-  line-height: 1.15; /* 1 */
-  margin: 0; /* 2 */
-  box-sizing: border-box;
-}
+  [class^="findify"]{
+    background : 0;
+    border : 0;
+    bottom : auto;
+    box-shadow : none;
+    box-sizing : content-box;
+    clear : none;
+    color : inherit;
+    columns : auto;
+    column-count : auto;
+    column-fill : balance;
+    column-gap : normal;
+    column-rule : medium none currentColor;
+    column-rule-color : currentColor;
+    column-rule-style : none;
+    column-rule-width : none;
+    column-span : 1;
+    column-width : auto;
+    content : normal;
+    cursor : auto;
+    direction : ltr;
+    float : none;
+    font : normal;
+    font-size : inherit;
+    font-style : normal;
+    font-variant : normal;
+    font-weight : normal;
+    height : auto;
+    left : auto;
+    letter-spacing : normal;
+    line-height : normal;
+    list-style : none;
+    margin : 0;
+    max-height : none;
+    max-width : none;
+    min-height : 0;
+    min-width : 0;
+    opacity : 1;
+    outline : 0;
+    outline-color : invert;
+    outline-style : none;
+    outline-width : medium;
+    overflow : visible;
+    overflow-x : visible;
+    overflow-y : visible;
+    padding : 0;
+    position : static;
+    right : auto;
+    text-align : inherit;
+    text-align-last : auto;
+    text-decoration : none;
+    text-decoration-color : inherit;
+    text-decoration-line : none;
+    text-decoration-style : solid;
+    text-indent : 0;
+    text-shadow : none;
+    text-transform : none;
+    top : auto;
+    unicode-bidi : normal;
+    vertical-align : baseline;
+    visibility : visible;
+    white-space : normal;
+    width : auto;
+    word-spacing : normal;
+    z-index : auto;
+  }
 
-[class^="findify"]{
-  background : 0;
-  border : 0;
-  bottom : auto;
-  box-shadow : none;
-  box-sizing : content-box;
-  clear : none;
-  color : inherit;
-  columns : auto;
-  column-count : auto;
-  column-fill : balance;
-  column-gap : normal;
-  column-rule : medium none currentColor;
-  column-rule-color : currentColor;
-  column-rule-style : none;
-  column-rule-width : none;
-  column-span : 1;
-  column-width : auto;
-  content : normal;
-  cursor : auto;
-  direction : ltr;
-  float : none;
-  font : normal;
-  font-size : inherit;
-  font-style : normal;
-  font-variant : normal;
-  font-weight : normal;
-  height : auto;
-  left : auto;
-  letter-spacing : normal;
-  line-height : normal;
-  list-style : none;
-  margin : 0;
-  max-height : none;
-  max-width : none;
-  min-height : 0;
-  min-width : 0;
-  opacity : 1;
-  outline : 0;
-  outline-color : invert;
-  outline-style : none;
-  outline-width : medium;
-  overflow : visible;
-  overflow-x : visible;
-  overflow-y : visible;
-  padding : 0;
-  position : static;
-  right : auto;
-  text-align : inherit;
-  text-align-last : auto;
-  text-decoration : none;
-  text-decoration-color : inherit;
-  text-decoration-line : none;
-  text-decoration-style : solid;
-  text-indent : 0;
-  text-shadow : none;
-  text-transform : none;
-  top : auto;
-  unicode-bidi : normal;
-  vertical-align : baseline;
-  visibility : visible;
-  white-space : normal;
-  width : auto;
-  word-spacing : normal;
-  z-index : auto;
+  button,
+  select,
+  input {
+    overflow: visible;
+    line-height: 1.15; /* 1 */
+    margin: 0; /* 2 */
+    box-sizing: border-box;
+  }
 }

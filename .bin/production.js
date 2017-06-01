@@ -9,9 +9,7 @@ const extractCustom = new ExtractTextPlugin('custom.css');
 
 export default (env, { module, plugins, output, ...config }) => ({
   ...config,
-  entry: [
-    path.resolve(process.cwd(), 'src/index.ts')
-  ],
+  entry: path.resolve(process.cwd(), 'src/index.ts'),
 
   output: {
     ...output,
@@ -81,22 +79,22 @@ export default (env, { module, plugins, output, ...config }) => ({
     ...plugins,
     extractGlobal,
     extractCustom,
-    new OptimizeCssAssetsPlugin({
-      cssProcessor: require('cssnano'),
-      cssProcessorOptions: {
-        autoprefixer: false,
-        discardDuplicates: true,
-        discardUnused: true,
-        mergeRules: true,
-        mergeLonghand: true,
-        minifyFontValues: true,
-        minifyGradients: true,
-        discardComments: {
-          removeAll: true
-        }
-      },
-      canPrint: true
-    }),
+    // new OptimizeCssAssetsPlugin({
+    //   cssProcessor: require('cssnano'),
+    //   cssProcessorOptions: {
+    //     autoprefixer: false,
+    //     discardDuplicates: true,
+    //     discardUnused: true,
+    //     mergeRules: true,
+    //     mergeLonghand: true,
+    //     minifyFontValues: true,
+    //     minifyGradients: true,
+    //     discardComments: {
+    //       removeAll: true
+    //     }
+    //   },
+    //   canPrint: true
+    // }),
     new webpack.LoaderOptionsPlugin({
       debug: false,
       minimize: true

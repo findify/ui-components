@@ -107,9 +107,9 @@
       "dev": true
     },
     "@types/node": {
-      "version": "6.0.74",
+      "version": "7.0.23",
       "from": "@types/node@*",
-      "resolved": "https://registry.npmjs.org/@types/node/-/node-6.0.74.tgz",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-7.0.23.tgz",
       "dev": true
     },
     "@types/react": {
@@ -6305,6 +6305,12 @@
       "version": "3.3.0",
       "from": "postcss-value-parser@>=3.2.3 <4.0.0",
       "resolved": "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-3.3.0.tgz",
+      "dev": true
+    },
+    "postcss-wrap": {
+      "version": "0.0.4",
+      "from": "postcss-wrap@0.0.4",
+      "resolved": "https://registry.npmjs.org/postcss-wrap/-/postcss-wrap-0.0.4.tgz",
       "dev": true
     },
     "postcss-zindex": {
