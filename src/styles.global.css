@@ -1,3 +1,11 @@
+.frame-content{
+  font-family: 'Source Sans Pro', sans-serif; /* 1 */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
 .findify-root{
   font-family: 'Source Sans Pro', sans-serif; /* 1 */
   line-height: 1.15; /* 2 */
@@ -7,11 +15,6 @@
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-
-  body {
-    margin: 0;
-  }
-
   hr {
     box-sizing: content-box; /* 1 */
     height: 0; /* 1 */
