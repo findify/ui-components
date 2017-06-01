@@ -6,9 +6,9 @@ import {
 } from 'recompose';
 import { format as currencyFormat } from 'currency-formatter';
 import * as cx from 'classnames';
-import Truncate from 'react-truncate';
 import { isEmpty } from 'lodash';
 
+import Truncate from 'internals/Truncate';
 import { Rating } from 'widgets/Rating';
 import Image from 'internals/Image';
 import { Stickers } from 'internals/Stickers';

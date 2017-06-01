@@ -109,6 +109,6 @@ type Props = {
   onInput: (query: string) => void,
   onClearClick: () => void,
   registerInput: any,
-  onChange,
-  onSelect
+  onChange: () => void,
+  onSelect: () => void
 };

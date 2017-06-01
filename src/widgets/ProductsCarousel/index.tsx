@@ -72,7 +72,8 @@ export const Component = (({
 }: any) => (
   <div className={styles.root}>
     { 
-      title && <h4 className={styles.title}>{ title }</h4>
+      title &&
+      <h4 className={styles.title}>{ title }</h4>
     }
     {
       createEagerElement(Slider,

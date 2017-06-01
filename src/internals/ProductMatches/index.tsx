@@ -47,8 +47,8 @@ type Props = {
     currency: {
       code?: string
     },
-    product: any,
-  }
+    product: any
+  },
   onProductClick?: () => void 
 };
 

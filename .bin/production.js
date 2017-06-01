@@ -59,6 +59,7 @@ export default (env, { module, plugins, output, ...config }) => ({
                 "transform-object-rest-spread",
                 "babel-plugin-transform-class-properties",
                 "transform-react-constant-elements",
+                "transform-react-inline-elements",
                 "transform-react-remove-prop-types",
                 "transform-react-pure-class-to-function"
               ],

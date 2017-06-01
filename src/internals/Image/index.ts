@@ -1,6 +1,7 @@
 import { DOM } from 'react';
 import { compose, lifecycle, onlyUpdateForKeys, pure, withProps, mapProps, withState } from 'recompose';
 import * as cx from 'classnames';
+import { defer } from 'lodash';
 
 const styles = require('./styles.css');
 
@@ -13,7 +14,7 @@ const ImageComponent: any = compose(
   lifecycle({
     componentWillMount() {
       const img = new Image();
-      img.onload = () => this.props.isMounted && this.props.setIsLoading(false);
+      img.onload = defer(() => this.props.isMounted && this.props.setIsLoading(false));
       img.src = this.props.src;
     },
     componentWillUnmount() {
@@ -21,8 +22,8 @@ const ImageComponent: any = compose(
     }
   }),
 
-  mapProps(({ isLoading, className, src, placeholder, setIsLoading, ...rest }: any) => ({
-    ...rest,
+  mapProps(({ isLoading, className, src, placeholder, setIsLoading, alt }: any) => ({
+    alt,
     src: isLoading ? void 0 : src,
     className: cx(className, isLoading && styles.loading || styles.loaded)
   })),

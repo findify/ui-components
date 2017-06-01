@@ -38,5 +38,5 @@ type DesktopFacetsListType = {
   onChange: void,
   config: any,
   className?: string,
-  facets
-};
+  facets?: any
+}
