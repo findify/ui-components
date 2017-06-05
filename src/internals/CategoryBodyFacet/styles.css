@@ -48,9 +48,9 @@
 .prev-icon {
   margin: 0 5px 0 0;
   font-size: .7em;
-  display: none;
+  display: none!important;
   .item.selected & {
-    display: inline-block;
+    display: inline-block!important;
   }
 }
 
