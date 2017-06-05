@@ -19,8 +19,8 @@ export const ResultsLayout = compose(
   defaultProps({
     showFacets: true,
     columns: {
-      facets: 4,
-      products: 8,
+      facets: 3,
+      products: 9,
     }
   }),
 
