@@ -15,6 +15,9 @@
 
 .icon {
   padding-right: 8px;
-  width: 11px;
-  height: 11px;
+  width: 10px;
+  height: 10px;
+  box-sizing: content-box;
+  display: inline-block;
+  vertical-align: -1px;
 }

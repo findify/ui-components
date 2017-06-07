@@ -37,7 +37,7 @@
     width: .7em;
     height: .7em;
     display: inline-block;
-    vertical-align: 1px;
+    vertical-align: -1px;
   }
 
   &:last-child:after {
