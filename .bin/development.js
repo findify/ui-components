@@ -24,6 +24,7 @@ export default (env, { module, plugins, ...config }) => ({
       module.rules.localCSS,
       module.rules.globalCSS,
       module.rules.customCSS,
+      module.rules.svg,
       {
         ...module.rules.ts,
         use: ['react-hot-loader/webpack', 'ts-loader?silent=true']

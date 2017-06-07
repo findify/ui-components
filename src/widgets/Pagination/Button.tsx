@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { compose, withHandlers, pure } from 'recompose';
+import Icon from 'internals/Icon';
 
 import * as cx from 'classnames';
 
@@ -22,8 +23,8 @@ export const Button: any = compose(
   appendIcon
 }: any) =>
   <button onClick={onClick} className={cx(styles.button, active && styles.active, className)}>
-    { prependIcon && <span className={cx(styles.icon, prependIcon)} />}
+    { prependIcon && <Icon name={prependIcon} className={styles.icon} />}
     { label }
-    { appendIcon && <span className={cx(styles.icon, appendIcon)} />}
+    { appendIcon && <Icon name={appendIcon} className={styles.icon} />}
   </button>
 );

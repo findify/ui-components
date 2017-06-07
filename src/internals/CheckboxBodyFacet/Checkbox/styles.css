@@ -31,5 +31,7 @@
 .checkbox {
   display: table-cell;
   padding-right: 5px;
-  font-size: .7em;
+  width: .7em;
+  height: .7em;
+  fill: #404040;
 }

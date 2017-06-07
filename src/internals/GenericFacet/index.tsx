@@ -12,7 +12,7 @@ import {
 } from 'recompose';
 import * as cx from 'classnames';
 import withHooks from 'helpers/withHooks';
-
+import Icon from 'internals/Icon';
 const styles = require('./styles.css');
 const customStyles = require('customStyles');
 
@@ -41,7 +41,7 @@ export const Wrapper = (Content) => compose(
   <div className={cx(styles.wrap, customStyles.facet)}>
     <div className={styles.toggle}>
       <h5 className={cx(styles.title, customStyles.facetTitle)}>{ label }</h5>
-      <button className={cx(styles.icon, 'fa', isOpen ? 'fa-minus' : 'fa-plus')} onClick={toggleOpen} />
+      <Icon name={isOpen ? 'minus' : 'plus'} className={styles.icon} onClick={toggleOpen} />
     </div>
     { isOpen && <Content {...rest} /> }
   </div>

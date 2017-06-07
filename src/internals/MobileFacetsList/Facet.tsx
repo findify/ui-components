@@ -9,6 +9,7 @@ import {
   withPropsOnChange
 } from 'recompose';
 import * as cx from 'classnames';
+import Icon from 'internals/Icon';
 
 import { mapTypeToFacet } from 'helpers/mapTypeToFacet';
 import formatRange from 'helpers/formatRange';
@@ -63,7 +64,7 @@ const FacetPreview = compose(
             {config.facets.i18n.reset}
           </span>
         }
-        <span className={cx(styles.previewIcon, 'fa', 'fa-chevron-right')}/>
+        <Icon name='chevron-right' className={styles.previewIcon} />
       </div>
     </div>
   </button>

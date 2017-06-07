@@ -24,6 +24,7 @@ export default (env, { module, plugins, output, ...config }) => ({
     rules: [
       module.rules.font,
       module.rules.image,
+      module.rules.svg,
       {
         ...module.rules.localCSS,
         use: extractGlobal.extract({

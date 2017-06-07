@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as cx from 'classnames';
 import { compose, withState, withHandlers, createEagerElement } from 'recompose';
+import Icon from 'internals/Icon';
 
 const styles = require('./styles.css');
 
@@ -68,16 +69,14 @@ export const AutocompleteMobileBody = compose(
           defaultValue={query}
           ref={registerInput}
         />
-        <a
-          className={cx(styles.clear, 'fa', 'fa-times-circle')}
-          onClick={onClearClick}
-        />
+        <a className={styles.clear} onClick={onClearClick}>
+          <Icon name='close-round' className={styles.icon}/>
+        </a>
       </div>
       <div className={styles.formRight}>
-        <button
-          className={cx(styles.submit, 'fa', 'fa-search')}
-          type="submit"
-        />
+        <button className={styles.submit} type="submit">
+          <Icon name='search' className={styles.icon}/>
+        </button>
       </div>
     </form>
     <div className={styles.suggestions}>

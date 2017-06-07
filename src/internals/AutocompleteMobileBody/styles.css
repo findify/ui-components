@@ -59,8 +59,10 @@
   border: 0;
   padding: 0;
   border-radius: 2px;
-  color: #fff;
   text-align: center;
+  & .icon{
+    fill: white;
+  }
 }
 
 .suggestions {}
@@ -81,6 +83,10 @@
   top: 0;
   right: 15px;
   padding: 0 10px;
-  color: #b2b2b2;
+  & .icon{
+    color: #b2b2b2;
+    display: inline-block;
+    height: 14px;
+  }
 }
 

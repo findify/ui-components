@@ -21,7 +21,7 @@ export const values = [
   {  
     "value":"Aktiv",
     "count":83,
-    "selected":false
+    "selected":true
   },
   {  
     "value":"Light & Steriliserad",

@@ -56,7 +56,7 @@ export const Pagination: any = compose(
       <Button
         className={styles.prev}
         label={config.i18n.previous}
-        prependIcon='fa fa-chevron-left'
+        prependIcon='chevron-left'
         page={current - 1}
         {...rest} />
     }
@@ -75,7 +75,7 @@ export const Pagination: any = compose(
         className={styles.next}
         label={config.i18n.next}
         page={current + 1}
-        appendIcon='fa fa-chevron-right'
+        appendIcon='chevron-right'
         {...rest} />
     }
   </div>

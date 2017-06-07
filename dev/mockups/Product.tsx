@@ -64,7 +64,7 @@ const props = {
     "free-shipping": true
   },
   "reviews": {
-    "average_score": 5,
+    "average_score": 3.5,
     "total_reviews": 1
   },
   "variants": [],

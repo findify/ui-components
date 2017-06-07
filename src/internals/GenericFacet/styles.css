@@ -21,7 +21,9 @@
 }
 
 .icon {
-  font-size: 12px;
+  width: 12px;
+  height: 12px;
+  fill: #404040;
   position: absolute;
   right: 0;
   top: 0;

@@ -34,7 +34,9 @@
     background: transparent;
     outline: none;
     cursor: pointer;
-    font-size: .7em;
+    width: .7em;
+    height: .7em;
+    display: inline-block;
     vertical-align: 1px;
   }
 

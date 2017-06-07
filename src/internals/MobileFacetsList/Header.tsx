@@ -11,6 +11,7 @@ import {
 } from 'recompose';
 import * as cx from 'classnames';
 import { keys } from 'lodash';
+import Icon from 'internals/Icon';
 
 const styles = require('./styles.css');
 
@@ -39,7 +40,7 @@ const RootHeader = compose(
 
     renderComponent(({ onClose, config }) => (
       <Button onClick={onClose} flat>
-        <span className={cx(styles.icon, styles.pre, 'fa', 'fa-chevron-left')} />
+        <Icon name='chevron-left' className={cx(styles.icon, styles.pre)} />
         { config.facets.i18n.hideFilters }
       </Button>
     )),
@@ -58,7 +59,7 @@ const FacetHeader = branch(
 
   renderComponent(({ onBackToFacets, config }) => (
     <Button onClick={onBackToFacets} flat>
-      <span className={cx(styles.icon, styles.pre, 'fa', 'fa-chevron-left')} />
+      <Icon name='chevron-left' className={cx(styles.icon, styles.pre)} />
       { config.facets.i18n.backToFilters }
     </Button>
   )),

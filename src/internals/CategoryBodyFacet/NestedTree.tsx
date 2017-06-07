@@ -4,7 +4,7 @@ import { branch, compose, defaultProps, renderComponent, renderNothing, withProp
 import { AutoSizer } from 'react-virtualized/dist/commonjs/AutoSizer';
 import { List } from 'react-virtualized/dist/commonjs/List';
 import { CellMeasurer } from 'react-virtualized/dist/commonjs/CellMeasurer';
-
+import Icon from 'internals/Icon';
 const styles = require('./styles.css');
 
 const NestingComponent = ({ isRoot, ...rest }) => React.createElement('div', rest);
@@ -102,9 +102,9 @@ export const NestedList = ({
         )}
         onClick={onClick}>
         <p className={styles.title}>
-          <span className={cx(styles.prevIcon, 'fa', 'fa-chevron-left')} />
+          <Icon name='chevron-left' className={styles.prevIcon} />
           { title }
-          <span className={cx(styles.nextIcon, 'fa', `fa-chevron-${selected ? 'down' : 'right'}`)} />
+          <Icon name={`chevron-${selected ? 'down' : 'right'}`}className={styles.nextIcon} />
         </p>
         <span className={styles.count}>({ count })</span>
       </div>
@@ -126,7 +126,7 @@ const RootWrapper = (props: any) => (
       )}
       onClick={props.onClick}>
       <p className={styles.title}>
-        <span className={cx(styles.prevIcon, 'fa', 'fa-chevron-left')} />
+        <Icon name='chevron-left' className={styles.prevIcon} />
         { props.config.i18n.goBackTitle }
       </p>
     </div>

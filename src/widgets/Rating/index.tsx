@@ -2,16 +2,17 @@ import { hasModifier } from 'tslint/lib';
 import * as React from 'react';
 import * as cx from 'classnames';
 import { compose, pure, mapProps } from 'recompose';
+import Icon from 'internals/Icon';
 
 const styles = require('./styles.css');
 
 const itemsArray = [...Array(5).keys()];
 
 const Start:any = mapProps(({ diff }: any) => ({
-  iconClass: `fa-star${diff === 0.5 ? '-half-o' : diff < 0 ? '' : '-o'}`
+  iconClass: diff === 0.5 ? 'half' : diff < 0 ? 'full' : 'empty'
 }))
 (({ iconClass }: any) =>
-  <span className={cx(styles.star, iconClass, 'fa')} />
+  <Icon name={`star-${iconClass}`} className={cx(styles.star)} />
 );
 
 export const Rating = (({

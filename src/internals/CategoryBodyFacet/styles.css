@@ -41,16 +41,18 @@
 
 .next-icon, .prev-icon {
   margin: 0 0 0 5px;
-  font-size: .7em;
-  color: #404040;
+  height: .7em;
+  width: .7em;
+  fill: #404040;
 }
 
 .prev-icon {
   margin: 0 5px 0 0;
-  font-size: .7em;
-  display: none!important;
+  width: .7em;
+  height: .7em;
+  display: none;
   .item.selected & {
-    display: inline-block!important;
+    display: inline-block;
   }
 }
 

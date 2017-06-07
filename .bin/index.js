@@ -81,7 +81,7 @@ const defaultConfig = environment => ({
       },
 
       font: {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        test: /\.(eot|ttf|woff|woff2)$/,
         use: [
         {
           loader: 'file-loader',
@@ -102,6 +102,15 @@ const defaultConfig = environment => ({
           }
         }
       ]},
+
+      svg: {
+        test: /\.(svg)$/,
+        use: [
+          {
+            loader: 'svg-sprite-loader'
+          }
+        ]
+      },
 
       image: {
         test: /\.(jpg|png|gif)$/,

@@ -6,6 +6,7 @@ import { escape } from 'lodash';
 import formatRange from 'helpers/formatRange';
 import formatPrice from 'helpers/formatPrice';
 import { Rating } from 'widgets/Rating';
+import Icon from 'internals/Icon';
 import {
   compose, pure, withHandlers, withProps,
   setDisplayName, withPropsOnChange, createEagerElement
@@ -68,7 +69,7 @@ const Filter: any = compose(
 }: any) => (
   <div className={styles.filter}>
     <span className={styles.filterTitle}>{children}</span>
-    <button className={cx(styles.filterRemove, 'fa fa-close')} onClick={onRemove}/>
+    <Icon name='close' className={cx(styles.filterRemove)} onClick={onRemove}/>
   </div>
 ));
 

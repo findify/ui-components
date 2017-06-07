@@ -23,8 +23,8 @@
   position: absolute;
   right: 10px;
   top: 0;
-  width: 20px;
-  line-height: 26px!important;
+  width: 14px;
+  height: 23px;
   text-align: center;
-  color: #ececec;
+  fill: #ececec;
 }

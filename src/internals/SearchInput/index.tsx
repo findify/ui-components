@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as cx from 'classnames';
 import { withHandlers } from 'recompose';
+import Icon from 'internals/Icon';
 
 const styles = require('./styles.css');
 
@@ -13,7 +14,7 @@ export const SearchInput = withHandlers({
   placeholder
 }: any) => (
   <div className={styles.wrap}>
-    <span className={cx(styles.icon, 'fa', 'fa-search')} />
+    <Icon name='search' className={styles.icon} />
     <input
       placeholder={placeholder}
       type='search'

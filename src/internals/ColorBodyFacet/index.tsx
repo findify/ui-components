@@ -2,6 +2,7 @@ import * as React from 'react';
 import { compose, withHandlers, withPropsOnChange, createEagerElement, pure } from 'recompose';
 import * as cx from 'classnames';
 import * as color from 'tinycolor2';
+import Icon from 'internals/Icon';
 
 const styles = require('./styles.css');
 
@@ -9,7 +10,7 @@ const Item = compose(
   pure,
   withPropsOnChange(['title'], ({ title, config: { mapping } }: any) => ({
     background: title !== 'Multicolor' && mapping[title],
-    checkMarkStyles: ({ color: color(title).isDark() ? '#fff' : '#333'})
+    checkMarkStyles: ({ fill: color(title).isDark() ? '#fff' : '#333'})
   })),
   withHandlers({
     onClick: ({ onChange, selected, item }: any) => e => {
@@ -29,7 +30,10 @@ const Item = compose(
       className={cx(styles.ball, title === 'Multicolor' && 'multiply-gradient')}
       style={{ background }}
       onClick={onClick}>
-      { item.selected && <span style={checkMarkStyles} className={cx(styles.checkMark, 'fa', 'fa-check')}/>}
+      { 
+        item.selected &&
+        <Icon name='check' style={checkMarkStyles} className={styles.checkMark}/>
+      }
     </button>
     <div className={styles.tooltip}>
       {title}

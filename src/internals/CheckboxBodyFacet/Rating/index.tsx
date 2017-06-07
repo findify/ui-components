@@ -2,6 +2,7 @@ import * as React from 'react';
 import { withHandlers } from 'recompose';
 import * as cx from 'classnames';
 import { unescape } from 'lodash';
+import Icon from 'internals/Icon';
 
 import { Rating } from 'widgets/Rating'; 
 
@@ -27,7 +28,7 @@ export const Item = withHandlers({
       item.selected && customStyles.facetItemSelected,
     )}
     onClick={onClick}>
-    <div className={cx(styles.checkbox, 'fa', item.selected ? 'fa-check-square' : 'fa-square-o')} />
+    <Icon name={`check-${item.selected ? 'checked' : 'empty'}`} className={styles.checkbox} />
     <span className={styles.title}>
       <Rating value={title} />
       { unescape(config.i18n.up) }

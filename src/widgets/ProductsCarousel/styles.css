@@ -7,9 +7,9 @@
 }
 
 .arrow {
-  color: #333;
-  &:before{
-    color: #333;
+  fill: #333;
+  &:global(.slick-disabled){
+    opacity: .7;
   }
 }
 

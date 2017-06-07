@@ -8,9 +8,12 @@
 }
 
 .star {
-  color: #FFC000;
+  fill: #FFC000;
   margin-right: 3px;
-  font-size: 13px;
+  width: 13px;
+  height: 13px;
+  display: inline-block;
+  vertical-align: -1px;
 }
 
 .count {
