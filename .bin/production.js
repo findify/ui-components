@@ -3,6 +3,8 @@ import nodeExternals from 'webpack-node-externals';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import webpack from 'webpack';
+import Sprite from 'svg-sprite-loader/plugin';
+
 
 const extractGlobal = new ExtractTextPlugin('styles.css');
 const extractCustom = new ExtractTextPlugin('custom.css');
@@ -80,6 +82,7 @@ export default (env, { module, plugins, output, ...config }) => ({
     ...plugins,
     extractGlobal,
     extractCustom,
+    new Sprite(),
     // new OptimizeCssAssetsPlugin({
     //   cssProcessor: require('cssnano'),
     //   cssProcessorOptions: {

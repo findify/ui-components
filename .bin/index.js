@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import { getLocalIdent } from './helpers/cssIndent.js';
 import pkg from '../package.json';
+import Sprite from 'svg-sprite-loader/plugin';
 
 const environments = ['development', 'production', 'dll', 'css'];
 
@@ -107,7 +108,7 @@ const defaultConfig = environment => ({
         test: /\.(svg)$/,
         use: [
           {
-            loader: 'svg-sprite-loader'
+            loader: 'svg-sprite-loader',
           }
         ]
       },

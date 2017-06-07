@@ -69,7 +69,7 @@ const Filter: any = compose(
 }: any) => (
   <div className={styles.filter}>
     <span className={styles.filterTitle}>{children}</span>
-    <Icon name='close' className={cx(styles.filterRemove)} onClick={onRemove}/>
+    <Icon name='cross' className={cx(styles.filterRemove)} onClick={onRemove}/>
   </div>
 ));
 
