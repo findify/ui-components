@@ -43,6 +43,8 @@
   cursor: pointer;
   transition: background-color .1s ease-in;
   outline: none!important;
+  padding: 0 10px;
+  height: 26px;
   &:hover {
     background-color: color(#f7f7f7 shade(5%));
   }
