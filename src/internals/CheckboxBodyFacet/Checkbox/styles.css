@@ -34,5 +34,5 @@
   width: .7em;
   height: .7em;
   fill: #404040;
-  box-sizing: content-box;
+  box-sizing: content-box!important;
 }

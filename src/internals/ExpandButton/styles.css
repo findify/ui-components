@@ -17,7 +17,7 @@
   padding-right: 8px;
   width: 10px;
   height: 10px;
-  box-sizing: content-box;
+  box-sizing: content-box!important;
   display: inline-block;
   vertical-align: -1px;
 }
