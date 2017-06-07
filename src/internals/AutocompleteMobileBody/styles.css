@@ -84,9 +84,10 @@
   right: 15px;
   padding: 0 10px;
   & .icon{
-    color: #b2b2b2;
+    fill: #b2b2b2;
     display: inline-block;
     height: 14px;
+    vertical-align: -1px;
   }
 }
 
