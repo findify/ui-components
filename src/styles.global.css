@@ -168,3 +168,7 @@
     box-sizing: border-box;
   }
 }
+
+.multiply-gradient{
+  background: linear-gradient(125deg,red,yellow,green,blue,violet);
+}
