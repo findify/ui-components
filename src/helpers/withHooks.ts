@@ -44,6 +44,15 @@ export default featureType => BaseComponent => {
     })),
 
     hook(types.didUpdate, lifecycle({
+      componentDidMount(){
+        this.props.hooks[featureType][types.didUpdate](
+          {
+            node: findDOMNode(this),
+            data: this.props
+          },
+          this.props.featureConfig
+        );
+      },
       componentDidUpdate(){
         this.props.hooks[featureType][types.didUpdate](
           {
