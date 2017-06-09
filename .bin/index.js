@@ -109,6 +109,9 @@ const defaultConfig = environment => ({
         use: [
           {
             loader: 'svg-sprite-loader',
+            options: {
+              symbolId: 'icon-[name]'
+            }
           }
         ]
       },
