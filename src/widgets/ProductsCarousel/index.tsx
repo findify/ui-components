@@ -83,10 +83,11 @@ export const Component = (({
           slidesToShow,
           ...slickSettings
         },
-        items.map(product =>
+        items.map((product, i) =>
           <div key={product.hash || product.id}>
             <Product
               {...product}
+              index={i}
               onClick={onProductClick}
               config={{
                 ...config.product,
