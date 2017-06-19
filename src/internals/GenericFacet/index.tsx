@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import {
   branch,
   compose,
@@ -61,6 +61,7 @@ export const HOC = (Content, WrappedContent) => compose(
     }
   }),
 
+  withState('state', 'setState', {}),
   withHooks('facet'),
 
   branch(
