@@ -6555,7 +6555,7 @@
     },
     "raw-loader": {
       "version": "0.5.1",
-      "from": "raw-loader@>=0.5.1 <0.6.0",
+      "from": "https://registry.npmjs.org/raw-loader/-/raw-loader-0.5.1.tgz",
       "resolved": "https://registry.npmjs.org/raw-loader/-/raw-loader-0.5.1.tgz",
       "dev": true
     },
