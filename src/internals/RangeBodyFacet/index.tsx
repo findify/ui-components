@@ -49,14 +49,14 @@ export const RangeBodyFacet: any = compose(
       setMin(void 0);
       setMax(void 0);
     },
-    updateMin: ({ setMinValue, setMin, min, maxValue }) => (_, value) => {
-      const val = parseInt(value) || min;
+    updateMin: ({ setMinValue, setMin, min, maxValue }) => (e) => {
+      const val = parseInt(e.target.value) || min;
       const normalizedValue = val > maxValue ? maxValue : val
       setMin(normalizedValue)
       return setMinValue(normalizedValue)
     },
-    updateMax: ({ setMaxValue, setMax, max, minValue }) => (_, value) => {
-      const val = parseInt(value) || max;
+    updateMax: ({ setMaxValue, setMax, max, minValue }) => (e) => {
+      const val = parseInt(e.target.value) || max;
       const normalizedValue = val < minValue ? minValue : val;
       setMax(normalizedValue)
       return setMaxValue(normalizedValue);
@@ -89,8 +89,8 @@ export const RangeBodyFacet: any = compose(
         className={styles.input}
         value={min}
         min={initialMin}
-        max={maxValue}
-        onChange={updateMin} />
+        max={initialMax}
+        onBlur={updateMin} />
       { 
         useCurrency && !symbolOnLeft && currencySymbol
       }
@@ -104,9 +104,9 @@ export const RangeBodyFacet: any = compose(
         style={false}
         className={styles.input}
         value={max}
-        min={minValue}
+        min={initialMin}
         max={initialMax}
-        onChange={updateMax} />
+        onBlur={updateMax} />
       { 
         useCurrency && !symbolOnLeft && currencySymbol
       }

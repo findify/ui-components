@@ -43,7 +43,9 @@ export const Wrapper = (Content) => compose(
       <h5 className={cx(styles.title, customStyles.facetTitle)}>{ label }</h5>
       <Icon name={isOpen ? 'minus' : 'plus'} className={styles.icon} onClick={toggleOpen} />
     </div>
-    { isOpen && <Content {...rest} /> }
+    <div style={{ display: isOpen && 'block' || 'none' }}>
+      { isOpen && <Content {...rest} /> }
+    </div>
   </div>
 ));
 
