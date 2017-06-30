@@ -73,7 +73,12 @@ export default (env, { module, plugins, output, ...config }) => ({
               ]
             }
           },
-          'ts-loader'
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true
+            }
+          }
         ]
       }
     ]

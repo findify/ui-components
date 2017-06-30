@@ -17,21 +17,22 @@
   --typography-autocompleteSuggestion-font: 'Source Sans Pro', sans-serif;
 }
 
+:global(.findify-root), :global(.frame-content){
 /* Facet */
 .facet{
-  font-family: var(--typography-filter-font);
+  font-family: var(--typography-filter-font)!important;
 }
 
 .facetTitle{
-  color: var(--colors-filter-header);
+  color: var(--colors-filter-header)!important;
 }
 
 .facetItem {
-  color: var(--colors-filter-list);
+  color: var(--colors-filter-list)!important;
 }
 
 .facetItemSelected{
-  color: var(--colors-filter-selected);
+  color: var(--colors-filter-selected)!important;
 }
 
 /* PRODUCT */
@@ -68,4 +69,5 @@
 .autocompleteSuggestion{
   font-family: var(--typography-autocompleteSuggestion-font);
   color: var(--colors-autocompleteSuggestion-title);
+}
 }
