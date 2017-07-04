@@ -3,7 +3,7 @@ import * as cx from 'classnames';
 import {
   withHandlers, branch, renderComponent, withState,
   compose, withProps, renderNothing, withPropsOnChange,
-  createEagerElement, 
+  createEagerElement, defaultProps
 } from 'recompose';
 import { AutoSizer } from 'react-virtualized/dist/commonjs/AutoSizer';
 import { List } from 'react-virtualized/dist/commonjs/List';
@@ -12,11 +12,6 @@ import { Item } from './Checkbox';
 
 const styles = require('./styles.css');
 const customStyles = require('customStyles');
-
-const cache = new CellMeasurerCache({
-  defaultHeight: 30,
-  fixedHeight: false
-});
 
 const StaticList = ({ items, className, itemComponent = Item, showAll, ...rest }) => (
   <div className={cx(styles.list, className)}>
@@ -33,41 +28,42 @@ const StaticList = ({ items, className, itemComponent = Item, showAll, ...rest }
   </div>
 );
 
-const VirtualizedList = withProps(({ items, itemComponent = Item, ...rest }) => ({
-  rowRenderer: ({ index, key, style }) => {
-    return createEagerElement(itemComponent, {
-      ...rest,
-      item: items[index],
-      title: items[index].label || items[index].value,
-      key,
-      style
+const VirtualizedList = compose(
+  defaultProps({
+    cache: new CellMeasurerCache({
+      fixedWidth: true,
+      minHeight: 20
     })
-  }
-}))(({ isMobile, items, rowRenderer, config }: any) => (
+  }),
+  withProps(({ items, itemComponent = Item, cache, ...rest }) => ({
+    rowRenderer: ({ index, key, parent, style }) => 
+    <CellMeasurer cache={cache} columnIndex={0} key={key} rowIndex={index} parent={parent}>
+      {
+        ({ measure }) => createEagerElement(
+          itemComponent, {
+            ...rest,
+            item: items[index],
+            title: items[index].label || items[index].value,
+            key,
+            style
+          }
+        )
+      }
+    </CellMeasurer>
+  }))
+)(({ isMobile, items, rowRenderer, config, cache }: any) => (
   <AutoSizer disableHeight={!isMobile}>
     {
       ({ width, height }) =>
-      <CellMeasurer
-        cellRenderer={
-          ({ rowIndex, ...rest }) => rowRenderer({ index: rowIndex, ...rest })
-        }
-        cache={cache}
-        columnCount={1}
-        rowCount={items.length}
-        width={width}>
-        {
-          ({ getRowHeight, setRef }) =>
-          <List
-            width={width}
-            ref={setRef}
-            className={styles.list}
-            height={isMobile ? height : config.maxItemsCount * config.rowHeight}
-            rowCount={items.length}
-            overscanRowCount={2}
-            rowHeight={getRowHeight}
-            rowRenderer={rowRenderer} />
-        }
-      </CellMeasurer>
+        <List
+          width={width}
+          className={styles.list}
+          height={isMobile ? height : config.maxItemsCount * config.rowHeight}
+          rowCount={items.length}
+          overscanRowCount={2}
+          rowHeight={cache.rowHeight}
+          rowRenderer={rowRenderer}
+        />
     }
   </AutoSizer>
 ));

@@ -110,7 +110,7 @@
     "postversion": "git push && git push --tags && git checkout develop && git merge master && git push && npm publish",
     "prepublish": "npm run clean && npm run build",
     "preversion": "npm run check && git checkout master && git merge develop",
-    "start": "webpack-dashboard -- ./node_modules/.bin/webpack-dev-server",
+    "start": "webpack-dashboard -- webpack-dev-server",
     "storybook": "start-storybook -p 6006"
   }
 }
