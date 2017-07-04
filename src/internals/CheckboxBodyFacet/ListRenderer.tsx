@@ -7,11 +7,16 @@ import {
 } from 'recompose';
 import { AutoSizer } from 'react-virtualized/dist/commonjs/AutoSizer';
 import { List } from 'react-virtualized/dist/commonjs/List';
-import { CellMeasurer } from 'react-virtualized/dist/commonjs/CellMeasurer';
+import { CellMeasurer, CellMeasurerCache } from 'react-virtualized/dist/commonjs/CellMeasurer';
 import { Item } from './Checkbox';
 
 const styles = require('./styles.css');
 const customStyles = require('customStyles');
+
+const cache = new CellMeasurerCache({
+  defaultHeight: 30,
+  fixedHeight: false
+});
 
 const StaticList = ({ items, className, itemComponent = Item, showAll, ...rest }) => (
   <div className={cx(styles.list, className)}>
@@ -46,6 +51,7 @@ const VirtualizedList = withProps(({ items, itemComponent = Item, ...rest }) => 
         cellRenderer={
           ({ rowIndex, ...rest }) => rowRenderer({ index: rowIndex, ...rest })
         }
+        cache={cache}
         columnCount={1}
         rowCount={items.length}
         width={width}>

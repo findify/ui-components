@@ -3,12 +3,17 @@ import * as cx from 'classnames';
 import { branch, compose, defaultProps, renderComponent, renderNothing, withProps } from 'recompose';
 import { AutoSizer } from 'react-virtualized/dist/commonjs/AutoSizer';
 import { List } from 'react-virtualized/dist/commonjs/List';
-import { CellMeasurer } from 'react-virtualized/dist/commonjs/CellMeasurer';
+import { CellMeasurer, CellMeasurerCache } from 'react-virtualized/dist/commonjs/CellMeasurer';
 import Icon from 'internals/Icon';
 const styles = require('./styles.css');
 
 const NestingComponent = ({ isRoot, ...rest }) => React.createElement('div', rest);
 const customStyles = require('customStyles');
+
+const cache = new CellMeasurerCache({
+  defaultHeight: 30,
+  fixedHeight: false
+});
 
 const StaticList = ({ withScroll, selected, Nested, children, ...rest }: any) => (
   <div className={cx(styles.list, withScroll && styles.scroll)}>
@@ -34,6 +39,7 @@ const VirtualizedList = ({ items, rowRenderer, rowHeight, itemsCount }: any) => 
             cellRenderer={
               ({ rowIndex, ...rest }) => rowRenderer({ index: rowIndex, ...rest })
             }
+            cache={cache}
             columnCount={1}
             rowCount={itemsCount}
             width={width}>
