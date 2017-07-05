@@ -26,25 +26,18 @@ export default compose<any, Props>(
     children: '',
     ellipsis: '…',
     lines: 1,
-    canvas: new Canvas()
   }),
   withState('target', 'setTarget', void 0),
   withState('width', 'setWidth', 0),
+  withPropsOnChange(['target'], ({ target, setWidth }) => ({
+    canvas: target && new Canvas(target, setWidth)
+  })),
   withHandlers({
-    onResize: ({ target, canvas, setWidth }) => () => canvas.setTargetWidth(target, setWidth),
     getLines: ({ ellipsis, lines, children, canvas }) => () => canvas.computeLines(ellipsis, lines, children),
   }),
   lifecycle({
-    componentDidMount() {
-      window.addEventListener('resize', this.props.onResize);
-    },
     componentWillUnmount() {
-      window.removeEventListener('resize', this.props.onResize);
-    },
-    componentWillReceiveProps(next) {
-      if (next.target !== this.props.target) {
-        this.props.canvas.setTarget(next.target, next.onResize);
-      }
+      window.removeEventListener('resize', () => this.props.canvas.unbind());
     }
   }),
   withPropsOnChange(['target', 'width'], ({ target, width, getLines, children }) => ({
@@ -60,7 +53,7 @@ export default compose<any, Props>(
   text,
   target
 }) =>(
-  <span ref={r => !target && r && setTarget(r)}>
+  <span ref={r => !target && !!r && setTarget(r)}>
   {
     content
     && <span dangerouslySetInnerHTML={{ __html: content }}/>

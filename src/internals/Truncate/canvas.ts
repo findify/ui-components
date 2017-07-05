@@ -27,19 +27,27 @@ const getEllipsisWidth = node => node.offsetWidth;
 
 export class Canvas {
   canvas: any = void 0;
+  target: any = void 0;
+  updateWidthCallback: any = void 0;
   targetWidth: 0;
 
-  constructor() {
+  constructor(target, updateWidthCallback) {
+    this.target = target;
+    this.updateWidthCallback = updateWidthCallback;
     this.canvas = document.createElement('canvas').getContext('2d');
+    this.setTarget();
+    document.addEventListener('resize', this.setTargetWidth);
   }
 
+  unbind() {
+    document.removeEventListener('resize', this.setTargetWidth);
+  }
   measureWidth(text){
     return this.canvas.measureText(text).width;
   }
 
-  setTarget(target, callback) {
-    if (!target) return;
-    const style = window.getComputedStyle(target);
+  setTarget() {
+    const style = window.getComputedStyle(this.target);
     const font = [
         style['font-weight'],
         style['font-style'],
@@ -49,19 +57,19 @@ export class Canvas {
     
     this.canvas.font = font;
     const pureFontName = style['font-family'].replace(/\"/g, '').split(',')[0];
-    getFont(pureFontName).then(callback);
+    getFont(pureFontName).then(() => this.setTargetWidth());
   }
 
-  setTargetWidth(target, callback) {
-    if (!target) return;
-    const targetWidth = target.parentNode.getBoundingClientRect().width;
+  setTargetWidth() {
+    if (!this.target) return;
+    const targetWidth = this.target.parentNode.getBoundingClientRect().width;
     
     if (!targetWidth) {
-      return requestAnimationFrame(() => this.setTargetWidth(target, callback));
+      return requestAnimationFrame(this.setTargetWidth);
     }
  
     this.targetWidth = targetWidth;
-    return callback(targetWidth);
+    return this.updateWidthCallback(targetWidth);
   }
 
   computeLines(ellipsis: string, numLines, text) {
