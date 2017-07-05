@@ -37,6 +37,7 @@
 .count {
   color: #b2b2b2;
   display: table-cell;
+  white-space: nowrap;
 }
 
 .next-icon, .prev-icon {

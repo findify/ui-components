@@ -37,9 +37,9 @@
 
 /* PRODUCT */
 .product{
-  font-family: var(--typography-product-font);
-  text-align: var(--typography-product-alignment);
-  text-transform: var(--typography-product-transform);
+  font-family: var(--typography-product-font)!important;
+  text-align: var(--typography-product-alignment)!important;
+  text-transform: var(--typography-product-transform)!important;
 }
 
 .productTitle {
@@ -58,16 +58,16 @@
 }
 
 .productPriceRegular{
-  color: var( --colors-price-regular);
+  color: var( --colors-price-regular)!important;
 }
 
 .productPriceSale{
-  color: var( --colors-price-sale);
+  color: var( --colors-price-sale)!important;
 }
 
 /* AUTOCOMPLETE */
 .autocompleteSuggestion{
-  font-family: var(--typography-autocompleteSuggestion-font);
-  color: var(--colors-autocompleteSuggestion-title);
+  font-family: var(--typography-autocompleteSuggestion-font)!important;
+  color: var(--colors-autocompleteSuggestion-title)!important;
 }
 }

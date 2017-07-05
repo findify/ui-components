@@ -84,9 +84,12 @@
   }
 }
 
+.price{
+  margin-right: 5px;
+}
+
 .compare {
   text-decoration: line-through;
-  margin-left: 5px;
 }
 
 .color{
