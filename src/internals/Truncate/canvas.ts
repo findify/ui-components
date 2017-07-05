@@ -35,6 +35,7 @@ export class Canvas {
     this.target = target;
     this.updateWidthCallback = updateWidthCallback;
     this.canvas = document.createElement('canvas').getContext('2d');
+    this.setTargetWidth = this.setTargetWidth.bind(this);
     this.setTarget();
     document.addEventListener('resize', this.setTargetWidth);
   }
@@ -42,6 +43,7 @@ export class Canvas {
   unbind() {
     document.removeEventListener('resize', this.setTargetWidth);
   }
+
   measureWidth(text){
     return this.canvas.measureText(text).width;
   }
