@@ -10,7 +10,7 @@ const render = (widgets = require('../src/index')) => {
 
   ReactDOM.render(
     <AppContainer>
-      <div>
+      <div className='frame-content'>
         { Object.keys(widgets).map(key => withMockup(key)(widgets[key])) }
       </div>
     </AppContainer>,

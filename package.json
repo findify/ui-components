@@ -7,6 +7,7 @@
     "babel-register": "^6.24.0",
     "classnames": "^2.2.5",
     "currency-formatter": "^1.1.1",
+    "fontfaceobserver": "^2.0.13",
     "humps": "^2.0.0",
     "immutable": "^3.8.1",
     "match-media": "^0.2.0",

@@ -7,7 +7,7 @@ const props = {
     "SL-ANIM-CHA-JS-XS",
     "SL-ANIM-CHA-JS-XXS"
   ],
-  "title": "Digital Ripped camo charcoal Quick-Dry Jersey",
+  "title": "\"The Swisscycler\" Honeycomb to Swiss Perc Recycler",
   "short_description": "",
   "description": "Quick-Dry \r Mesh breathable fabric \r 100% polyester \r Machine wash \r Imported",
   "price": [
@@ -124,7 +124,7 @@ const props = {
 };
 
 export default ({ Component }) => (
-  <div style={{ margin: 50, width: 150, position: 'relative' }}>
+  <div style={{ margin: 50, width: 191, position: 'relative' }}>
     <Component { ...props } />
   </div>
 );

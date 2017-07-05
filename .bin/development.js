@@ -27,7 +27,15 @@ export default (env, { module, plugins, ...config }) => ({
       module.rules.svg,
       {
         ...module.rules.ts,
-        use: ['react-hot-loader/webpack', 'ts-loader?silent=true']
+        use: [
+          'react-hot-loader/webpack',
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true
+            }
+          }
+        ]
       }
     ]
   },
