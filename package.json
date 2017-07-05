@@ -1,7 +1,7 @@
 {
   "name": "findify-ui-components",
   "description": "Findify react ui components",
-  "version": "0.2.135",
+  "version": "0.2.136",
   "author": "1ven",
   "dependencies": {
     "babel-register": "^6.24.0",
