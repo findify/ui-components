@@ -41,7 +41,7 @@ export const CategoryBodyFacet = compose(
     children
   })),
 
-  withState('isExpanded', 'setExpanded', false),
+  withState('isExpanded', 'setExpanded', ({ config }) => !!config.initiallyExpanded),
 
   withHandlers({
     toggleExpander: ({ isExpanded, setExpanded }) => e => {
