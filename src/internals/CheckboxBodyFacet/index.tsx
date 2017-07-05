@@ -22,11 +22,12 @@ export const CheckboxBodyFacet: any = compose(
   pure,
 
   defaultProps({
-    showExpander: false
+    showExpander: false,
+    initiallyExpanded: false
   }),
 
   withState('search', 'setSearch', ''),
-  withState('expanded', 'setExpanded', false),
+  withState('expanded', 'setExpanded', ({ initiallyExpanded }) => initiallyExpanded),
 
   withPropsOnChange(['values'], ({ values }) => ({
     selectedItems: values.filter(item => item.selected)
