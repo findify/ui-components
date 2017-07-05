@@ -59,7 +59,9 @@ export class Canvas {
     
     this.canvas.font = font;
     const pureFontName = style['font-family'].replace(/\"/g, '').split(',')[0];
-    getFont(pureFontName).then(() => this.setTargetWidth());
+    getFont(pureFontName)
+    .then(() => this.setTargetWidth())
+    .catch(() => this.setTargetWidth());
   }
 
   setTargetWidth() {
