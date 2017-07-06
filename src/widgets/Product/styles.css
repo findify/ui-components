@@ -77,8 +77,7 @@
 .price, .compare {
   font-size: 1em;
   color: #404040;
-  display: block;
-  float: left;
+  display: inline-block;
   .simple &{
     font-weight: bold;
   }
@@ -86,6 +85,7 @@
 
 .price{
   margin-right: 5px;
+  white-space: nowrap;
 }
 
 .compare {
