@@ -19,8 +19,9 @@ const renderLine = (line, i, arr) => {
   return '<br />';
 }
 
+const styles = require('./styles.css');
 
-export default compose<any, Props>(
+export const reactTruncate = compose<any, Props>(
   pure,
   defaultProps({
     children: '',
@@ -52,7 +53,7 @@ export default compose<any, Props>(
   setText,
   text,
   target
-}) =>(
+}) => (
   <span ref={r => !target && !!r && setTarget(r)}>
   {
     content
@@ -66,3 +67,25 @@ type Props = {
   lines?: number,
   children?: any
 }
+
+const simpleTruncate = compose(
+  withState('target', 'setTarget', void 0),
+  withPropsOnChange(['target'], ({ target }) => ({
+    lineHeight: target && window.getComputedStyle(target)['line-height'] || 1.3
+  }))
+)(({
+  children,
+  target,
+  setTarget,
+  lineHeight,
+  lines = 1
+}: any) => (
+  <span
+    className={styles.root}
+    style={{ maxHeight: `${lineHeight * lines}em`, WebkitLineClamp: lines }}
+    ref={r => !target && !!r && setTarget(r)}>
+    {children}
+  </span>
+));
+
+export default simpleTruncate;

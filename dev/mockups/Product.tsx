@@ -86,6 +86,12 @@ const props = {
   },
   "compare_at": 25,
   config: {
+    title: {
+      lines: 1,
+    },
+    description: {
+      lines: 2,
+    },
     stickers: {
       discount: {
         position: "bottom-center",
