@@ -78,7 +78,7 @@ const simpleTruncate = compose(
   target,
   setTarget,
   lineHeight,
-  lines = 1
+  lines = 3
 }: any) => (
   <span
     className={styles.root}

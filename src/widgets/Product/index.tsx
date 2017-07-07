@@ -22,13 +22,13 @@ const customStyles = require('customStyles');
 
 const Title: any = ({ text, config, ...rest }) => config.display && !!text && (
   <h5 className={cx(styles.title, customStyles.productTitle)} {...rest}>
-    <Truncate lines={config.lines || false}>{text}</Truncate>
+    <Truncate lines={config.lines}>{text}</Truncate>
   </h5>
 );
 
 const Description: any = ({ text, config, ...rest }) => config.display && !!text && (
   <p className={cx(styles.description, customStyles.productDescription)} {...rest}>
-    <Truncate lines={config.lines || false}>{text}</Truncate>
+    <Truncate lines={config.lines}>{text}</Truncate>
   </p>
 )
 
