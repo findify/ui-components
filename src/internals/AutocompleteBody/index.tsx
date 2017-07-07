@@ -24,7 +24,7 @@ export const AutocompleteBody: any = ({
   }
 }: Props) => {
   if (suggestions && !suggestions.length) return null;
-
+  
   const searchSuggestionsNode = createEagerElement(
     SearchSuggestions,
     {

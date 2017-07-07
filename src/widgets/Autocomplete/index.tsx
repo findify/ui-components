@@ -22,7 +22,7 @@ export const Autocomplete: any = compose(
     product: {
       simple: true,
       title: {
-        lines: 0,
+        lines: 3,
       },
       description: {
         display: false
