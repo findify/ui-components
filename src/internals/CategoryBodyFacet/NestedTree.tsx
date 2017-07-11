@@ -69,16 +69,14 @@ const ListRenderer = compose(
     ({ isExpanded }: any) => isExpanded,
 
     branch(
-      ({ isMobile, childrenCount, hasSelectedSiblings }) => {
-        return !isMobile && !hasSelectedSiblings
-      },
+      ({ isMobile, childrenCount, hasSelectedSiblings }) => !isMobile && !hasSelectedSiblings,
       defaultProps({ withScroll: true }),
     ),
 
     withProps(({ children, config }: any) => ({
       children: [...children.slice(0, config.maxItemsCount)]
     }))
-  ),
+  )
 )(StaticList);
 
 export const NestedList = ({

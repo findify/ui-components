@@ -111,6 +111,7 @@ export const ResultsLayout = compose(
           response.banner && response.banner.products &&
           <Banner {...response.banner.products} onClick={onBannerClick} />
         }
+
         <ProductsList
           config={{
             ...config,

@@ -13,8 +13,8 @@ export const withMJS = compose(
 
   flattenProp('response'), // Flatten response to manage state
 
-  withFacets,
-  withMeta,
+  // withFacets,
+  // withMeta,
 
   mapProps(({ meta, items, facets, banner, redirect, ...rest }) => ({
     ...rest,
