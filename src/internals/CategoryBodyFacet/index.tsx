@@ -41,7 +41,7 @@ export const CategoryBodyFacet = compose(
     children
   })),
 
-  withState('isExpanded', 'setExpanded', ({ config }) => !!config.initiallyExpanded),
+  withState('isExpanded', 'setExpanded', ({ config, isMobile }) => isMobile || !!config.initiallyExpanded),
 
   withHandlers({
     toggleExpander: ({ isExpanded, setExpanded }) => e => {
@@ -65,7 +65,7 @@ export const CategoryBodyFacet = compose(
   <div>
     <Tree className={styles.wrap} {...props} isRoot selected has_children />
     {
-      props.childrenCount > props.config.maxItemsCount &&
+      !props.isMobile && props.childrenCount > props.config.maxItemsCount &&
       <ExpandButton
         expanded={props.isExpanded}
         onClick={props.toggleExpander}
