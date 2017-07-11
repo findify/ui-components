@@ -60,14 +60,28 @@ export default {
     }
   },
 
-  sorting: {
-    i18n: {
-      title: 'Sort by:',
-      options: {
-        relevant: 'Best match',
-        priceAZ: 'Price: lowest first',
-        priceZA: 'Price: highest first'
-      }
+  "sorting": {
+    "options": [{
+        "field": "default",
+        "order": ""
+    }, {
+        "field": "price",
+        "order": "desc"
+    }, {
+        "field": "price",
+        "order": "asc"
+    }, {
+        "field": "created_at",
+        "order": "desc"
+    }],
+    "i18n": {
+        "title": "Sort by",
+        "options": {
+            "default": "Popularity",
+            "price|desc": "Price: High to low",
+            "price|asc": "Price: Low to high",
+            "created_at|desc": "What's new"
+        }
     }
   },
 

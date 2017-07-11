@@ -33,7 +33,7 @@ export const Component = ({
   columnClass,
   onProductClick,
   config,
-  columns
+  columns,
 }: any) => (
   <div className={styles.root}>
     { 

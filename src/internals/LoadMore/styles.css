@@ -1,0 +1,10 @@
+.root{
+  text-align: center;
+}
+.button{
+  text-transform: uppercase;
+}
+.infinite{
+  position: absolute;
+  bottom: 0;
+}

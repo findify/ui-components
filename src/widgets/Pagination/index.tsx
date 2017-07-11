@@ -29,6 +29,8 @@ export const Pagination: any = compose(
   withProps(({ current, total, visible, config: { step } }: any) => ({
     showFirst: current > step + 1,
     showLast: current < total - step,
+    showFirstDots: current > step + 2,
+    showLastDots: current < total - step - 1,
     showPrev: current > step,
     showNext: total - step > current,
     visiblePages: getRange({ current, total, step })
@@ -42,6 +44,8 @@ export const Pagination: any = compose(
   showLast,
   showPrev,
   showNext,
+  showFirstDots,
+  showLastDots,
   visiblePages,
   current,
   total,
@@ -60,15 +64,15 @@ export const Pagination: any = compose(
         page={current - 1}
         {...rest} />
     }
-    {showFirst && <Button page={1} label={1} {...rest} />}
-    {showFirst && <Button label='...' className={styles.disabled} />}
+    {showFirst && <Button page={1} label={1} {...rest} className={styles.first} />}
+    {showFirstDots && <Button label='...' className={styles.disabled} />}
     {
       visiblePages.map(page =>
         <Button key={page} page={page} label={String(page)} active={current === page} {...rest} />
       )
     }
-    {showLast && <Button label='...' className={styles.disabled} />}
-    {showLast && <Button page={total} label={total} {...rest} />}
+    {showLastDots && <Button label='...' className={styles.disabled} />}
+    {showLast && <Button page={total} label={total} {...rest} className={styles.last} />}
     {
       showNext &&
       <Button
