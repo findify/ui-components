@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { compose, withState, withHandlers, mapProps, withPropsOnChange, defaultProps } from 'recompose';
-import NumberInput from 'react-numeric-input';
+import NumberInput from 'internals/NumberInput';
 import formatRange from 'helpers/formatRange';
 import { findCurrency } from 'currency-formatter'
 import { getRangeFacetKey } from 'helpers/getRangeFacetKey';
@@ -50,13 +50,13 @@ export const RangeBodyFacet: any = compose(
       setMax(void 0);
     },
     updateMin: ({ setMinValue, setMin, min, maxValue }) => (e) => {
-      const val = parseInt(e.target.value) || min;
+      const val = parseFloat(e.target.value) || min;
       const normalizedValue = val > maxValue ? maxValue : val
       setMin(normalizedValue)
       return setMinValue(normalizedValue)
     },
     updateMax: ({ setMaxValue, setMax, max, minValue }) => (e) => {
-      const val = parseInt(e.target.value) || max;
+      const val = parseFloat(e.target.value) || max;
       const normalizedValue = val < minValue ? minValue : val;
       setMax(normalizedValue)
       return setMaxValue(normalizedValue);
@@ -70,7 +70,8 @@ export const RangeBodyFacet: any = compose(
   useCurrency,
   onCommit,
   config: {
-    i18n
+    i18n,
+    precision = 0
   },
   symbolOnLeft,
   currencySymbol,
@@ -85,11 +86,11 @@ export const RangeBodyFacet: any = compose(
         useCurrency && !!symbolOnLeft && currencySymbol
       }
       <NumberInput
-        style={false}
         className={styles.input}
-        value={min}
+        defaultValue={min}
+        precision={precision}
         min={initialMin}
-        max={initialMax}
+        max={max}
         onBlur={updateMin} />
       { 
         useCurrency && !symbolOnLeft && currencySymbol
@@ -101,10 +102,10 @@ export const RangeBodyFacet: any = compose(
         useCurrency && !!symbolOnLeft && currencySymbol
       }
       <NumberInput
-        style={false}
         className={styles.input}
-        value={max}
-        min={initialMin}
+        defaultValue={max}
+        precision={precision}
+        min={min}
         max={initialMax}
         onBlur={updateMax} />
       { 

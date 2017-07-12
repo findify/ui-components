@@ -26,7 +26,8 @@ export const ResultsLayout = compose(
 
   withPropsOnChange(['isMobile'], ({ isMobile }) => ({
     showMobileHeader: !!isMobile,
-    showFacets: !isMobile
+    showFacets: !isMobile,
+    showBreadcrumbs: !isMobile
   })),
 
   withHooks('results')
@@ -47,30 +48,31 @@ export const ResultsLayout = compose(
   columns,
   showMobileHeader,
   showFacets,
+  showBreadcrumbs,
   type
 }: any) => (
   <div>
-    { 
+    {
+      showBreadcrumbs &&
+      <BreadCrumbs
+      {...response.meta}
+      className={styles.breadcrumbs}
+      onChange={onBreadCrumbRemove}
+      displayQuery={type !== 'collection'}
+      config={{
+        ...config.breadcrumbs,
+        facets: config.facets,
+        currency: config.currency
+      }} />
+    }
+    {
       !showMobileHeader &&
-      <div>
-        <BreadCrumbs
-        {...response.meta}
-        className={styles.breadcrumbs}
-        onChange={onBreadCrumbRemove}
-        displayQuery={type !== 'collection'}
-        config={{
-          ...config.breadcrumbs,
-          facets: config.facets,
-          currency: config.currency
-        }} />
-
-        <Sorting
-          className={styles.sort}
-          value={!!response.meta.sort.length && response.meta.sort[0]}
-          onChange={onSortChange}
-          options={config.sorting.options}
-          config={config.sorting} />
-      </div>
+      <Sorting
+        className={styles.sort}
+        value={!!response.meta.sort.length && response.meta.sort[0]}
+        onChange={onSortChange}
+        options={config.sorting.options}
+        config={config.sorting} />
     }
     {
       showMobileHeader &&
