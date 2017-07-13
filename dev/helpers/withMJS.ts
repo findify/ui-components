@@ -7,14 +7,12 @@ const config = require('../data/config.ts').default;
 
 export const withMJS = compose(
   defaultProps({
-    response,
+    ...response,
     config
   }),
 
-  flattenProp('response'), // Flatten response to manage state
-
-  // withFacets,
-  // withMeta,
+  withFacets,
+  withMeta,
 
   mapProps(({ meta, items, facets, banner, redirect, ...rest }) => ({
     ...rest,

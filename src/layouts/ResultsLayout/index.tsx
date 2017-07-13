@@ -11,11 +11,19 @@ import { FacetsLayout } from '../FacetsLayout';
 import { Button } from 'internals/Button';
 import { Banner } from 'internals/Banner';
 import { PoweredBy } from 'internals/PoweredBy';
+import LoadMore from 'internals/LoadMore';
 import withHooks from 'helpers/withHooks';
+import withConfig from 'helpers/withConfig';
 
 const styles = require('./styles.css');
 
 export const ResultsLayout = compose(
+  withConfig({
+    view: {
+      pagination: true,
+      infinite: false
+    }
+  }),
   defaultProps({
     showFacets: true,
     columns: {
@@ -35,7 +43,6 @@ export const ResultsLayout = compose(
 (({
   config,
   isMobile,
-  response,
   onFacetsChange,
   onProductClick,
   onPageChange,
@@ -44,18 +51,26 @@ export const ResultsLayout = compose(
   onMobileFacetsOpen,
   onBannerClick,
   onPoweredByClick,
+  onLoadMoreClick,
   onClearAll,
   columns,
   showMobileHeader,
   showFacets,
   showBreadcrumbs,
-  type
+  type,
+  isLoading,
+  response: {
+    meta,
+    facets,
+    banner,
+    items
+  }
 }: any) => (
   <div>
     {
       showBreadcrumbs &&
       <BreadCrumbs
-      {...response.meta}
+      {...meta}
       className={styles.breadcrumbs}
       onChange={onBreadCrumbRemove}
       displayQuery={type !== 'collection'}
@@ -69,11 +84,12 @@ export const ResultsLayout = compose(
       !showMobileHeader &&
       <Sorting
         className={styles.sort}
-        value={!!response.meta.sort.length && response.meta.sort[0]}
+        value={!!meta.sort.length && meta.sort[0]}
         onChange={onSortChange}
         options={config.sorting.options}
         config={config.sorting} />
     }
+
     {
       showMobileHeader &&
       <Grid columns='6|6'>
@@ -85,8 +101,8 @@ export const ResultsLayout = compose(
             config.facets.i18n.showMobileFacets
           }
           { 
-            response.meta.filters && !!response.meta.filters.length &&
-            ` (${response.meta.filters.length})`
+            meta.filters && !!meta.filters.length &&
+            ` (${meta.filters.length})`
           }
         </Button>
 
@@ -94,7 +110,7 @@ export const ResultsLayout = compose(
           isMobile={isMobile}
           columnClass={styles.paddingLeft}
           className={cx(styles.sort, styles.mobileSort)}
-          value={!!response.meta.sort.length && response.meta.sort[0]}
+          value={!!meta.sort.length && meta.sort[0]}
           onChange={onSortChange}
           options={config.sorting.options}
           config={config.sorting} />
@@ -104,35 +120,48 @@ export const ResultsLayout = compose(
     <Grid columns={showFacets ? `${columns.facets}|${columns.products}` : '12'}>
       {
         showFacets &&
-        <FacetsLayout {...{ isMobile, config, response, onFacetsChange, onClearAll, columnClass: styles.facets }}/>
+        <FacetsLayout {...{ isMobile, config, facets, onFacetsChange, onClearAll, columnClass: styles.facets }}/>
       }
   
       <div className={cx(styles.products, !isMobile && styles.productsWithPadding)}>
 
         {
-          response.banner && response.banner.products &&
-          <Banner {...response.banner.products} onClick={onBannerClick} />
+          banner && banner.products &&
+          <Banner {...banner.products} onClick={onBannerClick} />
         }
-
-        <ProductsList
-          config={{
-            ...config,
-            ...config.productsGrid
-          }}
-          columnClass={styles.product}
-          items={response.items}
-          onProductClick={onProductClick} />
 
         {
-          !!response.meta.total && response.meta.total > response.meta.limit &&
-            <Pagination
-              className={styles.pagination}
-              onChange={onPageChange}
-              style={{ textAlign: 'center' }}
-              config={config.pagination}
-              total={Math.ceil(response.meta.total / response.meta.limit)}
-              current={Math.ceil(response.meta.offset / response.meta.limit) + 1} />
+          <ProductsList
+            config={{
+              ...config,
+              ...config.productsGrid
+            }}
+            columnClass={styles.product}
+            items={items}
+            onProductClick={onProductClick} />
         }
+
+        {
+          !!config.view.pagination && !!meta.total && meta.total > meta.limit &&
+          <Pagination
+            className={styles.pagination}
+            onChange={onPageChange}
+            style={{ textAlign: 'center' }}
+            config={config.pagination}
+            total={Math.ceil(meta.total / meta.limit)}
+            current={Math.ceil(meta.offset / meta.limit) + 1} />
+        }
+
+        {
+          !!config.view.infinite &&
+          <LoadMore
+            isMobile={false}
+            isLoading={isLoading}
+            type={type}
+            meta={meta}
+            onChange={onLoadMoreClick} />
+        }
+
         {
           !!config.poweredByFindify &&
           <PoweredBy onClick={onPoweredByClick} />
