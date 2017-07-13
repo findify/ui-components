@@ -21,7 +21,6 @@ const withButton = compose(
 ));
 
 const withoutButton = compose(
-  // withState('isLoading', 'setLoading', void 0),
   withState('target', 'setTarget', void 0),
   
   withHandlers({
@@ -32,7 +31,7 @@ const withoutButton = compose(
       const windowHeight = window.innerHeight || document.documentElement.clientHeight;
       const inView = offsetTop - windowHeight <= offset;
       if (inView) return onChange();
-    }, 500)
+    }, 300)
   }),
 
   lifecycle({
@@ -49,7 +48,7 @@ const withoutButton = compose(
 
 export default compose(
   withPropsOnChange(['meta'], ({ type, meta }) => ({
-    disabled: meta.total < (meta.offset + meta.limit)
+    disabled: meta.total <= (meta.offset + meta.limit)
   })),
   branch(
     ({ disabled }) => disabled,
