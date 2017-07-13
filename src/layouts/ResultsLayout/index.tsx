@@ -63,31 +63,26 @@ export const ResultsLayout = compose(
 }: any) => (
   <div>
     {
-      showBreadcrumbs || !showMobileHeader &&
-      <div>
-      {
-        showBreadcrumbs &&
-        <BreadCrumbs
-        {...response.meta}
-        className={styles.breadcrumbs}
-        onChange={onBreadCrumbRemove}
-        displayQuery={type !== 'collection'}
-        config={{
-          ...config.breadcrumbs,
-          facets: config.facets,
-          currency: config.currency
-        }} />
-      }
-      {
-        !showMobileHeader &&
-        <Sorting
-          className={styles.sort}
-          value={!!response.meta.sort.length && response.meta.sort[0]}
-          onChange={onSortChange}
-          options={config.sorting.options}
-          config={config.sorting} />
-      }
-      </div>
+      showBreadcrumbs &&
+      <BreadCrumbs
+      {...response.meta}
+      className={styles.breadcrumbs}
+      onChange={onBreadCrumbRemove}
+      displayQuery={type !== 'collection'}
+      config={{
+        ...config.breadcrumbs,
+        facets: config.facets,
+        currency: config.currency
+      }} />
+    }
+    {
+      !showMobileHeader &&
+      <Sorting
+        className={styles.sort}
+        value={!!response.meta.sort.length && response.meta.sort[0]}
+        onChange={onSortChange}
+        options={config.sorting.options}
+        config={config.sorting} />
     }
     {
       showMobileHeader &&
