@@ -10,10 +10,11 @@ const withButton = compose(
     onClick: ({ onChange, meta }) => () => onChange(meta.offset + meta.limit)
   })
 )(({
-  onClick
+  onClick,
+  isLoading
 }: any) => (
   <div className={styles.root}>
-    <Button className={styles.button} onClick={onClick}>
+    <Button isLoading={isLoading} className={styles.button} onClick={onClick}>
       Load more
     </Button>
   </div>
@@ -24,15 +25,13 @@ const withoutButton = compose(
   withState('target', 'setTarget', void 0),
   
   withHandlers({
-    onScroll: ({ onChange, target }) => throttle(() => {
-      if (!target) return;
+    onScroll: ({ onChange, target, isLoading }) => throttle(() => {
+      if (!target || isLoading) return;
       const offset = 300;
       const offsetTop = target.getBoundingClientRect().top;
       const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-      console.log(offsetTop + windowHeight);
-      
       const inView = offsetTop - windowHeight <= offset;
-      console.log('In view:', inView);
+      if (inView) return onChange();
     }, 500)
   }),
 
@@ -49,11 +48,15 @@ const withoutButton = compose(
 );
 
 export default compose(
-  withPropsOnChange(['meta'], ({ meta }) => ({
+  withPropsOnChange(['meta'], ({ type, meta }) => ({
     disabled: meta.total < (meta.offset + meta.limit)
   })),
   branch(
-    ({ isMobile }) => isMobile,
+    ({ disabled }) => disabled,
+    renderNothing
+  ),
+  branch(
+    ({ isMobile, type, meta }) => type !== 'collection' || meta.offset > meta.limit * 2,
     renderComponent(withButton),
     renderComponent(withoutButton),
   )

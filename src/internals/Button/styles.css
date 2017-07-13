@@ -6,7 +6,14 @@
   outline: none;
   padding: 5px 10px;
   cursor: pointer;
+  transition: opacity;
+  opacity: 1;
   &:hover{
     background: #ececec;
   }
+}
+
+.loading{
+  pointer-events: none;
+  opacity: 0.3;
 }

@@ -20,8 +20,8 @@ const styles = require('./styles.css');
 export const ResultsLayout = compose(
   withConfig({
     view: {
-      pagination: false,
-      infinite: true
+      pagination: true,
+      infinite: false
     }
   }),
   defaultProps({
@@ -58,6 +58,7 @@ export const ResultsLayout = compose(
   showFacets,
   showBreadcrumbs,
   type,
+  isLoading,
   response: {
     meta,
     facets,
@@ -155,6 +156,8 @@ export const ResultsLayout = compose(
           !!config.view.infinite &&
           <LoadMore
             isMobile={false}
+            isLoading={isLoading}
+            type={type}
             meta={meta}
             onChange={onLoadMoreClick} />
         }
