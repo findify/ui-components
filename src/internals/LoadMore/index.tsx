@@ -55,7 +55,7 @@ export default compose(
     renderNothing
   ),
   branch(
-    ({ isMobile, type, meta }) => type !== 'collection' || meta.offset > meta.limit * 2,
+    ({ isMobile, meta }) => isMobile || meta.offset >= (meta.limit * 2),
     renderComponent(withButton),
     renderComponent(withoutButton),
   )

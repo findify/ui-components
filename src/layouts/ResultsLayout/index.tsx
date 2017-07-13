@@ -59,18 +59,13 @@ export const ResultsLayout = compose(
   showBreadcrumbs,
   type,
   isLoading,
-  response: {
-    meta,
-    facets,
-    banner,
-    items
-  }
+  response
 }: any) => (
   <div>
     {
       showBreadcrumbs &&
       <BreadCrumbs
-      {...meta}
+      {...response.meta}
       className={styles.breadcrumbs}
       onChange={onBreadCrumbRemove}
       displayQuery={type !== 'collection'}
@@ -84,7 +79,7 @@ export const ResultsLayout = compose(
       !showMobileHeader &&
       <Sorting
         className={styles.sort}
-        value={!!meta.sort.length && meta.sort[0]}
+        value={!!response.meta.sort.length && response.meta.sort[0]}
         onChange={onSortChange}
         options={config.sorting.options}
         config={config.sorting} />
@@ -101,8 +96,8 @@ export const ResultsLayout = compose(
             config.facets.i18n.showMobileFacets
           }
           { 
-            meta.filters && !!meta.filters.length &&
-            ` (${meta.filters.length})`
+            response.meta.filters && !!response.meta.filters.length &&
+            ` (${response.meta.filters.length})`
           }
         </Button>
 
@@ -110,7 +105,7 @@ export const ResultsLayout = compose(
           isMobile={isMobile}
           columnClass={styles.paddingLeft}
           className={cx(styles.sort, styles.mobileSort)}
-          value={!!meta.sort.length && meta.sort[0]}
+          value={!!response.meta.sort.length && response.meta.sort[0]}
           onChange={onSortChange}
           options={config.sorting.options}
           config={config.sorting} />
@@ -120,14 +115,14 @@ export const ResultsLayout = compose(
     <Grid columns={showFacets ? `${columns.facets}|${columns.products}` : '12'}>
       {
         showFacets &&
-        <FacetsLayout {...{ isMobile, config, facets, onFacetsChange, onClearAll, columnClass: styles.facets }}/>
+        <FacetsLayout {...{ isMobile, config, response, onFacetsChange, onClearAll, columnClass: styles.facets }}/>
       }
   
       <div className={cx(styles.products, !isMobile && styles.productsWithPadding)}>
 
         {
-          banner && banner.products &&
-          <Banner {...banner.products} onClick={onBannerClick} />
+          response.banner && response.banner.products &&
+          <Banner {...response.banner.products} onClick={onBannerClick} />
         }
 
         {
@@ -137,19 +132,21 @@ export const ResultsLayout = compose(
               ...config.productsGrid
             }}
             columnClass={styles.product}
-            items={items}
+            items={response.items}
             onProductClick={onProductClick} />
         }
 
         {
-          !!config.view.pagination && !!meta.total && meta.total > meta.limit &&
+          !!config.view.pagination &&
+          !!response.meta.total &&
+          response.meta.total > response.meta.limit &&
           <Pagination
             className={styles.pagination}
             onChange={onPageChange}
             style={{ textAlign: 'center' }}
             config={config.pagination}
-            total={Math.ceil(meta.total / meta.limit)}
-            current={Math.ceil(meta.offset / meta.limit) + 1} />
+            total={Math.ceil(response.meta.total / response.meta.limit)}
+            current={Math.ceil(response.meta.offset / response.meta.limit) + 1} />
         }
 
         {
@@ -157,8 +154,7 @@ export const ResultsLayout = compose(
           <LoadMore
             isMobile={false}
             isLoading={isLoading}
-            type={type}
-            meta={meta}
+            meta={response.meta}
             onChange={onLoadMoreClick} />
         }
 

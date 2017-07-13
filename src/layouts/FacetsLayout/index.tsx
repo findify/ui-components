@@ -5,14 +5,14 @@ import { createEagerElement } from 'recompose';
 import { mapTypeToFacet } from 'helpers/mapTypeToFacet';
 
 export const FacetsLayout: any = withHooks('facets')(({
-  facets,
   onFacetsChange,
   onMobileFacetsClose,
+  response,
   ...rest
 }) =>
   createEagerElement(FacetsList, {
     ...rest,
-    facets: facets,
+    facets: response.facets,
     onClose: onMobileFacetsClose,
     onChange: onFacetsChange
   })
