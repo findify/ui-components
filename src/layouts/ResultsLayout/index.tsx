@@ -151,7 +151,7 @@ export const ResultsLayout = compose(
         {
           !!config.view.infinite &&
           <LoadMore
-            isMobile={true}
+            isMobile={isMobile}
             isLoading={isLoading}
             meta={response.meta}
             onChange={onLoadMoreClick} />
