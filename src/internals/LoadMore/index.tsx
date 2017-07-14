@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { compose, withPropsOnChange, withProps, withHandlers, branch, renderComponent, renderNothing, lifecycle, withState } from 'recompose';
-import { Button } from 'internals/Button';
+import Spinner from 'internals/Spinner';
 import { throttle } from 'lodash';
 
 const styles = require('./styles.css');
@@ -14,9 +14,9 @@ const withButton = compose(
   isLoading
 }: any) => (
   <div className={styles.root}>
-    <Button isLoading={isLoading} className={styles.button} onClick={onClick}>
+    <button className={styles.button} onClick={onClick}>
       Load more
-    </Button>
+    </button>
   </div>
 ));
 
@@ -43,13 +43,17 @@ const withoutButton = compose(
     }
   })
 )(({ target, setTarget }: any) => 
-  <div ref={r => !target && !!r && setTarget(r)} />
+  <div className={styles.root} ref={r => !target && !!r && setTarget(r)} />
 );
 
 export default compose(
   withPropsOnChange(['meta'], ({ type, meta }) => ({
     disabled: meta.total <= (meta.offset + meta.limit)
   })),
+  branch(
+    ({ isLoading }) => isLoading,
+    renderComponent(Spinner)
+  ),
   branch(
     ({ disabled }) => disabled,
     renderNothing

@@ -1,6 +1,4 @@
 import * as React from 'react';
-import * as cx from 'classnames';
-import Icon from 'internals/Icon';
 const styles = require('./styles.css');
 
 export const ExpandButton = ({
@@ -9,7 +7,7 @@ export const ExpandButton = ({
   label
 }: any) => (
   <button className={styles.wrap} onClick={onClick}>
-    <Icon name={expanded ? 'minus' : 'plus'} className={styles.icon} />
+    <span className={styles.sign}>{expanded && '-' || '+'}</span>
     { label }
   </button>
 );

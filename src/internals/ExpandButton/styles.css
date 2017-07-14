@@ -1,18 +1,24 @@
 .wrap {
-  margin-top: 10px;
+  margin-top: 0;
   font-size: 13px;
-  background-color: #f7f7f7;
-  text-transform: uppercase;
-  border: 1px solid #ececec;
+  background-color: #E9E9E9;
+  color: #4B4B4B;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
   outline: none!important;
   cursor: pointer;
-  transition: background-color .1s ease-in;
-  padding: 5px 10px;
+  transition: background-color .1s ease-in, color .1s ease-in;
   &:hover {
-    background-color: #ececec;
+    background-color: color(#ececec shade(2%));
+    color: color(#4B4B4B shade(2%));
   }
 }
 
+.sign{
+  display: inline-block;
+  padding-right: 4px;
+}
 .icon {
   padding-right: 8px;
   width: 10px;
