@@ -51,12 +51,12 @@ export default compose(
     disabled: meta.total <= (meta.offset + meta.limit)
   })),
   branch(
-    ({ isLoading }) => isLoading,
-    renderComponent(Spinner)
-  ),
-  branch(
     ({ disabled }) => disabled,
     renderNothing
+  ),
+  branch(
+    ({ isLoading }) => isLoading,
+    renderComponent(Spinner)
   ),
   branch(
     ({ isMobile, meta }) => isMobile || meta.offset >= (meta.limit * 2),
