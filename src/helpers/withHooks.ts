@@ -24,6 +24,15 @@ const createHook = type => (hookName, decorator) => branch(
   identity
 );
 
+const reflect = (fn, ...args) => {
+  try {
+    return fn(...args);
+  } catch (e) {
+    console.error(e.stack);
+    return null;
+  }
+};
+
 export default featureType => BaseComponent => {
   const hook = createHook(featureType);
 
@@ -33,8 +42,7 @@ export default featureType => BaseComponent => {
     hook(types.mapProps, mapProps((props:any) => {
       const { hooks, ...restProps } = props;  
       const propsToMap = splitProps(restProps);
-
-      const mappedProps = hooks[featureType][types.mapProps](...propsToMap);
+      const mappedProps = reflect(hooks[featureType][types.mapProps], ...propsToMap);
 
       if (!mappedProps || !isObject(mappedProps) || mappedProps === propsToMap) return props;
       return {
@@ -45,7 +53,7 @@ export default featureType => BaseComponent => {
 
     hook(types.didUpdate, lifecycle({
       componentDidMount(){
-        this.props.hooks[featureType][types.didUpdate](
+        reflect(this.props.hooks[featureType][types.didUpdate], 
           {
             node: findDOMNode(this),
             data: this.props
@@ -54,7 +62,7 @@ export default featureType => BaseComponent => {
         );
       },
       componentDidUpdate(){
-        this.props.hooks[featureType][types.didUpdate](
+        reflect(this.props.hooks[featureType][types.didUpdate], 
           {
             node: findDOMNode(this),
             data: this.props
@@ -66,7 +74,7 @@ export default featureType => BaseComponent => {
 
     hook(types.didMount, lifecycle({
       componentDidMount() {
-        this.props.hooks[featureType][types.didMount](
+        reflect(this.props.hooks[featureType][types.didMount],
           {
             node: findDOMNode(this),
             data: this.props
