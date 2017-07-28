@@ -26,7 +26,7 @@ export const RangeBodyFacet: any = compose(
       symbolOnLeft,
       currencySymbol: (
         <span className={cx(styles.currency, symbolOnLeft && styles.pullRight)}>
-          { currency.symbol }
+          { config.currency.symbol || currency.symbol }
         </span>
       )
     }
