@@ -1,7 +1,15 @@
 .root{
   text-align: center;
+}
+
+.load-next{
   margin-top: 10px;
 }
+
+.load-prev{
+  margin-bottom: 10px;
+}
+
 .button{
   margin-top: 0;
   font-size: 13px;
@@ -18,6 +26,7 @@
     color: color(#4B4B4B shade(2%));
   }
 }
+
 .infinite{
   position: absolute;
   bottom: 0;

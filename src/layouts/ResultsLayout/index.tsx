@@ -11,7 +11,7 @@ import { FacetsLayout } from '../FacetsLayout';
 import { Button } from 'internals/Button';
 import { Banner } from 'internals/Banner';
 import { PoweredBy } from 'internals/PoweredBy';
-import LoadMore from 'internals/LoadMore';
+import { LoadNext, LoadPrev } from 'internals/InfiniteLoader';
 import withHooks from 'helpers/withHooks';
 import withConfig from 'helpers/withConfig';
 
@@ -41,8 +41,6 @@ export const ResultsLayout = compose(
   withHooks('results')
 )
 (({
-  config,
-  isMobile,
   onFacetsChange,
   onProductClick,
   onPageChange,
@@ -51,14 +49,19 @@ export const ResultsLayout = compose(
   onMobileFacetsOpen,
   onBannerClick,
   onPoweredByClick,
-  onLoadMoreClick,
+  onLoadPrev,
+  onLoadNext,
   onClearAll,
+
+  config,
+  isMobile,
   columns,
   showMobileHeader,
   showFacets,
   showBreadcrumbs,
   type,
   isLoading,
+
   response
 }: any) => (
   <div>
@@ -123,6 +126,14 @@ export const ResultsLayout = compose(
           response.banner && response.banner.products &&
           <Banner {...response.banner.products} onClick={onBannerClick} />
         }
+        {
+          !!config.view.infinite &&
+          <LoadPrev
+            items={response.items}
+            meta={response.meta}
+            isLoading={isLoading}
+            onClick={onLoadPrev} />
+        }
 
         {
           <ProductsList
@@ -150,11 +161,11 @@ export const ResultsLayout = compose(
 
         {
           !!config.view.infinite &&
-          <LoadMore
+          <LoadNext
             isMobile={isMobile}
             isLoading={isLoading}
             meta={response.meta}
-            onChange={onLoadMoreClick} />
+            onChange={onLoadNext} />
         }
 
         {

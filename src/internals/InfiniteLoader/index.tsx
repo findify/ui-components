@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { compose, withPropsOnChange, withProps, withHandlers, branch, renderComponent, renderNothing, lifecycle, withState } from 'recompose';
 import Spinner from 'internals/Spinner';
+import * as cx from 'classnames';
 import { throttle } from 'lodash';
 
 const styles = require('./styles.css');
@@ -11,11 +12,16 @@ const withButton = compose(
   })
 )(({
   onClick,
-  isLoading
+  isLoading,
+  config = {
+    i18n: {
+      loadMore: 'Load more'
+    }
+  }
 }: any) => (
-  <div className={styles.root}>
+  <div className={cx(styles.root, styles.loadNext)}>
     <button className={styles.button} onClick={onClick}>
-      Load more
+      { config.i18n.loadMore }
     </button>
   </div>
 ));
@@ -46,7 +52,7 @@ const withoutButton = compose(
   <div className={styles.root} ref={r => !target && !!r && setTarget(r)} />
 );
 
-export default compose(
+export const LoadNext = compose(
   withPropsOnChange(['meta'], ({ type, meta }) => ({
     disabled: meta.total <= (meta.offset + meta.limit)
   })),
@@ -64,3 +70,28 @@ export default compose(
     renderComponent(withoutButton),
   )
 )(renderNothing);
+
+export const LoadPrev = compose(
+  branch(
+    ({ items, meta }) => !items || items.length >= meta.offset + meta.limit,
+    renderNothing
+  ),
+  branch(
+    ({ isLoading }) => isLoading,
+    renderComponent(Spinner)
+  )
+)(({
+  onClick,
+  isLoading,
+  config = {
+    i18n: {
+      loadPrev: 'Load previous'
+    }
+  }
+}: any) => (
+  <div className={cx(styles.root, styles.loadPrev)}>
+    <button className={styles.button} onClick={onClick}>
+      { config.i18n.loadPrev }
+    </button>
+  </div>
+));
