@@ -73,7 +73,7 @@ export const LoadNext = compose(
 
 export const LoadPrev = compose(
   branch(
-    ({ items, meta }) => !items || meta.total < meta.offset || items.length >= meta.offset + meta.limit,
+    ({ items, meta }) => !items || meta.total < meta.offset + meta.limit || items.length >= meta.offset + meta.limit,
     renderNothing
   ),
   branch(
