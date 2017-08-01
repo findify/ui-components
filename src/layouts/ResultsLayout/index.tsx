@@ -129,6 +129,7 @@ export const ResultsLayout = compose(
         {
           !!config.view.infinite &&
           <LoadPrev
+            config={config.loadMore}
             items={response.items}
             meta={response.meta}
             isLoading={isLoading}
@@ -162,6 +163,7 @@ export const ResultsLayout = compose(
         {
           !!config.view.infinite &&
           <LoadNext
+            config={config.loadMore}
             isMobile={isMobile}
             isLoading={isLoading}
             meta={response.meta}
