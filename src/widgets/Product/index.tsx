@@ -84,7 +84,11 @@ export const HOC = compose(
     reviews: {
       display: true
     },
-    stickers: {},
+    stickers: {
+      'out-of-stock': {
+        template: 'Temporary out of stock'
+      }
+    },
     i18n: {
       colorsAvailable: 'Colors available',
       discount: '(%s% discount)'
@@ -151,6 +155,10 @@ export const Component = (({
         currency={config.currency}
         config={config}
         discount={discount} />
+    }
+    {
+      stickers['out-of-stock'] &&
+      <p className={styles.outOfStock}>{config.stickers['out-of-stock'].template}</p>
     }
   </a>
 ));

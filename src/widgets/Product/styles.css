@@ -99,3 +99,10 @@
   margin: 5px 0;
 }
 
+.out-of-stock{
+  margin: 0;
+  margin-top: -3px;
+  font-size: 13px;
+  color: #b2b2b2;
+}
+

@@ -5,6 +5,7 @@ import template from 'helpers/template';
 const styles = require('./styles.css');
 
 const translateZ = 'translateY(-50%)';
+const ignore = ['out-of-stock'];
 
 const getPosition = memoize((position) => {
   const [y, x] = position.split('-');
@@ -66,7 +67,7 @@ export const Stickers: any = ({ stickers, config }) => {
   return React.DOM.div({},
     !!stickers && Object
     .keys(stickers)
-    .filter(i => stickers[i] && !!config[i])
+    .filter(i => stickers[i] && !!config[i] && !ignore.includes(i))
     .map(key => 
       createEagerElement(Sticker, {
         key,

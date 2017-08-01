@@ -61,7 +61,8 @@ const props = {
     "14860563911"
   ],
   "stickers": {
-    "free-shipping": true
+    "free-shipping": true,
+    "out-of-stock": true
   },
   "reviews": {
     "average_score": 3.5,
