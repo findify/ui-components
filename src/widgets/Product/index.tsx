@@ -124,13 +124,17 @@ export const Component = (({
   onClick,
   config,
   stickers,
+  html = {}
 }: any) => (
   <a
     onClick={onClick}
     href={product_url}
     className={cx(styles.root, customStyles.product, config.simple && styles.simple)}>
     <div className={styles.imageWrap}>
-      <Image className={styles.image} src={image_url || thumbnail_url} alt={title} />
+      {
+        html.image ||
+        <Image className={styles.image} src={image_url || thumbnail_url} alt={title} />
+      }
       <Stickers config={config.stickers} stickers={stickers} />
     </div>
     <div className={styles.content}>
