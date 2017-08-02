@@ -132,8 +132,9 @@ export const Component = (({
     className={cx(styles.root, customStyles.product, config.simple && styles.simple)}>
     <div className={styles.imageWrap}>
       {
-        html.image ||
-        <Image className={styles.image} src={image_url || thumbnail_url} alt={title} />
+        html.image
+        && <div dangerouslySetInnerHTML={{ __html: html.image }} />
+        || <Image className={styles.image} src={image_url || thumbnail_url} alt={title} />
       }
       <Stickers config={config.stickers} stickers={stickers} />
     </div>
