@@ -35,6 +35,30 @@ export const values =[
     "count":73,
     "selected":false,
     to: 10
+  },
+    {
+    "count":83,
+    "selected":false,
+    from: 11,
+    to: 20,
+  },
+  {
+    "count":75,
+    "selected":false,
+    from: 39
+  },
+  {
+    "count":73,
+    "selected":false,
+    to: 15
+  },  {
+    "count":73,
+    "selected":false,
+    to: 124124
+  }, {
+    "count":73,
+    "selected":false,
+    to: 124112412424
   }
 ]
 

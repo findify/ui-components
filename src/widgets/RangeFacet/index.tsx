@@ -28,7 +28,7 @@ export const RangeFacet: any = compose(
   }),
 )(props => (
   <GenericFacet {...props} stateToProps={stateToProps}>
-    <Body />
+    <Body disableSlice />
     <RangeBodyFacet />
   </GenericFacet>
 ));

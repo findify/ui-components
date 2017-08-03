@@ -23,6 +23,6 @@ export const RatingFacet: any = compose(
   }),
 )(props => (
   <GenericFacet {...props} stateToProps={stateToProps}>
-    <CheckboxBodyFacet itemComponent={Item}/>
+    <CheckboxBodyFacet itemComponent={Item} disableSlice />
   </GenericFacet>
 ));

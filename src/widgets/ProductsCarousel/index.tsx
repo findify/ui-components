@@ -114,7 +114,7 @@ export const Component = (({
             <Product
               {...product}
               index={i}
-              onClick={onProductClick}
+              onProductClick={onProductClick}
               config={{
                 ...config.product,
                 currency: config.currency,

@@ -22,7 +22,8 @@ export const CheckboxBodyFacet: any = compose(
   pure,
 
   defaultProps({
-    showExpander: false
+    showExpander: false,
+    disableSlice: false
   }),
 
   withState('search', 'setSearch', ''),
@@ -72,6 +73,7 @@ export const CheckboxBodyFacet: any = compose(
   toggleExpand,
   onSearchChange,
 
+  disableSlice,
   showSearch,
   hasSelected,
   hasNotSelected,
@@ -99,7 +101,7 @@ export const CheckboxBodyFacet: any = compose(
         {...rest}
         items={notSelectedItems}
         onChange={onChange}
-        slice={!isMobile && !expanded && rest.config.maxItemsCount}
+        slice={!isMobile && !disableSlice && !expanded && rest.config.maxItemsCount}
         isMobile={isMobile}
         isStatic={!isMobile && showStaticContent} />
     }

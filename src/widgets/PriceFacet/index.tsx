@@ -28,6 +28,6 @@ export const PriceFacet: any = compose(
 )(props => (
   <GenericFacet {...props} stateToProps={stateToProps}>
     <Body />
-    <RangeBodyFacet useCurrency />
+    <RangeBodyFacet useCurrency disableSlice />
   </GenericFacet>
 ));

@@ -51,8 +51,8 @@ export const Component = ({
               stickers: config.stickers,
               currency: config.currency
             },
-            onClick: onProductClick,
-            columnClass: columnClass
+            columnClass: columnClass,
+            onProductClick
           })
         )
       }

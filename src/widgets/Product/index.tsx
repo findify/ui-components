@@ -96,11 +96,11 @@ export const HOC = compose(
   }),
 
   withHandlers({
-    onClick: ({ onClick, ...rest }) => e => {
-      if (onClick) {
+    onClick: ({ onProductClick, ...rest }) => e => {
+      if (onProductClick) {
         if (e && e.isDefaultPrevented && e.isDefaultPrevented()) return;
         e.preventDefault();
-        return onClick(rest);
+        return onProductClick(rest);
       }
     }
   }),
