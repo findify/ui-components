@@ -6,12 +6,16 @@ import { throttle } from 'lodash';
 
 const styles = require('./styles.css');
 
-const withButton = compose(
-  withHandlers({
-    onClick: ({ onChange, meta }) => () => onChange(meta.offset + meta.limit)
-  })
-)(({
-  onClick,
+/**
+ * Don't display prev button if:
+ */
+const shouldNotDisplayPrevButton = ({ items, meta }) =>
+  !items // there is no items
+  || !items.length // or they are empty
+  || !!items.find(i => !i.position); // or there is first item
+
+const withButton = ({
+  onChange,
   isLoading,
   config = {
     i18n: {
@@ -20,11 +24,11 @@ const withButton = compose(
   }
 }: any) => (
   <div className={cx(styles.root, styles.loadNext)}>
-    <button className={styles.button} onClick={onClick}>
+    <button className={styles.button} onClick={onChange}>
       { config.i18n.loadMore }
     </button>
   </div>
-));
+);
 
 const withoutButton = compose(
   withState('target', 'setTarget', void 0),
@@ -56,14 +60,8 @@ export const LoadNext = compose(
   withPropsOnChange(['meta'], ({ type, meta }) => ({
     disabled: meta.total <= (meta.offset + meta.limit)
   })),
-  branch(
-    ({ disabled }) => disabled,
-    renderNothing
-  ),
-  branch(
-    ({ isLoading }) => isLoading,
-    renderComponent(Spinner)
-  ),
+  branch(({ disabled }) => disabled, renderNothing),
+  branch(({ isLoading }) => isLoading, renderComponent(Spinner)),
   branch(
     ({ isMobile, meta }) => isMobile || meta.offset >= (meta.limit * 2),
     renderComponent(withButton),
@@ -72,14 +70,8 @@ export const LoadNext = compose(
 )(renderNothing);
 
 export const LoadPrev = compose(
-  branch(
-    ({ items, meta }) => !items || meta.total < meta.offset + meta.limit || items.length >= meta.offset + meta.limit,
-    renderNothing
-  ),
-  branch(
-    ({ isLoading }) => isLoading,
-    renderComponent(Spinner)
-  )
+  branch(shouldNotDisplayPrevButton, renderNothing),
+  branch(({ isLoading }) => isLoading, renderComponent(Spinner))
 )(({
   onClick,
   isLoading,

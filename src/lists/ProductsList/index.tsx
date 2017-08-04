@@ -8,6 +8,11 @@ import sizeMe from 'react-sizeme';
 
 const styles = require('./styles.css');
 
+const getProductKey = product => 
+  product.position
+  ? [(product.hash || product.id), product.position].join('_')
+  : product.hash || product.id;
+
 const countColumns = (width) => {
   if (width > 1100) return 6;
   if (width > 700) return 4;
@@ -44,7 +49,7 @@ export const Component = ({
         items.map((product, i) =>
           createEagerElement(Product, {
             ...product,
-            key: product.hash || product.id,
+            key: getProductKey(product),
             index: i,
             config: {
               ...config.product,
