@@ -84,6 +84,7 @@ export const RangeBodyFacet: any = compose(
         style={false}
         className={styles.input}
         value={min}
+        max={max}
         precision={precision}
         min={initial.min}
         mobile={false}
@@ -103,6 +104,7 @@ export const RangeBodyFacet: any = compose(
         value={max}
         mobile={false}
         precision={precision}
+        min={min}
         max={initial.max}
         onBlur={updateMax} />
       { 
