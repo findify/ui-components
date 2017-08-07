@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { compose, withState, withHandlers, mapProps, withPropsOnChange, defaultProps } from 'recompose';
-import NumberInput from 'internals/NumberInput';
+import { compose, withStateHandlers, withHandlers, mapProps, withPropsOnChange, defaultProps } from 'recompose';
+import NumberInput from 'react-numeric-input';
 import formatRange from 'helpers/formatRange';
 import { findCurrency } from 'currency-formatter'
 import { getRangeFacetKey } from 'helpers/getRangeFacetKey';
@@ -13,11 +13,7 @@ export const RangeBodyFacet: any = compose(
     useCurrency: false
   }),
 
-  mapProps(({ min, max, ...rest }) => ({
-    ...rest,
-    initialMin: parseInt(min),
-    initialMax: parseInt(max),
-  })),
+  withPropsOnChange(['min', 'max'], ({ min, max }) => ({ initial: { min, max } })),
 
   withPropsOnChange(['config'], ({ config }) => {
     const currency = findCurrency(config.currency.code);
@@ -31,54 +27,53 @@ export const RangeBodyFacet: any = compose(
       )
     }
   }),
+  
 
-  withState('minValue', 'setMinValue', props => props.initialMin),
-  withState('maxValue', 'setMaxValue', props => props.initialMax),
-  withState('min', 'setMin', void 0),
-  withState('max', 'setMax', void 0),
+  withStateHandlers(
+    ({ min, max }) => ({
+      min: void 0,
+      max: void 0
+    }),
+    {
+      onCommit: ({ min: from, max: to }, { onChange, config, values }) => e => {
+        if (!from && !to) return;
 
-  withHandlers({
-    onCommit: ({ name, values, onChange, minValue: from, maxValue: to, setMin, setMax, config }) =>
-    e => {
-      if (e) e.preventDefault();
-      if (!from && !to) return;
-      const label = formatRange({ from, to, config });
-      const key = getRangeFacetKey({ from, to });
-      if (values.find(item => item.key === key)) return;
-      onChange({ selected: true, from, to, key, label, name });
-      setMin(void 0);
-      setMax(void 0);
-    },
-    updateMin: ({ setMinValue, setMin, min, maxValue }) => (e) => {
-      const val = parseFloat(e.target.value) || min;
-      const normalizedValue = val > maxValue ? maxValue : val
-      setMin(normalizedValue)
-      return setMinValue(normalizedValue)
-    },
-    updateMax: ({ setMaxValue, setMax, max, minValue }) => (e) => {
-      const val = parseFloat(e.target.value) || max;
-      const normalizedValue = val < minValue ? minValue : val;
-      setMax(normalizedValue)
-      return setMaxValue(normalizedValue);
-    },
-  })
+        const key = getRangeFacetKey({ from, to });
+        if (values.find(item => item.key === key)) return;
+
+        const label = formatRange({ from, to, config });
+        onChange({ selected: true, from, to, key, label, name });
+  
+        return ({ min: void 0, max: void 0 });
+      },
+
+      updateMin: ({ min, max }) => e => {
+        const val = parseFloat(e.target.value) || min;
+        const normalizedValue = val > max ? max : val;
+        return ({ min: normalizedValue });
+      },
+
+      updateMax: ({ max, min }) => e => {
+        const val = parseFloat(e.target.value) || max;
+        const normalizedValue = val < min ? min : val;
+        return ({ max: normalizedValue });
+      }
+    }
+  )
 )(({
-  minValue,
-  maxValue,
+  initial,
+  max,
+  min,
   updateMin,
   updateMax,
-  useCurrency,
   onCommit,
+  useCurrency,
+  symbolOnLeft,
+  currencySymbol,
   config: {
     i18n,
     precision = 0
   },
-  symbolOnLeft,
-  currencySymbol,
-  initialMin,
-  initialMax,
-  max,
-  min,
 }: any) => (
   <div className={styles.root}>
     <div className={styles.inputWrap}>
@@ -86,11 +81,12 @@ export const RangeBodyFacet: any = compose(
         useCurrency && !!symbolOnLeft && currencySymbol
       }
       <NumberInput
+        style={false}
         className={styles.input}
-        defaultValue={min}
+        value={min}
         precision={precision}
-        min={initialMin}
-        max={max}
+        min={initial.min}
+        mobile={false}
         onBlur={updateMin} />
       { 
         useCurrency && !symbolOnLeft && currencySymbol
@@ -102,11 +98,12 @@ export const RangeBodyFacet: any = compose(
         useCurrency && !!symbolOnLeft && currencySymbol
       }
       <NumberInput
+        style={false}
         className={styles.input}
-        defaultValue={max}
+        value={max}
+        mobile={false}
         precision={precision}
-        min={min}
-        max={initialMax}
+        max={initial.max}
         onBlur={updateMax} />
       { 
         useCurrency && !symbolOnLeft && currencySymbol
