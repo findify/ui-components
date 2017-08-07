@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { compose, withStateHandlers, withHandlers, mapProps, withPropsOnChange, defaultProps } from 'recompose';
-import NumberInput from 'react-numeric-input';
+const NumberInput = require('internals/NumberInput/index.js');
 import formatRange from 'helpers/formatRange';
 import { findCurrency } from 'currency-formatter'
 import { getRangeFacetKey } from 'helpers/getRangeFacetKey';
