@@ -22,8 +22,9 @@ const ImageComponent: any = compose(
     }
   }),
 
-  mapProps(({ isLoading, className, src, alt, placeholder, setIsLoading, ...rest }: any) => ({
+  mapProps(({ isLoading, className, src, alt, placeholder, setIsLoading, onClick, ...rest }: any) => ({
     alt,
+    onClick,
     src: isLoading ? void 0 : src,
     className: cx(className, isLoading && styles.loading || styles.loaded)
   })),
