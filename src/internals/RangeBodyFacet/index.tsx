@@ -35,7 +35,7 @@ export const RangeBodyFacet: any = compose(
       max: void 0
     }),
     {
-      onCommit: ({ min: from, max: to }, { onChange, config, values }) => e => {
+      onCommit: ({ min: from, max: to }, { onChange, config, values, name }) => e => {
         if (!from && !to) return;
 
         const key = getRangeFacetKey({ from, to });
