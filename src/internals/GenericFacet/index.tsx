@@ -72,6 +72,6 @@ export const HOC = (Content, WrappedContent) => compose(
     renderComponent(Content),
     renderComponent(WrappedContent(Content))
   )
-)(renderNothing);
+)(null);
 
 export const GenericFacet: any = HOC(Raw, Wrapper);

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as DOM from 'react-dom-factories';
 import { compose, createEagerElement, withProps } from 'recompose';
 import { memoize, isArray } from 'lodash';
 import template from 'helpers/template';
@@ -64,7 +65,7 @@ const Sticker: any = compose(
 ));
 
 export const Stickers: any = ({ stickers, config }) => {
-  return React.DOM.div({},
+  return DOM.div({},
     !!stickers && Object
     .keys(stickers)
     .filter(i => stickers[i] && !!config[i] && !ignore.includes(i))

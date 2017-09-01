@@ -1,4 +1,4 @@
-import { DOM } from 'react';
+import * as React from 'react';
 import { compose, lifecycle, onlyUpdateForKeys, pure, withProps, mapProps, withState } from 'recompose';
 import * as cx from 'classnames';
 import { defer } from 'lodash';
@@ -30,6 +30,6 @@ const ImageComponent: any = compose(
   })),
 
   onlyUpdateForKeys(['src']),
-)(DOM.img);
+)(props => <img {...props} />);
 
 export default ImageComponent;

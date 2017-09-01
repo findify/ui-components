@@ -1,6 +1,6 @@
 import { compose, createEagerFactory, branch, lifecycle, mapProps, getContext } from 'recompose';
 import { findDOMNode } from 'react-dom';
-import { identity, isObject, isFunction, isArray } from 'lodash';
+import { identity, isObject, isFunction, isArray, isEqual } from 'lodash';
 import PropTypes from 'prop-types';
 
 const types = {
@@ -39,18 +39,6 @@ export default featureType => BaseComponent => {
   return compose(
     getContext({ hooks: PropTypes.object, featureConfig: PropTypes.object }),
 
-    hook(types.mapProps, mapProps((props:any) => {
-      const { hooks, ...restProps } = props;  
-      const propsToMap = splitProps(restProps);
-      const mappedProps = reflect(hooks[featureType][types.mapProps], ...propsToMap);
-
-      if (!mappedProps || !isObject(mappedProps) || mappedProps === propsToMap) return props;
-      return {
-        ...props,
-        ...mappedProps
-      };
-    })),
-
     hook(types.didUpdate, lifecycle({
       componentDidMount(){
         reflect(this.props.hooks[featureType][types.didUpdate], 
@@ -61,7 +49,8 @@ export default featureType => BaseComponent => {
           this.props.featureConfig
         );
       },
-      componentDidUpdate(){
+      componentDidUpdate(next){
+        if (isEqual(this.props, next)) return;
         reflect(this.props.hooks[featureType][types.didUpdate], 
           {
             node: findDOMNode(this),
@@ -70,6 +59,18 @@ export default featureType => BaseComponent => {
           this.props.featureConfig
         );
       }
+    })),
+
+    hook(types.mapProps, mapProps((props:any) => {
+      const { hooks, ...restProps } = props;  
+      const propsToMap = splitProps(restProps);
+      const mappedProps = reflect(hooks[featureType][types.mapProps], ...propsToMap);
+
+      if (!mappedProps || !isObject(mappedProps) || mappedProps === propsToMap) return props;
+      return {
+        ...props,
+        ...mappedProps
+      };
     })),
 
     hook(types.didMount, lifecycle({

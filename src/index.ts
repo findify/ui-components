@@ -9,6 +9,7 @@ export { ProductsList } from './lists/ProductsList';
 
 export { Autocomplete } from './widgets/Autocomplete';
 export { BreadCrumbs } from './widgets/BreadCrumbs';
+
 export { CategoryFacet } from './widgets/CategoryFacet';
 export { CheckboxFacet } from './widgets/CheckboxFacet';
 export { ColorFacet } from './widgets/ColorFacet';
