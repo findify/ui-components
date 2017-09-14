@@ -37,7 +37,11 @@ export default featureType => BaseComponent => {
   const hook = createHook(featureType);
 
   return compose(
-    getContext({ hooks: PropTypes.object, featureConfig: PropTypes.object }),
+    getContext({
+      hooks: PropTypes.object,
+      globalConfig: PropTypes.object,
+      trackEvent: PropTypes.func
+    }),
 
     hook(types.didUpdate, lifecycle({
       componentDidMount(){
@@ -46,7 +50,7 @@ export default featureType => BaseComponent => {
             node: findDOMNode(this),
             data: this.props
           },
-          this.props.featureConfig
+          this.props.globalConfig
         );
       },
       componentDidUpdate(next){
@@ -56,15 +60,15 @@ export default featureType => BaseComponent => {
             node: findDOMNode(this),
             data: this.props
           },
-          this.props.featureConfig
+          this.props.globalConfig
         );
       }
     })),
 
     hook(types.mapProps, mapProps((props:any) => {
-      const { hooks, ...restProps } = props;  
+      const { hooks, globalConfig, ...restProps } = props;  
       const propsToMap = splitProps(restProps);
-      const mappedProps = reflect(hooks[featureType][types.mapProps], ...propsToMap);
+      const mappedProps = reflect(hooks[featureType][types.mapProps], ...propsToMap, globalConfig);
 
       if (!mappedProps || !isObject(mappedProps) || mappedProps === propsToMap) return props;
       return {
@@ -80,7 +84,7 @@ export default featureType => BaseComponent => {
             node: findDOMNode(this),
             data: this.props
           },
-          this.props.featureConfig
+          this.props.globalConfig
         );
       },
     })),

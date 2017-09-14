@@ -56,7 +56,7 @@ export const AutocompleteMobileBody = compose(
   onChange,
   onSelect,
   registerInput
-}: Props) => (
+}: any) => (
   <div className={styles.wrap}>
     <form
       className={styles.form}
@@ -94,7 +94,7 @@ export const AutocompleteMobileBody = compose(
       }
     </div>
   </div>
-))
+));
 
 function highlightSuggestion(value: string, highlighted: string) {
   const regexp = new RegExp(`(${highlighted})`);
