@@ -26,6 +26,7 @@
 .title {
   display: table-cell;
   width: 100%;
+  cursor: pointer;
   .selected & {
     font-weight: 600;
   }
@@ -38,6 +39,7 @@
   color: #b2b2b2;
   display: table-cell;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .next-icon, .prev-icon {

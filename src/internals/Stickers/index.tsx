@@ -5,6 +5,8 @@ import { memoize, isArray } from 'lodash';
 import template from 'helpers/template';
 const styles = require('./styles.css');
 
+import * as cx from 'classnames';
+
 const translateZ = 'translateY(-50%)';
 const ignore = ['out-of-stock'];
 
@@ -55,9 +57,10 @@ const Sticker: any = compose(
 )(({
   position,
   style,
-  content
+  content,
+  name
 }: any) => (
-  <div className={styles.root} style={position.root}>
+  <div className={cx(styles.root, `sticker-${name}`)} style={position.root}>
     <div className={styles.sticker} style={{ ...position.container, ...style }}>
       {content}
     </div>
@@ -72,6 +75,7 @@ export const Stickers: any = ({ stickers, config }) => {
     .map(key => 
       createEagerElement(Sticker, {
         key,
+        name: key,
         value: stickers[key],
         config: config[key]
       })
