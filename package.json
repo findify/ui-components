@@ -70,6 +70,7 @@
     "postcss-smart-import": "^0.7.5",
     "postcss-wrap": "0.0.4",
     "raw-loader": "https://registry.npmjs.org/raw-loader/-/raw-loader-0.5.1.tgz",
+    "react-addons-perf": "^15.4.2",
     "react-hot-loader": "^3.0.0-beta.6",
     "react-svg-loader": "^1.1.1",
     "rimraf": "^2.6.1",
@@ -83,7 +84,8 @@
     "webpack": "^3.5.5",
     "webpack-dashboard": "0.4.0",
     "webpack-dev-server": "^2.7.1",
-    "webpack-node-externals": "^1.6.0"
+    "webpack-node-externals": "^1.6.0",
+    "why-did-you-update": "0.0.8"
   },
   "engines": {
     "npm": ">=4",
